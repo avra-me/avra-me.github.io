@@ -1,18 +1,12 @@
-# React SaaS Template
-Remains of a SaaS business I once tried to build. Now transformed into a template for building an SaaS/admin application using React + Material-UI.
+# Material-Gatsby-Resume
+This is a resume bootstrap using react-gatsby-netlify
 
-[**Check out the demo**](https://reactsaastemplate.com)
+Goals:
 
-![Node.js CI](https://github.com/dunky11/react-saas-template/workflows/Node.js%20CI/badge.svg)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=dunky11/react-saas-template)](https://dependabot.com)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-
-[<img src="/.github/gifs/showcase.gif">](https://reactsaastemplate.com "Go to demo website")
-
-
-## Getting Started
-
-### Prerequisites
+- [ ] I want to be able to customize my online portfolio without touching my code.
+- [ ] I want my portfolio to look modern and be responsive.
+- [ ] I want my portfolio to be customizable at a technical level should I feel like it.
+- [ ] As a stretch goal, I would like to be able to print out my portfolio as a resume
 
 #### Node.js 12+ (versions below could work, but are not tested)
 
@@ -67,27 +61,13 @@ It will create a folder named build with your compiled project inside. After tha
 
 ## Build With
 
-* [Create-React-App](https://github.com/facebook/create-react-app) - Used to bootstrap the development
 * [Material-UI](https://github.com/mui-org/material-ui) - Material Design components
-* [React-Router](https://github.com/ReactTraining/react-router) - Routing of the app
+* [Reach-Router](https://github.com/reach/router) - Routing of the app
 * [Pace](https://github.com/HubSpot/pace) - Loading bar at the top
 * [Emoji-Mart](https://github.com/missive/emoji-mart) - Picker for the emojis
-* [React-Dropzone](https://github.com/react-dropzone/react-dropzone) - File drop component for uploads
 * [Recharts](https://github.com/recharts/recharts) - Charting library I used for the statistics
 * [Aos](https://github.com/michalsnik/aos) - Animations based on viewport
 * [React-Cropper](https://github.com/roadmanfong/react-cropper) - Cropper for the image uploads
-* [React-Stripe-js](https://github.com/stripe/react-stripe-js) - Stripes payment elements
-
-## Things im currently working on
-
-- [ ] Improving the encapsulation of components
-- [ ] smoothScrollTop() sometimes stops scrolling top when components with big height are still rendering
-- [ ] When a Dialog is opened there is a margin on the right side of the viewport (could be that this is not fixable without shaking the viewport on dialog open)
-- [ ] shadeColor() throws errors on certain color codes
-- [ ] Adding iDEAL, FBX and PaymentRequestButton to avaible payment methods
-
-## Contribute
-Show your support by ⭐ the project. Pull requests are always welcome.
 
 ## License
 

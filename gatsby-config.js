@@ -6,5 +6,16 @@
 
 module.exports = {
   /* Your site config here */
-  plugins: [`gatsby-plugin-netlify-cms`],
+  plugins: [
+    {
+      resolve: `gatsby-plugin-netlify-cms`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/src/markdown-pages`,
+      },
+
+    },
+    `gatsby-transformer-remark`,
+  ],
+
 }

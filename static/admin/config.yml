@@ -1,6 +1,6 @@
 backend:
-  name: git-gateway
-  branch: master
+  name: github
+  repo: avra-me/avra-me.github.io
   commit_messages:
     create: 'Create {{collection}} “{{slug}}”'
     update: 'Update {{collection}} “{{slug}}”'
@@ -8,13 +8,24 @@ backend:
     uploadMedia: '[skip ci] Upload “{{path}}”'
     deleteMedia: '[skip ci] Delete “{{path}}”'
 
-publish_mode: editorial_workflow
 media_folder: static/assets
+format: yaml
 
 collections:
+  - name: config
+    label: "Site Configuration"
+    files:
+      - label: Your Details
+        name: details
+        file: 'src/config/details.yaml'
+        fields:
+          - {label: Site Title, name: title, widget: string}
+          - {label: Name, name: name, widget: string}
+          - {label: Caption, name: caption, widget: markdown}
+
   - name: "blog"
     label: "Blog"
-    folder: "src/pages/blog"
+    folder: "src/blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
