@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link } from "@reach/router";
 import format from "date-fns/format";
 import classNames from "classnames";
 import { Typography, Card, Box, withStyles } from "@material-ui/core";
@@ -74,9 +74,9 @@ function BlogCard(props) {
         </Link>
         <Typography variant="body1" color="textSecondary">
           {snippet}
-          <Link to={url} className={classes.noDecoration} tabIndex={-1}>
-            <span className={classes.link}> read more...</span>
-          </Link>
+          {/*<Link to={url} className={classes.noDecoration} tabIndex={-1}>*/}
+          {/*  <span className={classes.link}> read more...</span>*/}
+          {/*</Link>*/}
         </Typography>
       </Box>
     </Card>

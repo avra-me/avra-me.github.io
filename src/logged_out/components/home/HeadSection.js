@@ -1,18 +1,7 @@
-import React, { Fragment } from "react";
+import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import {
-  Grid,
-  Typography,
-  Card,
-  Button,
-  Hidden,
-  Box,
-  withStyles,
-  withWidth,
-  isWidthUp
-} from "@material-ui/core";
-import headerImage from "../../dummy_data/images/headerImage.jpg";
+import {Box, Card, Grid, Hidden, isWidthUp, Typography, withStyles, withWidth} from "@material-ui/core";
 import WaveBorder from "../../../shared/components/WaveBorder";
 
 const styles = theme => ({
@@ -99,7 +88,7 @@ const styles = theme => ({
 });
 
 function HeadSection(props) {
-  const { classes, theme, width } = props;
+  const {classes, theme, width} = props;
   return (
     <Fragment>
       <div className={classNames("lg-p-top", classes.wrapper)}>
@@ -132,7 +121,7 @@ function HeadSection(props) {
                             variant={isWidthUp("lg", width) ? "h6" : "body1"}
                             color="textSecondary"
                           >
-                           A skilled software developer with extensive experience building scalable web platforms
+                            A skilled software developer with extensive experience building scalable web platforms
                             to budget and on time.
                           </Typography>
                         </Box>
@@ -167,5 +156,5 @@ HeadSection.propTypes = {
 };
 
 export default withWidth()(
-  withStyles(styles, { withTheme: true })(HeadSection)
+  withStyles(styles, {withTheme: true})(HeadSection)
 );

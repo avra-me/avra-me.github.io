@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
-import { Switch } from "react-router-dom";
+// import { Switch } from "react-router-dom";
 import { withStyles } from "@material-ui/core";
 import Dashboard from "./dashboard/Dashboard";
 import Posts from "./posts/Posts";
@@ -66,40 +66,40 @@ function Routing(props) {
   } = props;
   return (
     <div className={classes.wrapper}>
-      <Switch>
-        <PropsRoute
-          path="/c/posts"
-          component={Posts}
-          EmojiTextArea={EmojiTextArea}
-          ImageCropper={ImageCropper}
-          Dropzone={Dropzone}
-          DateTimePicker={DateTimePicker}
-          pushMessageToSnackbar={pushMessageToSnackbar}
-          posts={posts}
-          setPosts={setPosts}
-          selectPosts={selectPosts}
-        />
-        <PropsRoute
-          path="/c/subscription"
-          component={Subscription}
-          transactions={transactions}
-          pushMessageToSnackbar={pushMessageToSnackbar}
-          selectSubscription={selectSubscription}
-          openAddBalanceDialog={openAddBalanceDialog}
-        />
-        <PropsRoute
-          path=""
-          component={Dashboard}
-          toggleAccountActivation={toggleAccountActivation}
-          pushMessageToSnackbar={pushMessageToSnackbar}
-          CardChart={CardChart}
-          statistics={statistics}
-          targets={targets}
-          setTargets={setTargets}
-          isAccountActivated={isAccountActivated}
-          selectDashboard={selectDashboard}
-        />
-      </Switch>
+      {/*<Switch>*/}
+      {/*  <PropsRoute*/}
+      {/*    path="/c/posts"*/}
+      {/*    component={Posts}*/}
+      {/*    EmojiTextArea={EmojiTextArea}*/}
+      {/*    ImageCropper={ImageCropper}*/}
+      {/*    Dropzone={Dropzone}*/}
+      {/*    DateTimePicker={DateTimePicker}*/}
+      {/*    pushMessageToSnackbar={pushMessageToSnackbar}*/}
+      {/*    posts={posts}*/}
+      {/*    setPosts={setPosts}*/}
+      {/*    selectPosts={selectPosts}*/}
+      {/*  />*/}
+      {/*  <PropsRoute*/}
+      {/*    path="/c/subscription"*/}
+      {/*    component={Subscription}*/}
+      {/*    transactions={transactions}*/}
+      {/*    pushMessageToSnackbar={pushMessageToSnackbar}*/}
+      {/*    selectSubscription={selectSubscription}*/}
+      {/*    openAddBalanceDialog={openAddBalanceDialog}*/}
+      {/*  />*/}
+      {/*  <PropsRoute*/}
+      {/*    path=""*/}
+      {/*    component={Dashboard}*/}
+      {/*    toggleAccountActivation={toggleAccountActivation}*/}
+      {/*    pushMessageToSnackbar={pushMessageToSnackbar}*/}
+      {/*    CardChart={CardChart}*/}
+      {/*    statistics={statistics}*/}
+      {/*    targets={targets}*/}
+      {/*    setTargets={setTargets}*/}
+      {/*    isAccountActivated={isAccountActivated}*/}
+      {/*    selectDashboard={selectDashboard}*/}
+      {/*  />*/}
+      {/*</Switch>*/}
     </div>
   );
 }
