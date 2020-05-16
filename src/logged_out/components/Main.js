@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import AOS from "aos/dist/aos";
 import { withStyles } from "@material-ui/core";
@@ -11,7 +11,9 @@ import dummyBlogPosts from "../dummy_data/blogPosts";
 import Routing from "./Routing";
 import smoothScrollTop from "../../shared/functions/smoothScrollTop";
 
-AOS.init({ once: true });
+if(typeof window !== 'undefined') {
+  AOS.init({once: true});
+}
 
 const styles = (theme) => ({
   wrapper: {
@@ -131,4 +133,4 @@ Main.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(memo(Main));
+export default withStyles(styles, { withTheme: true })(Main);
