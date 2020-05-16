@@ -94,7 +94,7 @@ function CookieConsent(props) {
       open={isVisible}
       message={
         <Typography className="text-white">
-          We use cookies to ensure you get the best experience on our website.{" "}
+          I use cookies to ensure you get the best experience on my website.{" "}
         </Typography>
       }
       action={

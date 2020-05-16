@@ -1,6 +1,6 @@
-import React, { memo } from "react";
+import React, {memo} from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import {
   AppBar,
   Toolbar,
@@ -12,8 +12,6 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
-import HowToRegIcon from "@material-ui/icons/HowToReg";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
 import BookIcon from "@material-ui/icons/Book";
 import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 
@@ -42,33 +40,25 @@ const styles = theme => ({
 function NavBar(props) {
   const {
     classes,
-    openRegisterDialog,
-    openLoginDialog,
     handleMobileDrawerOpen,
     handleMobileDrawerClose,
     mobileDrawerOpen,
-    selectedTab
+    selectedTab,
+    siteBrand
   } = props;
+
+  const [siteBrandPrimary, siteBrandSecondary] = siteBrand.split('.', 2)
+
   const menuItems = [
     {
       link: "/",
       name: "Home",
-      icon: <HomeIcon className="text-white" />
+      icon: <HomeIcon className="text-white"/>
     },
     {
       link: "/blog",
-      name: "Blog",
-      icon: <BookIcon className="text-white" />
-    },
-    {
-      name: "Register",
-      onClick: openRegisterDialog,
-      icon: <HowToRegIcon className="text-white" />
-    },
-    {
-      name: "Login",
-      onClick: openLoginDialog,
-      icon: <LockOpenIcon className="text-white" />
+      name: "My Blog",
+      icon: <BookIcon className="text-white"/>
     }
   ];
   return (
@@ -82,16 +72,16 @@ function NavBar(props) {
               display="inline"
               color="primary"
             >
-              Wa
+              {siteBrandPrimary}
             </Typography>
-            <Typography
+            { siteBrandSecondary && <Typography
               variant="h4"
               className={classes.brandText}
               display="inline"
               color="secondary"
             >
-              Ver
-            </Typography>
+              .{siteBrandSecondary}
+            </Typography>}
           </div>
           <div>
             <Hidden mdUp>
@@ -100,7 +90,7 @@ function NavBar(props) {
                 onClick={handleMobileDrawerOpen}
                 aria-label="Open Navigation"
               >
-                <MenuIcon color="primary" />
+                <MenuIcon color="primary"/>
               </IconButton>
             </Hidden>
             <Hidden smDown>
@@ -116,7 +106,7 @@ function NavBar(props) {
                       <Button
                         color="secondary"
                         size="large"
-                        classes={{ text: classes.menuButtonText }}
+                        classes={{text: classes.menuButtonText}}
                       >
                         {element.name}
                       </Button>
@@ -128,7 +118,7 @@ function NavBar(props) {
                     color="secondary"
                     size="large"
                     onClick={element.onClick}
-                    classes={{ text: classes.menuButtonText }}
+                    classes={{text: classes.menuButtonText}}
                     key={element.name}
                   >
                     {element.name}
@@ -156,8 +146,7 @@ NavBar.propTypes = {
   handleMobileDrawerClose: PropTypes.func,
   mobileDrawerOpen: PropTypes.bool,
   selectedTab: PropTypes.string,
-  openRegisterDialog: PropTypes.func.isRequired,
-  openLoginDialog: PropTypes.func.isRequired
+  siteBrand: PropTypes.string
 };
 
-export default withStyles(styles, { withTheme: true })(memo(NavBar));
+export default withStyles(styles, {withTheme: true})(memo(NavBar));

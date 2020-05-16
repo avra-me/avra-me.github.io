@@ -126,6 +126,7 @@ function Main(props) {
         mobileDrawerOpen={isMobileDrawerOpen}
         handleMobileDrawerOpen={handleMobileDrawerOpen}
         handleMobileDrawerClose={handleMobileDrawerClose}
+        siteBrand={process.env.REACT_APP_NAME || 'avra.me'}
       />
       <Routing
         blogPosts={blogPosts}
