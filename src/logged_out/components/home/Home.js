@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import HeadSection from "./HeadSection";
 import FeatureSection from "./FeatureSection";
 import PricingSection from "./PricingSection";
+import DetailsConfig from '../../../config/details.json'
+
 
 function Home(props) {
   const {selectHome} = props;
@@ -10,7 +12,7 @@ function Home(props) {
     selectHome();
   }, [selectHome]);
   return [
-    <HeadSection/>,
+    <HeadSection details={DetailsConfig}/>,
     <FeatureSection/>,
     <PricingSection/>
   ]

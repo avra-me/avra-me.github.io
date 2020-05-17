@@ -88,7 +88,8 @@ const styles = theme => ({
 });
 
 function HeadSection(props) {
-  const {classes, theme, width} = props;
+  const {classes, theme, width, details} = props;
+  const {name, caption} = details
   return (
     <Fragment>
       <div className={classNames("lg-p-top", classes.wrapper)}>
@@ -112,7 +113,7 @@ function HeadSection(props) {
                         <Typography
                           variant={isWidthUp("lg", width) ? "h3" : "h4"}
                         >
-                          Avrami Hammer
+                          {name}
                         </Typography>
                       </Box>
                       <div>
@@ -121,8 +122,7 @@ function HeadSection(props) {
                             variant={isWidthUp("lg", width) ? "h6" : "body1"}
                             color="textSecondary"
                           >
-                            A skilled software developer with extensive experience building scalable web platforms
-                            to budget and on time.
+                            {caption}
                           </Typography>
                         </Box>
                       </div>
@@ -152,7 +152,8 @@ function HeadSection(props) {
 HeadSection.propTypes = {
   classes: PropTypes.object,
   width: PropTypes.string,
-  theme: PropTypes.object
+  theme: PropTypes.object,
+  details: PropTypes.object.isRequired
 };
 
 export default withWidth()(
