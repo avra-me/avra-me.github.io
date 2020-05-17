@@ -44,10 +44,9 @@ function NavBar(props) {
     handleMobileDrawerClose,
     mobileDrawerOpen,
     selectedTab,
-    siteBrand
+    siteBrandPrimary,
+    siteBrandSecondary
   } = props;
-
-  const [siteBrandPrimary, siteBrandSecondary] = siteBrand.split('.', 2)
 
   const menuItems = [
     {
@@ -74,13 +73,13 @@ function NavBar(props) {
             >
               {siteBrandPrimary}
             </Typography>
-            { siteBrandSecondary && <Typography
+            {siteBrandSecondary && <Typography
               variant="h4"
               className={classes.brandText}
               display="inline"
               color="secondary"
             >
-              .{siteBrandSecondary}
+              {siteBrandSecondary}
             </Typography>}
           </div>
           <div>
@@ -146,7 +145,8 @@ NavBar.propTypes = {
   handleMobileDrawerClose: PropTypes.func,
   mobileDrawerOpen: PropTypes.bool,
   selectedTab: PropTypes.string,
-  siteBrand: PropTypes.string
+  siteBrandPrimary: PropTypes.string,
+  siteBrandSecondary: PropTypes.string
 };
 
 export default withStyles(styles, {withTheme: true})(memo(NavBar));

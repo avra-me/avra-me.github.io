@@ -10,6 +10,7 @@ import CookieConsent from "./cookies/CookieConsent";
 import dummyBlogPosts from "../dummy_data/blogPosts";
 import Routing from "./Routing";
 import smoothScrollTop from "../../shared/functions/smoothScrollTop";
+import {title, subtitle} from "../../config/site.json"
 
 if(typeof window !== 'undefined') {
   AOS.init({once: true});
@@ -33,13 +34,13 @@ function Main(props) {
   const selectHome = useCallback(() => {
     smoothScrollTop();
     document.title =
-      "WaVer - Free template for building an SaaS or admin application";
+      `${title}${subtitle} - My personal portfolio`;
     setSelectedTab("Home");
   }, [setSelectedTab]);
 
   const selectBlog = useCallback(() => {
     smoothScrollTop();
-    document.title = "WaVer - Blog";
+    document.title = `${title}${subtitle} - Blog`;
     setSelectedTab("Blog");
   }, [setSelectedTab]);
 
@@ -117,7 +118,8 @@ function Main(props) {
         mobileDrawerOpen={isMobileDrawerOpen}
         handleMobileDrawerOpen={handleMobileDrawerOpen}
         handleMobileDrawerClose={handleMobileDrawerClose}
-        siteBrand={process.env.REACT_APP_NAME || 'avra.me'}
+        siteBrandPrimary={title}
+        siteBrandSecondary={subtitle}
       />
       <Routing
         blogPosts={blogPosts}

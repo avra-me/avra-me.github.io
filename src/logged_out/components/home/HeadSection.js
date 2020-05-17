@@ -3,6 +3,12 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import {Box, Card, Grid, Hidden, isWidthUp, Typography, withStyles, withWidth} from "@material-ui/core";
 import WaveBorder from "../../../shared/components/WaveBorder";
+import Divider from "@material-ui/core/Divider";
+import headerImage from "../../dummy_data/images/headerImage.jpg";
+import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+
+const ReactMarkdown = require('react-markdown')
 
 const styles = theme => ({
   extraLargeButtonLabel: {
@@ -84,12 +90,36 @@ const styles = theme => ({
   },
   waveBorder: {
     paddingTop: theme.spacing(4)
+  },
+  speech: {
+    display: 'inline-flex',
+    position: "relative",
+    borderRadius: theme.spacing(1),
+    background: theme.palette.secondary.light,
+    "&:after": {
+      content: '\'\'',
+      position: "absolute",
+      bottom: "0",
+      left: "50%",
+      width: 0,
+      height: 0,
+      border: `${theme.spacing(1)}px solid transparent`,
+      borderTopColor: theme.palette.secondary.light,
+      borderBottom: 0,
+      borderLeft: 0,
+      marginLeft: `-${theme.spacing(.5)}px`,
+      marginBottom: `-${theme.spacing(1)}px`,
+    }
+  },
+  speechText: {
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2)
   }
 });
 
 function HeadSection(props) {
   const {classes, theme, width, details} = props;
-  const {name, caption} = details
+  const {name, caption, greeting, prefix} = details
   return (
     <Fragment>
       <div className={classNames("lg-p-top", classes.wrapper)}>
@@ -106,39 +136,61 @@ function HeadSection(props) {
                     <Box
                       display="flex"
                       flexDirection="column"
-                      justifyContent="space-between"
+
                       height="100%"
                     >
+                      <Box mb={4}>
+                        <div className={classes.speech}>
+                          <Typography
+                            variant={isWidthUp("lg", width) ? "h6" : "body1"}
+                            className={classes.speechText}
+                          >
+                            {greeting}
+                          </Typography>
+                        </div>
+                      </Box>
                       <Box mb={4}>
                         <Typography
                           variant={isWidthUp("lg", width) ? "h3" : "h4"}
                         >
-                          {name}
+                          {prefix} <b>{name}</b>
                         </Typography>
                       </Box>
-                      <div>
-                        <Box mb={2}>
-                          <Typography
-                            variant={isWidthUp("lg", width) ? "h6" : "body1"}
-                            color="textSecondary"
-                          >
-                            {caption}
-                          </Typography>
-                        </Box>
-                      </div>
+                      <Box mb={2}>
+                        <Typography
+                          variant={isWidthUp("lg", width) ? "h6" : "body1"}
+                          color="textSecondary"
+                        >
+                          <ReactMarkdown source={caption}/>
+                        </Typography>
+                      </Box>
                     </Box>
                   </Grid>
+                  <Divider orientation="vertical" flexItem/>
                   <Hidden smDown>
                     <Grid item md={6}>
-                      TODO: Add content here
+                      <img
+                        src={headerImage}
+                        className={classes.image}
+                        alt="header example"
+                      />
                     </Grid>
+
                   </Hidden>
+                  <Grid item xs={12}>
+
+                  </Grid>
                 </Box>
               </div>
+              <ButtonGroup variant="contained">
+                <Button color={"primary"}>Download Resume.DOCX</Button>
+                <Button color={"secondary"}>Download Resume.PDF</Button>
+              </ButtonGroup>
             </Card>
           </Box>
         </div>
       </div>
+
       <WaveBorder
         upperColor={theme.palette.secondary.main}
         lowerColor="#FFFFFF"

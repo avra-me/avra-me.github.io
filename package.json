@@ -16,7 +16,9 @@
     "date-fns": "^2.12.0",
     "emoji-mart": "^3.0.0",
     "gatsby": "^2.21.22",
+    "gatsby-plugin-material-ui": "^2.1.8",
     "gatsby-plugin-netlify-cms": "^4.3.2",
+    "gatsby-plugin-purgecss": "^5.0.0",
     "gatsby-transformer-remark": "^2.8.8",
     "js-cookie": "^2.2.0",
     "netlify-cms-app": "^2.12.12",
@@ -24,6 +26,7 @@
     "react": "^16.13.1",
     "react-cropper": "^1.3.0",
     "react-dom": "^16.13.1",
+    "react-markdown": "^4.3.1",
     "react-scripts": "^3.4.1",
     "recharts": "^1.8.5"
   },

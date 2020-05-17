@@ -14,8 +14,16 @@ module.exports = {
         path: `${__dirname}/src/markdown-pages`,
       },
 
+    }, {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
     },
     `gatsby-transformer-remark`,
+    `gatsby-plugin-purgecss`
   ],
 
 }

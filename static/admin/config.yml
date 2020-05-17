@@ -16,17 +16,20 @@ collections:
     label: "Site Configuration"
     files:
       - label: Site Details
-          name: site
-          file: 'src/config/site.json'
-          fields:
-            - {label: Site Title, name: title, widget: string}
-            - {label: Name, name: name, widget: string}
-            - {label: Caption, name: caption, widget: markdown}
+        name: site
+        file: 'src/config/site.json'
+        description: Configure how your site interacts
+        fields:
+          - {label: Site Title (Part 1), name: title, widget: string, comment: Site title that becomes the logo}
+          - {label: Site Title (Part 2), name: subtitle, widget: string, comment: Site title that becomes the logo (secondary color) }
+          - {label: Primary Color (HEX), name: primary, widget: string, comment: "A hex colour value (the site primary colour), default #b3294e"}
+          - {label: Secondary Color (HEX), name: secondary, widget: string, comment: "A hex colour value (the site secondary colour), default #4829B2"}
       - label: Your Details
         name: details
         file: 'src/config/details.json'
         fields:
-          - {label: Site Title, name: title, widget: string}
+          - {label: Greeting, name: greeting, widget: string}
+          - {label: Prefix/Intro, name: prefix, widget: string}
           - {label: Name, name: name, widget: string}
           - {label: Caption, name: caption, widget: markdown}
 

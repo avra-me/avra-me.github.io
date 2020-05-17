@@ -1,5 +1,6 @@
 {
-  "title": "adsasd",
+  "greeting": "Welcome",
+  "prefix": "I'm",
   "name": "Example User",
   "caption": "## This is where your example text should go, it should be your headline"
 }
