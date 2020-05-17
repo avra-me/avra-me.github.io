@@ -112,15 +112,15 @@ function Main(props) {
         open={isCookieRulesDialogOpen}
         onClose={handleCookieRulesDialogClose}
       />
-      <NavBar
-        selectedTab={selectedTab}
-        selectTab={setSelectedTab}
-        mobileDrawerOpen={isMobileDrawerOpen}
-        handleMobileDrawerOpen={handleMobileDrawerOpen}
-        handleMobileDrawerClose={handleMobileDrawerClose}
-        siteBrandPrimary={title}
-        siteBrandSecondary={subtitle}
-      />
+      {/*<NavBar*/}
+      {/*  selectedTab={selectedTab}*/}
+      {/*  selectTab={setSelectedTab}*/}
+      {/*  mobileDrawerOpen={isMobileDrawerOpen}*/}
+      {/*  handleMobileDrawerOpen={handleMobileDrawerOpen}*/}
+      {/*  handleMobileDrawerClose={handleMobileDrawerClose}*/}
+      {/*  siteBrandPrimary={title}*/}
+      {/*  siteBrandSecondary={subtitle}*/}
+      {/*/>*/}
       <Routing
         blogPosts={blogPosts}
         selectHome={selectHome}

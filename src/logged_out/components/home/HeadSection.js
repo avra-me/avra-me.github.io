@@ -61,7 +61,7 @@ const styles = theme => ({
   },
   wrapper: {
     position: "relative",
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.main,
     paddingBottom: theme.spacing(2)
   },
   image: {
@@ -125,74 +125,69 @@ function HeadSection(props) {
       <div className={classNames("lg-p-top", classes.wrapper)}>
         <div className={classNames("container-fluid", classes.container)}>
           <Box display="flex" justifyContent="center" className="row">
-            <Card
-              className={classes.card}
-              data-aos-delay="200"
-              data-aos="zoom-in"
-            >
-              <div className={classNames(classes.containerFix, "container")}>
-                <Box justifyContent="space-between" className="row">
-                  <Grid item xs={12} md={5}>
-                    <Box
-                      display="flex"
-                      flexDirection="column"
-
-                      height="100%"
-                    >
-                      <Box mb={4}>
-                        <div className={classes.speech}>
-                          <Typography
-                            variant={isWidthUp("lg", width) ? "h6" : "body1"}
-                            className={classes.speechText}
-                          >
-                            {greeting}
-                          </Typography>
-                        </div>
-                      </Box>
-                      <Box mb={4}>
-                        <Typography
-                          variant={isWidthUp("lg", width) ? "h3" : "h4"}
-                        >
-                          {prefix} <b>{name}</b>
-                        </Typography>
-                      </Box>
-                      <Box mb={2}>
-                        <Typography
-                          variant={isWidthUp("lg", width) ? "h6" : "body1"}
-                          color="textSecondary"
-                        >
-                          <ReactMarkdown source={caption}/>
-                        </Typography>
-                      </Box>
+            {/*<Card*/}
+            {/*  className={classes.card}*/}
+            {/*  data-aos-delay="200"*/}
+            {/*  data-aos="zoom-in"*/}
+            {/*>*/}
+            <div className={classNames(classes.containerFix, "container")}>
+              <Box justifyContent="space-between" className="row">
+                <Grid item xs={12} md={12} style={{margin: "auto", alignItems: "center"}}>
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    style={{margin: "auto", alignItems: "center"}}
+                    height="100%"
+                  >
+                    {/*<Box mb={4}>*/}
+                    {/*  <div className={classes.speech}>*/}
+                    {/*    <Typography*/}
+                    {/*      variant={isWidthUp("lg", width) ? "h6" : "body1"}*/}
+                    {/*      className={classes.speechText}*/}
+                    {/*    >*/}
+                    {/*      {greeting}*/}
+                    {/*    </Typography>*/}
+                    {/*  </div>*/}
+                    {/*</Box>*/}
+                    <Box mb={4}>
+                      <Typography
+                        variant={isWidthUp("lg", width) ? "h1" : "h2"}
+                      >
+                        {prefix} <b>{name}</b>
+                      </Typography>
                     </Box>
-                  </Grid>
-                  <Divider orientation="vertical" flexItem/>
-                  <Hidden smDown>
-                    <Grid item md={6}>
-                      <img
-                        src={headerImage}
-                        className={classes.image}
-                        alt="header example"
-                      />
-                    </Grid>
+                    <Box mb={2}>
+                      <ReactMarkdown source={caption}/>
+                    </Box>
+                  </Box>
+                </Grid>
+                {/*<Hidden smDown>*/}
+                {/*  <Divider orientation="vertical" flexItem/>*/}
+                {/*  <Grid item md={6}>*/}
+                {/*    <img*/}
+                {/*      src={headerImage}*/}
+                {/*      className={classes.image}*/}
+                {/*      alt="header example"*/}
+                {/*    />*/}
+                {/*  </Grid>*/}
 
-                  </Hidden>
-                  <Grid item xs={12}>
+                {/*</Hidden>*/}
+                {/*<Grid item xs={12} md={5}>*/}
+                {/*  /!*<ButtonGroup variant="contained" fullWidth>*!/*/}
+                {/*  /!*  <Button color={"primary"}>Download Resume.DOCX</Button>*!/*/}
+                {/*  /!*  <Button color={"secondary"}>Download Resume.PDF</Button>*!/*/}
+                {/*  /!*</ButtonGroup>*!/*/}
+                {/*</Grid>*/}
+              </Box>
+            </div>
 
-                  </Grid>
-                </Box>
-              </div>
-              <ButtonGroup variant="contained">
-                <Button color={"primary"}>Download Resume.DOCX</Button>
-                <Button color={"secondary"}>Download Resume.PDF</Button>
-              </ButtonGroup>
-            </Card>
+            {/*</Card>*/}
           </Box>
         </div>
       </div>
 
       <WaveBorder
-        upperColor={theme.palette.secondary.main}
+        upperColor={theme.palette.primary.main}
         lowerColor="#FFFFFF"
         className={classes.waveBorder}
         animationNegativeDelay={2}

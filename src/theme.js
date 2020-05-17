@@ -28,6 +28,7 @@ const theme = createMuiTheme({
   palette: {
     primary: {main: primary},
     secondary: {main: secondary},
+    type: "light",
     common: {
       black,
       darkBlack
@@ -120,7 +121,8 @@ const theme = createMuiTheme({
     }
   },
   typography: {
-    useNextVariants: true
+    useNextVariants: true,
+    fontFamily: 'sans-serif'
   }
 });
 
