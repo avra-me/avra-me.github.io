@@ -23,7 +23,7 @@ module.exports = {
       },
     },
     `gatsby-transformer-remark`,
-    `gatsby-plugin-purgecss`
+    // `gatsby-plugin-purgecss`
   ],
 
 }
