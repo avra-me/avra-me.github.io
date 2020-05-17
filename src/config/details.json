@@ -1,5 +1,6 @@
 {
-  "prefix": "I'm",
+  "greeting": "Welcome",
+  "prefix": "Hi, I'm ",
   "name": "Avrami Hammer",
   "caption": "# Software engineer (Really GOOD)"
 }
