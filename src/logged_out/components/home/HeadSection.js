@@ -60,8 +60,9 @@ const styles = theme => ({
     }
   },
   wrapper: {
+    color: theme.palette.secondary.dark,
     position: "relative",
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.secondary.main,
     paddingBottom: theme.spacing(2)
   },
   image: {
@@ -153,7 +154,9 @@ function HeadSection(props) {
                       <Typography
                         variant={isWidthUp("lg", width) ? "h1" : "h2"}
                       >
-                        {prefix} <b>{name}</b>
+                        <b>
+                          {prefix}{name}
+                        </b>
                       </Typography>
                     </Box>
                     <Box mb={2}>
@@ -187,7 +190,7 @@ function HeadSection(props) {
       </div>
 
       <WaveBorder
-        upperColor={theme.palette.primary.main}
+        upperColor={theme.palette.secondary.main}
         lowerColor="#FFFFFF"
         className={classes.waveBorder}
         animationNegativeDelay={2}
