@@ -13,8 +13,8 @@ module.exports = {
         name: `markdown-pages`,
         path: `${__dirname}/src/markdown-pages`,
       },
-
-    }, {
+    },
+    {
       resolve: `gatsby-plugin-material-ui`,
       options: {
         stylesProvider: {
@@ -23,7 +23,6 @@ module.exports = {
       },
     },
     `gatsby-transformer-remark`,
-    // `gatsby-plugin-purgecss`
+    `gatsby-plugin-purgecss`
   ],
-
-}
+};

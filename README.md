@@ -1,4 +1,5 @@
 # Material-Gatsby-Resume
+
 This is a resume bootstrap using react-gatsby-netlify
 
 Goals:
@@ -10,15 +11,15 @@ Goals:
 
 #### Node.js 12+ (versions below could work, but are not tested)
 
-* Linux:
+- Linux:
 
-   ```
-   sudo apt install nodejs npm
-   ```
+  ```
+  sudo apt install nodejs npm
+  ```
 
-* Windows or macOS:
+- Windows or macOS:
 
-   https://nodejs.org/en/
+  https://nodejs.org/en/
 
 ### Installing
 
@@ -27,12 +28,14 @@ Goals:
    ```
    git clone https://github.com/dunky11/react-saas-template
    ```
+
 2. Install dependencies, this can take a minute
 
    ```
    cd react-saas-template
    npm install
    ```
+
 3. Start the local server
 
    ```
@@ -54,20 +57,20 @@ You can go into [src/theme.js](/src/theme.js) and change the primary and seconda
 If you are happy with the state of your website you can run:
 
 ```
-npm run build 
+npm run build
 ```
 
 It will create a folder named build with your compiled project inside. After that copy its content into your webroot and you are ready to go.
 
 ## Build With
 
-* [Material-UI](https://github.com/mui-org/material-ui) - Material Design components
-* [Reach-Router](https://github.com/reach/router) - Routing of the app
-* [Pace](https://github.com/HubSpot/pace) - Loading bar at the top
-* [Emoji-Mart](https://github.com/missive/emoji-mart) - Picker for the emojis
-* [Recharts](https://github.com/recharts/recharts) - Charting library I used for the statistics
-* [Aos](https://github.com/michalsnik/aos) - Animations based on viewport
-* [React-Cropper](https://github.com/roadmanfong/react-cropper) - Cropper for the image uploads
+- [Material-UI](https://github.com/mui-org/material-ui) - Material Design components
+- [Reach-Router](https://github.com/reach/router) - Routing of the app
+- [Pace](https://github.com/HubSpot/pace) - Loading bar at the top
+- [Emoji-Mart](https://github.com/missive/emoji-mart) - Picker for the emojis
+- [Recharts](https://github.com/recharts/recharts) - Charting library I used for the statistics
+- [Aos](https://github.com/michalsnik/aos) - Animations based on viewport
+- [React-Cropper](https://github.com/roadmanfong/react-cropper) - Cropper for the image uploads
 
 ## License
 

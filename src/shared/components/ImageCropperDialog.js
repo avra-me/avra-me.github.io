@@ -6,16 +6,16 @@ import {
   DialogActions,
   Button,
   Box,
-  withStyles
+  withStyles,
 } from "@material-ui/core";
 
-const styles = theme => ({
+const styles = (theme) => ({
   dialogPaper: { maxWidth: `${theme.breakpoints.values.md}px !important` },
   dialogContent: {
     paddingTop: theme.spacing(2),
     paddingRight: theme.spacing(2),
-    paddingLeft: theme.spacing(2)
-  }
+    paddingLeft: theme.spacing(2),
+  },
 });
 
 function ImageCropperDialog(props) {
@@ -26,13 +26,16 @@ function ImageCropperDialog(props) {
     open,
     src,
     onCrop,
-    aspectRatio
+    aspectRatio,
   } = props;
   const [crop, setCrop] = useState(null);
 
-  const getCropFunctionFromChild = useCallback(cropFunction => {
-    setCrop(() => cropFunction);
-  }, [setCrop]);
+  const getCropFunctionFromChild = useCallback(
+    (cropFunction) => {
+      setCrop(() => cropFunction);
+    },
+    [setCrop]
+  );
 
   return (
     <Dialog
@@ -56,11 +59,10 @@ function ImageCropperDialog(props) {
         </Box>
         <Button variant="contained" color="secondary" onClick={crop}>
           Crop
-          </Button>
+        </Button>
       </DialogActions>
     </Dialog>
   );
-
 }
 
 ImageCropperDialog.propTypes = {
@@ -70,7 +72,7 @@ ImageCropperDialog.propTypes = {
   open: PropTypes.bool.isRequired,
   onCrop: PropTypes.func.isRequired,
   src: PropTypes.string,
-  aspectRatio: PropTypes.number
+  aspectRatio: PropTypes.number,
 };
 
 export default withStyles(styles, { withTheme: true })(ImageCropperDialog);

@@ -87,7 +87,7 @@ const rsSymbol = `(?:${[
   rsCombo,
   rsRegional,
   rsSurrPair,
-  rsAstral
+  rsAstral,
 ].join("|")})`;
 
 /** Used to match [string symbols](https://mathiasbynens.be/notes/javascript-unicode). */
@@ -169,7 +169,7 @@ function baseTimes(n, iteratee) {
  * @returns {Object} Returns the array of property values.
  */
 function baseValues(object, props) {
-  return arrayMap(props, key => object[key]);
+  return arrayMap(props, (key) => object[key]);
 }
 
 /**
@@ -259,7 +259,7 @@ function mapToArray(map) {
  * @returns {Function} Returns the new function.
  */
 function overArg(func, transform) {
-  return function(arg) {
+  return function (arg) {
     return func(transform(arg));
   };
 }
@@ -276,7 +276,7 @@ function setToArray(set) {
 
   const result = Array(set.size);
 
-  set.forEach(value => {
+  set.forEach((value) => {
     result[++index] = value;
   });
   return result;
@@ -313,7 +313,7 @@ const objectProto = Object.prototype;
 const coreJsData = root["__core-js_shared__"];
 
 /** Used to detect methods masquerading as native. */
-const maskSrcKey = (function() {
+const maskSrcKey = (function () {
   const uid = /[^.]+$/.exec(
     (coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO) || ""
   );
@@ -504,7 +504,7 @@ if (
   (Set && getTag(new Set()) !== setTag) ||
   (WeakMap && getTag(new WeakMap()) !== weakMapTag)
 ) {
-  getTag = function(value) {
+  getTag = function (value) {
     const result = objectToString.call(value);
 
     const Ctor = result === objectTag ? value.constructor : undefined;
@@ -544,7 +544,9 @@ function isIndex(value, length) {
   return (
     !!length &&
     (typeof value === "number" || reIsUint.test(value)) &&
-    (value > -1 && value % 1 === 0 && value < length)
+    value > -1 &&
+    value % 1 === 0 &&
+    value < length
   );
 }
 
