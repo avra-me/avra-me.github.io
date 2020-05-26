@@ -7,7 +7,8 @@ export default (cmsConfig) => {
   const secondary = secondaryCMS || "#4829B2";
   const black = "#343a40";
   const darkBlack = "rgb(36, 40, 44)";
-  const background = "#f5f5f5";
+  // const background = "#f5f5f5";
+  const background = "#ffffff";
   const warningLight = "rgba(253, 200, 69, .3)";
   const warningMain = "rgba(253, 200, 69, .5)";
   const warningDark = "rgba(253, 200, 69, .7)";
@@ -30,6 +31,7 @@ export default (cmsConfig) => {
     palette: {
       primary: { main: primary },
       secondary: { main: secondary },
+      wavePrimary: {"0%": "rgba(2,0,36,1)", "47%": "rgba(2,15,74,1)", "93%": "rgba(74,7,231,1)"},
       type: "light",
       common: {
         black,

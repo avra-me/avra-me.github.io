@@ -1,7 +1,5 @@
 {
-  "title": "Avrami ",
-  "subtitle": "Hammer",
   "primary": "#f8dd2e",
-  "secondary": "#99CED3",
-  "logo": "/static/assets/avrami-logo2.svg"
+  "secondary": "#4a07e7",
+  "logo": "/assets/avrami-logo2.svg"
 }

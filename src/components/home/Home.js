@@ -1,20 +1,17 @@
-import React, { Fragment, useEffect } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import HeadSection from "./HeadSection";
 import FeatureSection from "./FeatureSection";
-import PricingSection from "./PricingSection";
 import DetailsConfig from "../../config/details.json";
 
-function Home(props) {
+function Home() {
   // const {selectHome} = props;
   // useEffect(() => {
   //   selectHome();
   // }, [selectHome]);
-  return [
-    <HeadSection details={DetailsConfig} />,
-    <FeatureSection />,
-    <PricingSection />,
-  ];
+  return <>
+    <HeadSection details={DetailsConfig} />
+    <FeatureSection />
+  </>;
 }
 
 Home.propTypes = {
