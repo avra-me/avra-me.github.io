@@ -43,6 +43,7 @@ const styles = (theme) => ({
 function NavBar(props) {
     const {
         classes,
+        mobileDrawerOpen,
         siteBrand
     } = props;
 
