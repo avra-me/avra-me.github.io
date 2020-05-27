@@ -43,12 +43,11 @@ const styles = (theme) => ({
 function NavBar(props) {
     const {
         classes,
-        mobileDrawerOpen,
         siteBrand
     } = props;
 
-    const [selectedTab] = useState(null);
-    const [, setIsMobileDrawerOpen] = useState(false);
+    const [selectedTab,] = useState(null);
+    const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
     const handleMobileDrawerOpen = useCallback(() => {
         setIsMobileDrawerOpen(true);
     }, [setIsMobileDrawerOpen]);
@@ -156,7 +155,7 @@ function NavBar(props) {
             <NavigationDrawer
                 menuItems={menuItems}
                 anchor="right"
-                open={mobileDrawerOpen}
+                open={isMobileDrawerOpen}
                 selectedItem={selectedTab}
                 onClose={handleMobileDrawerClose}
             />
