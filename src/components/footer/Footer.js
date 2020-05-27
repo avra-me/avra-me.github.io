@@ -129,7 +129,7 @@ function Footer(props) {
       <div className={classes.footerInner}>
         <Grid container spacing={isWidthUp("md", width) ? 10 : 5}>
           <Grid item xs={12} md={6} lg={4}>
-            <form data-netlify="true" name={"contact-form"} method="POST" netlify-honeypot="totally-a-field">
+            <form data-netlify="true" name={"contact-form"} method="post" netlify-honeypot="totally-a-field" action="/blog">
               <input type="hidden" name="totally-a-field" />
               <Box display="flex" flexDirection="column">
                 <Box mb={1}>
