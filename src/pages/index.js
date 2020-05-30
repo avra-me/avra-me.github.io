@@ -3,8 +3,12 @@ import App from "../App";
 import Home from "../components/home/Home";
 import config from "../config/site";
 
-export default () => (
+const Index = () => (
   <App config={config}>
-    <Home />
+    <Home/>
   </App>
 );
+
+export const linkTitle = "Home";
+
+export default Index;
