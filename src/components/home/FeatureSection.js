@@ -69,10 +69,10 @@ const features = [
   }
 ];
 
-function FeatureSection(props) {
+function IconBlock(props) {
   const { width } = props;
   return (
-    <div style={{ backgroundColor: "#FFFFFF" }}>
+    <div>
       <div className="container-fluid lg-p-top">
         <Typography variant="h3" align="center" className="lg-mg-bottom">
           My Skills
@@ -105,8 +105,8 @@ function FeatureSection(props) {
   );
 }
 
-FeatureSection.propTypes = {
+IconBlock.propTypes = {
   width: PropTypes.string.isRequired,
 };
 
-export default withWidth()(FeatureSection);
+export default withWidth()(IconBlock);

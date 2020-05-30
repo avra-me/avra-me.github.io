@@ -9,10 +9,9 @@ module.exports = {
   plugins: [
     {
       resolve: "gatsby-plugin-netlify-cms",
-      options: {
-        name: "markdown-pages",
-        path: `${__dirname}/src/markdown-pages`,
-      },
+      options:{
+        modulePath: `${__dirname}/src/cms.js`,
+      }
     },
     {
       resolve: "gatsby-plugin-material-ui",
