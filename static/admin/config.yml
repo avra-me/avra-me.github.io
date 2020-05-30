@@ -18,31 +18,53 @@ collections:
       - label: Site Details
         name: site
         file: 'src/config/site.json'
-        description: Configure how your site interacts
+        description: Configure your site
         fields:
-          - {label: Site Logo, name: logo, widget: image, comment: Site title that becomes the logo}
-          - {label: Primary Color (HEX), name: primary, widget: string, comment: "A hex colour value (the site primary colour), default #b3294e"}
-          - {label: Secondary Color (HEX), name: secondary, widget: string, comment: "A hex colour value (the site secondary colour), default #4829B2"}
-          - {label: Greeting, name: greeting, widget: string}
-          - {label: Prefix/Intro, name: prefix, widget: string}
-          - {label: Name, name: name, widget: string}
-          - {label: Caption, name: caption, widget: markdown}
-          - label: Skills
-            name: skills
-            widget: list
+          - label: "Look and Feel"
+            name: theme
+            widget: object
             fields:
-              - {label: Skill Title, name: title, widget: string}
-              - {label: Short Description, name: desc, widget: string}
-              - {label: icon, name: icon, widget: image}
-          - label: Projects
-            name: projects
-            widget: list
+              - {label: Site Logo, name: logo, widget: image, comment: Site title that becomes the logo}
+              - {label: Primary Color, name: primary, widget: string, default: "#b3294e", pattern: ['#[0-9]{6}', 'Must be a Hex Colour Value']}
+              - {label: Secondary Color, name: secondary, widget: string, default: "#4829B2", pattern: ['#[0-9]{6}', 'Must be a Hex Colour Value']}
+              - label: Header Gradient
+                name: gradient
+                widget: object
+                fields:
+                  - name: Gradient Points
+                    widget: list
+                    fields:
+                      - {name: position, widget: number, min: 0, max: 100, step: 1}
+                      - {name: colour, widget: string, pattern: ['#[0-9]{6}|rgba\(\d{0,3}\,\d{0,3}\,\d{0,3}\,\d{0,3}\)', 'Must be a Hex or RGBA Colour Value']}
+                    default:
+                      - {position: 0, colour: "rgba(2,0,36,1)"}
+                      - {position: 47, colour: "rgba(2,15,74,1)"}
+                      - {position: 93, colour: "rgba(74,7,231,1)"}
+                  - {name: angle, widget: number, min: 0, max: 360, default: 54}
+          - label: "About You and Your information"
+            name: about
+            widget: object
             fields:
-              - {label: Project Title, name: title, widget: string}
-              - {label: Short Description, name: short, widget: string}
-              - {label: Image, name: image, widget: image}
-              - {label: Link, name: link, widget: string}
-              - {label: Long Description, name: text, widget: markdown}
+              - {label: Prefix/Intro, name: prefix, widget: string}
+              - {label: Name, name: name, widget: string}
+              - {label: Caption, name: caption, widget: markdown}
+              - label: Skills
+                name: skills
+                widget: list
+                fields:
+                  - {label: Headline, name: headline, widget: string}
+                  - {label: Text, name: text, widget: string}
+                  - {label: Icon, name: icon, widget: string}
+                  - {label: Colour, name: colour, widget: string}
+              - label: Projects
+                name: projects
+                widget: list
+                fields:
+                  - {label: Project Title, name: title, widget: string}
+                  - {label: Short Description, name: short, widget: string}
+                  - {label: Image, name: image, widget: image}
+                  - {label: Link, name: link, widget: string}
+                  - {label: Long Description, name: text, widget: markdown}
 
   - name: "projects"
     label: "Projects"
