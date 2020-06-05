@@ -1,5 +1,31 @@
 {
   "primary": "#f8dd2e",
   "secondary": "#4a07e7",
-  "logo": "/assets/avrami-logo2.svg"
+  "logo": "/assets/avrami-logo2.svg",
+  "theme": {
+    "logo": "/assets/avrami-logo2.svg",
+    "primary": {
+      "light": "#8C1E3A",
+      "main": "#A51D27",
+      "dark": "#BD1B15"
+    },
+    "secondary": {
+      "light": "#74204C",
+      "main": "#5B215F",
+      "dark": "#432371"
+    }
+  },
+  "about": {
+    "prefix": "Hi, I'm",
+    "name": "Avrami",
+    "caption": "I'm a software engineer with a talent for designing scalable systems",
+    "skills": [
+      {
+        "headline": "Software Architecture",
+        "text": "Designing Scalable, sensible systems",
+        "icon": "build",
+        "colour": "#00C853"
+      }
+    ]
+  }
 }
