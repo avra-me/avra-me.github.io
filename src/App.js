@@ -34,16 +34,18 @@ const App = (props) => {
     <MuiThemeProvider theme={muiTheme}>
       <CssBaseline />
       <GlobalStyles />
+      <NavBar siteBrand={logo} />
       {!isServerRender ? (
+
         <>
           <Pace color={muiTheme.palette.primary.light} />
           <Suspense fallback={<Fragment />}>
-            <NavBar siteBrand={logo} />
             {children}
-            <Footer />
           </Suspense>
         </>
       ) : children}
+      <Footer />
+
     </MuiThemeProvider>
   );
 };
