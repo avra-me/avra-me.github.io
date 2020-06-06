@@ -216,6 +216,7 @@ function Footer(props) {
 
 Footer.propTypes = {
   theme: PropTypes.object.isRequired,
+  description: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
 };

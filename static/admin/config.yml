@@ -11,7 +11,8 @@ backend:
     uploadMedia: '[skip ci] Upload “{{path}}”'
     deleteMedia: '[skip ci] Delete “{{path}}”'
 
-media_folder: assets
+media_folder: static/assets
+public_folder: /assets
 format: yaml
 
 collections:
@@ -58,6 +59,33 @@ collections:
                   - {label: Text, name: text, widget: string}
                   - {label: Icon, name: icon, widget: string}
                   - {*color, label: Colour, name: color}
+      - label: "Footer Information"
+        name: footer
+        file: 'src/config/footer.json'
+        fields:
+          - label: Social Icons
+            name: header
+            widget: object
+            fields:
+              - {label: Disabled, default: false, name: disabled, widget: boolean, hint: This will enable/disable the header banner}
+              - {label: Use Gradient, name: useGradient, default: true, widget: boolean, hint: This will enable/disable the gradient background on the banner.}
+              - {label: Prefix/Intro, name: prefix, widget: string, hint: "This will be placed before your name, make it welcoming"}
+              - {label: Name, name: name, widget: string, hint: "What people will call you"}
+              - {label: Caption, name: caption, widget: markdown, hint: "A short, snappy tag line"}
+          - label: Skills
+            name: skills
+            widget: object
+            fields:
+              - {label: Disabled, default: false, name: disabled, widget: boolean, hint: This will enable/disable the skills component}
+              - label: Items
+                name: items
+                widget: list
+                fields:
+                  - {label: Headline, name: headline, widget: string}
+                  - {label: Text, name: text, widget: string}
+                  - {label: Icon, name: icon, widget: string}
+                  - {*color, label: Colour, name: color}
+
   - name: "projects"
     label: "Projects"
     folder: "src/pages/projects"
