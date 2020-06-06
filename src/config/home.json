@@ -7,6 +7,7 @@
     "caption": "I'm a software engineer with a talent for designing scalable systems"
   },
   "skills": {
+    "header": "What I know",
     "disabled": false,
     "items": [
       {

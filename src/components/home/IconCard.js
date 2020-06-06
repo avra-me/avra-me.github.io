@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import { Typography, withStyles } from "@material-ui/core";
+import {Grid, Typography, withStyles} from "@material-ui/core";
+import ErrorBoundary from "../ErrorBoundary";
 
 const styles = (theme) => ({
   iconWrapper: {
@@ -40,22 +41,28 @@ function IconCard(props) {
   const { classes, Icon, color, headline, text } = props;
   return (
     <Fragment>
-      <div
-        // We will set color and fill here, due to some prios complications
-        className={classes.iconWrapper}
-        style={{
-          color: color,
-          backgroundColor: shadeColor(color, 0.5),
-          fill: color,
-        }}
-      >
-        {Icon}
-      </div>
+        <ErrorBoundary variant="rect">
+          <div
+            // We will set color and fill here, due to some prios complications
+            className={classes.iconWrapper}
+            style={{
+              color: color,
+              backgroundColor: shadeColor(color, 0.5),
+              fill: color,
+            }}
+          >
+            {Icon}
+          </div>
+        </ErrorBoundary>
       <Typography variant="h5" paragraph>
-        {headline}
+          <ErrorBoundary variant={"text"}>
+              {headline}
+          </ErrorBoundary>
       </Typography>
       <Typography variant="body1" color="textSecondary">
-        {text}
+          <ErrorBoundary variant={"text"}>
+            {text}
+          </ErrorBoundary>
       </Typography>
     </Fragment>
   );
@@ -68,5 +75,7 @@ IconCard.propTypes = {
   headline: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
 };
+
+IconCard.getDerivedStateFromError= err => ({isErrorState: true});
 
 export default withStyles(styles, { withTheme: true })(IconCard);

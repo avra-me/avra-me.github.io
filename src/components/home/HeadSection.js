@@ -138,9 +138,6 @@ function HeadSection(props) {
                 <Box display="flex" justifyContent="center" className="row">
                   <Card
                       className={classes.card}
-                      data-aos-delay="200"
-                      data-aos="zoom-in"
-                      data-aos-once={"true"}
                   >
                   <div className={classNames(classes.containerFix, "container")}>
                     <Box justifyContent="space-between" className="row">

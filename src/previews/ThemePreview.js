@@ -9,7 +9,7 @@ import InjectStyles from "./InjectStyles";
 import Button from "@material-ui/core/Button";
 import AOS from "aos";
 
-export default ({entry, getAsset, widgetFor}) => {
+export default ({entry, getAsset}) => {
     const config = {
         theme: entry.get("data").toJSON()
     };
@@ -20,12 +20,14 @@ export default ({entry, getAsset, widgetFor}) => {
                 duration : 2000
             });
     });
+    const logo = getAsset(entry.getIn(["data", "logo"]));
     return <InjectStyles>
         <MuiThemeProvider theme={theme}>
             <CssBaseline />
             <GlobalStyles />
-            <NavBar isDemo={true} siteBrand={widgetFor("logo")} />
+            <NavBar siteBrand={logo} />
             <HeadSection details={{name: "John", prefix: "Hello, I'm", caption: "This is an example"}} />
+            <NavBar isDemo={true} siteBrand={logo} />
             <Button color={"primary"}>Primary</Button>
             <Button color={"secondary"}>Secondary</Button>
             <Footer />

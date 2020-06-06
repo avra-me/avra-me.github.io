@@ -8,13 +8,14 @@ function Home(props) {
   const {header, skills} = about;
   return <>
     {!header.disabled && <HeadSection details={header} />}
-    {!skills.disabled &&<IconSection values={skills.items} />}
+    {!skills.disabled &&<IconSection values={skills.items} header={skills.header} />}
   </>;
 }
 
 Home.propTypes = {
   about: PropTypes.shape({
     skills: PropTypes.shape({
+      header: PropTypes.string,
       disabled: PropTypes.bool,
       items: PropTypes.array
     }),
