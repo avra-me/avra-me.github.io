@@ -7,6 +7,26 @@
     "caption": "I'm a software engineer with a talent for designing scalable systems"
   },
   "skills": {
-    "disabled": false
+    "disabled": false,
+    "items": [
+      {
+        "headline": "Software Architecture",
+        "text": "Designing well thought out systems.",
+        "icon": "build",
+        "color": "#00C853"
+      },
+      {
+        "color": "#6200EA",
+        "icon": "calendarToday",
+        "text": "Extensive experience completing project on time and on budget",
+        "headline": "Time Management"
+      },
+      {
+        "headline": "Cloud Platforms",
+        "text": "Strong background in cloud computation and architecture.",
+        "color": "#304FFE",
+        "icon": "cloud"
+      }
+    ]
   }
 }
