@@ -1,0 +1,39 @@
+{
+  "header": "About Me",
+  "caption": "I'm an experienced software engineer with a talent for building complicated, scalable systems quickly and efficiently.",
+  "icons": [
+    {
+      "icon": "/assets/github.svg",
+      "label": "Github",
+      "text": "https://github.com/Hammer-Inc"
+    },
+    {
+      "icon": "/assets/linkedin.svg",
+      "label": "LinkedIn",
+      "text": "https://www.linkedin.com/avrami-hammer"
+    }
+  ],
+  "context": [
+    {
+      "icon": "/assets/buymeacoffee.svg",
+      "label": "Development fueled by Coffee",
+      "text": "https://avra.me/"
+    },
+    {
+      "icon": "/assets/gatsby.svg",
+      "label": "Built using GatsbyJs",
+      "text": "https://www.gatsbyjs.org"
+    },
+    {
+      "icon": "/assets/netlify.svg",
+      "label": "Deployed with Netlify",
+      "text": "https://www.netlify.com"
+    },
+    {
+      "icon": "/assets/git_icon_125271.svg",
+      "label": "Forked from Waver",
+      "text": "https://reactsaastemplate.com/"
+    }
+  ],
+  "disabled": true
+}
