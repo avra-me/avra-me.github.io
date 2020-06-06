@@ -13,14 +13,10 @@ import "aos/dist/aos.css";
 
 
 const App = (props) => {
-  const { children, theme } = props;
+  const { children, theme, footer } = props;
   const {logo} = theme;
   const isServerRender = typeof window === "undefined";
   const muiTheme = ThemeFactory(theme);
-  if(!isServerRender){
-    AOS.init({ once: true });
-  }
-
 
   useEffect(() => {
     if(!isServerRender){
@@ -44,7 +40,7 @@ const App = (props) => {
           </Suspense>
         </>
       ) : children}
-      <Footer />
+      {!footer.disabled && <Footer config={footer} />}
 
     </MuiThemeProvider>
   );
@@ -52,10 +48,12 @@ const App = (props) => {
 
 App.propTypes = {
   theme: PropTypes.object,
+  footer: PropTypes.object,
   children: PropTypes.element
 };
 
 if (typeof window !== "undefined") {
   serviceWorker.register();
 }
+
 export default App;

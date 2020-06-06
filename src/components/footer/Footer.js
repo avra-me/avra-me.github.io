@@ -14,6 +14,9 @@ import MailIcon from "@material-ui/icons/Mail";
 import WaveBorder from "../../shared/components/WaveBorder";
 import transitions from "@material-ui/core/styles/transitions";
 import ColoredButton from "../../shared/components/ColoredButton";
+import Icon from "@material-ui/core/Icon";
+import SvgIcon from "@material-ui/core/SvgIcon";
+import Avatar from "@material-ui/core/Avatar";
 
 const styles = (theme) => ({
   footerInner: {
@@ -117,7 +120,8 @@ const socialIcons = [
 ];
 
 function Footer(props) {
-  const { classes, theme, width } = props;
+  const { classes, theme, config } = props;
+  const {header, caption, icons, context} = config;
   return (
     <footer className="lg-p-top">
       <WaveBorder
@@ -125,7 +129,7 @@ function Footer(props) {
         animationNegativeDelay={4}
       />
       <div className={classes.footerInner}>
-        <Grid container spacing={isWidthUp("md", width) ? 10 : 5}>
+        <Grid container spacing={5}>
           <Grid item xs={12} md={6} lg={4}>
             <form data-netlify="true" name={"contact-form"} method="post" netlify-honeypot="totally-a-field">
               <input type="hidden" name="totally-a-field" />
@@ -159,7 +163,7 @@ function Footer(props) {
             <Grid item xs={12} md={6} lg={4}>
               <Box display="flex" justifyContent="center">
                 <div>
-                  {infos.map((info, index) => (
+                  {context.map((info, index) => (
                     <Box display="flex" mb={1} key={index}>
                       <Box mr={2}>
                         <IconButton
@@ -167,7 +171,7 @@ function Footer(props) {
                           tabIndex={-1}
                           disabled
                         >
-                          {info.icon}
+                          <Avatar src={info.icon} alt={"i"} aria-label={"icon"}/>
                         </IconButton>
                       </Box>
                       <Box
@@ -176,7 +180,7 @@ function Footer(props) {
                         justifyContent="center"
                       >
                         <Typography variant="h6" className="text-white">
-                          {info.description}
+                          {info.label}
                         </Typography>
                       </Box>
                     </Box>
@@ -187,21 +191,20 @@ function Footer(props) {
           </Hidden>
           <Grid item xs={12} md={6} lg={4}>
             <Typography variant="h6" paragraph className="text-white">
-              About Me
+              {header}
             </Typography>
             <Typography style={{ color: "#8f9296" }} paragraph>
-              {/* eslint-disable-next-line react/no-unescaped-entities */}
-              I'm an experienced software engineer with a talent for building complicated, scalable systems quickly and efficiently.
+              {caption}
             </Typography>
             <Box display="flex">
-              {socialIcons.map((socialIcon, index) => (
+              {icons.map((socialIcon, index) => (
                 <Box key={index} mr={index !== socialIcons.length - 1 ? 1 : 0}>
                   <IconButton
                     aria-label={socialIcon.label}
                     className={classes.socialIcon}
-                    href={socialIcon.href}
+                    href={socialIcon.link}
                   >
-                    {socialIcon.icon}
+                    <Avatar src={socialIcon.icon} alt={"i"} aria-label={"icon"}/>
                   </IconButton>
                 </Box>
               ))}
@@ -215,7 +218,21 @@ function Footer(props) {
 
 Footer.propTypes = {
   theme: PropTypes.object.isRequired,
-  description: PropTypes.object.isRequired,
+  config: PropTypes.shape({
+    header: PropTypes.string,
+    caption: PropTypes.string,
+    context: PropTypes.arrayOf(
+        PropTypes.shape({
+          icon: PropTypes.string,
+          label: PropTypes.string
+        })
+    ),
+    icons: PropTypes.arrayOf(PropTypes.shape({
+      label: PropTypes.string,
+      link: PropTypes.string,
+      icon: PropTypes.string,
+    }))
+  }).isRequired,
   classes: PropTypes.object.isRequired,
   width: PropTypes.string.isRequired,
 };

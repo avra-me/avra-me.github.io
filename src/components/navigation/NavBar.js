@@ -37,7 +37,7 @@ const styles = (theme) => ({
     },
     noDecoration: {
         textDecoration: "none !important",
-    },
+    }
 });
 
 function NavBar(props) {

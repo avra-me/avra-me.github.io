@@ -5,15 +5,9 @@
  */
 import CMS from "netlify-cms-app";
 import React from "react";
-import ThemeFactory from "./theme";
-import { create } from 'jss';
-import {CssBaseline, MuiThemeProvider, StylesProvider, jssPreset} from "@material-ui/core";
-import GlobalStyles from "./GlobalStyles";
-import NavBar from "./components/navigation/NavBar";
-import Footer from "./components/footer/Footer";
-import HeadSection from "./components/home/HeadSection";
 import ThemePreview from "./previews/ThemePreview";
 import HomePreview from "./previews/HomePreview";
+import FooterPreview from "./previews/FooterPreview";
 /**
  * Any imported styles should be automatically be applied to the editor preview
  * pane thus eliminating the need to use `registerPreviewStyle` for imported
@@ -27,3 +21,4 @@ import HomePreview from "./previews/HomePreview";
 
 CMS.registerPreviewTemplate("theme", ThemePreview);
 CMS.registerPreviewTemplate("about", HomePreview);
+CMS.registerPreviewTemplate("footer", FooterPreview);

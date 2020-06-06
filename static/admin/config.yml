@@ -64,14 +64,22 @@ collections:
         file: 'src/config/footer.json'
         fields:
           - {label: Disabled, default: false, name: disabled, widget: boolean, hint: This will enable/disable the footer}
-          - {label: Site Description, name: caption, widget: markdown, hint: "A short, snappy tag line"}
+          - {label: Site Description Header, name: header, widget: string, hint: "A short, snappy tag line"}
+          - {label: Site Description, name: caption, widget: text, hint: "A short, snappy tag line"}
           - label: Social Icons
             name: icons
             widget: list
             fields:
+              - {label: Icon, name: icon, widget: image, hint: "SVG files work best, see the examples."}
               - {label: Label, name: label, widget: string, "The text that will be displayed under the icon."}
               - {label: Link, name: text, widget: string, hint: "This should be the url to redirect the user to on click."}
+          - label: Context Info
+            name: context
+            widget: list
+            fields:
               - {label: Icon, name: icon, widget: image, hint: "SVG files work best, see the examples."}
+              - {label: Label, name: label, widget: string, "The text that will be displayed next to the icon."}
+              - {label: Link, name: text, widget: string, hint: "This should be the url to redirect the user to on click."}
 
   - name: "projects"
     label: "Projects"
