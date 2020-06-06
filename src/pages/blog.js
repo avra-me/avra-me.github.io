@@ -1,10 +1,10 @@
 import React from "react";
 import App from "../App";
-import config from "../config/site";
+import theme from "../config/theme";
 import Blog from "../components/blog/Blog";
 
 export default () => (
-  <App config={config}>
+  <App theme={theme}>
     <Blog path="blog" blogPosts={[]} />
   </App>
 );

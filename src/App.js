@@ -13,10 +13,10 @@ import "aos/dist/aos.css";
 
 
 const App = (props) => {
-  const { children, config } = props;
-  const {logo} = config;
+  const { children, theme } = props;
+  const {logo} = theme;
   const isServerRender = typeof window === "undefined";
-  const theme = ThemeFactory(config.theme);
+  const muiTheme = ThemeFactory(theme);
   if(!isServerRender){
     AOS.init({ once: true });
   }
@@ -31,12 +31,12 @@ const App = (props) => {
   });
 
   return (
-    <MuiThemeProvider theme={theme}>
+    <MuiThemeProvider theme={muiTheme}>
       <CssBaseline />
       <GlobalStyles />
       {!isServerRender ? (
         <>
-          <Pace color={theme.palette.primary.light} />
+          <Pace color={muiTheme.palette.primary.light} />
           <Suspense fallback={<Fragment />}>
             <NavBar siteBrand={logo} />
             {children}
@@ -49,7 +49,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  config: PropTypes.object,
+  theme: PropTypes.object,
   children: PropTypes.element
 };
 

@@ -159,8 +159,7 @@ function HeadSection(props) {
                           <Box mb={4}>
                             <Typography variant="h2">
                               <b>
-                                {prefix}
-                                  {name}
+                                {prefix}{" "}{name}
                               </b>
                             </Typography>
                           </Box>

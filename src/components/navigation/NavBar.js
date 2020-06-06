@@ -43,7 +43,8 @@ const styles = (theme) => ({
 function NavBar(props) {
     const {
         classes,
-        siteBrand
+        siteBrand, 
+        isDemo
     } = props;
 
     const [selectedTab,] = useState(null);
@@ -124,6 +125,20 @@ function NavBar(props) {
         </div>;
 
     };
+    
+    if(isDemo){
+        return  <AppBar position="absolute" className={classes.appBarBack}
+        >
+            <ThemeProvider theme={createMuiTheme({palette: {type: "dark"}})}>
+                <Toolbar className={classes.toolbar}>
+                    <Box height={1}>
+                        <Brand/>
+                    </Box>
+                    <MenuButtons/>
+                </Toolbar>
+            </ThemeProvider>
+        </AppBar>;
+    }
 
     return (
         <div className={classes.root}>
@@ -167,6 +182,7 @@ function NavBar(props) {
 NavBar.propTypes = {
     classes: PropTypes.object.isRequired,
     siteBrand: PropTypes.string,
+    isDemo: PropTypes.bool
 };
 
 export default withStyles(styles, {withTheme: true})(memo(NavBar));

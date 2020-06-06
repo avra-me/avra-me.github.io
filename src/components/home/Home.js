@@ -5,18 +5,27 @@ import IconSection from "./IconSection";
 
 function Home(props) {
   const {about} = props;
-  // useEffect(() => {
-  //   selectHome();
-  // }, [selectHome]);
+  const {header, skills} = about;
   return <>
-    <HeadSection details={about} />
-    <IconSection values={about.skills} />
+    {!header.disabled && <HeadSection details={header} />}
+    {!skills.disabled &&<IconSection values={skills.items} />}
   </>;
 }
 
 Home.propTypes = {
   about: PropTypes.shape({
-    skills: PropTypes.array,
+    skills: PropTypes.shape({
+      disabled: PropTypes.bool,
+      items: PropTypes.array
+    }),
+    header: PropTypes.shape({
+      disabled: PropTypes.bool,
+      useGradient: PropTypes.bool,
+      prefix: PropTypes.string,
+      name: PropTypes.string,
+      caption: PropTypes.string,
+    }),
+
   }).isRequired
   // selectHome: PropTypes.func.isRequired
 };

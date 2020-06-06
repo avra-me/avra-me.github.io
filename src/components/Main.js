@@ -10,7 +10,7 @@ import CookieConsent from "./cookies/CookieConsent";
 import dummyBlogPosts from "../logged_out/dummy_data/blogPosts";
 import Routing from "./Routing";
 import smoothScrollTop from "../shared/functions/smoothScrollTop";
-import { title, subtitle } from "../config/site.json";
+import { title, subtitle } from "../config/theme.json";
 
 if (typeof window !== "undefined") {
   AOS.init({ once: true });

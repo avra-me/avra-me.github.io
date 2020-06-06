@@ -2,11 +2,44 @@
   "header": {
     "disabled": false,
     "useGradient": true,
-    "prefix": "Gday, I'm",
+    "prefix": "Hi, I'm",
     "name": "Avrami",
     "caption": "I'm a software engineer with a talent for designing scalable systems"
   },
   "skills": {
-    "disabled": false
+    "disabled": false,
+    "items": [
+      {
+        "headline": "Software Architecture",
+        "text": "Designing Scalable, sensible systems",
+        "icon": "build",
+        "color": "#8C1E3A"
+      },{
+        "headline": "Software Architecture",
+        "text": "Designing Scalable, sensible systems",
+        "icon": "build",
+        "color": "#A51D27"
+      },{
+        "headline": "Software Architecture",
+        "text": "Designing Scalable, sensible systems",
+        "icon": "build",
+        "color": "#BD1B15"
+      },{
+        "headline": "Software Architecture",
+        "text": "Designing Scalable, sensible systems",
+        "icon": "build",
+        "color": "#74204C"
+      },{
+        "headline": "Software Architecture",
+        "text": "Designing Scalable, sensible systems",
+        "icon": "build",
+        "color": "#5B215F"
+      },{
+        "headline": "Software Architecture",
+        "text": "Designing Scalable, sensible systems",
+        "icon": "build",
+        "color": "#432371"
+      }
+    ]
   }
 }
