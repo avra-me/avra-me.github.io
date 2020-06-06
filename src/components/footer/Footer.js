@@ -9,7 +9,6 @@ import {
   TextField,
   Typography,
   withStyles,
-  withWidth,
 } from "@material-ui/core";
 import MailIcon from "@material-ui/icons/Mail";
 import WaveBorder from "../../shared/components/WaveBorder";
@@ -221,4 +220,4 @@ Footer.propTypes = {
   width: PropTypes.string.isRequired,
 };
 
-export default withWidth()(withStyles(styles, { withTheme: true })(Footer));
+export default withStyles(styles, { withTheme: true })(Footer);
