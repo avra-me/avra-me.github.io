@@ -2,7 +2,7 @@
   "header": {
     "disabled": false,
     "useGradient": true,
-    "prefix": "Hi, I'm",
+    "prefix": "Gday, I'm",
     "name": "Avrami",
     "caption": "I'm a software engineer with a talent for designing scalable systems"
   },
@@ -11,34 +11,21 @@
     "items": [
       {
         "headline": "Software Architecture",
-        "text": "Designing Scalable, sensible systems",
+        "text": "Designing well thought out systems.",
         "icon": "build",
-        "color": "#8C1E3A"
-      },{
-        "headline": "Software Architecture",
-        "text": "Designing Scalable, sensible systems",
-        "icon": "build",
-        "color": "#A51D27"
-      },{
-        "headline": "Software Architecture",
-        "text": "Designing Scalable, sensible systems",
-        "icon": "build",
-        "color": "#BD1B15"
-      },{
-        "headline": "Software Architecture",
-        "text": "Designing Scalable, sensible systems",
-        "icon": "build",
-        "color": "#74204C"
-      },{
-        "headline": "Software Architecture",
-        "text": "Designing Scalable, sensible systems",
-        "icon": "build",
-        "color": "#5B215F"
-      },{
-        "headline": "Software Architecture",
-        "text": "Designing Scalable, sensible systems",
-        "icon": "build",
-        "color": "#432371"
+        "color": "#00C853"
+      },
+      {
+        "color": "#6200EA",
+        "icon": "calendarToday",
+        "text": "Extensive experience completing project on time and on budget",
+        "headline": "Time Management"
+      },
+      {
+        "headline": "Cloud Platforms",
+        "text": "Strong background in cloud computation and architecture.",
+        "color": "#304FFE",
+        "icon": "cloud"
       }
     ]
   }

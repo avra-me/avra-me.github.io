@@ -16,8 +16,6 @@ export default  ({entry, getAsset, widgetFor}) => {
 
     });
     const {header, skills} = config;
-    console.log(skills)
-
     return <InjectStyles>
         <MuiThemeProvider theme={theme}>
             <CssBaseline />
