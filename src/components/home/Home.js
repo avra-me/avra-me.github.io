@@ -1,20 +1,23 @@
 import React from "react";
+import PropTypes from "prop-types";
 import HeadSection from "./HeadSection";
-import FeatureSection from "./FeatureSection";
-import DetailsConfig from "../../config/details.json";
+import IconSection from "./IconSection";
 
-function Home() {
-  // const {selectHome} = props;
+function Home(props) {
+  const {about} = props;
   // useEffect(() => {
   //   selectHome();
   // }, [selectHome]);
   return <>
-    <HeadSection details={DetailsConfig} />
-    <FeatureSection />
+    <HeadSection details={about} />
+    <IconSection values={about.skills} />
   </>;
 }
 
 Home.propTypes = {
+  about: PropTypes.shape({
+    skills: PropTypes.array,
+  }).isRequired
   // selectHome: PropTypes.func.isRequired
 };
 

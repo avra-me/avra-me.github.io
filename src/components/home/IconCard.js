@@ -36,7 +36,7 @@ function shadeColor(hex, percent) {
     .slice(1)}`;
 }
 
-function FeatureCard(props) {
+function IconCard(props) {
   const { classes, Icon, color, headline, text } = props;
   return (
     <Fragment>
@@ -61,7 +61,7 @@ function FeatureCard(props) {
   );
 }
 
-FeatureCard.propTypes = {
+IconCard.propTypes = {
   classes: PropTypes.object.isRequired,
   Icon: PropTypes.element.isRequired,
   color: PropTypes.string.isRequired,
@@ -69,4 +69,4 @@ FeatureCard.propTypes = {
   text: PropTypes.string.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(FeatureCard);
+export default withStyles(styles, { withTheme: true })(IconCard);

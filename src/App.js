@@ -16,7 +16,7 @@ const App = (props) => {
   const { children, config } = props;
   const {logo} = config;
   const isServerRender = typeof window === "undefined";
-  const theme = ThemeFactory(config);
+  const theme = ThemeFactory(config.theme);
   if(!isServerRender){
     AOS.init({ once: true });
   }
@@ -50,7 +50,7 @@ const App = (props) => {
 
 App.propTypes = {
   config: PropTypes.object,
-  children: PropTypes.arrayOf(PropTypes.element)
+  children: PropTypes.element
 };
 
 if (typeof window !== "undefined") {

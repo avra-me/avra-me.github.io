@@ -7,8 +7,10 @@ import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import {ThemeProvider} from "@material-ui/styles";
 import Hidden from "@material-ui/core/Hidden";
 
-// const ReactMarkdown = require("react-markdown");
-
+const generateGradientString= (theme) => {
+    const points = ["light", "main", "dark"].map((name, i) =>  `${theme.palette.secondary[name]} ${theme.palette.wavePoints[i]}%`);
+    return `linear-gradient(${theme.palette.waveAngle}deg, ${points.join(", ")} ) !important`;
+};
 const styles = (theme) => ({
     extraLargeButtonLabel: {
         fontSize: theme.typography.body1.fontSize,
@@ -118,7 +120,7 @@ const styles = (theme) => ({
         paddingRight: theme.spacing(2),
     },
     waveArea: {
-        background: `linear-gradient(45deg, ${Object.keys(theme.palette.wavePrimary).map((c) => `${theme.palette.wavePrimary[c]} ${c}`).join(", ")}) !important`
+        background: generateGradientString(theme)
     },
     captionText: {
         fontSize: "32px"
@@ -180,8 +182,7 @@ function HeadSection(props) {
               </div>
               <WaveBorder
                   id={"wave-box"}
-                  upperColor={"inherit"}
-                  lowerColor="#FFFFFF"
+                  colour="#FFFFFF"
                   className={classes.waveBorder}
                   animationNegativeDelay={2}
               />

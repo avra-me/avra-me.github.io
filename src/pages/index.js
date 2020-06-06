@@ -5,6 +5,6 @@ import config from "../config/site";
 
 export default () => (
   <App config={config}>
-    <Home />
+    <Home about={config.about}  />
   </App>
 );

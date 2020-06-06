@@ -131,6 +131,7 @@ function NavBar(props) {
                 <AppBar position="fixed" className={classes.appBarBack}
                         data-aos-anchor="#wave-box"
                         data-aos-once="false"
+                        data-aos-duration={100}
                         data-aos-anchor-placement="top-top"
                         data-aos="fade-down"
                 >

@@ -1,3 +1,6 @@
+colorWidget: &color
+  widget: string
+  pattern: ['#[0-9]{6}', 'Must be a Hex Colour Value']
 backend:
   name: github
   repo: avra-me/avra-me.github.io
@@ -25,22 +28,24 @@ collections:
             widget: object
             fields:
               - {label: Site Logo, name: logo, widget: image, comment: Site title that becomes the logo}
-              - {label: Primary Color, name: primary, widget: string, default: "#b3294e", pattern: ['#[0-9]{6}', 'Must be a Hex Colour Value']}
-              - {label: Secondary Color, name: secondary, widget: string, default: "#4829B2", pattern: ['#[0-9]{6}', 'Must be a Hex Colour Value']}
-              - label: Header Gradient
-                name: gradient
+              - label: Primary Color
+                name: primary
                 widget: object
-                fields:
-                  - name: Gradient Points
-                    widget: list
-                    fields:
-                      - {name: position, widget: number, min: 0, max: 100, step: 1}
-                      - {name: colour, widget: string, pattern: ['#[0-9]{6}|rgba\(\d{0,3}\,\d{0,3}\,\d{0,3}\,\d{0,3}\)', 'Must be a Hex or RGBA Colour Value']}
-                    default:
-                      - {position: 0, colour: "rgba(2,0,36,1)"}
-                      - {position: 47, colour: "rgba(2,15,74,1)"}
-                      - {position: 93, colour: "rgba(74,7,231,1)"}
-                  - {name: angle, widget: number, min: 0, max: 360, default: 54}
+                fields: [{*color, name: light, required: false},{*color, name: main},{*color, name: dark, required: false}]
+              - label: Secondary Color
+                name: secondary
+                widget: object
+                fields: [{*color, name: light, required: false},{*color, name: main},{*color, name: dark, required: false}]
+#              - label: Header Gradient
+#                name: gradient
+#                widget: object
+#                fields:
+#                  - name: Gradient Points
+#                    widget: list
+#                    fields:
+#                      - {name: position, widget: number, min: 0, max: 100, step: 1}
+#                      - {name: colour, widget: string, pattern: ['#[0-9]{6}|rgba\(\d{0,3}\,\d{0,3}\,\d{0,3}\,\d{0,3}\)', 'Must be a Hex or RGBA Colour Value']}
+#                  - {name: angle, widget: number, min: 0, max: 360, default: 54}
           - label: "About You and Your information"
             name: about
             widget: object
@@ -56,16 +61,6 @@ collections:
                   - {label: Text, name: text, widget: string}
                   - {label: Icon, name: icon, widget: string}
                   - {label: Colour, name: colour, widget: string}
-              - label: Projects
-                name: projects
-                widget: list
-                fields:
-                  - {label: Project Title, name: title, widget: string}
-                  - {label: Short Description, name: short, widget: string}
-                  - {label: Image, name: image, widget: image}
-                  - {label: Link, name: link, widget: string}
-                  - {label: Long Description, name: text, widget: markdown}
-
   - name: "projects"
     label: "Projects"
     folder: "src/projects"
