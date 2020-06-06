@@ -12,19 +12,19 @@
     "items": [
       {
         "headline": "Software Architecture",
-        "text": "Designing well thought out systems.",
+        "text": "I design well thought out systems that perform under load.",
         "icon": "build",
         "color": "#00C853"
       },
       {
         "color": "#6200EA",
-        "icon": "calendarToday",
-        "text": "Extensive experience completing project on time and on budget",
+        "icon": "calendar_today",
+        "text": "I know how to complete projects on time and on budget.",
         "headline": "Time Management"
       },
       {
         "headline": "Cloud Platforms",
-        "text": "Strong background in cloud computation and architecture.",
+        "text": "I have a strong background in cloud computation and architecture.",
         "color": "#304FFE",
         "icon": "cloud"
       }
