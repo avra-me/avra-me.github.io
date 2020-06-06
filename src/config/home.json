@@ -27,6 +27,24 @@
         "text": "I have a strong background in cloud computation and architecture.",
         "color": "#304FFE",
         "icon": "cloud"
+      },
+      {
+        "headline": "Future Computing",
+        "icon": "bar_chart",
+        "text": "I have extensive experience working on difficult problems in the fields of AI and Natural language.",
+        "color": "#DD2C00"
+      },
+      {
+        "headline": "Communication",
+        "icon": "headset_mic",
+        "color": "#0091EA",
+        "text": "I work on large projects with a large variety of stakeholders from a diverse set of backgrounds."
+      },
+      {
+        "headline": "Software Development",
+        "text": "I have experience working with code in a number of languages including Javascript, Python, Java and much more.",
+        "icon": "code",
+        "color": "#C51162"
       }
     ]
   }
