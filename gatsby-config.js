@@ -20,7 +20,6 @@ module.exports = {
           injectFirst: true,
         },
       },
-    },
-    "gatsby-transformer-remark",
+    }
   ],
 };
