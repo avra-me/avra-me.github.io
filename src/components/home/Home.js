@@ -28,7 +28,6 @@ Home.propTypes = {
     }),
 
   }).isRequired
-  // selectHome: PropTypes.func.isRequired
 };
 
 export default Home;

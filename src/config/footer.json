@@ -15,24 +15,19 @@
   ],
   "context": [
     {
-      "icon": "/assets/buymeacoffee.svg",
-      "label": "Development fueled by Coffee",
-      "text": "https://avra.me/"
-    },
-    {
       "icon": "/assets/gatsby.svg",
       "label": "Built using GatsbyJs",
-      "text": "https://www.gatsbyjs.org"
+      "link": "https://www.gatsbyjs.org"
     },
     {
       "icon": "/assets/netlify.svg",
       "label": "Deployed with Netlify",
-      "text": "https://www.netlify.com"
+      "link": "https://www.netlify.com"
     },
     {
       "icon": "/assets/git_icon_125271.svg",
-      "label": "Forked from Waver",
-      "text": "https://reactsaastemplate.com/"
+      "label": "Forked from React SAAS Template",
+      "link": "https://reactsaastemplate.com/"
     }
   ],
   "disabled": false

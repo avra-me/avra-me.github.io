@@ -31,15 +31,7 @@ const App = (props) => {
       <CssBaseline />
       <GlobalStyles />
       <NavBar siteBrand={logo} />
-      {!isServerRender ? (
-
-        <>
-          <Pace color={muiTheme.palette.primary.light} />
-          <Suspense fallback={<Fragment />}>
-            {children}
-          </Suspense>
-        </>
-      ) : children}
+      {children}
       {!footer.disabled && <Footer config={footer} />}
 
     </MuiThemeProvider>

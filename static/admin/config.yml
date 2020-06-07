@@ -79,7 +79,7 @@ collections:
             fields:
               - {label: Icon, name: icon, widget: image, hint: "SVG files work best, see the examples."}
               - {label: Label, name: label, widget: string, "The text that will be displayed next to the icon."}
-              - {label: Link, name: text, widget: string, hint: "This should be the url to redirect the user to on click."}
+              - {label: Link, name: link, widget: string, hint: "This should be the url to redirect the user to on click."}
 
   - name: "projects"
     label: "Projects"
