@@ -1,16 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import {Box, Card, Grid, Typography, withStyles, withWidth,} from "@material-ui/core";
+import {Box, Card, Grid, Typography, withStyles,} from "@material-ui/core";
 import WaveBorder from "../../shared/components/WaveBorder";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import {ThemeProvider} from "@material-ui/styles";
 import Hidden from "@material-ui/core/Hidden";
 
-const generateGradientString= (theme) => {
-    const points = ["light", "main", "dark"].map((name, i) =>  `${theme.palette.secondary[name]} ${theme.palette.wavePoints[i]}%`);
+const generateGradientString = (theme) => {
+    const points = ["light", "main", "dark"].map((name, i) => `${theme.palette.secondary[name]} ${theme.palette.wavePoints[i]}%`);
     return `linear-gradient(${theme.palette.waveAngle}deg, ${points.join(", ")} ) !important`;
 };
+
 const styles = (theme) => ({
     extraLargeButtonLabel: {
         fontSize: theme.typography.body1.fontSize,
@@ -131,8 +132,8 @@ function HeadSection(props) {
     const {classes, details} = props;
     const {name, caption, prefix} = details;
     return (
-        <ThemeProvider theme={createMuiTheme({palette: {type: "dark"}})}>
-          <span className={classes.waveArea}>
+        <span className={classes.waveArea}>
+          <ThemeProvider theme={createMuiTheme({palette: {type: "dark"}})}>
             <div className={classNames("lg-p-top", classes.wrapper)}>
               <div className={classNames("container-fluid", classes.container)}>
                 <Box display="flex" justifyContent="center" className="row">
@@ -161,8 +162,7 @@ function HeadSection(props) {
                             </Typography>
                           </Box>
                           <Box mb={2}>
-                            {/*<ReactMarkdown source={caption}/>*/}
-                            <Hidden smDown>
+                            <Hidden smDown implementation={"css"}>
                                 <div className={classes.captionText}>
                                     {caption}
                                 </div>
@@ -172,7 +172,6 @@ function HeadSection(props) {
                       </Grid>
                     </Box>
                   </div>
-
                   </Card>
                 </Box>
               </div>
@@ -183,18 +182,15 @@ function HeadSection(props) {
                   animationNegativeDelay={2}
               />
             </div>
-          </span>
         </ThemeProvider>
+    </span>
     );
 }
 
 HeadSection.propTypes = {
     classes: PropTypes.object,
-    width: PropTypes.string,
     theme: PropTypes.object,
     details: PropTypes.object.isRequired,
 };
 
-export default withWidth()(
-    withStyles(styles, {withTheme: true})(HeadSection)
-);
+export default withStyles(styles, {withTheme: true})(HeadSection);

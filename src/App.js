@@ -1,15 +1,13 @@
-import React, {Fragment, Suspense, useEffect} from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 import {CssBaseline, MuiThemeProvider} from "@material-ui/core";
 import GlobalStyles from "./GlobalStyles";
 import * as serviceWorker from "./serviceWorker";
-import Pace from "./shared/components/Pace";
 import NavBar from "./components/navigation/NavBar";
 import ThemeFactory from "./theme";
 import Footer from "./components/footer/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
 
 
 const App = (props) => {
@@ -25,15 +23,15 @@ const App = (props) => {
       });
     }
   });
+  const RenderChildren = () => (children);
 
   return (
     <MuiThemeProvider theme={muiTheme}>
       <CssBaseline />
       <GlobalStyles />
       <NavBar siteBrand={logo} />
-      {children}
+      <RenderChildren/>
       {!footer.disabled && <Footer config={footer} />}
-
     </MuiThemeProvider>
   );
 };

@@ -80,7 +80,7 @@ function NavBar(props) {
 
     const MenuButtons = () => {
         return <div>
-            <Hidden mdUp>
+            <Hidden mdUp implementation={"css"}>
                 <IconButton
                     className={classes.menuButton}
                     onClick={handleMobileDrawerOpen}
@@ -89,7 +89,7 @@ function NavBar(props) {
                     <MenuIcon color="primary"/>
                 </IconButton>
             </Hidden>
-            <Hidden smDown>
+            <Hidden smDown implementation={"css"}>
                 {menuItems.map((element) => {
                     if (element.link) {
                         return (
@@ -142,24 +142,22 @@ function NavBar(props) {
 
     return (
         <div className={classes.root}>
-            <NoSsr>
-                <AppBar position="fixed" className={classes.appBarBack}
-                        data-aos-anchor="#wave-box"
-                        data-aos-once="false"
-                        data-aos-duration={100}
-                        data-aos-anchor-placement="top-top"
-                        data-aos="fade-down"
-                >
-                    <ThemeProvider theme={createMuiTheme({palette: {type: "dark"}})}>
-                        <Toolbar className={classes.toolbar}>
-                            <Box height={1}>
-                                <Brand/>
-                            </Box>
-                            <MenuButtons/>
-                        </Toolbar>
-                    </ThemeProvider>
-                </AppBar>
-            </NoSsr>
+            <AppBar position="fixed" className={classes.appBarBack}
+                    data-aos-anchor="#wave-box"
+                    data-aos-once="false"
+                    data-aos-duration={100}
+                    data-aos-anchor-placement="top-top"
+                    data-aos="fade-down"
+            >
+                <ThemeProvider theme={createMuiTheme({palette: {type: "dark"}})}>
+                    <Toolbar className={classes.toolbar}>
+                        <Box height={1}>
+                            <Brand/>
+                        </Box>
+                        <MenuButtons/>
+                    </Toolbar>
+                </ThemeProvider>
+            </AppBar>
             <AppBar position="absolute" className={classes.appBar}>
                 <Toolbar className={classes.toolbar}>
                     <Box height={1}/>

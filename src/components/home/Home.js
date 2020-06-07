@@ -8,7 +8,7 @@ function Home(props) {
   const {header, skills} = about;
   return <>
     {!header.disabled && <HeadSection details={header} />}
-    {!skills.disabled &&<IconSection values={skills.items} header={skills.header} />}
+    {!skills.disabled && <IconSection values={skills.items} header={skills.header} />}
   </>;
 }
 
