@@ -1,0 +1,13 @@
+{
+  "logo": "/assets/avrami-logo2.svg",
+  "primary": {
+    "light": "#8C1E3A",
+    "main": "#A51D27",
+    "dark": "#BD1B15"
+  },
+  "secondary": {
+    "light": "#74204C",
+    "main": "#5B215F",
+    "dark": "#432371"
+  }
+}

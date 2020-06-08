@@ -8,164 +8,224 @@ import BookIcon from "@material-ui/icons/Book";
 import NavigationDrawer from "../../shared/components/NavigationDrawer";
 import {ThemeProvider} from "@material-ui/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
-import NoSsr from "@material-ui/core/NoSsr";
 
 const styles = (theme) => ({
-    appBar: {
-        boxShadow: "none",
-        backgroundColor: "transparent",
+  appBar: {
+    boxShadow: "none",
+    backgroundColor: "transparent",
+  },
+  appBarBack: {
+    boxShadow: "none",
+    backgroundColor: theme.palette.secondary.main
+  },
+  toolbar: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  menuButtonText: {
+    fontSize: theme.typography.body1.fontSize,
+    fontWeight: theme.typography.h6.fontWeight,
+  },
+  activeLink: {
+    "&::after": {
+      content: "\"\"",
+      display: "block",
+      height: "2px",
+      background: `linear-gradient(270deg, ${theme.palette.primary.dark} 0, ${theme.palette.primary.main} 86%, ${theme.palette.primary.light} 100%)`,
+      borderRadius: "1px",
+      transition: "width .2s ease-in-out",
+      left: 0,
+      bottom: 0,
+      width: 0,
+      position: "absolute"
     },
-    appBarBack: {
-        boxShadow: "none",
-        backgroundColor: theme.palette.secondary.main
+    "&:hover": {
+      backgroundColor: "transparent",
+      "&::after": {
+        width: "100%"
+      }
+    }
+  },
+  disabledLink: {
+    fontWeight: "bold",
+    "&::after": {
+      content: "\"\"",
+      display: "block",
+      height: "2px",
+      background: `linear-gradient(270deg, ${theme.palette.primary.dark} 0, ${theme.palette.primary.main} 86%, ${theme.palette.primary.light} 100%)`,
+      borderRadius: "1px",
+      transition: "width .2s ease-in-out",
+      left: 0,
+      bottom: 0,
+      width: 0,
+      position: "absolute"
     },
-    toolbar: {
-        display: "flex",
-        justifyContent: "space-between",
-    },
-    menuButtonText: {
-        fontSize: theme.typography.body1.fontSize,
-        fontWeight: theme.typography.h6.fontWeight,
-    },
-    brandText: {
-        fontFamily: "'Baloo Bhaijaan', cursive",
-        fontWeight: 400,
-    },
-    brandIcon: {
-        height: theme.typography.h4.fontSize,
-        filter: "invert(100%) sepia(100%) saturate(2%) hue-rotate(209deg) brightness(101%) contrast(101%)"
-    },
-    noDecoration: {
-        textDecoration: "none !important",
-    },
+    "&:hover": {
+      backgroundColor: "transparent",
+      "&::after": {
+        width: "100%"
+      }
+    }
+  },
+  brandIcon: {
+    height: theme.typography.h4.fontSize,
+    filter: "invert(100%) sepia(100%) saturate(2%) hue-rotate(209deg) brightness(101%) contrast(101%)"
+  },
+  noDecoration: {
+    textDecoration: "none !important",
+  }
 });
 
 function NavBar(props) {
-    const {
-        classes,
-        siteBrand
-    } = props;
+  const {
+    classes,
+    siteBrand,
+    isDemo
+  } = props;
 
-    const [selectedTab,] = useState(null);
-    const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
-    const handleMobileDrawerOpen = useCallback(() => {
-        setIsMobileDrawerOpen(true);
-    }, [setIsMobileDrawerOpen]);
+  const [selectedTab,] = useState(null);
+  const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
+  const handleMobileDrawerOpen = useCallback(() => {
+    setIsMobileDrawerOpen(true);
+  }, [setIsMobileDrawerOpen]);
 
-    const handleMobileDrawerClose = useCallback(() => {
-        setIsMobileDrawerOpen(false);
-    }, [setIsMobileDrawerOpen]);
+  const handleMobileDrawerClose = useCallback(() => {
+    setIsMobileDrawerOpen(false);
+  }, [setIsMobileDrawerOpen]);
 
-    // TODO: Link this to CRM
-    const menuItems = [
-        {
-            link: "/",
-            name: "Home",
-            icon: <HomeIcon className="text-white"/>,
-        },
-        {
-            link: "/blog",
-            name: "My Blog",
-            icon: <BookIcon className="text-white"/>,
-        },
-    ];
+  // TODO: Link this to CRM
+  const menuItems = [
+    {
+      link: "/",
+      name: "Home",
+      icon: <HomeIcon className="text-white"/>,
+    },
+    {
+      link: "/blog",
+      name: "My Blog",
+      icon: <BookIcon className="text-white"/>,
+    },
+  ];
 
-    const Brand = () => {
-        return <Button color="default" href={"/"}>
-            <img className={classes.brandIcon} src={siteBrand} alt={"icon"}/>
-        </Button>;
+  const Brand = () => {
+    return <Button color="default" href={"/"}>
+      <img className={classes.brandIcon} src={siteBrand} alt={"icon"}/>
+    </Button>;
 
-    };
+  };
 
-    const MenuButtons = () => {
-        return <div>
-            <Hidden mdUp>
-                <IconButton
-                    className={classes.menuButton}
-                    onClick={handleMobileDrawerOpen}
-                    aria-label="Open Navigation"
-                >
-                    <MenuIcon color="primary"/>
-                </IconButton>
-            </Hidden>
-            <Hidden smDown>
-                {menuItems.map((element) => {
-                    if (element.link) {
-                        return (
-                            <Link
-                                key={element.name}
-                                to={element.link}
-                                className={classes.noDecoration}
-                                onClick={handleMobileDrawerClose}
-                            >
-                                <Button
-                                    color="default"
-                                    size="large"
-                                    classes={{text: classes.menuButtonText}}
-                                >
-                                    {element.name}
-                                </Button>
-                            </Link>
-                        );
-                    }
-                    return (
-                        <Button
-                            color="default"
-                            size="large"
-                            onClick={element.onClick}
-                            classes={{text: classes.menuButtonText}}
-                            key={element.name}
-                        >
-                            {element.name}
-                        </Button>
-                    );
-                })}
-            </Hidden>
-        </div>;
+  const MenuButtons = () => {
+    const isLinkActive = element => ({isCurrent}) => ({
+      onClick: (event) => {
+        console.log("Event:", event);
+        event.preventDefault();
+      },
+      children: (<Button
+        color="default"
+        size="large"
+        classes={{
+          text: classes.menuButtonText,
+          root: isCurrent ? classes.disabledLink : classes.activeLink
+        }}
+        disableRipple
+      >
+        {element.name}
+      </Button>)
+    });
+    return <div>
+      <Hidden mdUp implementation={"css"}>
+        <IconButton
+          className={classes.menuButton}
+          onClick={handleMobileDrawerOpen}
+          aria-label="Open Navigation"
+        >
+          <MenuIcon color="primary"/>
+        </IconButton>
+      </Hidden>
+      <Hidden smDown implementation={"css"}>
+        {menuItems.map((element) => {
+          if (element.link) {
+            return (
+              <Link
+                key={element.name}
+                to={element.link}
+                className={classes.noDecoration}
+                getProps={isLinkActive(element)}
+              />
+            );
+          }
+          return (
+            <Button
+              color="default"
+              size="large"
+              onClick={element.onClick}
+              classes={{text: classes.activeLink}}
+              key={element.name}
+            >
+              {element.name}
+            </Button>
+          );
+        })}
+      </Hidden>
+    </div>;
 
-    };
+  };
 
-    return (
-        <div className={classes.root}>
-            <NoSsr>
-                <AppBar position="fixed" className={classes.appBarBack}
-                        data-aos-anchor="#wave-box"
-                        data-aos-once="false"
-                        data-aos-anchor-placement="top-top"
-                        data-aos="fade-down"
-                >
-                    <ThemeProvider theme={createMuiTheme({palette: {type: "dark"}})}>
-                        <Toolbar className={classes.toolbar}>
-                            <Box height={1}>
-                                <Brand/>
-                            </Box>
-                            <MenuButtons/>
-                        </Toolbar>
-                    </ThemeProvider>
-                </AppBar>
-            </NoSsr>
-            <AppBar position="absolute" className={classes.appBar}>
-                <Toolbar className={classes.toolbar}>
-                    <Box height={1}/>
-                    <ThemeProvider theme={createMuiTheme({palette: {type: "dark"}})}>
-                        <MenuButtons/>
-                    </ThemeProvider>
-                </Toolbar>
-            </AppBar>
-            <NavigationDrawer
-                menuItems={menuItems}
-                anchor="right"
-                open={isMobileDrawerOpen}
-                selectedItem={selectedTab}
-                onClose={handleMobileDrawerClose}
-            />
-        </div>
-    );
+  if (isDemo) {
+    return <AppBar position="absolute" className={classes.appBarBack}
+    >
+      <ThemeProvider theme={createMuiTheme({palette: {type: "dark"}})}>
+        <Toolbar className={classes.toolbar}>
+          <Box height={1}>
+            <Brand/>
+          </Box>
+          <MenuButtons/>
+        </Toolbar>
+      </ThemeProvider>
+    </AppBar>;
+  }
+
+  return (
+    <div className={classes.root}>
+      <AppBar position="fixed" className={classes.appBarBack}
+              data-aos-anchor="#wave-box"
+              data-aos-once="false"
+              data-aos-duration={100}
+              data-aos-anchor-placement="top-top"
+              data-aos="fade-down"
+      >
+        <ThemeProvider theme={createMuiTheme({palette: {type: "dark"}})}>
+          <Toolbar className={classes.toolbar}>
+            <Box height={1}>
+              <Brand/>
+            </Box>
+            <MenuButtons/>
+          </Toolbar>
+        </ThemeProvider>
+      </AppBar>
+      <AppBar position="absolute" className={classes.appBar}>
+        <Toolbar className={classes.toolbar}>
+          <Box height={1}/>
+          <ThemeProvider theme={createMuiTheme({palette: {type: "dark"}})}>
+            <MenuButtons/>
+          </ThemeProvider>
+        </Toolbar>
+      </AppBar>
+      <NavigationDrawer
+        menuItems={menuItems}
+        anchor="right"
+        open={isMobileDrawerOpen}
+        selectedItem={selectedTab}
+        onClose={handleMobileDrawerClose}
+      />
+    </div>
+  );
 }
 
 NavBar.propTypes = {
-    classes: PropTypes.object.isRequired,
-    siteBrand: PropTypes.string,
+  classes: PropTypes.object.isRequired,
+  siteBrand: PropTypes.string,
+  isDemo: PropTypes.bool
 };
 
 export default withStyles(styles, {withTheme: true})(memo(NavBar));

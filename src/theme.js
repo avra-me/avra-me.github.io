@@ -3,8 +3,6 @@ import { createMuiTheme, responsiveFontSizes } from "@material-ui/core";
 export default (cmsConfig) => {
   const { primary: primaryCMS, secondary: secondaryCMS } = cmsConfig;
   // colors
-  const primary = primaryCMS || "#b3294e";
-  const secondary = secondaryCMS || "#4829B2";
   const black = "#343a40";
   const darkBlack = "rgb(36, 40, 44)";
   // const background = "#f5f5f5";
@@ -29,9 +27,10 @@ export default (cmsConfig) => {
 
   const theme = createMuiTheme({
     palette: {
-      primary: { main: primary },
-      secondary: { main: secondary },
-      wavePrimary: {"0%": "rgba(2,0,36,1)", "47%": "rgba(2,15,74,1)", "93%": "rgba(74,7,231,1)"},
+      primary: primaryCMS,
+      secondary: secondaryCMS,
+      wavePoints: [0, 47, 93],
+      waveAngle: "45",
       type: "light",
       common: {
         black,

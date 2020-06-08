@@ -1,14 +1,11 @@
 import React from "react";
 import App from "../App";
-import config from "../config/site";
+import theme from "../config/theme";
 import Blog from "../components/blog/Blog";
+import footer from "../config/footer";
 
-const Page = () => (
-  <App config={config}>
+export default () => (
+  <App theme={theme} footer={footer}>
     <Blog path="blog" blogPosts={[]} />
   </App>
 );
-
-export const linkTitle = "Home";
-
-export default Page;

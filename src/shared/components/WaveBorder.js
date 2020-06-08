@@ -29,8 +29,9 @@ function WaveBorder(props) {
   const id = String(Math.random());
   const {
     className,
-    lowerColor,
+    colour,
     classes,
+    animationNegativeDelay,
     ...rest
   } = props;
   return (
@@ -49,7 +50,7 @@ function WaveBorder(props) {
           />
         </defs>
         <g className={classes.parallax}>
-          <use href={`#${id}`} x="48" y="0" fill={lowerColor} />
+          <use href={`#${id}`} x="48" y="0" fill={colour} />
         </g>
       </svg>
     </div>
@@ -57,8 +58,8 @@ function WaveBorder(props) {
 }
 
 WaveBorder.propTypes = {
-  lowerColor: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  colour: PropTypes.string.isRequired,
   classes: PropTypes.object.isRequired
 };
 

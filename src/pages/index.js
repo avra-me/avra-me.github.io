@@ -1,14 +1,12 @@
 import React from "react";
 import App from "../App";
 import Home from "../components/home/Home";
-import config from "../config/site";
+import theme from "../config/theme";
+import home from "../config/home";
+import footer from "../config/footer";
 
-const Index = () => (
-  <App config={config}>
-    <Home/>
+export default () => (
+  <App theme={theme} footer={footer}>
+    <Home about={home}  />
   </App>
 );
-
-export const linkTitle = "Home";
-
-export default Index;

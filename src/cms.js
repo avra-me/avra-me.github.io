@@ -4,7 +4,10 @@
  * `registerPreviewTemplate`.
  */
 import CMS from "netlify-cms-app";
-
+import React from "react";
+import ThemePreview from "./previews/ThemePreview";
+import HomePreview from "./previews/HomePreview";
+import FooterPreview from "./previews/FooterPreview";
 /**
  * Any imported styles should be automatically be applied to the editor preview
  * pane thus eliminating the need to use `registerPreviewStyle` for imported
@@ -16,3 +19,6 @@ import CMS from "netlify-cms-app";
  * preview pane.
  */
 
+CMS.registerPreviewTemplate("theme", ThemePreview);
+CMS.registerPreviewTemplate("about", HomePreview);
+CMS.registerPreviewTemplate("footer", FooterPreview);
