@@ -1,14 +1,19 @@
 import React, {memo, useCallback, useState} from "react";
 import PropTypes from "prop-types";
 import {Link} from "@reach/router";
-import {AppBar, Box, Button, Hidden, IconButton, Toolbar, withStyles,} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
 import BookIcon from "@material-ui/icons/Book";
 import NavigationDrawer from "../../shared/components/NavigationDrawer";
-import {ThemeProvider} from "@material-ui/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
-import NoSsr from "@material-ui/core/NoSsr";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import Hidden from "@material-ui/core/Hidden";
+import ThemeProvider from "@material-ui/styles/ThemeProvider";
+import Toolbar from "@material-ui/core/Toolbar";
+import Box from "@material-ui/core/Box";
+import AppBar from "@material-ui/core/AppBar";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 const styles = (theme) => ({
     appBar: {
