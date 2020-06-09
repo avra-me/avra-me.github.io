@@ -83,8 +83,7 @@ function Footer(props) {
         <ThemeProvider theme={createMuiTheme({palette: {type: "dark"}})}>
             <footer className="lg-p-top">
                 <WaveBorder
-                    colour={theme.palette.common.darkBlack}
-                    animationNegativeDelay={4}
+                    background={theme.palette.common.darkBlack}
                 />
                 <Paper className={classes.footerInner}>
                     <Grid container spacing={5}>

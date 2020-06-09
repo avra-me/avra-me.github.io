@@ -6,6 +6,8 @@ import WaveBorder from "../../shared/components/WaveBorder";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import {ThemeProvider} from "@material-ui/styles";
 import Hidden from "@material-ui/core/Hidden";
+import withTheme from "@material-ui/core/styles/withTheme";
+import useTheme from "@material-ui/core/styles/useTheme";
 
 const generateGradientString = (theme) => {
     const points = ["light", "main", "dark"].map((name, i) => `${theme.palette.secondary[name]} ${theme.palette.wavePoints[i]}%`);
@@ -130,6 +132,7 @@ const styles = (theme) => ({
 
 function HeadSection(props) {
     const {classes, details} = props;
+    const theme = useTheme();
     const {name, caption, prefix} = details;
     return (
         <span className={classes.waveArea}>
@@ -139,6 +142,8 @@ function HeadSection(props) {
                 <Box display="flex" justifyContent="center" className="row">
                   <Card
                       className={classes.card}
+                      data-aos-delay="200"
+                      data-aos="zoom-in"
                   >
                   <div className={classNames(classes.containerFix, "container")}>
                     <Box justifyContent="space-between" className="row">
@@ -176,11 +181,11 @@ function HeadSection(props) {
                 </Box>
               </div>
               <WaveBorder
-                  id={"wave-box"}
-                  colour="#FFFFFF"
-                  className={classes.waveBorder}
-                  animationNegativeDelay={2}
+                id={"wave-box"}
+                background={theme.palette.background.default}
+                className={classes.waveBorder}
               />
+
             </div>
         </ThemeProvider>
     </span>

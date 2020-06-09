@@ -28,8 +28,10 @@ function IconSection(props) {
                   xs={6}
                   md={4}
                   data-aos={isDemo ? undefined : "zoom-in-up"}
+                  data-aos-once={true}
+                  data-aos-duration={1000}
                   data-aos-delay={
-                    isMdUp ? Math.min(Math.floor(i / 3) * 200, 600) : Math.min(Math.floor(i / 2) * 100, 600)
+                    isMdUp ? Math.min(Math.floor(i / 3) * 200, 300) : Math.min(Math.floor(i / 2) * 200, 600)
                   }
                   key={element.headline}
               >

@@ -117,7 +117,6 @@ function NavBar(props) {
   const MenuButtons = () => {
     const isLinkActive = element => ({isCurrent}) => ({
       onClick: (event) => {
-        console.log("Event:", event);
         event.preventDefault();
       },
       children: (<Button
