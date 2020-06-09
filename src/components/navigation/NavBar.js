@@ -70,7 +70,6 @@ const styles = (theme) => ({
   },
   brandIcon: {
     height: theme.typography.h4.fontSize,
-    filter: "invert(100%) sepia(100%) saturate(2%) hue-rotate(209deg) brightness(101%) contrast(101%)"
   },
   noDecoration: {
     textDecoration: "none !important",

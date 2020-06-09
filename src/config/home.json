@@ -4,7 +4,8 @@
     "useGradient": true,
     "prefix": "G'day, I'm",
     "name": "Avrami",
-    "caption": "I'm a software engineer with a talent for designing scalable systems"
+    "caption": "I'm a software engineer with a talent for designing scalable systems",
+    "brand": "/assets/avrami-logo2.svg"
   },
   "skills": {
     "header": "What I know",

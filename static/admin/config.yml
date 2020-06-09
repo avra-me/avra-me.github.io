@@ -46,6 +46,7 @@ collections:
               - {label: Prefix/Intro, name: prefix, widget: string, hint: "This will be placed before your name, make it welcoming"}
               - {label: Name, name: name, widget: string, hint: "What people will call you"}
               - {label: Caption, name: caption, widget: markdown, hint: "A short, snappy tag line"}
+              - {label: Brand, name: brand, widget: image, hint: "A short, snappy tag line"}
           - label: Skills
             name: skills
             widget: object
