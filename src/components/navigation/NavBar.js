@@ -4,6 +4,7 @@ import {Link} from "@reach/router";
 import {AppBar, Box, Button, Hidden, IconButton, Toolbar, withStyles,} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
+import BuildIcon from "@material-ui/icons/Build";
 import BookIcon from "@material-ui/icons/Book";
 import NavigationDrawer from "../../shared/components/NavigationDrawer";
 import {ThemeProvider} from "@material-ui/styles";
@@ -104,6 +105,11 @@ function NavBar(props) {
       link: "/blog",
       name: "My Blog",
       icon: <BookIcon className="text-white"/>,
+    },
+    {
+      link: "/projects",
+      name: "My Projects",
+      icon: <BuildIcon className="text-white"/>,
     },
   ];
 
