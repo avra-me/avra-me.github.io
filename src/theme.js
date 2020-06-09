@@ -125,7 +125,7 @@ export default (cmsConfig) => {
     },
     typography: {
       useNextVariants: true,
-      fontFamily: "sans-serif",
+      fontFamily: "Lato",
     },
   });
 
