@@ -12,28 +12,7 @@ const styles = (theme) => ({
         fontSize: theme.typography.body1.fontSize,
         fontWeight: theme.typography.h6.fontWeight,
     },
-    activeLink: {
-        "&:after": {
-            content: "",
-            display: "block",
-            height: "2px",
-            background: `linear-gradient(270deg, ${theme.palette.primary.dark} 0, ${theme.palette.primary.main} 86%, ${theme.palette.primary.light} 100%)`,
-            borderRadius: "1px",
-            transition: "width .2s ease-in-out",
-            left: 0,
-            bottom: 0,
-            width: 0,
-            position: "absolute"
-        },
-        "&:hover": {
-            backgroundColor: "transparent",
-            "&::after": {
-                width: "100%"
-            }
-        }
-    },
-    disabledLink: {
-        fontWeight: "bold",
+    link: {
         "&:after": {
             content: "\"\"",
             display: "block",
@@ -53,6 +32,9 @@ const styles = (theme) => ({
             }
         }
     },
+    disabledLink: {
+        fontWeight: "bold",
+    },
     noDecoration: {
         textDecoration: "none !important",
     }
@@ -66,7 +48,7 @@ const RightHandNavigation = ({menuLinks, classes, onDrawerOpen, onDrawerClose}) 
             size="large"
             classes={{
                 text: classes.menuButtonText,
-                root: isCurrent ? classes.disabledLink : classes.activeLink
+                root: classes.link +  (isCurrent ? " " + classes.disabledLink : "")
             }}
             disableRipple
         >
@@ -101,7 +83,7 @@ const RightHandNavigation = ({menuLinks, classes, onDrawerOpen, onDrawerClose}) 
                         color="default"
                         size="large"
                         onClick={element.onClick}
-                        classes={{text: classes.activeLink}}
+                        classes={{text: classes.menuButtonText}}
                         key={element.name}
                     >
                         {element.name}

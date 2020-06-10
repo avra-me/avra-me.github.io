@@ -137,13 +137,13 @@ const styles = (theme) => ({
 });
 
 function HeadSection(props) {
-  const {classes, details} = props;
+  const {classes, details, navigation} = props;
   const theme = useTheme();
   const {name, caption, prefix, brand} = details;
   return (
     <span className={classes.waveArea}>
           <ThemeProvider theme={createMuiTheme({palette: {type: "dark"}})}>
-            <NavBar position={"absolute"} useDarkPalette backgroundColor={"inherit"} />
+            <NavBar position={"absolute"} useDarkPalette backgroundColor={"inherit"} links={navigation.links} />
             <div className={classNames("lg-p-top", classes.wrapper)}>
               <Hidden smDown>
                   <Grid
@@ -220,6 +220,7 @@ HeadSection.propTypes = {
   classes: PropTypes.object,
   theme: PropTypes.object,
   details: PropTypes.object.isRequired,
+  navigation: PropTypes.object
 };
 
 export default withStyles(styles, {withTheme: true})(HeadSection);

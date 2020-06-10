@@ -11,7 +11,7 @@ import "aos/dist/aos.css";
 
 
 const App = (props) => {
-  const { children, theme, footer } = props;
+  const { children, theme, footer, navigation } = props;
   const {logo} = theme;
   const isServerRender = typeof window === "undefined";
   const muiTheme = ThemeFactory(theme);
@@ -29,7 +29,7 @@ const App = (props) => {
     <MuiThemeProvider theme={muiTheme}>
       <CssBaseline />
       <GlobalStyles />
-      <NavBar siteBrand={logo} aosAnchor={"#waveBorder"} />
+      {!navigation.disabled && <NavBar siteBrand={logo} aosAnchor={"#wave-box"} links={navigation.links} />}
       <RenderChildren/>
       {!footer.disabled && <Footer config={footer} />}
     </MuiThemeProvider>
@@ -39,6 +39,7 @@ const App = (props) => {
 App.propTypes = {
   theme: PropTypes.object,
   footer: PropTypes.object,
+  navigation: PropTypes.object,
   children: PropTypes.element
 };
 
