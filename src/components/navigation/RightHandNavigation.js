@@ -83,7 +83,10 @@ const RightHandNavigation = ({menuLinks, classes, onDrawerOpen, onDrawerClose}) 
                         color="default"
                         size="large"
                         onClick={element.onClick}
-                        classes={{text: classes.menuButtonText}}
+                        classes={{
+                            text: classes.menuButtonText,
+                            root: classes.link
+                        }}
                         key={element.name}
                     >
                         {element.name}

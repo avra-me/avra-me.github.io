@@ -11,6 +11,11 @@
       "link": "/blog",
       "name": "My Blog",
       "icon": "book"
+    },
+    {
+      "link": "/projects",
+      "name": "My Projects",
+      "icon": "build"
     }
   ]
 }

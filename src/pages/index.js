@@ -5,7 +5,6 @@ import theme from "../config/theme";
 import home from "../config/home";
 import footer from "../config/footer";
 import navigation from "../config/navigation";
-import NavBar from "../components/navigation/NavBar";
 
 const Index = () => (
   <App theme={theme} footer={footer}  navigation={navigation}>
@@ -13,4 +12,4 @@ const Index = () => (
   </App>
 );
 
-export default Index
+export default Index;
