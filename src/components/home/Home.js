@@ -6,11 +6,11 @@ import WaveBorder from "../../shared/components/WaveBorder";
 import useTheme from "@material-ui/core/styles/useTheme";
 
 function Home(props) {
-  const {about} = props;
+  const {about, navigation} = props;
   const {header, skills} = about;
 
   return <>
-    {!header.disabled && <HeadSection details={header} />}
+    {!header.disabled && <HeadSection details={header} navigation={navigation} />}
     {!skills.disabled && <IconSection values={skills.items} header={skills.header} />}
   </>;
 }
@@ -30,7 +30,8 @@ Home.propTypes = {
       caption: PropTypes.string,
     }),
 
-  }).isRequired
+  }).isRequired,
+  navigation: PropTypes.object
 };
 
 export default Home;

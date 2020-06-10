@@ -20,5 +20,6 @@ import FooterPreview from "./previews/FooterPreview";
  */
 
 CMS.registerPreviewTemplate("theme", ThemePreview);
+CMS.registerPreviewTemplate("navigation", ThemePreview);
 CMS.registerPreviewTemplate("about", HomePreview);
 CMS.registerPreviewTemplate("footer", FooterPreview);

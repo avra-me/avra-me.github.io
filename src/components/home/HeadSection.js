@@ -6,6 +6,7 @@ import WaveBorder from "../../shared/components/WaveBorder";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import {ThemeProvider} from "@material-ui/styles";
 import Hidden from "@material-ui/core/Hidden";
+import NavBar from "../navigation/NavBar";
 import useTheme from "@material-ui/core/styles/useTheme";
 import Avatar from "@material-ui/core/Avatar";
 
@@ -142,25 +143,25 @@ function HeadSection(props) {
   return (
     <span className={classes.waveArea}>
           <ThemeProvider theme={createMuiTheme({palette: {type: "dark"}})}>
-            <div className={classNames(classes.wrapper)}>
+            <NavBar position={"absolute"} useDarkPalette backgroundColor={"inherit"} />
+            <div className={classNames("lg-p-top", classes.wrapper)}>
               <Hidden smDown>
-                        <Grid
-                          item
-                          xs={12}
-                          md={12}
-                          style={{margin: "auto", alignItems: "center"}}
-                          className={"lg-p-top"}
-                        >
-                          <Box
-                            display="flex"
-                            flexDirection="column"
-                            style={{margin: "auto", alignItems: "center"}}
-                            height="100%"
-                          >
-                          {brand && <Avatar variant={"square"} className={classes.brand} src={brand} alt={""}/>}
-                          </Box>
-                        </Grid>
-                      </Hidden>
+                  <Grid
+                      item
+                      xs={12}
+                      md={12}
+                      style={{margin: "auto", alignItems: "center"}}
+                  >
+                    <Box
+                        display="flex"
+                        flexDirection="column"
+                        style={{margin: "auto", alignItems: "center"}}
+                        height="100%"
+                    >
+                    {brand && <Avatar variant={"square"} className={classes.brand} src={brand} alt={""}/>}
+                    </Box>
+                  </Grid>
+              </Hidden>
               <div className={classNames("container-fluid", classes.container)}>
                 <Box display="flex" justifyContent="center" className="row">
                   <Card

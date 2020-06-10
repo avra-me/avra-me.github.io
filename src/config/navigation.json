@@ -1,0 +1,16 @@
+{
+  "disabled": false,
+  "staticIconEnabled": false,
+  "links": [
+    {
+      "link": "/",
+      "name": "Home",
+      "icon": "home"
+    },
+    {
+      "link": "/blog",
+      "name": "My Blog",
+      "icon": "book"
+    }
+  ]
+}

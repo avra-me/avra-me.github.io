@@ -11,6 +11,7 @@ module.exports = {
       resolve: "gatsby-plugin-netlify-cms",
       options:{
         modulePath: `${__dirname}/src/cms.js`,
+        enableIdentityWidget: false
       }
     },
     {
@@ -19,6 +20,12 @@ module.exports = {
         stylesProvider: {
           injectFirst: true,
         },
+      },
+    },
+    {
+      resolve: "gatsby-plugin-webpack-bundle-analyzer",
+      options: {
+        production: true
       },
     }
   ],

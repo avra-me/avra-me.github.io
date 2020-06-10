@@ -29,7 +29,7 @@ const App = (props) => {
     <MuiThemeProvider theme={muiTheme}>
       <CssBaseline />
       <GlobalStyles />
-      <NavBar siteBrand={logo} />
+      <NavBar siteBrand={logo} aosAnchor={"#waveBorder"} />
       <RenderChildren/>
       {!footer.disabled && <Footer config={footer} />}
     </MuiThemeProvider>
