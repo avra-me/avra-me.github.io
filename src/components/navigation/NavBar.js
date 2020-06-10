@@ -1,7 +1,5 @@
 import React, {memo, useCallback, useState} from "react";
 import PropTypes from "prop-types";
-import {Link} from "@reach/router";
-import MenuIcon from "@material-ui/icons/Menu";
 import NavigationDrawer from "../../shared/components/NavigationDrawer";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import Button from "@material-ui/core/Button";
