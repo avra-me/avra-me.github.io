@@ -54,39 +54,39 @@ const styles = (theme) => ({
       maxWidth: 1370,
     },
     ".lg-mg-top": {
-      marginTop: `${theme.spacing(20)}px !important`,
+      marginTop: `${theme.spacing(10)}px !important`,
       [theme.breakpoints.down("md")]: {
-        marginTop: `${theme.spacing(18)}px !important`,
+        marginTop: `${theme.spacing(9)}px !important`,
       },
       [theme.breakpoints.down("sm")]: {
-        marginTop: `${theme.spacing(16)}px !important`,
+        marginTop: `${theme.spacing(8)}px !important`,
       },
       [theme.breakpoints.down("xs")]: {
-        marginTop: `${theme.spacing(14)}px !important`,
+        marginTop: `${theme.spacing(7)}px !important`,
       },
     },
     ".lg-mg-bottom": {
-      marginBottom: `${theme.spacing(20)}px !important`,
+      marginBottom: `${theme.spacing(10)}px !important`,
       [theme.breakpoints.down("md")]: {
-        marginBottom: `${theme.spacing(18)}px !important`,
+        marginBottom: `${theme.spacing(9)}px !important`,
       },
       [theme.breakpoints.down("sm")]: {
-        marginBottom: `${theme.spacing(16)}px !important`,
+        marginBottom: `${theme.spacing(8)}px !important`,
       },
       [theme.breakpoints.down("xs")]: {
-        marginBottom: `${theme.spacing(14)}px !important`,
+        marginBottom: `${theme.spacing(7)}px !important`,
       },
     },
     ".lg-p-top": {
-      paddingTop: `${theme.spacing(20)}px !important`,
+      paddingTop: `${theme.spacing(10)}px !important`,
       [theme.breakpoints.down("md")]: {
-        paddingTop: `${theme.spacing(18)}px !important`,
+        paddingTop: `${theme.spacing(9)}px !important`,
       },
       [theme.breakpoints.down("sm")]: {
-        paddingTop: `${theme.spacing(16)}px !important`,
+        paddingTop: `${theme.spacing(8)}px !important`,
       },
       [theme.breakpoints.down("xs")]: {
-        paddingTop: `${theme.spacing(14)}px !important`,
+        paddingTop: `${theme.spacing(7)}px !important`,
       },
     },
   },

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {Link} from "@reach/router";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
+import BuildIcon from "@material-ui/icons/Build";
 import BookIcon from "@material-ui/icons/Book";
 import NavigationDrawer from "../../shared/components/NavigationDrawer";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
@@ -75,7 +76,6 @@ const styles = (theme) => ({
   },
   brandIcon: {
     height: theme.typography.h4.fontSize,
-    filter: "invert(100%) sepia(100%) saturate(2%) hue-rotate(209deg) brightness(101%) contrast(101%)"
   },
   noDecoration: {
     textDecoration: "none !important",
@@ -110,6 +110,11 @@ function NavBar(props) {
       link: "/blog",
       name: "My Blog",
       icon: <BookIcon className="text-white"/>,
+    },
+    {
+      link: "/projects",
+      name: "My Projects",
+      icon: <BuildIcon className="text-white"/>,
     },
   ];
 

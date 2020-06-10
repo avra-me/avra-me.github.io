@@ -7,7 +7,7 @@ import {Typography} from "@material-ui/core";
 
 export default () => (
   <App theme={theme} footer={footer}>
-    <HeadSection details={{prefix: "", name: "My Blog", caption: "What I've been looking at recently"}}/>
+    <HeadSection details={{prefix: "", name: "My Projects", caption: "What I'm working on"}}/>
     <div>
       <div className="container-fluid lg-p-top">
         <Typography variant="h3" align="center">
