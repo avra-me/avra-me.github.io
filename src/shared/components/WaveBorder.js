@@ -32,21 +32,27 @@ const styles = {
  */
 function WaveBorder(props) {
   const id = String(Math.random());
+  const randomDelay = Math.random() * 4;
   const {
     className,
     classes,
     background,
     flip,
+    pause,
     reverse,
     ...rest
   } = props;
   // eslint-disable-next-line react/prop-types
-  const addWave = ({y, delay, duration, opacity = 1, x = 48}) => <use
+  const addWave = ({y, delay, duration, opacity = 1, x = 48, pause = false}) => <use
     href={`#${id}`}
     x={x}
     y={y}
     fill={fade(background, opacity)}
-    style={{animationDelay: `${delay}s`, animationDuration: `${duration}s`}}
+    style={{
+      animationPlayState: pause ? "paused" : "running",
+      animationDelay: `${delay}s`,
+      animationDuration: `${duration*2}s`
+    }}
   />;
 
   const svgClasses = [classes.waves];
@@ -65,10 +71,10 @@ function WaveBorder(props) {
           <path id={id} d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
         </defs>
         <g className={classes.parallax}>
-          {addWave({y: 0, delay: -2, duration: 9, opacity: 0.7})}
-          {addWave({y: 3, delay: -3, duration: 12, opacity: 0.5})}
-          {addWave({y: 5, delay: -4, duration: 19, opacity: 0.3})}
-          {addWave({y: 6, delay: -5, duration: 25, opacity: 1, x: 50})}
+          {addWave({y: 0, delay: -(randomDelay + 2), duration: 9, opacity: 0.7, pause})}
+          {addWave({y: 3, delay: -(randomDelay + 3), duration: 12, opacity: 0.5, pause})}
+          {addWave({y: 5, delay: -(randomDelay + 4), duration: 19, opacity: 0.3, pause})}
+          {addWave({y: 6, delay: -(randomDelay + 5), duration: 25, opacity: 1, x: 50, pause})}
         </g>
       </svg>
 
@@ -81,6 +87,7 @@ WaveBorder.propTypes = {
   background: PropTypes.string.isRequired,
   flip: PropTypes.bool,
   reverse: PropTypes.bool,
+  pause: PropTypes.bool,
   classes: PropTypes.object.isRequired
 };
 

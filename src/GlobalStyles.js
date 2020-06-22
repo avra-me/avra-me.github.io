@@ -1,4 +1,4 @@
-import { withStyles } from "@material-ui/core";
+import {withStyles} from "@material-ui/core";
 
 const styles = (theme) => ({
   "@global": {
@@ -53,6 +53,19 @@ const styles = (theme) => ({
       marginLeft: "auto",
       maxWidth: 1370,
     },
+
+    ".section": {
+      marginBottom: theme.spacing(20),
+      [theme.breakpoints.down("md")]: {
+        marginBottom: theme.spacing(18),
+      },
+      [theme.breakpoints.down("sm")]: {
+        marginBottom: theme.spacing(16),
+      },
+      [theme.breakpoints.down("xs")]: {
+        marginBottom: theme.spacing(14),
+      },
+    },
     ".lg-mg-top": {
       marginTop: `${theme.spacing(10)}px !important`,
       [theme.breakpoints.down("md")]: {
@@ -96,4 +109,4 @@ function globalStyles() {
   return null;
 }
 
-export default withStyles(styles, { withTheme: true })(globalStyles);
+export default withStyles(styles, {withTheme: true})(globalStyles);

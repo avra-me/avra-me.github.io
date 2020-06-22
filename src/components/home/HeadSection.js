@@ -8,6 +8,7 @@ import {ThemeProvider} from "@material-ui/styles";
 import Hidden from "@material-ui/core/Hidden";
 import useTheme from "@material-ui/core/styles/useTheme";
 import Avatar from "@material-ui/core/Avatar";
+import clsx from "clsx";
 
 const generateGradientString = (theme) => {
   const points = ["light", "main", "dark"].map((name, i) => `${theme.palette.secondary[name]} ${theme.palette.wavePoints[i]}%`);
@@ -77,7 +78,7 @@ const styles = (theme) => ({
     boxShadow: theme.shadows[4],
   },
   container: {
-    marginTop: theme.spacing(6),
+    paddingTop: theme.spacing(6),
     marginBottom: theme.spacing(12),
     [theme.breakpoints.down("md")]: {
       marginBottom: theme.spacing(9),
@@ -140,33 +141,31 @@ function HeadSection(props) {
   const theme = useTheme();
   const {name, caption, prefix, brand} = details;
   return (
-    <span className={classes.waveArea}>
+    <span className={clsx(classes.waveArea, "section")}>
           <ThemeProvider theme={createMuiTheme({palette: {type: "dark"}})}>
             <div className={classNames(classes.wrapper)}>
               <Hidden smDown>
-                        <Grid
-                          item
-                          xs={12}
-                          md={12}
-                          style={{margin: "auto", alignItems: "center"}}
-                          className={"lg-p-top"}
-                        >
-                          <Box
-                            display="flex"
-                            flexDirection="column"
-                            style={{margin: "auto", alignItems: "center"}}
-                            height="100%"
-                          >
-                          {brand && <Avatar variant={"square"} className={classes.brand} src={brand} alt={""}/>}
-                          </Box>
-                        </Grid>
-                      </Hidden>
+                <Grid
+                  item
+                  xs={12}
+                  md={12}
+                  style={{margin: "auto", alignItems: "center"}}
+                  className={"lg-p-top"}
+                >
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    style={{margin: "auto", alignItems: "center"}}
+                    height="100%"
+                  >
+                  {brand && <Avatar variant={"square"} className={classes.brand} src={brand} alt={""}/>}
+                  </Box>
+                </Grid>
+              </Hidden>
               <div className={classNames("container-fluid", classes.container)}>
                 <Box display="flex" justifyContent="center" className="row">
                   <Card
                     className={classes.card}
-                    data-aos-delay="200"
-                    data-aos="zoom-in"
                   >
                   <div className={classNames(classes.containerFix, "container")}>
                     <Box justifyContent="space-between" className="row">
