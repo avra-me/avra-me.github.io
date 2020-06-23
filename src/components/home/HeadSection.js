@@ -6,6 +6,7 @@ import WaveBorder from "../../shared/components/WaveBorder";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import {ThemeProvider} from "@material-ui/styles";
 import Hidden from "@material-ui/core/Hidden";
+import NavBar from "../navigation/NavBar";
 import useTheme from "@material-ui/core/styles/useTheme";
 import Avatar from "@material-ui/core/Avatar";
 import clsx from "clsx";
@@ -137,13 +138,14 @@ const styles = (theme) => ({
 });
 
 function HeadSection(props) {
-  const {classes, details} = props;
+  const {classes, details, navigation} = props;
   const theme = useTheme();
   const {name, caption, prefix, brand} = details;
   return (
     <span className={clsx(classes.waveArea, "section")}>
           <ThemeProvider theme={createMuiTheme({palette: {type: "dark"}})}>
-            <div className={classNames(classes.wrapper)}>
+            <NavBar position={"absolute"} useDarkPalette backgroundColor={"inherit"} links={navigation.links} />
+            <div className={classNames("lg-p-top", classes.wrapper)}>
               <Hidden smDown>
                 <Grid
                   item
@@ -218,6 +220,7 @@ HeadSection.propTypes = {
   classes: PropTypes.object,
   theme: PropTypes.object,
   details: PropTypes.object.isRequired,
+  navigation: PropTypes.object
 };
 
 export default withStyles(styles, {withTheme: true})(HeadSection);

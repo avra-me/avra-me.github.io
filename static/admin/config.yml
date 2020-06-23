@@ -33,6 +33,19 @@ collections:
             name: secondary
             widget: object
             fields: [{*color, name: light, required: false},{*color, name: main},{*color, name: dark, required: false}]
+      - label: "Global Navigation"
+        name: navigation
+        file: 'src/config/navigation.json'
+        fields:
+          - {label: Disabled, default: false, name: disabled, widget: boolean, hint: This will enable/disable the header banner}
+          - {label: Show Icon for static menus, default: false, name: staticIconEnabled, widget: boolean, hint: This effect will not be seen in preview}
+          - label: "Menu Items"
+            name: links
+            widget: list
+            fields:
+              - {name: "Title", label: name, widget: string, hint: "This will be the button label"}
+              - {name: "Icon", label: icon, widget: string, hint: "This will be the icon displayed for mobile navigation"}
+              - {name: "Link", label: link, widget: string, hint: "This will be where the button takes you"}
       - label: "Home Page"
         name: about
         file: 'src/config/home.json'

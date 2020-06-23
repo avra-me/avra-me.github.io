@@ -4,9 +4,12 @@ import Home from "../components/home/Home";
 import theme from "../config/theme";
 import home from "../config/home";
 import footer from "../config/footer";
+import navigation from "../config/navigation";
 
-export default () => (
-  <App theme={theme} footer={footer}>
-    <Home about={home}  />
+const Index = () => (
+  <App theme={theme} footer={footer}  navigation={navigation}>
+      <Home about={home} navigation={navigation}/>
   </App>
 );
+
+export default Index;

@@ -2,23 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import HeadSection from "./HeadSection";
 import IconSection from "./IconSection";
-import WaveBorder from "../../shared/components/WaveBorder";
-import useTheme from "@material-ui/core/styles/useTheme";
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 import EducationCard from "./EducationCard";
 import ExperienceCards from "./ExperienceCards";
 
 function Home(props) {
-  const {about} = props;
+  const {about, navigation} = props;
   const {header, skills} = about;
 
   return <>
-    {!header.disabled && <HeadSection details={header}/>}
+    {!header.disabled && <HeadSection details={header} navigation={navigation}/>}
     <ExperienceCards/>
     <EducationCard/>
     {!skills.disabled && <IconSection values={skills.items} header={skills.header}/>}
@@ -40,7 +32,8 @@ Home.propTypes = {
       caption: PropTypes.string,
     }),
 
-  }).isRequired
+  }).isRequired,
+  navigation: PropTypes.object
 };
 
 export default Home;

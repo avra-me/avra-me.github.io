@@ -7,13 +7,14 @@
   "dependencies": {
     "@material-ui/core": "^4.9.10",
     "@material-ui/icons": "^4.9.1",
-    "@material-ui/styles": "latest",
     "@material-ui/lab": "latest",
+    "@material-ui/styles": "latest",
     "@reach/router": "^1.3.3",
     "aos": "^2.3.4",
     "gatsby": "^2.21.22",
     "gatsby-plugin-material-ui": "^2.1.8",
     "gatsby-plugin-netlify-cms": "^4.3.2",
+    "gatsby-plugin-webpack-bundle-analyzer": "^1.0.5",
     "netlify-cms-app": "^2.12.12",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -34,6 +35,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "analyze": "source-map-explorer 'public/*.js'",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "eslintConfig": {
