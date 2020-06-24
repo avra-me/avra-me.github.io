@@ -9,36 +9,28 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import NavBar from "../components/navigation/NavBar";
 import CardHeader from "@material-ui/core/CardHeader";
-import ProgressiveImage from "gatsby-image";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Chip from "@material-ui/core/Chip";
-// eslint-disable-next-line react/prop-types
+import CardActions from "@material-ui/core/CardActions";
+
 const ExperienceTemplate = ({data}) => {
-  const DynamicImage = () => {
-    if (data.image.progressive) {
-      return <ProgressiveImage fluid={data.image.progressive.fluid}/>;
-    } else {
-      return <img src={markdown.info.image} alt={"Image could not be loaded"}/>;
-    }
-  };
   const {markdown} = data.file;
   let {startDate, endDate} = markdown.info;
-  endDate = endDate === "Invalid date" ? "Current" : endDate
+  endDate = endDate === "Invalid date" ? "Current" : endDate;
   return (
     <App theme={theme} footer={footer} navigation={navigation}>
       <NavBar siteBrand={theme.logo} links={navigation.links}/>
       <Paper className={"container-fluid lg-mg-top"}>
         <Card>
           <Grid container alignItems={"stretch"} className={"lg-p-top"}>
-            <Grid item xs={2}>
-              <DynamicImage/>
-            </Grid>
             <Grid item xs={8}>
               <CardHeader title={markdown.info.title} subheader={markdown.info.short || markdown.excerpt}/>
-              <Chip label={`${startDate}-${endDate}`} />
             </Grid>
           </Grid>
+          <CardActions>
+            <Chip label={`${startDate}-${endDate}`}/>
+          </CardActions>
 
           <CardContent dangerouslySetInnerHTML={{__html: markdown.html}}/>
         </Card>
@@ -79,7 +71,7 @@ ExperienceTemplate.propTypes = {
 export default ExperienceTemplate;
 
 export const pageQuery = graphql`
-query ExperiencePostBySlug($slug: String!, $image: String) {
+query EducationPostBySlug($slug: String!, $image: String) {
   file(name: {eq: $slug}) {
     type: sourceInstanceName
     slug: name
@@ -89,7 +81,6 @@ query ExperiencePostBySlug($slug: String!, $image: String) {
       html
       info: frontmatter {
         title
-        image
         subTitle
         date(formatString: "MMMM DD, YYYY")
         short

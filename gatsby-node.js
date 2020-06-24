@@ -18,7 +18,8 @@ exports.createPages = async ({graphql, actions}) => {
   const {createPage} = actions;
 
   const templates = {
-    "experience": path.resolve("./src/templates/ExperienceTemplate.js")
+    "experience": path.resolve("./src/templates/ExperienceTemplate.js"),
+    "education": path.resolve("./src/templates/EducationTemplate.js")
   };
   const result = await graphql(
     `{
@@ -42,14 +43,24 @@ exports.createPages = async ({graphql, actions}) => {
   result.data.files.values.forEach((page) => {
     const template = templates[page.type];
     if (template) {
-      createPage({
-        path: `/experience/${page.slug}`,
-        component: template,
-        context: {
-          slug: page.slug,
-          image: page.markdown.info.image.replace("/assets/", "")
-        },
-      });
+      if(page.type === "experience"){
+        createPage({
+          path: `/${page.type}/${page.slug}`,
+          component: template,
+          context: {
+            slug: page.slug,
+            image: page.markdown.info.image.replace("/assets/", "")
+          },
+        });
+      }else{
+        createPage({
+          path: `/${page.type}/${page.slug}`,
+          component: template,
+          context: {
+            slug: page.slug
+          },
+        });
+      }
     }
 
 

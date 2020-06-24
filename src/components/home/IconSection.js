@@ -25,15 +25,18 @@ const styles = (theme) => ({
 });
 
 function IconSection(props) {
-  const {header, values, isDemo, classes} = props;
+  const {header, subHeader, values, isDemo, classes} = props;
   const isLgUp = useMediaQuery(theme => theme.breakpoints.up("up"));
   const isMdUp = useMediaQuery(theme => theme.breakpoints.up("md"));
   const isSmUp = useMediaQuery(theme => theme.breakpoints.up("sm"));
   return (
     <div>
       <div className="container-fluid section">
-        <Typography variant="h3" align="center" className={classes.header}>
+        <Typography variant="h3" gutterBottom={false} align="center">
           {header}
+        </Typography>
+        <Typography variant="h4" color={"textSecondary"} align="center" className={classes.header}>
+          {subHeader}
         </Typography>
         <div className="container-fluid">
           <Grid container spacing={isLgUp ? 5 : isMdUp ? 4 : isSmUp ? 3 : 2}>
@@ -71,6 +74,7 @@ function IconSection(props) {
 
 IconSection.propTypes = {
   header: PropTypes.string.isRequired,
+  subHeader: PropTypes.string.isRequired,
   values: PropTypes.arrayOf(PropTypes.object).isRequired,
   isDemo: PropTypes.bool,
   classes: PropTypes.object.isRequired

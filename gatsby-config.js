@@ -31,13 +31,13 @@ module.exports = {
         },
       },
     },
-    // {
-    //   resolve: "gatsby-source-filesystem",
-    //   options: {
-    //     path: `${__dirname}/src/pages/education`,
-    //     name: "education",
-    //   },
-    // },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/src/pages/education`,
+        name: "education",
+      },
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {

@@ -13,7 +13,6 @@ import {withStyles} from "@material-ui/core";
 import PropTypes from "prop-types";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
-import Box from "@material-ui/core/Box";
 import clsx from "clsx";
 
 const styles = (theme) => ({
@@ -22,70 +21,47 @@ const styles = (theme) => ({
   },
   dark: {
     background: theme.palette.secondary.dark
-  },
-  heading: {
-    paddingTop: theme.spacing(3),
-    marginBottom: theme.spacing(3)
   }
 });
-const demo = [
-  {
-    id: '1234',
-    where: "2016",
-    what: "Associate Degree in Information Technology",
-    more: "A heavily practical focused degree that left me with an appreciation for how internet infrastructure works."
-  },
-  {
-    id: '456445',
-    where: "2018",
-    what: "Bachelor of Computer Science",
-    more: "In 2019 I completed my bachelor of computer science with a capstone that had me build a visual web interface for a big data platform."
-  }
-];
 
-const EducationCard = ({classes}) => {
+const EducationCard = ({classes, flip, data, delay}) => {
   const theme = useTheme();
+  const {title, subTitle, short, slug} = data;
 
-  return <div className="container-fluid section">
-    <Box className={classes.heading}>
-      <Typography gutterBottom={false} variant={"h3"} color={"textPrimary"} align={"center"}>
-        Education
-      </Typography>
-      <Typography gutterBottom={true} variant={"h4"} color={"textSecondary"} align={"center"}>
-        I'm always learning, but here is my formal education.
-      </Typography>
-    </Box>
+  return <Grid item xs>
+    <Card className={clsx(classes.root, !flip ? classes.dark : "")} data-aos={"fade-up"}
+          data-aos-once={true}
+          data-aos-duration={1000}
+          data-aos-delay={delay}>
+      <ThemeProvider theme={createMuiTheme({palette: {type: !flip ? "dark" : "light"}})}>
+        <CardMedia style={{background: theme.palette.background.paper}}>
+          {flip && <WaveBorder flip background={theme.palette.secondary.dark}/>}
+          {!flip && <WaveBorder background={theme.palette.secondary.dark}/>}
+        </CardMedia>
 
-    <Grid container spacing={4} alignItems={"stretch"} direction="row" justify={"center"}>
-      {demo.map(({id, where, what, more}, i) => {
-        const isEven = i % 2 === 0;
-        return <Grid item key={i} xs>
-          <Card className={clsx(classes.root, !isEven ? classes.dark : "")}>
-            <ThemeProvider theme={createMuiTheme({palette: {type: !isEven ? "dark" : "light"}})}>
-              <CardMedia style={{background: theme.palette.background.paper}}>
-                {isEven && <WaveBorder flip background={theme.palette.secondary.dark}/>}
-                {!isEven && <WaveBorder background={theme.palette.secondary.dark}/>}
-              </CardMedia>
+        <CardHeader title={title} subheader={subTitle} titleTypographyProps={{color: "textPrimary"}}/>
+        <CardContent className={classes.content}>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {short}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button href={`/education/${slug}`}>Read More</Button>
+        </CardActions>
+      </ThemeProvider>
+    </Card>
+  </Grid>;
+};
 
-              <CardHeader title={what} subheader={where} titleTypographyProps={{color: "textPrimary"}}/>
-              <CardContent className={classes.content}>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {more}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button href={`/projects/${id}`}>Read More</Button>
-              </CardActions>
-            </ThemeProvider>
-          </Card>
-        </Grid>;
-      })}
-    </Grid>
-  </div>;
+EducationCard.defaultProps = {
+  delay: 0
 };
 
 EducationCard.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
+  flip: PropTypes.bool.isRequired,
+  delay: PropTypes.number
 };
 
 export default withStyles(styles)(EducationCard);

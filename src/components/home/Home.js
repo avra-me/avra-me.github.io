@@ -5,6 +5,7 @@ import IconSection from "./IconSection";
 import EducationCard from "./EducationCard";
 import ExperienceCards from "./ExperienceCard";
 import ListExperienceView from "./ListExperienceView";
+import ListEducationView from "./ListEducationView";
 
 function Home(props) {
   const {about, navigation} = props;
@@ -12,9 +13,9 @@ function Home(props) {
 
   return <>
     {!header.disabled && <HeadSection details={header} navigation={navigation}/>}
+    <ListEducationView/>
     <ListExperienceView featuredOnly/>
-    <EducationCard/>
-    {!skills.disabled && <IconSection values={skills.items} header={skills.header}/>}
+    {!skills.disabled && <IconSection values={skills.items} header={skills.header} subHeader={skills.subHeader}/>}
   </>;
 }
 
@@ -22,6 +23,7 @@ Home.propTypes = {
   about: PropTypes.shape({
     skills: PropTypes.shape({
       header: PropTypes.string,
+      subHeader: PropTypes.string,
       disabled: PropTypes.bool,
       items: PropTypes.array
     }),
