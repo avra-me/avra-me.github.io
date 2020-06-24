@@ -3,18 +3,21 @@ import App from "../App";
 import theme from "../config/theme";
 import footer from "../config/footer";
 import HeadSection from "../components/home/HeadSection";
-import {Typography} from "@material-ui/core";
 import navigation from "../config/navigation";
+import PropTypes from "prop-types";
+import ListExperienceView from "../components/home/ListExperienceView";
 
-export default () => (
+const ExperienceHome = () => (
   <App theme={theme} footer={footer} navigation={navigation}>
     <HeadSection details={{prefix: "", name: "My Projects", caption: "What I'm working on"}} navigation={navigation}/>
     <div>
-      <div className="container-fluid lg-p-top">
-        <Typography variant="h3" align="center">
-          Sorry nothing here yet, I am working on it though!
-        </Typography>
-      </div>
+      <ListExperienceView/>
     </div>
   </App>
 );
+
+ExperienceHome.propTypes = {
+  data: PropTypes.object
+};
+
+export default ExperienceHome;

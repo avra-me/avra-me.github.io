@@ -13,6 +13,7 @@ import {withStyles} from "@material-ui/core";
 import PropTypes from "prop-types";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
+import Box from "@material-ui/core/Box";
 
 const styles = (theme) => ({
   root: {
@@ -20,6 +21,10 @@ const styles = (theme) => ({
   },
   dark: {
     background: theme.palette.secondary.dark
+  },
+  heading: {
+    paddingTop: theme.spacing(3),
+    marginBottom: theme.spacing(3)
   }
 });
 const demo = [
@@ -41,9 +46,15 @@ const EducationCard = ({classes}) => {
   const theme = useTheme();
 
   return <div className="container-fluid section">
-    <Typography variant="h3" align="center" className={["lg-mg-bottom", classes.text].join(" ")}>
-      My Education
-    </Typography>
+    <Box className={classes.heading}>
+      <Typography gutterBottom={false} variant={"h3"} color={"textPrimary"} align={"center"}>
+        Education
+      </Typography>
+      <Typography gutterBottom={true} variant={"h4"} color={"textSecondary"} align={"center"}>
+        I'm always learning, but here is my formal education.
+      </Typography>
+    </Box>
+
     <Grid container spacing={4} alignItems={"stretch"} direction="row" justify={"center"}>
       {demo.map(({id, where, what, more}, i) => {
         const isEven = i % 2 === 0;

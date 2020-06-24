@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import HeadSection from "./HeadSection";
 import IconSection from "./IconSection";
 import EducationCard from "./EducationCard";
-import ExperienceCards from "./ExperienceCards";
+import ExperienceCards from "./ExperienceCard";
+import ListExperienceView from "./ListExperienceView";
 
 function Home(props) {
   const {about, navigation} = props;
@@ -11,7 +12,7 @@ function Home(props) {
 
   return <>
     {!header.disabled && <HeadSection details={header} navigation={navigation}/>}
-    <ExperienceCards/>
+    <ListExperienceView featuredOnly/>
     <EducationCard/>
     {!skills.disabled && <IconSection values={skills.items} header={skills.header}/>}
   </>;

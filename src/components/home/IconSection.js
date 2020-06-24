@@ -31,7 +31,7 @@ function IconSection(props) {
   const isSmUp = useMediaQuery(theme => theme.breakpoints.up("sm"));
   return (
     <div>
-      <div className="container-fluid lg-p-top">
+      <div className="container-fluid section">
         <Typography variant="h3" align="center" className={classes.header}>
           {header}
         </Typography>

@@ -3,7 +3,7 @@ title: Software Developer
 startDate: Jun 2020
 endDate: ""
 subTitle: Deloitte
-date: 2020-06-21T05:04:32.814Z
+date: 2020-06-22T05:04:32.814Z
 short: Consulting and developing software solutions for a wide range of
   industries and wide variety of roles.
 featured: true
