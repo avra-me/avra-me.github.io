@@ -1,5 +1,7 @@
 ---
 title: Software Developer
+startDate: Jun 2020
+endDate: ""
 subTitle: Deloitte
 date: 2020-06-21T05:04:32.814Z
 short: Consulting and developing software solutions for a wide range of
@@ -7,7 +9,11 @@ short: Consulting and developing software solutions for a wide range of
 featured: true
 image: /assets/tech-differentiates.svg
 tags:
-  - TODO
+  - Deloitte
+  - Natural Language
+  - Microservices
+  - Machine Learning
+  - Artificial Inteligence
 ---
 #### Projects Undertaken
 
