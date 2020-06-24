@@ -15,6 +15,7 @@ import {
   Toolbar,
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
+import Icon from "@material-ui/core/Icon";
 
 const styles = (theme) => ({
   closeIcon: {
@@ -91,7 +92,11 @@ function NavigationDrawer(props) {
                   disableRipple
                   disableTouchRipple
                 >
-                  <ListItemIcon>{element.icon}</ListItemIcon>
+                  <ListItemIcon>
+                    <Icon>
+                      {element.icon}
+                    </Icon>
+                  </ListItemIcon>
                   <ListItemText
                     primary={
                       <Typography variant="subtitle1" className="text-white">

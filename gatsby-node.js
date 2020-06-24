@@ -4,15 +4,15 @@ const path = require("path");
 const {createFilePath} = require("gatsby-source-filesystem");
 // Implement the Gatsby API “onCreatePage”. This is
 // called after every page is created.
-exports.onCreatePage = ({page, actions}) => {
-  // Make the front page match everything client side.
-  const {createPage} = actions;
-  // Normally your paths should be a bit more judicious.
-  if (page.path === "/") {
-    page.matchPath = "/*";
-    createPage(page);
-  }
-};
+// exports.onCreatePage = ({page, actions}) => {
+//   // Make the front page match everything client side.
+//   const {createPage} = actions;
+//   // Normally your paths should be a bit more judicious.
+//   if (page.path === "/") {
+//     page.matchPath = "/(?!static)/?*|/";
+//     createPage(page);
+//   }
+// };
 
 exports.createPages = async ({graphql, actions}) => {
   const {createPage} = actions;
