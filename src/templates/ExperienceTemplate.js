@@ -11,9 +11,8 @@ import NavBar from "../components/navigation/NavBar";
 import CardHeader from "@material-ui/core/CardHeader";
 import ProgressiveImage from "gatsby-image";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import Chip from "@material-ui/core/Chip";
-// eslint-disable-next-line react/prop-types
+
 const ExperienceTemplate = ({data}) => {
   const DynamicImage = () => {
     if (data.image.progressive) {
@@ -24,11 +23,11 @@ const ExperienceTemplate = ({data}) => {
   };
   const {markdown} = data.file;
   let {startDate, endDate} = markdown.info;
-  endDate = endDate === "Invalid date" ? "Current" : endDate
+  endDate = endDate === "Invalid date" ? "Current" : endDate;
   return (
     <App theme={theme} footer={footer} navigation={navigation}>
       <NavBar siteBrand={theme.logo} links={navigation.links}/>
-      <Paper className={"container-fluid lg-mg-top"}>
+      <div className={"container-fluid lg-mg-top"}>
         <Card>
           <Grid container alignItems={"stretch"} className={"lg-p-top"}>
             <Grid item xs={2}>
@@ -36,13 +35,13 @@ const ExperienceTemplate = ({data}) => {
             </Grid>
             <Grid item xs={8}>
               <CardHeader title={markdown.info.title} subheader={markdown.info.short || markdown.excerpt}/>
-              <Chip label={`${startDate}-${endDate}`} />
+              <Chip label={`${startDate}-${endDate}`}/>
             </Grid>
           </Grid>
 
           <CardContent dangerouslySetInnerHTML={{__html: markdown.html}}/>
         </Card>
-      </Paper>
+      </div>
     </App>
   );
 };

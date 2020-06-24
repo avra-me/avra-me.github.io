@@ -10,7 +10,6 @@ import CardContent from "@material-ui/core/CardContent";
 import NavBar from "../components/navigation/NavBar";
 import CardHeader from "@material-ui/core/CardHeader";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import Chip from "@material-ui/core/Chip";
 import CardActions from "@material-ui/core/CardActions";
 
@@ -21,7 +20,7 @@ const ExperienceTemplate = ({data}) => {
   return (
     <App theme={theme} footer={footer} navigation={navigation}>
       <NavBar siteBrand={theme.logo} links={navigation.links}/>
-      <Paper className={"container-fluid lg-mg-top"}>
+      <div className={"container-fluid lg-mg-top"}>
         <Card>
           <Grid container alignItems={"stretch"} className={"lg-p-top"}>
             <Grid item xs={8}>
@@ -34,7 +33,7 @@ const ExperienceTemplate = ({data}) => {
 
           <CardContent dangerouslySetInnerHTML={{__html: markdown.html}}/>
         </Card>
-      </Paper>
+      </div>
     </App>
   );
 };
