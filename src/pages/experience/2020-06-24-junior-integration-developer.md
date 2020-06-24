@@ -18,9 +18,11 @@ tags:
 ---
 #### Projects Undertaken
 
-###### Project Rewire 
+###### Project Rewire
 
 * Supported the delivery of a University wide upgrade to their LMS (Canvas) by creating integrations between the existing services and the new LMS. 
+
+  ![Canvas](/assets/Canvas_RMIT.jpg "Canvas LMS was implemented across rmit")
 
 ###### Project Passport
 
