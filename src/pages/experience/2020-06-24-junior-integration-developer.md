@@ -1,7 +1,7 @@
 ---
 title: Junior Integration Developer
-startDate: Nov 2017
-endDate: Jan 2019
+startDate: 2017-11-01T00:00:01.000Z
+endDate: 2019-01-01T00:00:01.000Z
 subTitle: RMIT University
 date: 2020-06-21T05:20:55.644Z
 short: Working in project environments supporting the delivery of

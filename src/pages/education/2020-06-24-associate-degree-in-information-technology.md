@@ -6,7 +6,7 @@ tags:
   - Networking
   - Infrastructure
   - Cloud
-startDate: 2020-06-24T13:26:43.627Z
-endDate: 2020-06-24T13:26:43.665Z
+startDate: 2016-02-01T00:00:01.000Z
+endDate: 2016-10-01T00:00:01.000Z
 ---
 Transferred to bachelor after 1 year.

@@ -1,7 +1,7 @@
 ---
 title: Solution Architect / Developer
-startDate: Jul 2019
-endDate: Nov 2019
+startDate: 2019-06-01T00:00:01.000Z
+endDate: 2019-11-01T00:00:01.000Z
 subTitle: RMIT Library (Capstone)
 link: https://nebula.avrami.me
 date: 2020-06-21T05:32:55.575Z

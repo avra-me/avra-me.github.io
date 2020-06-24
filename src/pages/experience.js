@@ -9,7 +9,7 @@ import ListExperienceView from "../components/home/ListExperienceView";
 
 const ExperienceHome = () => (
   <App theme={theme} footer={footer} navigation={navigation}>
-    <HeadSection details={{prefix: "", name: "My Projects", caption: "What I'm working on"}} navigation={navigation}/>
+    <HeadSection details={{prefix: "", name: "My Experience", caption: "Where I've worked and what I've done."}} navigation={navigation}/>
     <div>
       <ListExperienceView/>
     </div>

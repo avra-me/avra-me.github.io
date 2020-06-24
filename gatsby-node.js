@@ -26,6 +26,11 @@ exports.createPages = async ({graphql, actions}) => {
           values: nodes {
             type: sourceInstanceName
             slug: name
+            markdown: childMarkdownRemark {
+             info: frontmatter {
+               image
+             }
+            }
           }
         }
       }`
@@ -42,6 +47,7 @@ exports.createPages = async ({graphql, actions}) => {
         component: template,
         context: {
           slug: page.slug,
+          image: page.markdown.info.image.replace("/assets/", "")
         },
       });
     }

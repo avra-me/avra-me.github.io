@@ -7,7 +7,7 @@ tags:
   - Web Development
   - Artificial Inteligence
   - Machine Learning
-startDate: 2020-06-24T13:25:43.765Z
-endDate: 2020-06-24T13:25:43.794Z
+startDate: 2017-02-01T00:00:01.000Z
+endDate: 2019-10-01T00:00:01.000Z
 ---
 Specializations: Cloud Development and Data Engineering

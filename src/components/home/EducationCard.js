@@ -14,6 +14,7 @@ import PropTypes from "prop-types";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
+import clsx from "clsx";
 
 const styles = (theme) => ({
   root: {
@@ -59,21 +60,20 @@ const EducationCard = ({classes}) => {
       {demo.map(({id, where, what, more}, i) => {
         const isEven = i % 2 === 0;
         return <Grid item key={i} xs>
-          <Card className={classes.root}>
+          <Card className={clsx(classes.root, !isEven ? classes.dark : "")}>
             <ThemeProvider theme={createMuiTheme({palette: {type: !isEven ? "dark" : "light"}})}>
-              <CardMedia>
+              <CardMedia style={{background: theme.palette.background.paper}}>
                 {isEven && <WaveBorder flip background={theme.palette.secondary.dark}/>}
                 {!isEven && <WaveBorder background={theme.palette.secondary.dark}/>}
               </CardMedia>
 
-              <CardHeader title={what} subheader={where} titleTypographyProps={{color: "textPrimary"}}
-                          className={!isEven ? classes.dark : ""}/>
-              <CardContent className={[classes.content, !isEven ? classes.dark : ""].join(" ")}>
+              <CardHeader title={what} subheader={where} titleTypographyProps={{color: "textPrimary"}}/>
+              <CardContent className={classes.content}>
                 <Typography variant="body2" color="textSecondary" component="p">
                   {more}
                 </Typography>
               </CardContent>
-              <CardActions className={!isEven ? classes.dark : ""}>
+              <CardActions>
                 <Button href={`/projects/${id}`}>Read More</Button>
               </CardActions>
             </ThemeProvider>

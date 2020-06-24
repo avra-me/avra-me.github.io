@@ -11,12 +11,11 @@ const ListExperienceView = ({featuredOnly}) => {
 
   files.values.forEach(({markdown}) => {
     const currentImage = markdown.info.image;
-    const progressiveImages = images.values.filter(v => `/${v.dir}/${v.path}` === currentImage);
-    if (progressiveImages.length) {
-      markdown.info.image = progressiveImages[0].childImageSharp.fluid;
-    } else {
-      markdown.info.svg = currentImage;
-    }
+    images.values.forEach(image => {
+      if (`/${image.dir}/${image.path}` === currentImage) {
+        markdown.info.image = image.childImageSharp.fluid;
+      }
+    });
   });
 
   return <div className="container-fluid lg-p-top">
@@ -45,8 +44,8 @@ const listExperienceQuery = graphql`query ListExperienceData {
             short
             featured
             link
+        }
       }
-    }
     }
   }
   images: allFile(filter: {sourceInstanceName: {eq: "assets"}, extension: {ne: "svg"}}) {

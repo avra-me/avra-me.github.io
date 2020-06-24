@@ -102,8 +102,8 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Start Date", name: "startDate", widget: "datetime", format: "MMM YYYY"}
-      - {label: "End Date", name: "endDate", widget: "datetime", format: "MMM YYYY", required: false}
+      - {label: "Start Date", name: "startDate", widget: "datetime"}
+      - {label: "End Date", name: "endDate", widget: "datetime", required: false}
       - {label: "Where", name: "subTitle", widget: "string"}
       - {label: "Link", name: "link", widget: "string", required: false}
       - {label: "Publish Date", name: "date", widget: "datetime"}
@@ -120,9 +120,8 @@ collections:
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Sub-Title", name: "subTitle", widget: "string"}
-      - {label: "Start Date", name: "startDate", widget: "datetime", format: "MMM YYYY"}
-      - {label: "End Date", name: "endDate", widget: "datetime", format: "MMM YYYY", required: false}
-      - {label: "Description", name: "short", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Link", name: "link", widget: "string", required: false}
       - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Start Date", name: "startDate", widget: "datetime"}
+      - {label: "End Date", name: "endDate", widget: "datetime", required: false}
+      - {label: "Description", name: "short", widget: "text", required: false}

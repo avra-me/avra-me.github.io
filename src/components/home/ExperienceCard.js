@@ -86,8 +86,8 @@ const ExperienceCard = ({classes, data, flip, delay}) => {
             </Grid>
             <Grid item style={{height: "100%"}} container alignItems={"center"}>
               {
-                svg !== undefined ?
-                  <img src={svg} className={classes.media} alt={title}/> :
+                typeof image === "string"?
+                  <img src={image} className={classes.media} alt={title}/> :
                   <Img
                     fluid={image}
                     className={classes.media}
