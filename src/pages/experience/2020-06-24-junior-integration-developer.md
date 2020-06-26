@@ -10,11 +10,9 @@ short: Working in project environments supporting the delivery of
 featured: true
 image: /assets/Canvas_RMIT.jpg
 tags:
-  - Deloitte
-  - Natural Language
-  - Microservices
-  - Machine Learning
-  - Artificial Inteligence
+  - RMIT
+  - Databases
+  - Big Data
   - Software Development
   - Solution Design
 ---
