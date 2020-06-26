@@ -15,6 +15,8 @@ tags:
   - Microservices
   - Machine Learning
   - Artificial Inteligence
+  - Software Development
+  - Solution Design
 ---
 #### Projects Undertaken
 
