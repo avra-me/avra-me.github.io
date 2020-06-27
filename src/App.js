@@ -8,11 +8,11 @@ import ThemeFactory from "./theme";
 import Footer from "./components/footer/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import SourcedFooter from "./components/footer/SourcedFooter";
 
 
 const App = (props) => {
-  const {children, theme, footer, navigation} = props;
-  const {logo} = theme;
+  const {children, theme} = props;
   const isServerRender = typeof window === "undefined";
   const muiTheme = ThemeFactory(theme);
 
@@ -31,14 +31,13 @@ const App = (props) => {
       <GlobalStyles/>
       <NavBar aosAnchor={"#wave-box"}/>
       <RenderChildren/>
-      {!footer.disabled && <Footer config={footer}/>}
+      <SourcedFooter/>
     </MuiThemeProvider>
   );
 };
 
 App.propTypes = {
   theme: PropTypes.object,
-  footer: PropTypes.object,
   children: PropTypes.element
 };
 

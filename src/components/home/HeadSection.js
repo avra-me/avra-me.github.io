@@ -99,6 +99,8 @@ const styles = (theme) => ({
   waveBorder: {
     paddingTop: theme.spacing(4),
     zIndex: 20,
+    height: "7vw",
+    minHeight: "7vw",
   },
   speech: {
     display: "inline-flex",
@@ -134,7 +136,7 @@ const styles = (theme) => ({
     height: "auto",
     width: "75px",
     overflow: "inherit"
-  }
+  },
 });
 
 function HeadSection(props) {

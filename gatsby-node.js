@@ -18,8 +18,8 @@ exports.createPages = async ({graphql, actions}) => {
   const {createPage} = actions;
 
   const templates = {
-    "experience": path.resolve("./src/templates/ExperienceTemplate.js"),
-    "education": path.resolve("./src/templates/EducationTemplate.js")
+    "experience": path.resolve("./src/pageTemplates/ExperienceTemplate.js"),
+    "education": path.resolve("./src/pageTemplates/EducationTemplate.js")
   };
   const result = await graphql(
     `{

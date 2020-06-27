@@ -33,19 +33,30 @@ const styles = (theme) => ({
     margin: "auto"
   },
   dividerTop: {
+    width: "100%",
     position: "absolute",
-    top: 0
+    top: 0,
+    zIndex: 10
   },
   dividerBottom: {
+    width: "100%",
     position: "absolute",
-    bottom: 0
+    bottom: 0,
+    zIndex: 10
+  },
+  wavyBorder: {
+    height: "30%",
+    minHeight: "30%",
+  },
+  mediaItem: {
+    position: "relative",
+    flexGrow: 1
   }
 });
 
 const ExperienceCard = ({classes, data, flip, delay}) => {
   const theme = useTheme();
   const {slug, title, subTitle, image, short, excerpt, link, svg} = data;
-  console.log(svg, image)
   return <Fragment key={slug}>
     <Grid>
       <Card elevation={0} className={classes.root}
@@ -81,24 +92,27 @@ const ExperienceCard = ({classes, data, flip, delay}) => {
           </Grid>
 
           <Grid item xs={4} md={2} className={classes.mediaGrid} direction={"row"} alignItems={"stretch"}>
-            <Grid item className={classes.dividerTop}>
-              <WaveBorder background={theme.palette.background.default} pause flip/>
-            </Grid>
             <Grid item style={{height: "100%"}} container alignItems={"center"}>
-              {
-                typeof image === "string"?
-                  <img src={image} className={classes.media} alt={title}/> :
-                  <Img
-                    fluid={image}
-                    className={classes.media}
-                    alt={title}
-                  />
-              }
+
+              <Grid item className={classes.mediaItem}>
+                <Grid item className={classes.dividerTop}>
+                  <WaveBorder background={theme.palette.background.default} pause flip/>
+                </Grid>
+                {
+                  typeof image === "string" ?
+                    <img src={image} className={classes.media} alt={title}/> :
+                    <Img
+                      fluid={image}
+                      className={classes.media}
+                      alt={title}
+                    />
+                }
+                <Grid item className={classes.dividerBottom}>
+                  <WaveBorder className={classes.wavyBorder} background={theme.palette.background.default} pause/>
+                </Grid>
+              </Grid>
             </Grid>
-            <Grid item className={classes.dividerBottom}>
-              <WaveBorder background={theme.palette.background.default} pause/>
-            </Grid>
-            }
+
           </Grid>
         </Grid>
       </Card>

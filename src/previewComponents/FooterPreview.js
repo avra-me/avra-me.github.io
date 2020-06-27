@@ -19,7 +19,7 @@ export default ({entry, getAsset}) => {
         <MuiThemeProvider theme={theme}>
             <CssBaseline />
             <GlobalStyles />
-            <Footer config={config} />
+            <Footer  />
         </MuiThemeProvider>
     </InjectStyles>;
 

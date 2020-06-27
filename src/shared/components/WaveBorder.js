@@ -12,9 +12,7 @@ const styles = {
   waves: {
     position: "relative",
     width: "100%",
-    marginBottom: -7,
-    height: "7vw",
-    minHeight: "7vw",
+    marginBottom: -7
   },
   "@keyframes moveForever": {
     from: {transform: "translate3d(-90px, 0, 0)"},
@@ -55,7 +53,7 @@ function WaveBorder(props) {
     }}
   />;
 
-  const svgClasses = [classes.waves];
+  const svgClasses = [classes.waves, className];
   if (flip) {
     svgClasses.push(classes.flip);
   }
@@ -64,7 +62,7 @@ function WaveBorder(props) {
   }
 
   return (
-    <div className={className} {...rest}>
+    <div {...rest}>
       <svg className={svgClasses.join(" ")} xmlns="http://www.w3.org/2000/svg"
            viewBox="0 24 150 28" preserveAspectRatio="none" shapeRendering="auto">
         <defs>
