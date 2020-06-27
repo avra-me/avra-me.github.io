@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 const styles = (theme) => ({
   heading: {
-    paddingTop: theme.spacing(3),
+    paddingTop: theme.spacing(10),
     marginBottom: theme.spacing(3)
   }
 });

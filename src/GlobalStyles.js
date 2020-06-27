@@ -55,15 +55,15 @@ const styles = (theme) => ({
     },
 
     ".section": {
-      marginBottom: theme.spacing(20),
+      marginBottom: theme.spacing(12),
       [theme.breakpoints.down("md")]: {
-        marginBottom: theme.spacing(18),
+        marginBottom: theme.spacing(10),
       },
       [theme.breakpoints.down("sm")]: {
-        marginBottom: theme.spacing(16),
+        marginBottom: theme.spacing(8),
       },
       [theme.breakpoints.down("xs")]: {
-        marginBottom: theme.spacing(14),
+        marginBottom: theme.spacing(6),
       },
     },
     ".lg-mg-top": {

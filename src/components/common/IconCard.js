@@ -16,7 +16,10 @@ const styles = (theme) => ({
     marginRight: theme.spacing(3)
   },
   root: {
-    marginBottom: theme.spacing(5)
+    marginBottom: theme.spacing(5),
+    [theme.breakpoints.up("md")]: {
+      marginBottom: theme.spacing(3)
+    }
   },
   avatar: {
     flex: "0 0 auto",
@@ -30,7 +33,7 @@ function IconCard(props) {
     color: color,
     backgroundColor: lighten(color, 0.5),
     fill: color,
-  }
+  };
   return (
     <Grid
       item
@@ -47,7 +50,7 @@ function IconCard(props) {
               <Avatar style={iconStyling}>{icon}</Avatar>
             </div>
             <Typography variant="h5" gutterBottom={false} align={"left"} component={"span"}>
-               {headline}
+              {headline}
             </Typography>
             <Grid xs={12} item>
               <Typography variant="body1" color="textSecondary" align={"left"} paragraph component={"div"}>
