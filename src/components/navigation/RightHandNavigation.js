@@ -55,7 +55,7 @@ const RightHandNavigation = ({menuLinks, classes, onDrawerOpen, onDrawerClose}) 
             {element.name}
         </Button>)
     });
-    
+
     return <div>
         <Hidden mdUp implementation={"css"}>
             <IconButton
@@ -105,7 +105,7 @@ RightHandNavigation.propTypes = {
         icon: PropTypes.string.isRequired,
     })).isRequired,
     onDrawerOpen: PropTypes.func.isRequired,
-    onDrawerClose: PropTypes.func.isRequired
+    onDrawerClose: PropTypes.func
 };
 
 export default withStyles(styles)(RightHandNavigation);

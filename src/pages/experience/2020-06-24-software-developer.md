@@ -13,7 +13,10 @@ tags:
   - Natural Language
   - Microservices
   - Machine Learning
-  - Artificial Inteligence
+  - Artificial Intelligence
+  - Software Development
+  - Communication
+  
 ---
 #### Projects Undertaken
 

@@ -67,31 +67,7 @@ const ExperienceCard = ({classes, data, flip, delay}) => {
       >
         <Grid container spacing={4} direction={flip ? "row" : "row-reverse"}
               justify={"center"}>
-          <Grid item xs={6} md={8}>
-            <CardContent>
-              <Typography gutterBottom={false} variant={"h4"} color={"textPrimary"}>{title}</Typography>
-              <Typography gutterBottom={true} variant={"h5"} color={"textSecondary"}>{subTitle}</Typography>
-              <Typography variant={"h5"}>
-                {short || excerpt}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <ButtonGroup>
-                <Button href={`/experience/${slug}`} color={"primary"}>
-                  <Typography>
-                    Read More
-                  </Typography>
-                </Button>
-                {link && <Button href={link} color={"secondary"}>
-                  <Typography>
-                    View Demo
-                  </Typography>
-                </Button>}
-              </ButtonGroup>
-            </CardActions>
-          </Grid>
-
-          <Grid item xs={4} md={2} className={classes.mediaGrid} direction={"row"} alignItems={"stretch"}>
+          <Grid item xs={8} sm={4} md={2} className={classes.mediaGrid}>
             <Grid item style={{height: "100%"}} container alignItems={"center"}>
 
               <Grid item className={classes.mediaItem}>
@@ -114,6 +90,30 @@ const ExperienceCard = ({classes, data, flip, delay}) => {
             </Grid>
 
           </Grid>
+
+          <Grid item xs={12} sm={6} md={8}>
+            <CardContent>
+              <Typography gutterBottom={false} variant={"h4"} color={"textPrimary"}>{title}</Typography>
+              <Typography gutterBottom={true} variant={"h5"} color={"textSecondary"}>{subTitle}</Typography>
+              <Typography variant={"h5"}>
+                {short || excerpt}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <ButtonGroup variant={"contained"}>
+                <Button href={`/experience/${slug}`} color={"primary"}>
+                  <Typography>
+                    Read More
+                  </Typography>
+                </Button>
+                {link && <Button href={link} color={"secondary"}>
+                  <Typography>
+                    View Demo
+                  </Typography>
+                </Button>}
+              </ButtonGroup>
+            </CardActions>
+          </Grid>
         </Grid>
       </Card>
     </Grid>
@@ -130,7 +130,7 @@ ExperienceCard.propTypes = {
     slug: PropTypes.string,
     title: PropTypes.string,
     subTitle: PropTypes.string,
-    image: PropTypes.object,
+    image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     svg: PropTypes.string,
     short: PropTypes.string,
     excerpt: PropTypes.string,

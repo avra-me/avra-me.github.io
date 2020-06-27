@@ -2,8 +2,6 @@ import React from "react";
 import {graphql} from "gatsby";
 import App from "../App";
 import theme from "../config/theme.json";
-import footer from "../config/footer.json";
-import navigation from "../config/navigation.json";
 import PropTypes from "prop-types";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -13,7 +11,7 @@ import Grid from "@material-ui/core/Grid";
 import Chip from "@material-ui/core/Chip";
 import CardActions from "@material-ui/core/CardActions";
 
-const ExperienceTemplate = ({data}) => {
+const EducationTemplate = ({data}) => {
   const {markdown} = data.file;
   let {startDate, endDate} = markdown.info;
   endDate = endDate === "Invalid date" ? "Current" : endDate;
@@ -38,7 +36,7 @@ const ExperienceTemplate = ({data}) => {
   );
 };
 
-ExperienceTemplate.propTypes = {
+EducationTemplate.propTypes = {
   data: PropTypes.shape({
     image: PropTypes.shape({
       progressive: PropTypes.shape({
@@ -52,13 +50,12 @@ ExperienceTemplate.propTypes = {
         html: PropTypes.string,
         info: PropTypes.shape({
           title: PropTypes.string,
-          startDate: PropTypes.string,
-          endDate: PropTypes.string,
-          image: PropTypes.string,
           subTitle: PropTypes.string,
           date: PropTypes.string,
           short: PropTypes.string,
-          featured: PropTypes.string
+          featured: PropTypes.string,
+          startDate: PropTypes.string,
+          endDate: PropTypes.string
         })
       })
     }),
@@ -67,7 +64,7 @@ ExperienceTemplate.propTypes = {
   })
 };
 
-export default ExperienceTemplate;
+export default EducationTemplate;
 
 export const pageQuery = graphql`
 query EducationPostBySlug($slug: String!, $image: String) {
@@ -89,7 +86,7 @@ query EducationPostBySlug($slug: String!, $image: String) {
       }
     }
   }
-  image: file(relativePath: {eq: $image}, sourceInstanceName: {eq: "assets"}, ext: {ne: "svg"}) {
+  image: file(relativePath: {eq: $image}, sourceInstanceName: {eq: "assets"}, ext: {ne: ".svg"}) {
     progressive: childImageSharp {
       fluid {
         ...GatsbyImageSharpFluid

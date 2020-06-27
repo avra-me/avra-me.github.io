@@ -1,21 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import HeadSection from "./HeadSection";
-import IconSection from "./IconSection";
-import EducationCard from "./EducationCard";
-import ExperienceCards from "./ExperienceCard";
 import ListExperienceView from "./ListExperienceView";
 import ListEducationView from "./ListEducationView";
+import SourcedProfessionalSummary from "./SourcedProfessionalSummary";
 
 function Home(props) {
   const {about, navigation} = props;
-  const {header, skills} = about;
+  const {header} = about;
 
   return <>
     {!header.disabled && <HeadSection details={header} navigation={navigation}/>}
-    <ListEducationView/>
+    <SourcedProfessionalSummary/>
     <ListExperienceView featuredOnly/>
-    {!skills.disabled && <IconSection values={skills.items} header={skills.header} subHeader={skills.subHeader}/>}
+    <ListEducationView/>
   </>;
 }
 

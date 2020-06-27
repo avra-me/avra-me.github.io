@@ -2,8 +2,6 @@ import React from "react";
 import {graphql} from "gatsby";
 import App from "../App";
 import theme from "../config/theme.json";
-import footer from "../config/footer.json";
-import navigation from "../config/navigation.json";
 import PropTypes from "prop-types";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -12,17 +10,20 @@ import CardHeader from "@material-ui/core/CardHeader";
 import ProgressiveImage from "gatsby-image";
 import Grid from "@material-ui/core/Grid";
 import Chip from "@material-ui/core/Chip";
+import CardActions from "@material-ui/core/CardActions";
+import Button from "@material-ui/core/Button";
+import CalendarIcon from "@material-ui/icons/CalendarToday";
 
 const ExperienceTemplate = ({data}) => {
   const DynamicImage = () => {
-    if (data.image.progressive) {
+    if (data.image !== null) {
       return <ProgressiveImage fluid={data.image.progressive.fluid}/>;
     } else {
       return <img src={markdown.info.image} alt={"Image could not be loaded"}/>;
     }
   };
   const {markdown} = data.file;
-  let {startDate, endDate} = markdown.info;
+  let {startDate, endDate, link} = markdown.info;
   endDate = endDate === "Invalid date" ? "Current" : endDate;
   return (
     <App theme={theme}>
@@ -35,11 +36,14 @@ const ExperienceTemplate = ({data}) => {
             </Grid>
             <Grid item xs={8}>
               <CardHeader title={markdown.info.title} subheader={markdown.info.short || markdown.excerpt}/>
-              <Chip label={`${startDate}-${endDate}`}/>
+              <Chip icon={<CalendarIcon/>} label={`${startDate}-${endDate}`}/>
             </Grid>
           </Grid>
 
           <CardContent dangerouslySetInnerHTML={{__html: markdown.html}}/>
+          <CardActions>
+            <Button color={"primary"} variant={"contained"} href={link}>View Demo</Button>
+          </CardActions>
         </Card>
       </div>
     </App>
@@ -66,7 +70,8 @@ ExperienceTemplate.propTypes = {
           subTitle: PropTypes.string,
           date: PropTypes.string,
           short: PropTypes.string,
-          featured: PropTypes.string
+          featured: PropTypes.string,
+          link: PropTypes.string
         })
       })
     }),
@@ -95,10 +100,11 @@ query ExperiencePostBySlug($slug: String!, $image: String) {
         featured
         startDate(formatString: "MMMM YYYY")
         endDate(formatString: "MMMM YYYY")
+        link
       }
     }
   }
-  image: file(relativePath: {eq: $image}, sourceInstanceName: {eq: "assets"}, ext: {ne: "svg"}) {
+  image: file(relativePath: {eq: $image}, sourceInstanceName: {eq: "assets"}, ext: {nin: [".svg", "svg"]}) {
     progressive: childImageSharp {
       fluid {
         ...GatsbyImageSharpFluid

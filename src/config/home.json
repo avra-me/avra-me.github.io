@@ -8,8 +8,7 @@
     "brand": "/assets/avrami-logo2.svg"
   },
   "skills": {
-    "header": "Professional Summary",
-    "subHeader": "My primary skill is my ability to learn, here are some others.",
+
     "disabled": false,
     "items": [
       {

@@ -19,7 +19,8 @@ const App = (props) => {
   useEffect(() => {
     if (!isServerRender) {
       AOS.init({
-        duration: 2000
+        duration: 1000,
+        once: true
       });
     }
   });

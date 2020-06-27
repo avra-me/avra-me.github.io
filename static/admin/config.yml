@@ -115,7 +115,7 @@ collections:
       - {name: "title", label: Name, widget: string, hint: "This will be the primary name for the tag"}
       - {name: "type", widget: hidden, default: "tag"}
       - {name: "alias", widget: list, label: "Other Names", hint: "This will be used to match to other records"}
-      - {label: Text, name: text, widget: markdown}
+      - {label: "Body", name: "body", widget: "markdown"}
       - {label: Icon, name: icon, widget: string}
       - {*color, label: Colour, name: color}
   - name: "footer"

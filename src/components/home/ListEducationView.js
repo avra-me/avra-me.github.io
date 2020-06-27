@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import {withStyles} from "@material-ui/core";
+import SectionHeading from "../common/SectionHeading";
 
 const styles = (theme) => ({
   heading: {
@@ -21,22 +22,16 @@ const ListEducationView = ({featuredOnly, classes}) => {
   const {files} = result;
 
   return <div className="container-fluid section">
-    <Box className={classes.heading}>
-      <Typography gutterBottom={false} variant={"h3"} color={"textPrimary"} align={"center"}>
-        Education
-      </Typography>
-      <Typography gutterBottom={true} variant={"h4"} color={"textSecondary"} align={"center"}>
-        I'm always learning, but here is my formal education.
-      </Typography>
-    </Box>
+    <SectionHeading title={"Education"} subTitle={"I'm always learning, but here is my formal education."} id={"education"}/>
     <Grid container spacing={4} alignItems={"stretch"} direction="row" justify={"center"}>
 
-      {files.values.map((page, i) => {
-        const {excerpt, info,} = page.markdown;
+      {files.values.map(({slug, markdown}, i) => {
+        const {info, excerpt} = markdown;
         info.short = info.short || excerpt;
-        const data = {...info, excerpt, slug: page.slug};
+        const data = {...info, excerpt, slug}
+        ;
         return (featuredOnly ? info.featured : true) &&
-          <EducationCard key={page.id} data={data} flip={i % 2 === 0} delay={i * 100}/>;
+          <EducationCard key={slug} data={data} flip={i % 2 === 0} delay={i * 100}/>;
       })}
     </Grid>
   </div>;
