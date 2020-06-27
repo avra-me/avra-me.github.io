@@ -22,7 +22,7 @@ export default ({entry, getAsset}) => {
         <MuiThemeProvider theme={theme}>
             <CssBaseline />
             <GlobalStyles />
-            <NavBar siteBrand={logo} />
+            <NavBar/>
             <Footer />
         </MuiThemeProvider>
     </InjectStyles>;

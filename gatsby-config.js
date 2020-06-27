@@ -4,22 +4,34 @@
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
 
+const safeRequire = (v) => {
+  try {
+    return require(v);
+  } catch (e) {
+    console.log(e);
+    return {};
+  }
+};
+
+const buildSiteMetadata = () => {
+  const siteMetadata = Object.assign({}, safeRequire("./content/config.json"));
+  siteMetadata.navigation = safeRequire("./content/common/navigation/config.json");
+  siteMetadata.footer = {
+    header: siteMetadata.author.name,
+    caption: siteMetadata.author.description,
+    ...safeRequire("./content/common/footer/config.json")
+  };
+  return siteMetadata;
+};
+
 module.exports = {
-  siteMetadata: {
-    title: "Avrami Hammer, About Me",
-    author: {
-      name: "Avrami Hammer",
-      summary: "I live and work in melbourne building cloud-first web solutions.",
-    },
-    description: "A simple website showcasing who I am and what I do.",
-    siteUrl: "https://avra.me/",
-  },
+  siteMetadata: buildSiteMetadata(),
   /* Your site config here */
   plugins: [
     {
       resolve: "gatsby-plugin-netlify-cms",
       options: {
-        modulePath: `${__dirname}/src/cms.js`,
+        modulePath: "./src/cms.js",
         enableIdentityWidget: false
       }
     },
@@ -34,22 +46,36 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        path: `${__dirname}/src/pages/education`,
+        path: "./src/pages/education",
         name: "education",
       },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        path: `${__dirname}/src/pages/experience`,
+        path: "./content",
+        name: "content-v2",
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: "./src/pages/experience",
         name: "experience",
       },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        path: `${__dirname}/static/assets`,
+        path: "./static/assets",
         name: "assets",
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: "./src/config/",
+        name: "config"
       },
     },
     {

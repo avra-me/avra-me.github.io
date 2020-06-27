@@ -21,7 +21,7 @@ collections:
     files:
       - label: Site Details
         name: theme
-        file: 'src/config/theme.json'
+        file: 'content/config.json'
         description: Configure your site
         fields:
           - {label: Site Logo, name: logo, widget: image, comment: Site title that becomes the logo}
@@ -35,20 +35,13 @@ collections:
             fields: [{*color, name: light, required: false},{*color, name: main},{*color, name: dark, required: false}]
       - label: "Global Navigation"
         name: navigation
-        file: 'src/config/navigation.json'
+        file: 'content/common/navigation/config.json'
         fields:
           - {label: Disabled, default: false, name: disabled, widget: boolean, hint: This will enable/disable the header banner}
           - {label: Show Icon for static menus, default: false, name: staticIconEnabled, widget: boolean, hint: This effect will not be seen in preview}
-          - label: "Menu Items"
-            name: links
-            widget: list
-            fields:
-              - {name: "Title", label: name, widget: string, hint: "This will be the button label"}
-              - {name: "Icon", label: icon, widget: string, hint: "This will be the icon displayed for mobile navigation"}
-              - {name: "Link", label: link, widget: string, hint: "This will be where the button takes you"}
       - label: "Home Page"
         name: about
-        file: 'src/config/home.json'
+        file: 'content/home/config.json'
         fields:
           - label: Header Banner
             name: header
@@ -60,40 +53,13 @@ collections:
               - {label: Name, name: name, widget: string, hint: "What people will call you"}
               - {label: Caption, name: caption, widget: markdown, hint: "A short, snappy tag line"}
               - {label: Brand, name: brand, widget: image, hint: "A short, snappy tag line"}
-          - label: Skills
-            name: skills
-            widget: object
-            fields:
-              - {label: Disabled, default: false, name: disabled, widget: boolean, hint: This will enable/disable the skills component}
-              - label: Items
-                name: items
-                widget: list
-                fields:
-                  - {label: Headline, name: headline, widget: string}
-                  - {label: Text, name: text, widget: string}
-                  - {label: Icon, name: icon, widget: string}
-                  - {*color, label: Colour, name: color}
       - label: "Footer Information"
         name: footer
-        file: 'src/config/footer.json'
+        file: 'content/common/footer/config.json'
         fields:
           - {label: Disabled, default: false, name: disabled, widget: boolean, hint: This will enable/disable the footer}
           - {label: Site Description Header, name: header, widget: string, hint: "A short, snappy tag line"}
           - {label: Site Description, name: caption, widget: text, hint: "A short, snappy tag line"}
-          - label: Social Icons
-            name: icons
-            widget: list
-            fields:
-              - {label: Icon, name: icon, widget: image, hint: "SVG files work best, see the examples."}
-              - {label: Label, name: label, widget: string, "The text that will be displayed under the icon."}
-              - {label: Link, name: text, widget: string, hint: "This should be the url to redirect the user to on click."}
-          - label: Context Info
-            name: context
-            widget: list
-            fields:
-              - {label: Icon, name: icon, widget: image, hint: "SVG files work best, see the examples."}
-              - {label: Label, name: label, widget: string, "The text that will be displayed next to the icon."}
-              - {label: Link, name: link, widget: string, hint: "This should be the url to redirect the user to on click."}
 
   - name: "experience"
     label: "Experience"
@@ -102,6 +68,7 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
+      - {name: "type", widget: hidden, default: "experience"}
       - {label: "Start Date", name: "startDate", widget: "datetime"}
       - {label: "End Date", name: "endDate", widget: "datetime", required: false}
       - {label: "Where", name: "subTitle", widget: "string"}
@@ -119,9 +86,45 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
+      - {name: "type", widget: hidden, default: "education"}
       - {label: "Sub-Title", name: "subTitle", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
       - {label: "Start Date", name: "startDate", widget: "datetime"}
       - {label: "End Date", name: "endDate", widget: "datetime", required: false}
       - {label: "Description", name: "short", widget: "text", required: false}
+
+  - name: "navigation"
+    label: "Navigation Buttons"
+    folder: content/common/navigation
+    create: true
+    slug: "{{title}}"
+    preview_path: ""
+    fields:
+      - {name: "title", label: Name, widget: string, hint: "This will be the button label"}
+      - {name: "icon", label: Icon, widget: string, hint: "This will be the icon displayed for mobile navigation"}
+      - {name: "type", widget: hidden, default: "navigation"}
+      - {name: "link", label: Link, widget: string, hint: "This will be where the button takes you"}
+
+  - name: "tags"
+    label: "Complex Tags"
+    folder: content/tags
+    create: true
+    slug: "{{title}}"
+    fields:
+      - {name: "title", label: Name, widget: string, hint: "This will be the primary name for the tag"}
+      - {name: "type", widget: hidden, default: "tag"}
+      - {name: "alias", widget: list, label: "Other Names", hint: "This will be used to match to other records"}
+      - {label: Text, name: text, widget: markdown}
+      - {label: Icon, name: icon, widget: string}
+      - {*color, label: Colour, name: color}
+  - name: "footer"
+    label: "Footer Buttons"
+    folder: content/common/footer
+    create: true
+    slug: "{{label}}_{{type}}"
+    fields:
+      - {name: "label", label: Label, widget: string, hint: "This will be the primary name for the tag"}
+      - {name: "type", label: Button Type, widget: select, options: [{label: "Attribution buttons", value: "attr"}, {label: "Social Media links", value: "social"}]}
+      - {name: "icon", label: Icon, widget: image}
+      - {name: "link", label: Link, widget: string, hint: "This will be where the button takes you"}

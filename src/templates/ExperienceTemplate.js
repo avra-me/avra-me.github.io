@@ -26,7 +26,7 @@ const ExperienceTemplate = ({data}) => {
   endDate = endDate === "Invalid date" ? "Current" : endDate;
   return (
     <App theme={theme} footer={footer} navigation={navigation}>
-      <NavBar siteBrand={theme.logo} links={navigation.links}/>
+      <NavBar/>
       <div className={"container-fluid lg-mg-top"}>
         <Card>
           <Grid container alignItems={"stretch"} className={"lg-p-top"}>

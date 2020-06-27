@@ -11,15 +11,15 @@ import "aos/dist/aos.css";
 
 
 const App = (props) => {
-  const { children, theme, footer, navigation } = props;
+  const {children, theme, footer, navigation} = props;
   const {logo} = theme;
   const isServerRender = typeof window === "undefined";
   const muiTheme = ThemeFactory(theme);
 
   useEffect(() => {
-    if(!isServerRender){
+    if (!isServerRender) {
       AOS.init({
-        duration : 2000
+        duration: 2000
       });
     }
   });
@@ -27,11 +27,11 @@ const App = (props) => {
 
   return (
     <MuiThemeProvider theme={muiTheme}>
-      <CssBaseline />
-      <GlobalStyles />
-      {!navigation.disabled && <NavBar siteBrand={logo} aosAnchor={"#wave-box"} links={navigation.links} />}
+      <CssBaseline/>
+      <GlobalStyles/>
+      <NavBar aosAnchor={"#wave-box"}/>
       <RenderChildren/>
-      {!footer.disabled && <Footer config={footer} />}
+      {!footer.disabled && <Footer config={footer}/>}
     </MuiThemeProvider>
   );
 };
@@ -39,7 +39,6 @@ const App = (props) => {
 App.propTypes = {
   theme: PropTypes.object,
   footer: PropTypes.object,
-  navigation: PropTypes.object,
   children: PropTypes.element
 };
 

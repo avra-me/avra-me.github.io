@@ -9,6 +9,7 @@ import Box from "@material-ui/core/Box";
 import AppBar from "@material-ui/core/AppBar";
 import withStyles from "@material-ui/core/styles/withStyles";
 import RightHandNavigation from "./RightHandNavigation";
+import {graphql, useStaticQuery} from "gatsby";
 
 const styles = (theme) => ({
   appBar: {
@@ -27,7 +28,19 @@ const styles = (theme) => ({
   }
 });
 
-function NavBar({classes, siteBrand, links, aosAnchor, position, useDarkPalette, backgroundColor}) {
+function NavBar({classes, aosAnchor, position, useDarkPalette, backgroundColor}) {
+
+  let {menuItems, site} = useStaticQuery(getNavigationItemsQuery);
+
+  if (site.siteMetadata.navigation.disabled) {
+    return null;
+  }
+
+  if (site.siteMetadata.navigation.staticIconEnabled && position !== "fixed") {
+    site.siteMetadata.logo = false;
+  }
+
+  menuItems = menuItems.edges.map(v => v.node.markdown.info);
 
   const [selectedTab,] = useState(null);
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
@@ -40,36 +53,64 @@ function NavBar({classes, siteBrand, links, aosAnchor, position, useDarkPalette,
   }, [setIsMobileDrawerOpen]);
 
   return (
-      <div>
-        <AppBar position={position} className={classes.appBar}
-                data-aos={aosAnchor ? "fade-down" : undefined}
-                data-aos-anchor={aosAnchor || undefined}
-                data-aos-anchor-placement="top-top"
-                data-aos-once="false"
-                data-aos-duration={100}
-                style={backgroundColor ? {backgroundColor} : undefined}
-        >
-          <ThemeProvider theme={createMuiTheme({palette: {type: useDarkPalette ? "dark" : false}})}>
-            <Toolbar className={classes.toolbar}>
-              <Box height={1}>
-                {siteBrand && <Button color="default" href={"/"}>
-                  <img className={classes.brandIcon} src={siteBrand} alt={"icon"}/>
-                </Button>}
-              </Box>
-              <RightHandNavigation menuLinks={links} onDrawerOpen={handleMobileDrawerOpen}/>
-            </Toolbar>
-          </ThemeProvider>
-        </AppBar>
-        <NavigationDrawer
-            menuItems={links}
-            anchor="right"
-            open={isMobileDrawerOpen}
-            selectedItem={selectedTab}
-            onClose={handleMobileDrawerClose}
-        />
-      </div>
+    <div>
+      <AppBar position={position} className={classes.appBar}
+              data-aos={aosAnchor ? "fade-down" : undefined}
+              data-aos-anchor={aosAnchor || undefined}
+              data-aos-anchor-placement="top-top"
+              data-aos-once="false"
+              data-aos-duration={100}
+              style={backgroundColor ? {backgroundColor} : undefined}
+      >
+        <ThemeProvider theme={createMuiTheme({palette: {type: useDarkPalette ? "dark" : false}})}>
+          <Toolbar className={classes.toolbar}>
+            <Box height={1}>
+              {site.siteMetadata.logo && <Button color="default" href={"/"}>
+                <img className={classes.brandIcon} src={site.siteMetadata.logo} alt={"icon"}/>
+              </Button>}
+            </Box>
+            <RightHandNavigation menuLinks={menuItems} onDrawerOpen={handleMobileDrawerOpen}/>
+          </Toolbar>
+        </ThemeProvider>
+      </AppBar>
+      <NavigationDrawer
+        menuItems={menuItems}
+        anchor="right"
+        open={isMobileDrawerOpen}
+        selectedItem={selectedTab}
+        onClose={handleMobileDrawerClose}
+      />
+    </div>
   );
 }
+
+const getNavigationItemsQuery = graphql`
+query GetNavigationItems {
+  menuItems: allFile(filter: {sourceInstanceName: {eq: "content-v2"}, childMarkdownRemark: {frontmatter: {type:{eq:"navigation"}}}}) {
+    edges {
+      node {
+        markdown: childMarkdownRemark {
+          info: frontmatter {
+            name: title
+            link
+            icon
+          }
+        }
+      }
+    }
+  }
+  site {
+    siteMetadata {
+      logo
+      navigation {
+        disabled
+        staticIconEnabled
+      }
+    }
+  }
+}
+
+`;
 
 NavBar.defaultProps = {
   position: "fixed",
@@ -80,12 +121,6 @@ NavBar.defaultProps = {
 
 NavBar.propTypes = {
   classes: PropTypes.object.isRequired,
-  siteBrand: PropTypes.string,
-  links: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired,
-  })).isRequired,
   position: PropTypes.string,
   aosAnchor: PropTypes.string,
   useDarkPalette: PropTypes.bool,
