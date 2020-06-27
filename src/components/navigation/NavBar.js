@@ -36,7 +36,7 @@ function NavBar({classes, aosAnchor, position, useDarkPalette, backgroundColor})
     return null;
   }
 
-  if (site.siteMetadata.navigation.staticIconEnabled && position !== "fixed") {
+  if (!site.siteMetadata.navigation.staticIconEnabled && position !== "fixed") {
     site.siteMetadata.logo = false;
   }
 
@@ -86,7 +86,7 @@ function NavBar({classes, aosAnchor, position, useDarkPalette, backgroundColor})
 
 const getNavigationItemsQuery = graphql`
 query GetNavigationItems {
-  menuItems: allFile(filter: {sourceInstanceName: {eq: "content-v2"}, childMarkdownRemark: {frontmatter: {type:{eq:"navigation"}}}}) {
+  menuItems: allFile(filter: {sourceInstanceName: {eq: "content-v2"}, childMarkdownRemark: {frontmatter: {type: {eq: "navigation"}}}}, sort: {fields: birthTime}) {
     edges {
       node {
         markdown: childMarkdownRemark {
