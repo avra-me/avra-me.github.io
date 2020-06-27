@@ -86,7 +86,7 @@ function NavBar({classes, aosAnchor, position, useDarkPalette, backgroundColor})
 
 const getNavigationItemsQuery = graphql`
 query GetNavigationItems {
-  menuItems: allFile(filter: {sourceInstanceName: {eq: "content-v2"}, childMarkdownRemark: {frontmatter: {type: {eq: "navigation"}}}}, sort: {fields: birthTime}) {
+  menuItems: allFile(filter: {sourceInstanceName: {eq: "content-v2"}, childMarkdownRemark: {frontmatter: {type: {eq: "navigation"}}}}, sort: {fields: childMarkdownRemark___frontmatter___link}) {
     edges {
       node {
         markdown: childMarkdownRemark {
