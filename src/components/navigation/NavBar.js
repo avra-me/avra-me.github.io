@@ -61,10 +61,10 @@ function NavBar({classes, aosAnchor, position, useDarkPalette, backgroundColor})
       >
         <ThemeProvider theme={createMuiTheme({palette: {type: useDarkPalette ? "dark" : false}})}>
           <Toolbar className={classes.toolbar}>
-            <Box height={1} style={(!navigation.staticIconEnabled && position === "absolute") ? {
-              display: "none"
-            }: {}}>
-              {site.logo && <Button color="default" href={"/"}>
+            <Box height={1}>
+              {site.logo && <Button color="default" href={"/"}  style={(!navigation.staticIconEnabled && position === "absolute") ? {
+                display: "none"
+              }: {}}>
                 <img className={classes.brandIcon} src={site.logo} alt={"icon"}/>
               </Button>}
             </Box>
