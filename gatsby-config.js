@@ -4,28 +4,8 @@
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
 
-const safeRequire = (v) => {
-  try {
-    return require(v);
-  } catch (e) {
-    console.log(e);
-    return {};
-  }
-};
-
-const buildSiteMetadata = () => {
-  const siteMetadata = Object.assign({}, safeRequire("./content/config.json"));
-  siteMetadata.navigation = safeRequire("./content/common/navigation/config.json");
-  siteMetadata.footer = {
-    header: siteMetadata.author.name,
-    caption: siteMetadata.author.description,
-    ...safeRequire("./content/common/footer/config.json")
-  };
-  return siteMetadata;
-};
 
 module.exports = {
-  siteMetadata: buildSiteMetadata(),
   /* Your site config here */
   plugins: [
     {
@@ -36,12 +16,9 @@ module.exports = {
       }
     },
     {
-      resolve: "gatsby-plugin-material-ui",
+      resolve:"gatsby-plugin-material-ui",
       options: {
-        stylesProvider: {
-          injectFirst: true,
-        },
-      },
+      }
     },
     {
       resolve: "gatsby-source-filesystem",

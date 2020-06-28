@@ -30,15 +30,12 @@ const styles = (theme) => ({
 
 function NavBar({classes, aosAnchor, position, useDarkPalette, backgroundColor}) {
 
-  let {menuItems, site} = useStaticQuery(getNavigationItemsQuery);
+  let {menuItems, navigation, site} = useStaticQuery(getNavigationItemsQuery);
 
-  if (site.siteMetadata.navigation.disabled) {
+  if (navigation.disabled) {
     return null;
   }
 
-  if (!site.siteMetadata.navigation.staticIconEnabled && position !== "fixed") {
-    site.siteMetadata.logo = false;
-  }
 
   menuItems = menuItems.edges.map(v => v.node.markdown.info);
 
@@ -64,9 +61,11 @@ function NavBar({classes, aosAnchor, position, useDarkPalette, backgroundColor})
       >
         <ThemeProvider theme={createMuiTheme({palette: {type: useDarkPalette ? "dark" : false}})}>
           <Toolbar className={classes.toolbar}>
-            <Box height={1}>
-              {site.siteMetadata.logo && <Button color="default" href={"/"}>
-                <img className={classes.brandIcon} src={site.siteMetadata.logo} alt={"icon"}/>
+            <Box height={1} style={(!navigation.staticIconEnabled && position === "absolute") ? {
+              display: "none"
+            }: {}}>
+              {site.logo && <Button color="default" href={"/"}>
+                <img className={classes.brandIcon} src={site.logo} alt={"icon"}/>
               </Button>}
             </Box>
             <RightHandNavigation menuLinks={menuItems} onDrawerOpen={handleMobileDrawerOpen}/>
@@ -86,7 +85,7 @@ function NavBar({classes, aosAnchor, position, useDarkPalette, backgroundColor})
 
 const getNavigationItemsQuery = graphql`
 query GetNavigationItems {
-  menuItems: allFile(filter: {sourceInstanceName: {eq: "content-v2"}, childMarkdownRemark: {frontmatter: {type: {eq: "navigation"}}}}, sort: {fields: childMarkdownRemark___frontmatter___link}) {
+  menuItems: allFile(filter: {sourceInstanceName: {eq: "content-v2"}, childMarkdownRemark: {frontmatter: {type: {eq: "navigation"}}}}, sort: {fields: childMarkdownRemark___frontmatter___order, order: ASC}) {
     edges {
       node {
         markdown: childMarkdownRemark {
@@ -99,15 +98,14 @@ query GetNavigationItems {
       }
     }
   }
-  site {
-    siteMetadata {
-      logo
-      navigation {
-        disabled
-        staticIconEnabled
-      }
-    }
+  navigation: navigationYaml {
+    staticIconEnabled
+    disabled
   }
+  site: contentYaml {
+    logo
+  }
+
 }
 
 `;

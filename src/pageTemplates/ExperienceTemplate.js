@@ -26,7 +26,7 @@ const ExperienceTemplate = ({data}) => {
   let {startDate, endDate, link} = markdown.info;
   endDate = endDate === "Invalid date" ? "Current" : endDate;
   return (
-    <App theme={theme}>
+    <App>
       <NavBar/>
       <div className={"container-fluid lg-mg-top"}>
         <Card>

@@ -4,16 +4,16 @@ import React from "react";
 
 
 const SourcedFooter = () => {
-  let {socialButtons, attributionButtons, site} = useStaticQuery(getFooterConfigQuery);
-  socialButtons = socialButtons.edges.map(v => v.node.markdown.info);
-  attributionButtons = attributionButtons.edges.map(v => v.node.markdown.info);
-  return <Footer
-    title={site.siteMetadata.footer.header}
-    subTitle={site.siteMetadata.footer.caption}
-    disabled={site.siteMetadata.footer.disabled}
-    socialIcons={socialButtons}
-    attributionIcons={attributionButtons}
-  />;
+    let {socialButtons, attributionButtons, footer} = useStaticQuery(getFooterConfigQuery);
+    socialButtons = socialButtons.edges.map(v => v.node.markdown.info);
+    attributionButtons = attributionButtons.edges.map(v => v.node.markdown.info);
+    return <Footer
+        title={footer.header}
+        subTitle={footer.caption}
+        disabled={footer.disabled}
+        socialIcons={socialButtons}
+        attributionIcons={attributionButtons}
+    />;
 };
 
 const getFooterConfigQuery = graphql`
@@ -44,14 +44,10 @@ const getFooterConfigQuery = graphql`
       }
     }
   }
-  site {
-    siteMetadata {
-      footer {
-        disabled
-        header
-        caption
-      }
-    }
+  footer: footerYaml {
+    header
+    caption
+    disabled
   }
 }
 `;

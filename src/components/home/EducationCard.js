@@ -28,7 +28,7 @@ const EducationCard = ({classes, flip, data, delay}) => {
   const theme = useTheme();
   const {title, subTitle, short, slug} = data;
 
-  return <Grid item xs>
+  return <Grid item xs={12} sm={6}>
     <Card className={clsx(classes.root, !flip ? classes.dark : "")} data-aos={"fade-up"}
           data-aos-once={true}
           data-aos-duration={1000}

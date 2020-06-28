@@ -57,7 +57,7 @@ const RightHandNavigation = ({menuLinks, classes, onDrawerOpen, onDrawerClose}) 
     });
 
     return <div>
-        <Hidden mdUp>
+        <Hidden mdUp implementation={"css"}>
             <IconButton
                 onClick={onDrawerOpen}
                 aria-label="Open Navigation"
@@ -65,7 +65,7 @@ const RightHandNavigation = ({menuLinks, classes, onDrawerOpen, onDrawerClose}) 
                 <MenuIcon color="primary"/>
             </IconButton>
         </Hidden>
-        <Hidden smDown >
+        <Hidden smDown implementation={"css"}>
             {menuLinks.map((element) => {
                 if (element.link) {
                     return (
@@ -105,7 +105,7 @@ RightHandNavigation.propTypes = {
         icon: PropTypes.string.isRequired,
     })).isRequired,
     onDrawerOpen: PropTypes.func.isRequired,
-    onDrawerClose: PropTypes.func
+    onDrawerClose: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(RightHandNavigation);

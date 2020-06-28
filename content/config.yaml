@@ -1,0 +1,15 @@
+title: "Avrami Hammer, About Me"
+author:
+  name: "Avrami Hammer"
+  summary: "I live and work in melbourne building cloud-first web solutions."
+description: "A simple website showcasing who I am and what I do."
+siteUrl: "https://avra.me/"
+logo: "/assets/avrami-logo2.svg"
+primary:
+  "light": "#8C1E3A"
+  "main": "#A51D27"
+  "dark": "#BD1B15"
+"secondary":
+  "light": "#74204C"
+  "main": "#5B215F"
+  dark: "#432371"

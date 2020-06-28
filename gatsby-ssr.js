@@ -3,6 +3,6 @@ const React = require("react");
 
 exports.onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
     const headComponents = getHeadComponents();
-    headComponents.push(<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />);
+    headComponents.push(<link key={"material-icons"} rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />);
     replaceHeadComponents(headComponents);
 };

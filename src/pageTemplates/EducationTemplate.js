@@ -1,7 +1,6 @@
 import React from "react";
 import {graphql} from "gatsby";
 import App from "../App";
-import theme from "../config/theme.json";
 import PropTypes from "prop-types";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -12,56 +11,57 @@ import Chip from "@material-ui/core/Chip";
 import CardActions from "@material-ui/core/CardActions";
 
 const EducationTemplate = ({data}) => {
-  const {markdown} = data.file;
-  let {startDate, endDate} = markdown.info;
-  endDate = endDate === "Invalid date" ? "Current" : endDate;
-  return (
-    <App theme={theme}>
-      <NavBar/>
-      <div className={"container-fluid lg-mg-top"}>
-        <Card>
-          <Grid container alignItems={"stretch"} className={"lg-p-top"}>
-            <Grid item xs={8}>
-              <CardHeader title={markdown.info.title} subheader={markdown.info.short || markdown.excerpt}/>
-            </Grid>
-          </Grid>
-          <CardActions>
-            <Chip label={`${startDate}-${endDate}`}/>
-          </CardActions>
+    const {markdown} = data.file;
+    let {startDate, endDate} = markdown.info;
+    endDate = endDate === "Invalid date" ? "Current" : endDate;
+    return (
+        <App>
+            <NavBar/>
+            <div className={"container-fluid lg-mg-top"}>
+                <Card>
+                    <Grid container alignItems={"stretch"} className={"lg-p-top"}>
+                        <Grid item xs={8}>
+                            <CardHeader title={markdown.info.title}
+                                        subheader={markdown.info.short || markdown.excerpt}/>
+                        </Grid>
+                    </Grid>
+                    <CardActions>
+                        <Chip label={`${startDate}-${endDate}`}/>
+                    </CardActions>
 
-          <CardContent dangerouslySetInnerHTML={{__html: markdown.html}}/>
-        </Card>
-      </div>
-    </App>
-  );
+                    <CardContent dangerouslySetInnerHTML={{__html: markdown.html}}/>
+                </Card>
+            </div>
+        </App>
+    );
 };
 
 EducationTemplate.propTypes = {
-  data: PropTypes.shape({
-    image: PropTypes.shape({
-      progressive: PropTypes.shape({
-        fluid: PropTypes.object
-      })
-    }),
-    file: PropTypes.shape({
-      markdown: PropTypes.shape({
-        id: PropTypes.string,
-        excerpt: PropTypes.string,
-        html: PropTypes.string,
-        info: PropTypes.shape({
-          title: PropTypes.string,
-          subTitle: PropTypes.string,
-          date: PropTypes.string,
-          short: PropTypes.string,
-          featured: PropTypes.string,
-          startDate: PropTypes.string,
-          endDate: PropTypes.string
-        })
-      })
-    }),
-    slug: PropTypes.string,
-    type: PropTypes.string,
-  })
+    data: PropTypes.shape({
+        image: PropTypes.shape({
+            progressive: PropTypes.shape({
+                fluid: PropTypes.object
+            })
+        }),
+        file: PropTypes.shape({
+            markdown: PropTypes.shape({
+                id: PropTypes.string,
+                excerpt: PropTypes.string,
+                html: PropTypes.string,
+                info: PropTypes.shape({
+                    title: PropTypes.string,
+                    subTitle: PropTypes.string,
+                    date: PropTypes.string,
+                    short: PropTypes.string,
+                    featured: PropTypes.string,
+                    startDate: PropTypes.string,
+                    endDate: PropTypes.string
+                })
+            })
+        }),
+        slug: PropTypes.string,
+        type: PropTypes.string,
+    })
 };
 
 export default EducationTemplate;

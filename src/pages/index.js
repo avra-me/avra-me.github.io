@@ -8,7 +8,7 @@ import navigation from "../config/navigation";
 import {graphql} from "gatsby";
 
 const Index =  ({data}) => (
-  <App theme={theme} footer={footer}  navigation={navigation}>
+  <App theme={theme}>
       <Home about={home} navigation={navigation}/>
   </App>
 );

@@ -21,7 +21,7 @@ collections:
     files:
       - label: Site Details
         name: theme
-        file: 'content/config.json'
+        file: 'content/config.yaml'
         description: Configure your site
         fields:
           - {label: Site Logo, name: logo, widget: image, comment: Site title that becomes the logo}
@@ -35,13 +35,13 @@ collections:
             fields: [{*color, name: light, required: false},{*color, name: main},{*color, name: dark, required: false}]
       - label: "Global Navigation"
         name: navigation
-        file: 'content/common/navigation/config.json'
+        file: 'content/common/navigation/config.yaml'
         fields:
           - {label: Disabled, default: false, name: disabled, widget: boolean, hint: This will enable/disable the header banner}
           - {label: Show Icon for static menus, default: false, name: staticIconEnabled, widget: boolean, hint: This effect will not be seen in preview}
       - label: "Home Page"
         name: about
-        file: 'content/home/config.json'
+        file: 'content/home/config.yaml'
         fields:
           - label: Header Banner
             name: header
@@ -55,7 +55,7 @@ collections:
               - {label: Brand, name: brand, widget: image, hint: "A short, snappy tag line"}
       - label: "Footer Information"
         name: footer
-        file: 'content/common/footer/config.json'
+        file: 'content/common/footer/config.yaml'
         fields:
           - {label: Disabled, default: false, name: disabled, widget: boolean, hint: This will enable/disable the footer}
           - {label: Site Description Header, name: header, widget: string, hint: "A short, snappy tag line"}
