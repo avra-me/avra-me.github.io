@@ -63,10 +63,9 @@ const SourcedProfessionalSummary = () => {
         color={card.color}
         animate={true}
         animationDelay={delay}
-        buttons={<>
-          <Typography variant={"body1"} gutterBottom>Related Items:</Typography>
-          {card.links.map(makeTags)}
-        </>}
+        buttons={
+          card.links.map(makeTags)
+        }
       >
         <div dangerouslySetInnerHTML={{__html: card.html}}/>
       </IconCard>;
