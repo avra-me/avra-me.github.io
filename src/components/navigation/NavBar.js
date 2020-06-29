@@ -37,7 +37,7 @@ function NavBar({classes, aosAnchor, position, useDarkPalette, backgroundColor})
   }
 
 
-  menuItems = menuItems.edges.map(v => v.node.markdown.info);
+  menuItems = menuItems.edges.map(v => v.node.markdown.info).sort((a, b) => a.order > b.order ? 1 : b.order > a.order ? -1 : 0);
 
   const [selectedTab,] = useState(null);
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
@@ -62,9 +62,10 @@ function NavBar({classes, aosAnchor, position, useDarkPalette, backgroundColor})
         <ThemeProvider theme={createMuiTheme({palette: {type: useDarkPalette ? "dark" : false}})}>
           <Toolbar className={classes.toolbar}>
             <Box height={1}>
-              {site.logo && <Button color="default" href={"/"}  style={(!navigation.staticIconEnabled && position === "absolute") ? {
+              {site.logo &&
+              <Button color="default" href={"/"} style={(!navigation.staticIconEnabled && position === "absolute") ? {
                 display: "none"
-              }: {}}>
+              } : {}}>
                 <img className={classes.brandIcon} src={site.logo} alt={"icon"}/>
               </Button>}
             </Box>
@@ -85,7 +86,7 @@ function NavBar({classes, aosAnchor, position, useDarkPalette, backgroundColor})
 
 const getNavigationItemsQuery = graphql`
 query GetNavigationItems {
-  menuItems: allFile(filter: {sourceInstanceName: {eq: "content-v2"}, childMarkdownRemark: {frontmatter: {type: {eq: "navigation"}}}}, sort: {fields: childMarkdownRemark___frontmatter___order, order: ASC}) {
+  menuItems: allFile(filter: {sourceInstanceName: {eq: "content-v2"}, childMarkdownRemark: {frontmatter: {type: {eq: "navigation"}}}}) {
     edges {
       node {
         markdown: childMarkdownRemark {
@@ -93,6 +94,7 @@ query GetNavigationItems {
             name: title
             link
             icon
+            order
           }
         }
       }
