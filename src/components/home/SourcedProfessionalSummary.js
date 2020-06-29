@@ -14,10 +14,14 @@ import SectionHeading from "../common/SectionHeading";
 import Tooltip from "@material-ui/core/Tooltip";
 
 const styles = () => ({
-  header: {}
+  iconRoot: {
+    height: "100%",
+    display: "flex",
+    flexDirection: "column"
+  }
 });
 
-const SourcedProfessionalSummary = () => {
+const SourcedProfessionalSummary = ({classes}) => {
   const {summaryValues, allTags, tagSectionConfig} = useStaticQuery(getProfessionalSummaryQuery);
   const isMdUp = useMediaQuery(theme => theme.breakpoints.up("md"));
 
@@ -40,7 +44,6 @@ const SourcedProfessionalSummary = () => {
         label={`${title}`}
         clickable
         size={"small"}
-        color="secondary"
         component="a"
         href={link}
         variant="contained"
@@ -58,7 +61,6 @@ const SourcedProfessionalSummary = () => {
       return <IconCard
         key={card.title}
         headline={card.title}
-
         icon={<Icon style={{fontSize: 30}}>{card.icon}</Icon>}
         color={card.color}
         animate={true}
@@ -66,6 +68,8 @@ const SourcedProfessionalSummary = () => {
         buttons={
           card.links.map(makeTags)
         }
+        className={classes.iconRoot}
+        variant={"outlined"}
       >
         <div dangerouslySetInnerHTML={{__html: card.html}}/>
       </IconCard>;

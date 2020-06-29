@@ -100,13 +100,13 @@ const ExperienceCard = ({classes, data, flip, delay}) => {
               </Typography>
             </CardContent>
             <CardActions>
-              <ButtonGroup variant={"contained"}>
-                <Button href={`/experience/${slug}`} color={"primary"}>
+              <ButtonGroup variant="text">
+                <Button href={`/experience/${slug}`}>
                   <Typography>
                     Read More
                   </Typography>
                 </Button>
-                {link && <Button href={link} color={"secondary"}>
+                {link && <Button href={link}>
                   <Typography>
                     View Demo
                   </Typography>

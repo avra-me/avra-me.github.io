@@ -14,42 +14,35 @@ import PropTypes from "prop-types";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
 import clsx from "clsx";
+import WaveCard from "../common/WaveCard";
 
 const styles = (theme) => ({
   root: {
     height: "100%"
   },
-  dark: {
-    background: theme.palette.secondary.dark
-  }
 });
 
 const EducationCard = ({classes, flip, data, delay}) => {
-  const theme = useTheme();
   const {title, subTitle, short, slug} = data;
 
   return <Grid item xs={12} sm={6}>
-    <Card className={clsx(classes.root, !flip ? classes.dark : "")} data-aos={"fade-up"}
-          data-aos-once={true}
-          data-aos-duration={1000}
-          data-aos-delay={delay}>
-      <ThemeProvider theme={createMuiTheme({palette: {type: !flip ? "dark" : "light"}})}>
-        <CardMedia style={{background: theme.palette.background.paper}}>
-          {flip && <WaveBorder flip background={theme.palette.secondary.dark}/>}
-          {!flip && <WaveBorder background={theme.palette.secondary.dark}/>}
-        </CardMedia>
-
-        <CardHeader title={title} subheader={subTitle} titleTypographyProps={{color: "textPrimary"}}/>
-        <CardContent className={classes.content}>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {short}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button href={`/education/${slug}`}>Read More</Button>
-        </CardActions>
-      </ThemeProvider>
-    </Card>
+    <WaveCard
+      inverse={flip}
+      className={classes.root}
+      data-aos={"fade-up"}
+      data-aos-once={true}
+      data-aos-duration={1000}
+      data-aos-delay={delay}>
+      <CardHeader title={title} subheader={subTitle} titleTypographyProps={{color: "textPrimary"}}/>
+      <CardContent className={classes.content}>
+        <Typography variant="body2" color="textSecondary" component="p">
+          {short}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button href={`/education/${slug}`}>Read More</Button>
+      </CardActions>
+    </WaveCard>
   </Grid>;
 };
 
