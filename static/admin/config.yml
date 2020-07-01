@@ -94,7 +94,7 @@ collections:
       - {label: "End Date", name: "endDate", widget: "datetime", required: false}
       - {label: "Description", name: "short", widget: "text", required: false}
 
-  - name: "navigation"
+  - name: "navigationButton"
     label: "Navigation Buttons"
     folder: content/common/navigation
     create: true
@@ -105,6 +105,7 @@ collections:
       - {name: "icon", label: Icon, widget: string, hint: "This will be the icon displayed for mobile navigation"}
       - {name: "type", widget: hidden, default: "navigation"}
       - {name: "link", label: Link, widget: string, hint: "This will be where the button takes you"}
+      - {name: "order", label: order, widget: number, hint: "Lowest number is first"}
 
   - name: "tags"
     label: "Complex Tags"

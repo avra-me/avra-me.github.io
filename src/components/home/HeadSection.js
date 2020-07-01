@@ -6,161 +6,161 @@ import WaveBorder from "../../shared/components/WaveBorder";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import {ThemeProvider} from "@material-ui/styles";
 import Hidden from "@material-ui/core/Hidden";
-import NavBar from "../navigation/NavBar";
 import useTheme from "@material-ui/core/styles/useTheme";
 import Avatar from "@material-ui/core/Avatar";
 import clsx from "clsx";
+import SourcedNavigation from "../navigation/SourcedNavigation";
 
 const generateGradientString = (theme) => {
-  const points = ["light", "main", "dark"].map((name, i) => `${theme.palette.secondary[name]} ${theme.palette.wavePoints[i]}%`);
-  return `linear-gradient(${theme.palette.waveAngle}deg, ${points.join(", ")} ) !important`;
+    const points = ["light", "main", "dark"].map((name, i) => `${theme.palette.secondary[name]} ${theme.palette.wavePoints[i]}%`);
+    return `linear-gradient(${theme.palette.waveAngle}deg, ${points.join(", ")} ) !important`;
 };
 
 const styles = (theme) => ({
-  extraLargeButtonLabel: {
-    fontSize: theme.typography.body1.fontSize,
-    [theme.breakpoints.up("sm")]: {
-      fontSize: theme.typography.h6.fontSize,
+    extraLargeButtonLabel: {
+        fontSize: theme.typography.body1.fontSize,
+        [theme.breakpoints.up("sm")]: {
+            fontSize: theme.typography.h6.fontSize,
+        },
     },
-  },
-  extraLargeButton: {
-    paddingTop: theme.spacing(1.5),
-    paddingBottom: theme.spacing(1.5),
-    [theme.breakpoints.up("xs")]: {
-      paddingTop: theme.spacing(1),
-      paddingBottom: theme.spacing(1),
+    extraLargeButton: {
+        paddingTop: theme.spacing(1.5),
+        paddingBottom: theme.spacing(1.5),
+        [theme.breakpoints.up("xs")]: {
+            paddingTop: theme.spacing(1),
+            paddingBottom: theme.spacing(1),
+        },
+        [theme.breakpoints.up("lg")]: {
+            paddingTop: theme.spacing(2),
+            paddingBottom: theme.spacing(2),
+        },
     },
-    [theme.breakpoints.up("lg")]: {
-      paddingTop: theme.spacing(2),
-      paddingBottom: theme.spacing(2),
+    card: {
+        background: "transparent",
+        boxShadow: "none",
+        marginLeft: theme.spacing(2),
+        marginRight: theme.spacing(2),
+        [theme.breakpoints.up("xs")]: {
+            paddingTop: theme.spacing(3),
+            paddingBottom: theme.spacing(3),
+        },
+        [theme.breakpoints.up("sm")]: {
+            paddingTop: theme.spacing(5),
+            paddingBottom: theme.spacing(5),
+            paddingLeft: theme.spacing(4),
+            paddingRight: theme.spacing(4),
+        },
+        [theme.breakpoints.up("md")]: {
+            paddingTop: theme.spacing(5.5),
+            paddingBottom: theme.spacing(5.5),
+            paddingLeft: theme.spacing(5),
+            paddingRight: theme.spacing(5),
+        },
+        [theme.breakpoints.up("lg")]: {
+            paddingTop: theme.spacing(6),
+            paddingBottom: theme.spacing(6),
+            paddingLeft: theme.spacing(6),
+            paddingRight: theme.spacing(6),
+        },
+        [theme.breakpoints.down("lg")]: {
+            width: "auto",
+        },
     },
-  },
-  card: {
-    background: "transparent",
-    boxShadow: "none",
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up("xs")]: {
-      paddingTop: theme.spacing(3),
-      paddingBottom: theme.spacing(3),
+    wrapper: {
+        color: theme.palette.common.white,
+        position: "relative",
+        background: "inherit",
+        zIndex: 20,
     },
-    [theme.breakpoints.up("sm")]: {
-      paddingTop: theme.spacing(5),
-      paddingBottom: theme.spacing(5),
-      paddingLeft: theme.spacing(4),
-      paddingRight: theme.spacing(4),
+    image: {
+        maxWidth: "100%",
+        verticalAlign: "middle",
+        borderRadius: theme.shape.borderRadius,
+        boxShadow: theme.shadows[4],
     },
-    [theme.breakpoints.up("md")]: {
-      paddingTop: theme.spacing(5.5),
-      paddingBottom: theme.spacing(5.5),
-      paddingLeft: theme.spacing(5),
-      paddingRight: theme.spacing(5),
+    container: {
+        paddingTop: theme.spacing(6),
+        marginBottom: theme.spacing(12),
+        [theme.breakpoints.down("md")]: {
+            marginBottom: theme.spacing(9),
+        },
+        [theme.breakpoints.down("sm")]: {
+            marginBottom: theme.spacing(6),
+        },
+        [theme.breakpoints.down("sm")]: {
+            marginBottom: theme.spacing(3),
+        },
     },
-    [theme.breakpoints.up("lg")]: {
-      paddingTop: theme.spacing(6),
-      paddingBottom: theme.spacing(6),
-      paddingLeft: theme.spacing(6),
-      paddingRight: theme.spacing(6),
+    containerFix: {
+        [theme.breakpoints.up("md")]: {
+            maxWidth: "none !important",
+        },
     },
-    [theme.breakpoints.down("lg")]: {
-      width: "auto",
+    waveBorder: {
+        paddingTop: theme.spacing(4),
+        zIndex: 20,
+        height: "7vw",
+        minHeight: "7vw",
     },
-  },
-  wrapper: {
-    color: theme.palette.common.white,
-    position: "relative",
-    background: "inherit",
-    zIndex: 20,
-  },
-  image: {
-    maxWidth: "100%",
-    verticalAlign: "middle",
-    borderRadius: theme.shape.borderRadius,
-    boxShadow: theme.shadows[4],
-  },
-  container: {
-    paddingTop: theme.spacing(6),
-    marginBottom: theme.spacing(12),
-    [theme.breakpoints.down("md")]: {
-      marginBottom: theme.spacing(9),
+    speech: {
+        display: "inline-flex",
+        position: "relative",
+        borderRadius: theme.spacing(1),
+        background: theme.palette.secondary.light,
+        "&:after": {
+            content: "''",
+            position: "absolute",
+            bottom: "0",
+            left: "50%",
+            width: 0,
+            height: 0,
+            border: `${theme.spacing(1)}px solid transparent`,
+            borderTopColor: theme.palette.secondary.light,
+            borderBottom: 0,
+            borderLeft: 0,
+            marginLeft: `-${theme.spacing(0.5)}px`,
+            marginBottom: `-${theme.spacing(1)}px`,
+        },
     },
-    [theme.breakpoints.down("sm")]: {
-      marginBottom: theme.spacing(6),
+    speechText: {
+        paddingLeft: theme.spacing(2),
+        paddingRight: theme.spacing(2),
     },
-    [theme.breakpoints.down("sm")]: {
-      marginBottom: theme.spacing(3),
+    waveArea: {
+        background: generateGradientString(theme)
     },
-  },
-  containerFix: {
-    [theme.breakpoints.up("md")]: {
-      maxWidth: "none !important",
+    captionText: {
+        fontSize: "32px"
     },
-  },
-  waveBorder: {
-    paddingTop: theme.spacing(4),
-    zIndex: 20,
-    height: "7vw",
-    minHeight: "7vw",
-  },
-  speech: {
-    display: "inline-flex",
-    position: "relative",
-    borderRadius: theme.spacing(1),
-    background: theme.palette.secondary.light,
-    "&:after": {
-      content: "''",
-      position: "absolute",
-      bottom: "0",
-      left: "50%",
-      width: 0,
-      height: 0,
-      border: `${theme.spacing(1)}px solid transparent`,
-      borderTopColor: theme.palette.secondary.light,
-      borderBottom: 0,
-      borderLeft: 0,
-      marginLeft: `-${theme.spacing(0.5)}px`,
-      marginBottom: `-${theme.spacing(1)}px`,
+    brand: {
+        height: "auto",
+        width: "75px",
+        overflow: "inherit"
     },
-  },
-  speechText: {
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2),
-  },
-  waveArea: {
-    background: generateGradientString(theme)
-  },
-  captionText: {
-    fontSize: "32px"
-  },
-  brand: {
-    height: "auto",
-    width: "75px",
-    overflow: "inherit"
-  },
 });
 
 function HeadSection(props) {
-  const {classes, details} = props;
-  const theme = useTheme();
-  const {name, caption, prefix, brand} = details;
-  return (
-    <span className={clsx(classes.waveArea, "section")}>
+    const {classes, details} = props;
+    const theme = useTheme();
+    const {name, caption, prefix, brand} = details;
+    return (
+        <span className={clsx(classes.waveArea, "section")}>
           <ThemeProvider theme={createMuiTheme({palette: {type: "dark"}})}>
-            <NavBar position={"absolute"} useDarkPalette backgroundColor={"inherit"}/>
+            <SourcedNavigation position={"absolute"} useDarkPalette backgroundColor={"inherit"}/>
             <div className={classNames("lg-p-top", classes.wrapper)}>
-              <Hidden smDown>
+              <Hidden smDown implementation={"css"}>
                 <Grid
-                  item
-                  xs={12}
-                  md={12}
-                  style={{margin: "auto", alignItems: "center"}}
-                  className={"lg-p-top"}
+                    item
+                    xs={12}
+                    md={12}
+                    style={{margin: "auto", alignItems: "center"}}
+                    className={"lg-p-top"}
                 >
                   <Box
-                    display="flex"
-                    flexDirection="column"
-                    style={{margin: "auto", alignItems: "center"}}
-                    height="100%"
+                      display="flex"
+                      flexDirection="column"
+                      style={{margin: "auto", alignItems: "center"}}
+                      height="100%"
                   >
                   {brand && <Avatar variant={"square"} className={classes.brand} src={brand} alt={""}/>}
                   </Box>
@@ -169,21 +169,21 @@ function HeadSection(props) {
               <div className={classNames("container-fluid", classes.container)}>
                 <Box display="flex" justifyContent="center" className="row">
                   <Card
-                    className={classes.card}
+                      className={classes.card}
                   >
                   <div className={classNames(classes.containerFix, "container")}>
                     <Box justifyContent="space-between" className="row">
                       <Grid
-                        item
-                        xs={12}
-                        md={12}
-                        style={{margin: "auto", alignItems: "center"}}
+                          item
+                          xs={12}
+                          md={12}
+                          style={{margin: "auto", alignItems: "center"}}
                       >
                         <Box
-                          display="flex"
-                          flexDirection="column"
-                          style={{margin: "auto", alignItems: "center"}}
-                          height="100%"
+                            display="flex"
+                            flexDirection="column"
+                            style={{margin: "auto", alignItems: "center"}}
+                            height="100%"
                         >
                           <Box mb={4}>
                             <Typography variant="h2">
@@ -207,21 +207,21 @@ function HeadSection(props) {
                 </Box>
               </div>
               <WaveBorder
-                id={"wave-box"}
-                background={theme.palette.background.default}
-                className={classes.waveBorder}
+                  id={"wave-box"}
+                  background={theme.palette.background.default}
+                  className={classes.waveBorder}
               />
 
             </div>
         </ThemeProvider>
     </span>
-  );
+    );
 }
 
 HeadSection.propTypes = {
-  classes: PropTypes.object,
-  theme: PropTypes.object,
-  details: PropTypes.object.isRequired,
+    classes: PropTypes.object,
+    theme: PropTypes.object,
+    details: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles, {withTheme: true})(HeadSection);
