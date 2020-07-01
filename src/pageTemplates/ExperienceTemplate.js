@@ -1,11 +1,9 @@
 import React from "react";
 import {graphql} from "gatsby";
 import App from "../App";
-import theme from "../config/theme.json";
 import PropTypes from "prop-types";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import NavBar from "../components/navigation/NavBar";
 import CardHeader from "@material-ui/core/CardHeader";
 import ProgressiveImage from "gatsby-image";
 import Grid from "@material-ui/core/Grid";
@@ -13,6 +11,7 @@ import Chip from "@material-ui/core/Chip";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
 import CalendarIcon from "@material-ui/icons/CalendarToday";
+import SourcedNavigation from "../components/navigation/SourcedNavigation";
 
 const ExperienceTemplate = ({data}) => {
   const DynamicImage = () => {
@@ -27,7 +26,7 @@ const ExperienceTemplate = ({data}) => {
   endDate = endDate === "Invalid date" ? "Current" : endDate;
   return (
     <App>
-      <NavBar/>
+      <SourcedNavigation/>
       <div className={"container-fluid lg-mg-top"}>
         <Card>
           <Grid container alignItems={"stretch"} className={"lg-p-top"}>

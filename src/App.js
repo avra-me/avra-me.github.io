@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import {CssBaseline} from "@material-ui/core";
 import GlobalStyles from "./GlobalStyles";
 import * as serviceWorker from "./serviceWorker";
-import NavBar from "./components/navigation/NavBar";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import SourcedFooter from "./components/footer/SourcedFooter";
 import SourcedThemeProvider from "./components/common/sourced/SourcedThemeProvider";
+import SourcedNavigation from "./components/navigation/SourcedNavigation";
 
 
 const App = (props) => {
@@ -27,7 +27,7 @@ const App = (props) => {
         <SourcedThemeProvider isRoot>
             <CssBaseline/>
             <GlobalStyles/>
-            <NavBar aosAnchor={"#wave-box"}/>
+            <SourcedNavigation aosAnchor={"#wave-box"}/>
             {children}
             <SourcedFooter/>
         </SourcedThemeProvider>
