@@ -12,6 +12,8 @@ import Grid from "@material-ui/core/Grid";
 import PropTypes from "prop-types";
 import SectionHeading from "../common/SectionHeading";
 import Tooltip from "@material-ui/core/Tooltip";
+import Link from "@material-ui/core/Link";
+import Button from "@material-ui/core/Button";
 
 const styles = () => ({
   iconRoot: {
@@ -38,16 +40,8 @@ const SourcedProfessionalSummary = ({classes}) => {
   );
   // eslint-disable-next-line react/prop-types
   const makeTags = ({link, title, subTitle}) => {
-    return <Tooltip title={subTitle}>
-      <Chip
-        icon={<LinkIcon/>}
-        label={`${title}`}
-        clickable
-        size={"small"}
-        component="a"
-        href={link}
-        variant="contained"
-      />
+    return <Tooltip title={title}>
+      <Button href={link} size={"small"} variant={"outlined"}>{subTitle}</Button>
     </Tooltip>
       ;
   };
@@ -63,15 +57,15 @@ const SourcedProfessionalSummary = ({classes}) => {
         headline={card.title}
         icon={<Icon style={{fontSize: 30}}>{card.icon}</Icon>}
         color={card.color}
-        animate={true}
+        animate
         animationDelay={delay}
         buttons={
-          card.links.map(makeTags)
+          <Grid container alignItems={"flex-start"}>{card.links.map(makeTags)}</Grid>
         }
         className={classes.iconRoot}
         variant={"outlined"}
       >
-        <div dangerouslySetInnerHTML={{__html: card.html}}/>
+        <Typography dangerouslySetInnerHTML={{__html: card.html}}/>
       </IconCard>;
     })}
   </IconCardContainer>;

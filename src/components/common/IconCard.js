@@ -23,6 +23,9 @@ const styles = (theme) => ({
     },
     padding: `${theme.spacing(1)}px ${theme.spacing(2)}px !important`
   },
+  content: {
+    flexGrow: 1
+  },
   avatar: {
     flex: "0 0 auto",
     marginRight: 16,
@@ -46,8 +49,9 @@ function IconCard(props) {
       className={classes.root}
     >
       <Card {...waveCardProps}>
-        <CardHeader title={headline} avatar={<Avatar style={iconStyling}>{icon}</Avatar>}/>
-        <CardContent>{children}</CardContent>
+        <CardHeader title={headline} titleTypographyProps={{variant: "h6"}}
+                    avatar={<Avatar style={iconStyling}>{icon}</Avatar>}/>
+        <CardContent className={classes.content}>{children}</CardContent>
         <CardActions>{buttons}</CardActions>
       </Card>
     </Grid>

@@ -3,7 +3,6 @@ import {graphql} from "gatsby";
 import App from "../App";
 import PropTypes from "prop-types";
 import CardContent from "@material-ui/core/CardContent";
-import CardHeader from "@material-ui/core/CardHeader";
 import ProgressiveImage from "gatsby-image";
 import Grid from "@material-ui/core/Grid";
 import Chip from "@material-ui/core/Chip";
