@@ -47,7 +47,9 @@ const EducationTemplate = ({data, classes}) => {
       <div className={"container-fluid lg-mg-top"}>
         <WaveCard before={header}>
           <CardContent>
-            <Typography paragraph dangerouslySetInnerHTML={{__html: markdown.html}}/>
+            <Typography>
+              <div dangerouslySetInnerHTML={{__html: markdown.html}}/>
+            </Typography>
           </CardContent>
         </WaveCard>
       </div>
