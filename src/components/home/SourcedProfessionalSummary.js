@@ -65,7 +65,9 @@ const SourcedProfessionalSummary = ({classes}) => {
         className={classes.iconRoot}
         variant={"outlined"}
       >
-        <Typography dangerouslySetInnerHTML={{__html: card.html}}/>
+        <Typography>
+          <div dangerouslySetInnerHTML={{__html: card.html}}/>
+        </Typography>
       </IconCard>;
     })}
   </IconCardContainer>;
