@@ -9,7 +9,7 @@ import Container from "@material-ui/core/Container";
 const ListExperienceView = ({featuredOnly, headerComponent: HeaderComponent}) => {
   const data = useStaticQuery(listExperienceQuery);
 
-  const {images, files} = data;
+  const {images, files, site} = data;
 
   files.values.forEach(({markdown}) => {
     const currentImage = markdown.info.image;
@@ -21,7 +21,7 @@ const ListExperienceView = ({featuredOnly, headerComponent: HeaderComponent}) =>
   });
 
   return <>
-    <HeaderComponent title={"Experience"} subTitle={"What I've done and where I've been"}/>
+    <HeaderComponent title={"Experience"} subTitle={"What I've done and where I've been"} monogram={site.logo}/>
     <Container>
       {files.values.map(({slug, markdown}, i) => {
         const {info, excerpt} = markdown;
@@ -64,6 +64,9 @@ const listExperienceQuery = graphql`query ListExperienceData {
         }
       }
     }
+  }
+  site: contentYaml {
+    logo
   }
 }`;
 

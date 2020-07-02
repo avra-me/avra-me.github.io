@@ -35,13 +35,13 @@ const styles = (theme) => ({
   dividerTop: {
     width: "100%",
     position: "absolute",
-    top: 0,
+    top: -1,
     zIndex: 10
   },
   dividerBottom: {
     width: "100%",
     position: "absolute",
-    bottom: 0,
+    bottom: -1,
     zIndex: 10
   },
   wavyBorder: {
@@ -93,9 +93,9 @@ const ExperienceCard = ({classes, data, flip, delay}) => {
 
           <Grid item xs={12} sm={6} md={8}>
             <CardContent>
-              <Typography gutterBottom={false} variant={"h4"} color={"textPrimary"}>{title}</Typography>
-              <Typography gutterBottom={true} variant={"h5"} color={"textSecondary"}>{subTitle}</Typography>
-              <Typography variant={"h5"}>
+              <Typography gutterBottom={false} variant={"h6"} color={"textPrimary"}>{title}</Typography>
+              <Typography gutterBottom={true} variant={"body1"} color={"textSecondary"}>{subTitle}</Typography>
+              <Typography variant={"body1"}>
                 {short || excerpt}
               </Typography>
             </CardContent>

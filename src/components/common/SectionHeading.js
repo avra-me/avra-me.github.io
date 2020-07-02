@@ -13,10 +13,10 @@ const styles = (theme) => ({
 
 const SectionHeading = ({title, subTitle, classes, ...props}) => {
   return <Box className={classes.heading} {...props}>
-    <Typography gutterBottom={false} variant={"h3"} color={"textPrimary"} align={"center"}>
+    <Typography gutterBottom={false} variant={"h4"} color={"textPrimary"} align={"center"}>
       {title}
     </Typography>
-    <Typography gutterBottom={true} variant={"h4"} color={"textSecondary"} align={"center"}>
+    <Typography gutterBottom={true} variant={"h5"} color={"textSecondary"} align={"center"}>
       {subTitle}
     </Typography>
   </Box>;
