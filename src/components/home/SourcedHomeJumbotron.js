@@ -1,14 +1,23 @@
 import {graphql, useStaticQuery} from "gatsby";
 import React, {Fragment} from "react";
 import WaveJumbotron from "../common/WaveJumbotron";
+import PropTypes from "prop-types";
 
-const SourcedHomeJumbotron = () => {
-  const {home} = useStaticQuery(getHomeConfig);
+const SourcedHomeJumbotron = (props) => {
+  let {home} = useStaticQuery(getHomeConfig);
   const {disabled, prefix, name, monogram, caption} = home;
+
+  const jumboProps = {
+    title: `${prefix} ${name}`,
+    subTitle: caption,
+    monogram: monogram,
+    ...props
+  };
+
   if (disabled) {
     return <Fragment/>;
   }
-  return <WaveJumbotron title={`${prefix} ${name}`} subTitle={caption} monogram={monogram}/>;
+  return <WaveJumbotron {...jumboProps}/>;
 };
 
 const getHomeConfig = graphql`query getHomeConfig {
@@ -20,5 +29,11 @@ const getHomeConfig = graphql`query getHomeConfig {
     monogram
   }
 }`;
+
+SourcedHomeJumbotron.propTypes = {
+  title: PropTypes.string,
+  subTitle: PropTypes.string,
+  monogram: PropTypes.string
+};
 
 export default SourcedHomeJumbotron;

@@ -1,11 +1,11 @@
 import React from "react";
 import App from "../App";
 import {Typography} from "@material-ui/core";
-import WaveJumbotron from "../components/common/WaveJumbotron";
+import SourcedHomeJumbotron from "../components/home/SourcedHomeJumbotron";
 
 const Blog = () => (
   <App>
-    <WaveJumbotron title={"Blog"}/>
+    <SourcedHomeJumbotron title={"Blog"} subTitle={"Sorry nothing here yet, I am working on it though!"}/>
     <div>
       <div className="container-fluid lg-p-top">
         <Typography variant="h3" align="center">
