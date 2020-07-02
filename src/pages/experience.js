@@ -6,13 +6,11 @@ import HeadSection from "../components/home/HeadSection";
 import navigation from "../config/navigation";
 import PropTypes from "prop-types";
 import ListExperienceView from "../components/home/ListExperienceView";
+import WaveJumbotron from "../components/common/WaveJumbotron";
 
 const ExperienceHome = () => (
   <App theme={theme} footer={footer} navigation={navigation}>
-    <HeadSection details={{prefix: "", name: "My Experience", caption: "Where I've worked and what I've done."}} navigation={navigation}/>
-    <div>
-      <ListExperienceView/>
-    </div>
+    <ListExperienceView headerComponent={WaveJumbotron}/>
   </App>
 );
 

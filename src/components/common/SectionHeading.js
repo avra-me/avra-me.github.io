@@ -28,4 +28,4 @@ SectionHeading.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SectionHeading)
+export default withStyles(styles)(SectionHeading);

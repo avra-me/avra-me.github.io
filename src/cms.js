@@ -4,10 +4,8 @@
  * `registerPreviewTemplate`.
  */
 import CMS from "netlify-cms-app";
-import ThemePreview from "./previewComponents/ThemePreview";
-import HomePreview from "./previewComponents/HomePreview";
-import FooterPreview from "./previewComponents/FooterPreview";
 import NavigationPreview from "./previewComponents/NavigationPreview";
+import EducationPreview from "./previewComponents/EducationPreview";
 
 /**
  * Any imported styles should be automatically be applied to the editor preview
@@ -20,7 +18,5 @@ import NavigationPreview from "./previewComponents/NavigationPreview";
  * preview pane.
  */
 
-CMS.registerPreviewTemplate("theme", ThemePreview);
+CMS.registerPreviewTemplate("education", EducationPreview);
 CMS.registerPreviewTemplate("navigationButton", NavigationPreview);
-CMS.registerPreviewTemplate("about", HomePreview);
-CMS.registerPreviewTemplate("footer", FooterPreview);

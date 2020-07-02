@@ -28,8 +28,7 @@ const ListEducationView = ({featuredOnly, classes}) => {
       {files.values.map(({slug, markdown}, i) => {
         const {info, excerpt} = markdown;
         info.short = info.short || excerpt;
-        const data = {...info, excerpt, slug}
-        ;
+        const data = {...info, excerpt, slug};
         return (featuredOnly ? info.featured : true) &&
           <EducationCard key={slug} data={data} flip={i % 2 === 0} delay={i * 100}/>;
       })}

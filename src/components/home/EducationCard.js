@@ -52,7 +52,12 @@ EducationCard.defaultProps = {
 
 EducationCard.propTypes = {
   classes: PropTypes.object.isRequired,
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    subTitle: PropTypes.string,
+    short: PropTypes.string,
+    slug: PropTypes.string,
+  }).isRequired,
   flip: PropTypes.bool.isRequired,
   delay: PropTypes.number
 };

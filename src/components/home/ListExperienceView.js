@@ -3,9 +3,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import ExperienceCard from "./ExperienceCard";
 import SectionHeading from "../common/SectionHeading";
+import Container from "@material-ui/core/Container";
 
 
-const ListExperienceView = ({featuredOnly}) => {
+const ListExperienceView = ({featuredOnly, headerComponent: HeaderComponent}) => {
   const data = useStaticQuery(listExperienceQuery);
 
   const {images, files} = data;
@@ -19,16 +20,19 @@ const ListExperienceView = ({featuredOnly}) => {
     });
   });
 
-  return <div className="container-fluid section">
-    <SectionHeading title={"Experience"} subTitle={"What I've done and where I've been"} id={"experience"}/>
-    {files.values.map(({slug, markdown}, i) => {
-      const {info, excerpt} = markdown;
+  return <>
+    <HeaderComponent title={"Experience"} subTitle={"What I've done and where I've been"}/>
+    <Container>
+      {files.values.map(({slug, markdown}, i) => {
+        const {info, excerpt} = markdown;
 
-      const data = {...info, excerpt, slug};
-      return (featuredOnly ? info.featured : true) &&
-        <ExperienceCard key={slug} data={data} flip={i % 2 === 0} delay={i * 100}/>;
-    })}
-  </div>;
+        const data = {...info, excerpt, slug};
+        return (featuredOnly ? info.featured : true) &&
+          <ExperienceCard key={slug} data={data} flip={i % 2 === 0} delay={i * 100}/>;
+      })}
+    </Container>
+
+  </>;
 };
 
 const listExperienceQuery = graphql`query ListExperienceData {
@@ -63,8 +67,13 @@ const listExperienceQuery = graphql`query ListExperienceData {
   }
 }`;
 
+ListExperienceView.defaultProps = {
+  headerComponent: SectionHeading
+};
+
 ListExperienceView.propTypes = {
-  featuredOnly: PropTypes.bool
+  featuredOnly: PropTypes.bool,
+  headerComponent: PropTypes.func
 };
 
 export default ListExperienceView;

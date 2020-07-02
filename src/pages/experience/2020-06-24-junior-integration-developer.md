@@ -16,17 +16,19 @@ tags:
   - Software Development
   - Solution Design
 ---
-#### Projects Undertaken
+### Projects Undertaken
+I spent most of my degree at RMIT university working for the technology services department supporting the 
+delivery of university-wide projects.
 
-###### Project Rewire
+#### Project Rewire
 
 * Supported the delivery of a University wide upgrade to their LMS (Canvas) by creating integrations between the existing services and the new LMS. 
 
-###### Project Passport
+#### Project Passport
 
 * Responsible for delivering an upgraded single sign on experience to all RMIT applications.
 * Built a suite during quiet periods at work to automate a manual process that was being performed. Wrote up extensive documentation and handed the solution over to the BAU team.
 
-#### Achievements
+### Achievements
 
 * During Project Rewire a high priority outage caused several thousand students to lose access to their LMS. As the leadership team were overseas, I took control of the situation and designed and developed a solution. I was recognised by leadership for building a rapid solution with no support.

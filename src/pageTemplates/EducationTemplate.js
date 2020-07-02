@@ -9,62 +9,86 @@ import Grid from "@material-ui/core/Grid";
 import Chip from "@material-ui/core/Chip";
 import CardActions from "@material-ui/core/CardActions";
 import SourcedNavigation from "../components/navigation/SourcedNavigation";
+import WaveCard from "../components/common/WaveCard";
+import Container from "@material-ui/core/Container";
+import Typography from "@material-ui/core/Typography";
+import CalendarIcon from "@material-ui/icons/CalendarToday";
+import withStyles from "@material-ui/core/styles/withStyles";
+import Button from "@material-ui/core/Button";
 
-const EducationTemplate = ({data}) => {
-    const {markdown} = data.file;
-    let {startDate, endDate} = markdown.info;
-    endDate = endDate === "Invalid date" ? "Current" : endDate;
-    return (
-        <App>
-            <SourcedNavigation/>
-            <div className={"container-fluid lg-mg-top"}>
-                <Card>
-                    <Grid container alignItems={"stretch"} className={"lg-p-top"}>
-                        <Grid item xs={8}>
-                            <CardHeader title={markdown.info.title}
-                                        subheader={markdown.info.short || markdown.excerpt}/>
-                        </Grid>
-                    </Grid>
-                    <CardActions>
-                        <Chip label={`${startDate}-${endDate}`}/>
-                    </CardActions>
+const styles = theme => ({
+  header: {
+    padding: theme.spacing(4)
+  }
+});
 
-                    <CardContent dangerouslySetInnerHTML={{__html: markdown.html}}/>
-                </Card>
-            </div>
-        </App>
-    );
+const EducationTemplate = ({data, classes}) => {
+  const {markdown} = data.file;
+  let {startDate, endDate} = markdown.info;
+  endDate = endDate === "Invalid date" ? "Current" : endDate;
+
+  const header = <Container>
+    <Grid container className={classes.header} direction={"row"}>
+      <Grid item xs={12} sm={10}>
+        <Typography variant={"h5"}>{markdown.info.title}</Typography>
+      </Grid>
+      <Grid item xs={12} sm={2} container alignItems={"flex-end"}>
+        <Chip color={"primary"} icon={<CalendarIcon/>}
+              label={`${startDate}-${endDate}`}/>
+      </Grid>
+      <Grid item xs={12} sm={10}>
+        <Typography variant={"body1"} color={"textSecondary"} gutterBottom>{markdown.info.subTitle}</Typography>
+      </Grid>
+
+      <Grid item xs={12} sm={12}>
+        <Typography variant={"body1"} color={"textPrimary"} paragraph>{markdown.info.short}</Typography>
+      </Grid>
+    </Grid>
+  </Container>;
+  return (
+    <App>
+      <SourcedNavigation/>
+      <div className={"container-fluid lg-mg-top"}>
+        <WaveCard before={header}>
+          <CardContent>
+            <Typography paragraph dangerouslySetInnerHTML={{__html: markdown.html}}/>
+          </CardContent>
+        </WaveCard>
+      </div>
+    </App>
+  );
 };
 
 EducationTemplate.propTypes = {
-    data: PropTypes.shape({
-        image: PropTypes.shape({
-            progressive: PropTypes.shape({
-                fluid: PropTypes.object
-            })
-        }),
-        file: PropTypes.shape({
-            markdown: PropTypes.shape({
-                id: PropTypes.string,
-                excerpt: PropTypes.string,
-                html: PropTypes.string,
-                info: PropTypes.shape({
-                    title: PropTypes.string,
-                    subTitle: PropTypes.string,
-                    date: PropTypes.string,
-                    short: PropTypes.string,
-                    featured: PropTypes.string,
-                    startDate: PropTypes.string,
-                    endDate: PropTypes.string
-                })
-            })
-        }),
-        slug: PropTypes.string,
-        type: PropTypes.string,
-    })
+  classes: PropTypes.object,
+  data: PropTypes.shape({
+    image: PropTypes.shape({
+      progressive: PropTypes.shape({
+        fluid: PropTypes.object
+      })
+    }),
+    file: PropTypes.shape({
+      markdown: PropTypes.shape({
+        id: PropTypes.string,
+        excerpt: PropTypes.string,
+        html: PropTypes.string,
+        info: PropTypes.shape({
+          title: PropTypes.string,
+          subTitle: PropTypes.string,
+          date: PropTypes.string,
+          short: PropTypes.string,
+          featured: PropTypes.string,
+          startDate: PropTypes.string,
+          endDate: PropTypes.string
+        })
+      })
+    }),
+    slug: PropTypes.string,
+    type: PropTypes.string,
+  })
 };
 
-export default EducationTemplate;
+export default withStyles(styles)(EducationTemplate);
 
 export const pageQuery = graphql`
 query EducationPostBySlug($slug: String!, $image: String) {
