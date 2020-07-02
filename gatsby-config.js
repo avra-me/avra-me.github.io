@@ -16,9 +16,8 @@ module.exports = {
       }
     },
     {
-      resolve:"gatsby-plugin-material-ui",
-      options: {
-      }
+      resolve: "gatsby-plugin-material-ui",
+      options: {}
     },
     {
       resolve: "gatsby-source-filesystem",
@@ -77,7 +76,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: "UA-131741134-2"
       },
     }
   ],
