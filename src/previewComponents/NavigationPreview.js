@@ -7,24 +7,24 @@ import AOS from "aos";
 import PropTypes from "prop-types";
 
 const NavigationPreview = ({entry, getAsset}) => {
-    useEffect(() => {
-        AOS.init({
-            duration: 2000
-        });
+  useEffect(() => {
+    AOS.init({
+      duration: 2000
     });
-    const logo = getAsset(entry.getIn(["data", "logo"]));
-    return <InjectStyles>
-        <MuiThemeProvider theme={createMuiTheme({})}>
-            <CssBaseline/>
-            <GlobalStyles/>
-            <NavBar logo={logo} menuItems={[]} staticIconEnabled/>
-        </MuiThemeProvider>
-    </InjectStyles>;
+  });
+  const logo = getAsset(entry.getIn(["data", "logo"]));
+  return <InjectStyles>
+    <MuiThemeProvider theme={createMuiTheme({})}>
+      <CssBaseline/>
+      <GlobalStyles/>
+      <NavBar logo={logo} menuItems={[entry.get("data").toJSON()]} staticIconEnabled/>
+    </MuiThemeProvider>
+  </InjectStyles>;
 };
 
 NavigationPreview.propTypes = {
-    entry: PropTypes.immutable,
-    getAsset: PropTypes.func.isRequired,
+  entry: PropTypes.immutable,
+  getAsset: PropTypes.func.isRequired,
 };
 
 export default NavigationPreview;

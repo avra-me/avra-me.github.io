@@ -1,14 +1,11 @@
 import React from "react";
 import App from "../App";
-import theme from "../config/theme";
-import footer from "../config/footer";
-import HeadSection from "../components/home/HeadSection";
 import {Typography} from "@material-ui/core";
-import navigation from "../config/navigation";
+import WaveJumbotron from "../components/common/WaveJumbotron";
 
-export default () => (
-  <App theme={theme} footer={footer} navigation={navigation}>
-    <HeadSection details={{prefix: "", name: "My Blog", caption: "What I've been looking at recently"}} navigation={navigation}/>
+const Blog = () => (
+  <App>
+    <WaveJumbotron title={"Blog"}/>
     <div>
       <div className="container-fluid lg-p-top">
         <Typography variant="h3" align="center">
@@ -18,3 +15,5 @@ export default () => (
     </div>
   </App>
 );
+
+export default Blog;

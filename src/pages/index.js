@@ -1,15 +1,16 @@
 import React from "react";
 import App from "../App";
-import Home from "../components/home/Home";
-import theme from "../config/theme";
-import home from "../config/home";
-import footer from "../config/footer";
-import navigation from "../config/navigation";
-import {graphql} from "gatsby";
+import SourcedHomeJumbotron from "../components/home/SourcedHomeJumbotron";
+import SourcedProfessionalSummary from "../components/home/SourcedProfessionalSummary";
+import ListExperienceView from "../components/home/ListExperienceView";
+import ListEducationView from "../components/home/ListEducationView";
 
-const Index =  ({data}) => (
-  <App theme={theme}>
-      <Home about={home} navigation={navigation}/>
+const Index = () => (
+  <App>
+    <SourcedHomeJumbotron/>
+    <SourcedProfessionalSummary/>
+    <ListExperienceView featuredOnly/>
+    <ListEducationView/>
   </App>
 );
 
