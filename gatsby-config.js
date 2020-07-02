@@ -49,13 +49,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: "./src/config/",
-        name: "config"
-      },
-    },
-    {
       resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
