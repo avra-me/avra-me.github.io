@@ -17,9 +17,9 @@ format: yaml
 
 collections:
   - name: config
-    label: "Theme"
+    label: "Global Configuration"
     files:
-      - label: Site Details
+      - label: SEO and Theme Options
         name: metadata
         file: 'content/config.yaml'
         description: Configure your site
@@ -40,14 +40,14 @@ collections:
             name: secondary
             widget: object
             fields: [{*color, name: light, required: false},{*color, name: main},{*color, name: dark, required: false}]
-      - label: "Navigation Bar"
+      - label: "Navigation Options"
         description: "Customize the navigation bar"
         name: navigation
         file: 'content/common/navigation/config.yaml'
         fields:
           - {label: Disabled, default: false, name: disabled, widget: boolean, hint: This will enable/disable the header banner}
           - {label: Show Icon for static menus, default: false, name: staticIconEnabled, widget: boolean, hint: This effect will not be seen in preview}
-      - label: "Home Page"
+      - label: "Banner Options"
         name: about
         file: 'content/home/config.yaml'
         fields:
@@ -56,7 +56,7 @@ collections:
           - {label: Name, name: name, widget: string, hint: "What people will call you"}
           - {label: Caption, name: caption, widget: markdown, hint: "A short, snappy tag line"}
           - {label: Monogram, name: monogram, widget: image, hint: "A short, snappy tag line"}
-      - label: "Footer Information"
+      - label: "Footer Options"
         description: "Customize the footer"
         name: footer
         file: 'content/common/footer/config.yaml'
