@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import PropTypes from "prop-types";
 import {lighten, withStyles} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
@@ -7,6 +7,7 @@ import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
+import {motion} from "framer-motion";
 
 const styles = (theme) => ({
   iconWrapper: {
@@ -44,16 +45,22 @@ function IconCard(props) {
       item
       xs={12}
       md={6}
-      data-aos={animate ? "fade-up" : false}
-      data-aos-delay={animationDelay}
+      // data-aos={animate ? "fade-up" : false}
+      // data-aos-delay={animationDelay}
       className={classes.root}
     >
-      <Card {...waveCardProps}>
-        <CardHeader title={headline} titleTypographyProps={{variant: "h6"}}
-                    avatar={<Avatar style={iconStyling}>{icon}</Avatar>}/>
-        <CardContent className={classes.content}>{children}</CardContent>
-        <CardActions>{buttons}</CardActions>
-      </Card>
+      <motion.animate
+        initial={{opacity: 0, y: -100}}
+        animate={{opacity: 1}}
+        transition={{ duration: 2, delay: animationDelay/100}}
+      >
+        <Card {...waveCardProps}>
+          <CardHeader title={headline} titleTypographyProps={{variant: "h6"}}
+                      avatar={<Avatar style={iconStyling}>{icon}</Avatar>}/>
+          <CardContent className={classes.content}>{children}</CardContent>
+          <CardActions>{buttons}</CardActions>
+        </Card>
+      </motion.animate>
     </Grid>
   );
 }
