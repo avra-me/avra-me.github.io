@@ -45,11 +45,12 @@ function WaveBorder(props) {
     href={`#${id}`}
     x={x}
     y={y}
-    fill={fade(background, opacity)}
     style={{
+      fill: fade(background, opacity),
+      transition: "fill 0.5s linear",
       animationPlayState: pause ? "paused" : "running",
       animationDelay: `${delay}s`,
-      animationDuration: `${duration*2}s`
+      animationDuration: `${duration * 2}s`
     }}
   />;
 

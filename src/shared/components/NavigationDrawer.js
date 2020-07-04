@@ -109,16 +109,7 @@ function NavigationDrawer(props) {
             );
           }
           return (
-            <ListItem button key={element.name} onClick={element.onClick}>
-              <ListItemIcon>{element.icon}</ListItemIcon>
-              <ListItemText
-                primary={
-                  <Typography variant="subtitle1" className="text-white">
-                    {element.name}
-                  </Typography>
-                }
-              />
-            </ListItem>
+            element
           );
         })}
       </List>

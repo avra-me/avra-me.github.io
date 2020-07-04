@@ -20,7 +20,6 @@ export default ({entry, getAsset, widgetFor}) => {
     <MuiThemeProvider theme={theme}>
       <CssBaseline/>
       <GlobalStyles/>
-      {!header.disabled && <HeadSection details={header}/>}
     </MuiThemeProvider>
   </InjectStyles>;
 

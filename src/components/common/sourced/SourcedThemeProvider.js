@@ -1,156 +1,11 @@
 import {createMuiTheme, MuiThemeProvider, responsiveFontSizes} from "@material-ui/core";
-import _ from "lodash"
-import React from "react";
+import _ from "lodash";
+import React, {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import {graphql, useStaticQuery} from "gatsby";
-
-const generateTheme = config => {
-    // colors
-    const black = "#343a40";
-    const darkBlack = "rgb(36, 40, 44)";
-    const background = "#f5f5f5";
-    // const background = "#ffffff";
-    const warningLight = "rgba(253, 200, 69, .3)";
-    const warningMain = "rgba(253, 200, 69, .5)";
-    const warningDark = "rgba(253, 200, 69, .7)";
-
-    // border
-    const borderWidth = 2;
-    const borderColor = "rgba(0, 0, 0, 0.13)";
-
-    // breakpoints
-    const xl = 1920;
-    const lg = 1280;
-    const md = 960;
-    const sm = 600;
-    const xs = 0;
-
-    // spacing
-    const spacing = 8;
-
-    const theme = {
-        palette: {
-            wavePoints: [0, 47, 93],
-            waveAngle: "45",
-            type: "light",
-            common: {
-                black,
-                darkBlack,
-            },
-            warning: {
-                light: warningLight,
-                main: warningMain,
-                dark: warningDark,
-            },
-            // Used to shift a color's luminance by approximately
-            // two indexes within its tonal palette.
-            // E.g., shift from Red 500 to Red 300 or Red 700.
-            tonalOffset: 0.2,
-            background: {
-                default: background,
-            },
-            spacing,
-        },
-        breakpoints: {
-            // Define custom breakpoint values.
-            // These will apply to Material-UI components that use responsive
-            // breakpoints, such as `Grid` and `Hidden`. You can also use the
-            // theme breakpoint functions `up`, `down`, and `between` to create
-            // media queries for these breakpoints
-            values: {
-                xl,
-                lg,
-                md,
-                sm,
-                xs,
-            },
-        },
-        border: {
-            borderColor: borderColor,
-            borderWidth: borderWidth,
-        },
-        overrides: {
-            MuiExpansionPanel: {
-                root: {
-                    position: "static",
-                },
-            },
-            MuiTableCell: {
-                root: {
-                    paddingLeft: spacing * 2,
-                    paddingRight: spacing * 2,
-                    borderBottom: `${borderWidth}px solid ${borderColor}`,
-                    [`@media (max-width:  ${sm}px)`]: {
-                        paddingLeft: spacing,
-                        paddingRight: spacing,
-                    },
-                },
-            },
-            MuiDivider: {
-                root: {
-                    backgroundColor: borderColor,
-                    height: borderWidth,
-                },
-            },
-            MuiPrivateNotchedOutline: {
-                root: {
-                    borderWidth: borderWidth,
-                },
-            },
-            MuiListItem: {
-                divider: {
-                    borderBottom: `${borderWidth}px solid ${borderColor}`,
-                },
-            },
-            MuiDialog: {
-                paper: {
-                    width: "100%",
-                    maxWidth: 430,
-                    marginLeft: spacing,
-                    marginRight: spacing,
-                },
-            },
-            MuiTooltip: {
-                tooltip: {
-                    backgroundColor: darkBlack,
-                },
-            },
-            MuiExpansionPanelDetails: {
-                root: {
-                    [`@media (max-width:  ${sm}px)`]: {
-                        paddingLeft: spacing,
-                        paddingRight: spacing,
-                    },
-                },
-            },
-        },
-        typography: {
-            useNextVariants: true,
-            fontFamily: "Lato",
-        },
-    };
-    const resultingTheme = _.merge(config, theme);
-    return responsiveFontSizes(createMuiTheme(resultingTheme));
-};
-
-const SourcedThemeProvider = ({isDarkMode, isRoot, children}) => {
-    const configOverride = {
-        ...useStaticQuery(getThemeDataQuery)
-    };
-    configOverride.palette.type = isDarkMode ? "dark" : "light";
-
-    const theme = isRoot ? generateTheme(configOverride) : createMuiTheme(configOverride);
-    return <MuiThemeProvider theme={theme}>
-        {children}
-    </MuiThemeProvider>;
-};
-
-
-SourcedThemeProvider.propTypes = {
-    children: PropTypes.element.isRequired,
-    isDarkMode: PropTypes.boolean,
-    isRoot: PropTypes.boolean
-};
+import grey from "@material-ui/core/colors/grey";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import AOS from "aos";
 
 const getThemeDataQuery = graphql`
 query getThemeDataQuery {
@@ -168,5 +23,120 @@ query getThemeDataQuery {
   }
 }`;
 
+const generateTheme = config => {
+  const {palette} = config;
+  // colors
+  const background = palette.type === "dark" ? grey["A400"] : grey["100"];
 
-export default SourcedThemeProvider;
+  // border
+  const borderWidth = 2;
+  const borderColor = "rgba(0, 0, 0, 0.13)";
+
+  // spacing
+  const spacing = 8;
+
+  const theme = {
+    palette: {
+      wavePoints: [0, 47, 93],
+      waveAngle: "45",
+      // Used to shift a color's luminance by approximately
+      // two indexes within its tonal palette.
+      // E.g., shift from Red 500 to Red 300 or Red 700.
+      tonalOffset: 0.2,
+      background: {
+        default: background,
+      },
+      spacing,
+    },
+    border: {
+      borderColor: borderColor,
+      borderWidth: borderWidth,
+    },
+    typography: {
+      useNextVariants: true,
+    },
+  };
+  const resultingTheme = _.merge(config, theme);
+  return responsiveFontSizes(createMuiTheme(resultingTheme));
+};
+
+
+const BaseThemeProvider = ({theme, children}) => {
+  return <MuiThemeProvider theme={createMuiTheme(theme)}>
+    {children}
+  </MuiThemeProvider>;
+};
+
+BaseThemeProvider.propTypes = {
+  theme: PropTypes.object,
+  children: PropTypes.node.isRequired
+};
+
+
+// ============================
+// Root Theme Provider
+// ============================
+const ThemeTypeContext = React.createContext(() => {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+
+  return {
+    value: prefersDarkMode ? "dark" : "light",
+    onToggle: () => {
+    }
+  };
+});
+
+const RootThemeProvider = ({children}) => {
+  const configOverride = {
+    ...useStaticQuery(getThemeDataQuery)
+  };
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const [isDarkMode, updateIsDarkMode] = useState(prefersDarkMode);
+  useEffect(() => {
+    AOS.refresh();
+  }, [isDarkMode]);
+  return <ThemeTypeContext.Provider
+    value={{
+      value: isDarkMode ? "dark" : "light",
+      onToggle: () => {
+        updateIsDarkMode(!isDarkMode);
+      }
+    }}>
+    <ThemeTypeContext.Consumer>
+      {({value: themeType}) => {
+
+        configOverride.palette.type = themeType;
+        const theme = generateTheme(configOverride);
+        return <BaseThemeProvider theme={theme}>{children}</BaseThemeProvider>;
+
+      }}
+    </ThemeTypeContext.Consumer>
+  </ThemeTypeContext.Provider>;
+};
+
+RootThemeProvider.propTypes = {
+  children: PropTypes.node.isRequired
+};
+
+const ThemeModifier = ({isDarkMode, isLightMode, children, theme}) => (<ThemeTypeContext.Consumer>
+  {({value: rootThemeType}) => {
+    const configOverride = {
+      palette: {},
+      ...theme
+    };
+    configOverride.palette.type = isDarkMode ? "dark" : isLightMode ? "light" : rootThemeType;
+    return <BaseThemeProvider theme={configOverride}>{children}</BaseThemeProvider>;
+  }}
+</ThemeTypeContext.Consumer>);
+
+ThemeModifier.propTypes = {
+  children: PropTypes.node.isRequired,
+  isDarkMode: PropTypes.bool,
+  isLightMode: PropTypes.bool,
+  isRoot: PropTypes.bool,
+  theme: PropTypes.object
+};
+
+
+export default ThemeModifier;
+export {ThemeTypeContext, RootThemeProvider, ThemeModifier};

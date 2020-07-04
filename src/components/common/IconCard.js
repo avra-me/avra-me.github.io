@@ -68,10 +68,10 @@ IconCard.propTypes = {
   headline: PropTypes.string.isRequired,
   icon: PropTypes.element.isRequired,
   color: PropTypes.string.isRequired,
-  buttons: PropTypes.arrayOf(PropTypes.element),
-  children: PropTypes.element,
+  buttons: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
   animate: PropTypes.bool,
   animationDelay: PropTypes.number,
 };
 
-export default withStyles(styles)(IconCard);
+export default withStyles(styles)(memo(IconCard));

@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import {Box, Card, Grid, Typography, withStyles,} from "@material-ui/core";
 import WaveBorder from "../../shared/components/WaveBorder";
-import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
-import {ThemeProvider} from "@material-ui/styles";
 import Hidden from "@material-ui/core/Hidden";
 import useTheme from "@material-ui/core/styles/useTheme";
 import Avatar from "@material-ui/core/Avatar";
 import clsx from "clsx";
 import SourcedNavigation from "../navigation/SourcedNavigation";
+import ChangeThemeButton from "./ChangeTheme";
+import ThemeModifier from "./sourced/SourcedThemeProvider";
 
 const generateGradientString = (theme) => {
   const points = ["light", "main", "dark"].map((name, i) => `${theme.palette.secondary[name]} ${theme.palette.wavePoints[i]}%`);
@@ -139,13 +139,14 @@ const styles = (theme) => ({
   },
 });
 
-function HeadSection(props) {
+function WaveJumbotron(props) {
   const {classes, title, subTitle, monogram} = props;
   const theme = useTheme();
   return (
     <span className={clsx(classes.waveArea, "section")}>
-          <ThemeProvider theme={createMuiTheme({palette: {type: "dark"}})}>
-            <SourcedNavigation position={"absolute"} useDarkPalette backgroundColor={"inherit"}/>
+          <ThemeModifier isDarkMode>
+            <SourcedNavigation position={"absolute"} useDarkPalette backgroundColor={"inherit"}
+                               menuButtons={[<ChangeThemeButton key={"changeTheme"} order={10}/>]}/>
             <div className={classNames("lg-p-top", classes.wrapper)}>
               <Hidden smDown implementation={"css"}>
                 <Grid
@@ -212,13 +213,13 @@ function HeadSection(props) {
               />
 
             </div>
-        </ThemeProvider>
+        </ThemeModifier>
       <div className={"lg-p-top"}/>
     </span>
   );
 }
 
-HeadSection.propTypes = {
+WaveJumbotron.propTypes = {
   classes: PropTypes.object,
   theme: PropTypes.object,
   title: PropTypes.string.isRequired,
@@ -226,4 +227,4 @@ HeadSection.propTypes = {
   monogram: PropTypes.string
 };
 
-export default withStyles(styles, {withTheme: true})(HeadSection);
+export default withStyles(styles, {withTheme: true})(WaveJumbotron);

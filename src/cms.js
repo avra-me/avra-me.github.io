@@ -18,5 +18,6 @@ import EducationPreview from "./previewComponents/EducationPreview";
  * preview pane.
  */
 
+// CMS.registerPreviewTemplate("experience", ExperiencePreview);
 CMS.registerPreviewTemplate("education", EducationPreview);
 CMS.registerPreviewTemplate("navigationButton", NavigationPreview);

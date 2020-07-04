@@ -17,7 +17,9 @@ module.exports = {
     },
     {
       resolve: "gatsby-plugin-material-ui",
-      options: {}
+      options: {
+        injectFirst: true
+      }
     },
     {
       resolve: "gatsby-source-filesystem",

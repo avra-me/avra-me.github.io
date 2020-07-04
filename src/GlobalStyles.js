@@ -6,6 +6,9 @@ const styles = (theme) => ({
      * Disable the focus outline, which is default on some browsers like
      * chrome when focusing elements
      */
+    "* body": {
+      transition: "all 0.5s linear"
+    },
     "*:focus": {
       outline: 0,
     },

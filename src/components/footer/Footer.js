@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Box, Grid, Hidden, IconButton, TextField, Typography, withStyles,} from "@material-ui/core";
-import MailIcon from "@material-ui/icons/Mail";
 import WaveBorder from "../../shared/components/WaveBorder";
 import transitions from "@material-ui/core/styles/transitions";
 import Avatar from "@material-ui/core/Avatar";
@@ -13,7 +12,7 @@ import useTheme from "@material-ui/core/styles/useTheme";
 
 const styles = (theme) => ({
   footerInner: {
-    backgroundColor: theme.palette.common.darkBlack,
+    backgroundColor: theme.palette.grey["900"],
     paddingTop: theme.spacing(8),
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
@@ -91,7 +90,7 @@ function Footer(props) {
     <ThemeProvider theme={createMuiTheme({palette: {type: "dark"}})}>
       <footer className="lg-p-top">
         <WaveBorder
-          background={theme.palette.common.darkBlack}
+          background={theme.palette.grey["900"]}
           className={classes.border}
         />
         <Paper className={classes.footerInner}>

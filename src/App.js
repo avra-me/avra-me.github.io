@@ -6,40 +6,37 @@ import * as serviceWorker from "./serviceWorker";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import SourcedFooter from "./components/footer/SourcedFooter";
-import SourcedThemeProvider from "./components/common/sourced/SourcedThemeProvider";
+import {RootThemeProvider} from "./components/common/sourced/SourcedThemeProvider";
 import SourcedNavigation from "./components/navigation/SourcedNavigation";
 
-
 const App = (props) => {
-    const {children} = props;
-    const isServerRender = typeof window === "undefined";
+  const {children} = props;
 
-    useEffect(() => {
-        if (!isServerRender) {
-            AOS.init({
-                duration: 1000,
-                once: true
-            });
-        }
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true
     });
+    AOS.refresh();
+  });
 
-    return (
-        <SourcedThemeProvider isRoot>
-            <CssBaseline/>
-            <GlobalStyles/>
-            <SourcedNavigation aosAnchor={"#wave-box"}/>
-            {children}
-            <SourcedFooter/>
-        </SourcedThemeProvider>
-    );
+  return (
+    <RootThemeProvider>
+      <CssBaseline/>
+      <GlobalStyles/>
+      <SourcedNavigation aosAnchor={"#wave-box"}/>
+      {children}
+      <SourcedFooter/>
+    </RootThemeProvider>
+  );
 };
 
 App.propTypes = {
-    children: PropTypes.element
+  children: PropTypes.node
 };
 
 if (typeof window !== "undefined") {
-    serviceWorker.register();
+  serviceWorker.register();
 }
 
 export default App;

@@ -1,13 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Grid, Typography} from "@material-ui/core";
-import IconCard from "./IconCard";
-import Icon from "@material-ui/core/Icon";
-import ErrorBoundary from "../ErrorBoundary";
+import {Grid} from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const iconSize = 30;
 
 const styles = (theme) => ({
   header: {
@@ -24,7 +20,7 @@ const styles = (theme) => ({
   }
 });
 
-function IconSection(props) {
+function IconCardContainer(props) {
   const {children} = props;
   const isLgUp = useMediaQuery(theme => theme.breakpoints.up("up"));
   const isMdUp = useMediaQuery(theme => theme.breakpoints.up("md"));
@@ -40,8 +36,8 @@ function IconSection(props) {
   );
 }
 
-IconSection.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element)
+IconCardContainer.propTypes = {
+  children: PropTypes.node.isRequired
 };
 
-export default withStyles(styles)(IconSection);
+export default withStyles(styles)(IconCardContainer);

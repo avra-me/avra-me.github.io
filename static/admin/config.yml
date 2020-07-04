@@ -19,7 +19,7 @@ collections:
   - name: config
     label: "Global Configuration"
     files:
-      - label: SEO and Theme Options
+      - label: Search Engine Optimisation
         name: metadata
         file: 'content/config.yaml'
         description: Configure your site
@@ -32,6 +32,11 @@ collections:
             name: author
             widget: object
             fields: [{label: "Name", name: name, widget: string, comment: "For SEO"},{label: "Summary", name: summary, widget: string, comment: "For SEO"}]
+      - label: Search Engine Optimisation
+        name: theme
+        file: 'content/theme.yaml'
+        description: Configure your site
+        fields:
           - label: Primary Color
             name: primary
             widget: object

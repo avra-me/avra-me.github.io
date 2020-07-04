@@ -76,7 +76,7 @@ ListExperienceView.defaultProps = {
 
 ListExperienceView.propTypes = {
   featuredOnly: PropTypes.bool,
-  headerComponent: PropTypes.func
+  headerComponent: PropTypes.elementType
 };
 
 export default ListExperienceView;
