@@ -47,6 +47,8 @@ const styles = (theme) => ({
   wavyBorder: {
     height: "30%",
     minHeight: "30%",
+    fill: theme.palette.background.default
+
   },
   mediaItem: {
     position: "relative",
@@ -55,8 +57,7 @@ const styles = (theme) => ({
 });
 
 const ExperienceCard = ({classes, data, flip, delay}) => {
-  const theme = useTheme();
-  const {slug, title, subTitle, image, short, excerpt, link, svg} = data;
+  const {slug, title, subTitle, image, short, excerpt, link} = data;
   return <Fragment key={slug}>
     <Grid>
       <Card elevation={0} className={classes.root}
@@ -72,7 +73,7 @@ const ExperienceCard = ({classes, data, flip, delay}) => {
 
               <Grid item className={classes.mediaItem}>
                 <Grid item className={classes.dividerTop}>
-                  <WaveBorder background={theme.palette.background.default} pause flip/>
+                  <WaveBorder className={classes.wavyBorder} pause flip/>
                 </Grid>
                 {
                   typeof image === "string" ?
@@ -84,7 +85,7 @@ const ExperienceCard = ({classes, data, flip, delay}) => {
                     />
                 }
                 <Grid item className={classes.dividerBottom}>
-                  <WaveBorder className={classes.wavyBorder} background={theme.palette.background.default} pause/>
+                  <WaveBorder className={classes.wavyBorder} pause/>
                 </Grid>
               </Grid>
             </Grid>

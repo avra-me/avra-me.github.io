@@ -65,7 +65,8 @@ function NavBar({menuItems, disabled, staticIconEnabled, logo, classes, aosAncho
                 <img className={classes.brandIcon} src={logo} alt={"icon"}/>
               </Button>}
             </Box>
-            <RightHandNavigation menuLinks={menuItems} onDrawerOpen={handleMobileDrawerOpen}/>
+            <RightHandNavigation menuLinks={menuItems} onDrawerOpen={handleMobileDrawerOpen}
+                                 onDrawerClose={handleMobileDrawerClose}/>
           </Toolbar>
         </ThemeProvider>
       </AppBar>

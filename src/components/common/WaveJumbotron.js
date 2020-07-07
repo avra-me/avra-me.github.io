@@ -99,8 +99,9 @@ const styles = (theme) => ({
   waveBorder: {
     paddingTop: theme.spacing(4),
     zIndex: 20,
-    height: "7vw",
-    minHeight: "7vw",
+    height: theme.spacing(20),
+    minHeight: theme.spacing(20),
+    fill: theme.palette.background.default
   },
   speech: {
     display: "inline-flex",
@@ -141,7 +142,6 @@ const styles = (theme) => ({
 
 function WaveJumbotron(props) {
   const {classes, title, subTitle, monogram} = props;
-  const theme = useTheme();
   return (
     <span className={clsx(classes.waveArea, "section")}>
           <ThemeModifier isDarkMode>
@@ -208,7 +208,6 @@ function WaveJumbotron(props) {
               </div>
               <WaveBorder
                 id={"wave-box"}
-                background={theme.palette.background.default}
                 className={classes.waveBorder}
               />
 

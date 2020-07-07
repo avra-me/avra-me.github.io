@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 import {fade, withStyles} from "@material-ui/core";
 
@@ -30,7 +30,33 @@ const styles = {
  */
 function WaveBorder(props) {
   const id = String(Math.random());
-  const randomDelay = Math.random() * 4;
+  const [waveStates, setWaveStates] = useState({
+    0: {
+      duration: 9,
+      delay: -Math.random() * 2,
+      opacity: 0.7,
+    },
+    3: {
+      duration: 12,
+      delay: -Math.random() * 3,
+      opacity: 0.5
+    },
+    5: {
+      duration: 19,
+      delay: -Math.random() * 4,
+      opacity: 0.5
+    },
+    6: {
+      duration: 25,
+      delay: -Math.random() * 5,
+      opacity: 1,
+      x: 50
+    }
+  });
+
+  const [startTime,] = useState((new Date()).valueOf());
+
+
   const {
     className,
     classes,
@@ -41,18 +67,20 @@ function WaveBorder(props) {
     ...rest
   } = props;
   // eslint-disable-next-line react/prop-types
-  const addWave = ({y, delay, duration, opacity = 1, x = 48, pause = false}) => <use
-    href={`#${id}`}
-    x={x}
-    y={y}
-    style={{
-      fill: fade(background, opacity),
-      transition: "fill 0.5s linear",
-      animationPlayState: pause ? "paused" : "running",
-      animationDelay: `${delay}s`,
-      animationDuration: `${duration * 2}s`
-    }}
-  />;
+  const addWave = ({y, delay, duration, opacity = 1, x = 48, pause = false}) => {
+    return <use
+      href={`#${id}`}
+      x={x}
+      y={y}
+      style={{
+        fill: background && fade(background, opacity),
+        opacity: !background && opacity,
+        animationPlayState: pause ? "paused" : "running",
+        animationDelay: `${delay}s`,
+        animationDuration: `${duration * 2}s`
+      }}
+    />;
+  };
 
   const svgClasses = [classes.waves, className];
   if (flip) {
@@ -65,15 +93,21 @@ function WaveBorder(props) {
   return (
     <div {...rest}>
       <svg className={svgClasses.join(" ")} xmlns="http://www.w3.org/2000/svg"
-           viewBox="0 24 150 28" preserveAspectRatio="none" shapeRendering="auto">
+           viewBox="0 24 150 28" preserveAspectRatio="none" shapeRendering="geometricPrecision">
         <defs>
-          <path id={id} d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
+          <path id={id} d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+                shapeRendering="geometricPrecision"/>
         </defs>
         <g className={classes.parallax}>
-          {addWave({y: 0, delay: -(randomDelay + 2), duration: 9, opacity: 0.7, pause})}
-          {addWave({y: 3, delay: -(randomDelay + 3), duration: 12, opacity: 0.5, pause})}
-          {addWave({y: 5, delay: -(randomDelay + 4), duration: 19, opacity: 0.3, pause})}
-          {addWave({y: 6, delay: -(randomDelay + 5), duration: 25, opacity: 1, x: 50, pause})}
+          {Object.keys(waveStates).map((y) => {
+            const {duration, delay, opacity, x} = waveStates[y];
+            const now = (new Date()).valueOf();
+            let timeDelay = (delay - (now - startTime) / 1000);
+            if (pause) {
+              timeDelay = delay;
+            }
+            return addWave({y, duration, opacity, x, delay: timeDelay, pause});
+          })}
         </g>
       </svg>
 
@@ -83,7 +117,7 @@ function WaveBorder(props) {
 
 WaveBorder.propTypes = {
   className: PropTypes.string,
-  background: PropTypes.string.isRequired,
+  background: PropTypes.string,
   flip: PropTypes.bool,
   reverse: PropTypes.bool,
   pause: PropTypes.bool,

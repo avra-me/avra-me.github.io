@@ -7,6 +7,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import clsx from "clsx";
+import MenuButton from "./MenuButton";
 
 const styles = (theme) => ({
   menuButtonText: {
@@ -67,36 +68,7 @@ const RightHandNavigation = ({menuLinks, classes, onDrawerOpen, onDrawerClose}) 
       </IconButton>
     </Hidden>
     <Hidden smDown implementation={"css"}>
-      {menuLinks.map((element) => {
-        if (element.link) {
-          return (
-            <Link
-              key={element.name}
-              to={element.link}
-              className={classes.noDecoration}
-              getProps={isLinkActive(element)}
-              onClick={onDrawerClose}
-            />
-          );
-        }
-        return element;
-        // return (
-        //   <Button
-        //     color="default"
-        //     size="large"
-        //     classes={{
-        //       text: classes.menuButtonText,
-        //       root: classes.link
-        //     }}
-        //     disableRipple
-        //     onClick={element.onClick}
-        //
-        //     key={element.name + element.order}
-        //   >
-        //     {element.icon}
-        //   </Button>
-        // );
-      })}
+      {menuLinks.map((element) => <MenuButton key={element.order} element={element} onDrawerClose={onDrawerClose}/>)}
     </Hidden>
   </div>;
 };

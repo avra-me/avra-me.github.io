@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useLayoutEffect, useState} from "react";
 
 const isSSR = typeof window === "undefined";
 
@@ -12,15 +12,15 @@ export const setCookie = (name, value, options) => {
     Date.now() + optionsWithDefaults.days * 864e5
   ).toUTCString();
   // eslint-disable-next-line no-undef
-  document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=${optionsWithDefaults.path}; SameSite=Lax`;
+  document.cookie = `${name}=${encodeURIComponent(JSON.stringify(value))}; expires=${expires}; path=${optionsWithDefaults.path}; SameSite=Lax`;
 };
 
 export const getCookie = (name) => {
   // eslint-disable-next-line no-undef
-  return document.cookie.split("; ").reduce((r, v) => {
+  return JSON.parse(document.cookie.split("; ").reduce((r, v) => {
     const parts = v.split("=");
     return parts[0] === name ? decodeURIComponent(parts[1]) : r;
-  }, "");
+  }, ""));
 };
 
 export default function (key, initialValue) {
@@ -28,8 +28,15 @@ export default function (key, initialValue) {
     return [undefined, () => {
     }];
   }
+
   const [item, setItem] = useState(() => {
     return getCookie(key) || initialValue;
+  });
+
+
+  // So SSR doesn't break this functionality
+  useLayoutEffect(() => {
+    updateItem(getCookie(key));
   });
 
   const updateItem = (value, options) => {

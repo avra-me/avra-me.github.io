@@ -6,6 +6,8 @@ import {graphql, useStaticQuery} from "gatsby";
 import grey from "@material-ui/core/colors/grey";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import AOS from "aos";
+import useCookie from "../../../shared/functions/useCookie";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const getThemeDataQuery = graphql`
 query getThemeDataQuery {
@@ -22,6 +24,27 @@ query getThemeDataQuery {
     }
   }
 }`;
+
+const fadeTime = "0.6s";
+const fadeThemeChange = makeStyles({
+  "@global": {
+    "body": {
+      transitionProperty: "background",
+      transitionDuration: fadeTime,
+      transitionTimingFunction: "ease"
+    },
+    "*": {
+      transitionProperty: "color, background",
+      transitionDuration: fadeTime,
+      transitionTimingFunction: "ease"
+    },
+    "svg *": {
+      transitionProperty: "fill",
+      transitionDuration: fadeTime,
+      transitionTimingFunction: "ease"
+    },
+  }
+});
 
 const generateTheme = config => {
   const {palette} = config;
@@ -90,8 +113,11 @@ const RootThemeProvider = ({children}) => {
   const configOverride = {
     ...useStaticQuery(getThemeDataQuery)
   };
+  if (typeof window !== "undefined") {
+    fadeThemeChange();
+  }
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  const [isDarkMode, updateIsDarkMode] = useState(prefersDarkMode);
+  const [isDarkMode, updateIsDarkMode] = useCookie("isDarkMode", prefersDarkMode);
   useEffect(() => {
     AOS.refresh();
   }, [isDarkMode]);
