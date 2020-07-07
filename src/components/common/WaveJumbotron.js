@@ -145,8 +145,7 @@ function WaveJumbotron(props) {
   return (
     <span className={clsx(classes.waveArea, "section")}>
           <ThemeModifier isDarkMode>
-            <SourcedNavigation position={"absolute"} useDarkPalette backgroundColor={"inherit"}
-                               menuButtons={[<ChangeThemeButton key={"changeTheme"} order={10}/>]}/>
+            <SourcedNavigation position={"absolute"} useDarkPalette backgroundColor={"inherit"}/>
             <div className={classNames("lg-p-top", classes.wrapper)}>
               <Hidden smDown implementation={"css"}>
                 <Grid

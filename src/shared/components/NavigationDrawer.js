@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
-import { Link } from "@reach/router";
+import {Link} from "@reach/router";
 import {
   List,
   ListItem,
@@ -16,6 +16,7 @@ import {
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import Icon from "@material-ui/core/Icon";
+import CircleMenuButton from "./CircleMenuButton";
 
 const styles = (theme) => ({
   closeIcon: {
@@ -25,7 +26,7 @@ const styles = (theme) => ({
     width: 200,
   },
   blackList: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: theme.palette.background.paper,
     height: "100%",
   },
   noDecoration: {
@@ -65,10 +66,21 @@ function NavigationDrawer(props) {
           }}
           disableGutters
         >
+          <ListItem
+            button
+            /**
+             * We disable ripple as it will make a weird animation
+             * with primary and secondary color
+             */
+            disableRipple
+            disableTouchRipple
+          >
+            <ListItemText>Navigation</ListItemText>
+          </ListItem>
           <ListItemIcon className={classes.closeIcon}>
-            <IconButton onClick={onClose} aria-label="Close Navigation">
-              <CloseIcon color="primary" />
-            </IconButton>
+            <CircleMenuButton onClick={onClose} aria-label="Close Navigation">
+              <CloseIcon color="primary"/>
+            </CircleMenuButton>
           </ListItemIcon>
         </ListItem>
       </Toolbar>
@@ -129,5 +141,5 @@ NavigationDrawer.propTypes = {
 };
 
 export default withWidth()(
-  withStyles(styles, { withTheme: true })(NavigationDrawer)
+  withStyles(styles, {withTheme: true})(NavigationDrawer)
 );

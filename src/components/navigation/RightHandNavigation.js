@@ -44,20 +44,6 @@ const styles = (theme) => ({
 
 
 const RightHandNavigation = ({menuLinks, classes, onDrawerOpen, onDrawerClose}) => {
-  const isLinkActive = element => ({isCurrent}) => ({
-    children: (<Button
-      color="default"
-      size="large"
-      classes={{
-        text: classes.menuButtonText,
-        root: clsx(classes.link, (isCurrent ? classes.disabledLink : ""))
-      }}
-      disableRipple
-    >
-      {element.name}
-    </Button>)
-  });
-
   return <div>
     <Hidden mdUp implementation={"css"}>
       <IconButton

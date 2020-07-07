@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import {graphql, useStaticQuery} from "gatsby";
 import NavBar from "./NavBar";
+import ChangeThemeButton from "../common/ChangeTheme";
 
 const styles = (theme) => ({
   appBar: {
@@ -63,7 +64,7 @@ query GetNavigationItems {
 `;
 
 SourcedNavigation.defaultProps = {
-  menuButtons: []
+  menuButtons: [<ChangeThemeButton key={"changeTheme"} order={10}/>]
 };
 
 SourcedNavigation.propTypes = {
