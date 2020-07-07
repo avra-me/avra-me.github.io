@@ -16,11 +16,19 @@ export const setCookie = (name, value, options) => {
 };
 
 export const getCookie = (name) => {
+  try {
+    // eslint-disable-next-line no-undef
+    return JSON.parse(document.cookie.split("; ").reduce((r, v) => {
+      const parts = v.split("=");
+      return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+    }, ""));
+  } catch (e) {
+    // eslint-disable-next-line no-undef
+    console.log(`Could not restore previous state for ${name}`);
+    return undefined;
+  }
+
   // eslint-disable-next-line no-undef
-  return JSON.parse(document.cookie.split("; ").reduce((r, v) => {
-    const parts = v.split("=");
-    return parts[0] === name ? decodeURIComponent(parts[1]) : r;
-  }, ""));
 };
 
 export default function (key, initialValue) {
