@@ -1,12 +1,9 @@
-import Button from "@material-ui/core/Button";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import {Link} from "@reach/router";
 import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
-import clsx from "clsx";
 import MenuButton from "./MenuButton";
 
 const styles = (theme) => ({
@@ -43,7 +40,7 @@ const styles = (theme) => ({
 });
 
 
-const RightHandNavigation = ({menuLinks, classes, onDrawerOpen, onDrawerClose}) => {
+const RightHandNavigation = ({menuLinks, onDrawerOpen, onDrawerClose}) => {
   return <div>
     <Hidden mdUp implementation={"css"}>
       <IconButton

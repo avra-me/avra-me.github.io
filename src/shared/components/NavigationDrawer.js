@@ -2,17 +2,16 @@ import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 import {Link} from "@reach/router";
 import {
+  Drawer,
+  isWidthUp,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-  Drawer,
-  withStyles,
-  IconButton,
-  Typography,
-  withWidth,
-  isWidthUp,
   Toolbar,
+  Typography,
+  withStyles,
+  withWidth,
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import Icon from "@material-ui/core/Icon";
@@ -47,6 +46,7 @@ function NavigationDrawer(props) {
   } = props;
 
   useEffect(() => {
+    // eslint-disable-next-line no-undef
     window.onresize = () => {
       if (isWidthUp("sm", width) && open) {
         onClose();
