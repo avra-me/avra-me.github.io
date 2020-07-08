@@ -12,11 +12,17 @@ import SectionHeading from "../common/SectionHeading";
 import Tooltip from "@material-ui/core/Tooltip";
 import Button from "@material-ui/core/Button";
 
-const styles = () => ({
+import LinkIcon from "@material-ui/icons/Link";
+import theme from "../../theme";
+
+const styles = theme => ({
   iconRoot: {
     height: "100%",
     display: "flex",
     flexDirection: "column"
+  },
+  linkIcon: {
+    marginRight: theme.spacing(1)
   }
 });
 
@@ -38,7 +44,8 @@ const SourcedProfessionalSummary = ({classes}) => {
   // eslint-disable-next-line react/prop-types
   const makeTags = ({link, title, subTitle}) => {
     return <Tooltip key={link} title={title}>
-      <Button href={link} size={"small"} variant={"outlined"}>{subTitle}</Button>
+      <Button href={link} size={"small"} variant={"outlined"}><LinkIcon className={classes.linkIcon}/>{subTitle}
+      </Button>
     </Tooltip>
       ;
   };
