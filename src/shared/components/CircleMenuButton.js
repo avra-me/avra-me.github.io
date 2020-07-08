@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import IconButton from "@material-ui/core/IconButton";
+import clsx from "clsx";
 
 const styles = theme => ({
     "button": {
@@ -50,7 +51,8 @@ const styles = theme => ({
 );
 
 function CircleMenuButton({classes, children, ...props}) {
-  return <IconButton disableRipple disableTouchRipple disableFocusRipple classes={{root: classes.button}} {...props}>
+  const className = clsx(props.className, classes.button);
+  return <IconButton disableRipple className={className} {...props}>
     {children}
   </IconButton>;
 }

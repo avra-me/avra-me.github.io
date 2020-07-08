@@ -49,7 +49,7 @@ function IconCard(props) {
       // data-aos-delay={animationDelay}
       className={classes.root}
     >
-      <motion.animate
+      <motion.span
         initial={{opacity: 0, y: -100}}
         animate={{opacity: 1}}
         transition={{ duration: 2, delay: animationDelay/100}}
@@ -60,7 +60,7 @@ function IconCard(props) {
           <CardContent className={classes.content}>{children}</CardContent>
           <CardActions>{buttons}</CardActions>
         </Card>
-      </motion.animate>
+      </motion.span>
     </Grid>
   );
 }

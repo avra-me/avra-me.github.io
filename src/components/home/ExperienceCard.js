@@ -59,13 +59,13 @@ const styles = (theme) => ({
 const ExperienceCard = ({classes, data, flip, delay}) => {
   const {slug, title, subTitle, image, short, excerpt, link} = data;
   return <Fragment key={slug}>
-    <Grid>
-      <Card elevation={0} className={classes.root}
-            data-aos={"fade-up"}
-            data-aos-once={true}
-            data-aos-duration={1000}
-            data-aos-delay={delay}
-      >
+    <Grid
+      data-aos={"fade-up"}
+      data-aos-once={true}
+      data-aos-duration={1000}
+      data-aos-delay={delay}
+    >
+      <Card elevation={0} className={classes.root}>
         <Grid container spacing={4} direction={flip ? "row" : "row-reverse"}
               justify={"center"}>
           <Grid item xs={8} sm={4} md={2} className={classes.mediaGrid}>

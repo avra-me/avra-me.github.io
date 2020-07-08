@@ -17,7 +17,7 @@ const LightMode = () => <motion.animate
 </motion.animate>;
 
 const DarkMode = () => {
-  return <motion.animate
+  return <motion.span
     initial={{opacity: 0}}
     animate={{opacity: 1}}
     exit={{opacity: 0, duration: 1000}}
@@ -25,7 +25,7 @@ const DarkMode = () => {
 
   >
     <NightsStayIcon/>
-  </motion.animate>;
+  </motion.span>;
 };
 
 
@@ -36,11 +36,13 @@ function ChangeThemeButton() {
 
 
   return <Tooltip title={buttonContext}>
+    <span>
     <CircleMenuButton aria-label={buttonContext} onClick={onToggle}>
       <AnimatePresence>
         {themeType === "light" ? <LightMode/> : <DarkMode/>}
       </AnimatePresence>
     </CircleMenuButton>
+    </span>
   </Tooltip>;
 }
 

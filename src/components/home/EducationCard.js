@@ -18,14 +18,14 @@ const styles = () => ({
 const EducationCard = ({classes, flip, data, delay}) => {
   const {title, subTitle, short, slug} = data;
 
-  return <Grid item xs={12} sm={6}>
+  return <Grid item xs={12} sm={6} data-aos={"fade-up"}
+               data-aos-once={true}
+               data-aos-duration={1000}
+               data-aos-delay={delay}>
     <WaveCard
       inverse={flip}
       className={classes.root}
-      data-aos={"fade-up"}
-      data-aos-once={true}
-      data-aos-duration={1000}
-      data-aos-delay={delay}>
+    >
       <CardHeader title={title} subheader={subTitle} titleTypographyProps={{color: "textPrimary"}}/>
       <CardContent className={classes.content}>
         <Typography variant="body2" color="textSecondary" component="p">

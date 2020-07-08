@@ -26,22 +26,23 @@ query getThemeDataQuery {
 }`;
 
 const fadeTime = "0.6s";
+const fadeTimingFunction = "ease";
 const fadeThemeChange = makeStyles({
   "@global": {
     "body": {
       transitionProperty: "background",
       transitionDuration: fadeTime,
-      transitionTimingFunction: "ease"
+      transitionTimingFunction: fadeTimingFunction
     },
     "*": {
       transitionProperty: "color, background",
       transitionDuration: fadeTime,
-      transitionTimingFunction: "ease"
+      transitionTimingFunction: fadeTimingFunction
     },
     "svg *": {
       transitionProperty: "fill",
       transitionDuration: fadeTime,
-      transitionTimingFunction: "ease"
+      transitionTimingFunction: fadeTimingFunction
     },
   }
 });
@@ -78,6 +79,13 @@ const generateTheme = config => {
     typography: {
       useNextVariants: true,
     },
+    overrides: {
+      MuiPaper: {
+        root: {
+          transition: `box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color ${fadeTime} ${fadeTimingFunction}, background ${fadeTime} ${fadeTimingFunction} !important`
+        }
+      }
+    }
   };
   const resultingTheme = _.merge(config, theme);
   return responsiveFontSizes(createMuiTheme(resultingTheme));
