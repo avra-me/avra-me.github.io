@@ -54,6 +54,7 @@ const MenuButton = ({element, classes, onDrawerClose}) => {
 
 
   const result = <Button
+    key={element.name}
     color="default"
     size="large"
     classes={{

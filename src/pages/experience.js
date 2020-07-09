@@ -5,7 +5,7 @@ import ListExperienceView from "../components/home/ListExperienceView";
 import WaveJumbotron from "../components/common/WaveJumbotron";
 
 const ExperienceHome = () => (
-  <App>
+  <App showContactForm>
     <ListExperienceView headerComponent={WaveJumbotron}/>
   </App>
 );

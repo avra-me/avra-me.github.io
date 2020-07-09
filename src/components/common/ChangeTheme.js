@@ -38,9 +38,7 @@ function ChangeThemeButton() {
   return <Tooltip title={buttonContext}>
     <span>
     <CircleMenuButton aria-label={buttonContext} onClick={onToggle}>
-      <AnimatePresence>
-        {themeType === "light" ? <LightMode/> : <DarkMode/>}
-      </AnimatePresence>
+      {themeType === "light" ? <LightMode/> : <DarkMode/>}
     </CircleMenuButton>
     </span>
   </Tooltip>;

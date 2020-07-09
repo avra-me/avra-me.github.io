@@ -9,6 +9,7 @@ import Box from "@material-ui/core/Box";
 import AppBar from "@material-ui/core/AppBar";
 import withStyles from "@material-ui/core/styles/withStyles";
 import RightHandNavigation from "./RightHandNavigation";
+import smoothScrollTop from "../../shared/functions/smoothScrollTop";
 
 const styles = (theme) => ({
   appBar: {
@@ -58,7 +59,7 @@ function NavBar({menuItems, disabled, staticIconEnabled, logo, classes, aosAncho
           <Toolbar className={classes.toolbar}>
             <Box height={1}>
               {logo &&
-              <Button color="default" href={"/"}
+              <Button color="default" onClick={smoothScrollTop}
                       style={(!staticIconEnabled && position === "absolute") ? {
                         display: "none"
                       } : {}}>

@@ -9,16 +9,23 @@ import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
 import WaveCard from "../common/WaveCard";
 
-const styles = () => ({
+const styles = theme => ({
   root: {
-    height: "100%"
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    padding: theme.spacing(1)
   },
+  content: {
+    flexGrow: 1
+  }
 });
 
 const EducationCard = ({classes, flip, data, delay}) => {
   const {title, subTitle, short, slug} = data;
 
-  return <Grid item xs={12} sm={6} data-aos={"fade-up"}
+  return <Grid item xs={12} sm={5}
+               data-aos={"fade-up"}
                data-aos-once={true}
                data-aos-duration={1000}
                data-aos-delay={delay}>

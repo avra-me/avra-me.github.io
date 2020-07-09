@@ -13,7 +13,6 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Button from "@material-ui/core/Button";
 
 import LinkIcon from "@material-ui/icons/Link";
-import theme from "../../theme";
 
 const styles = theme => ({
   iconRoot: {

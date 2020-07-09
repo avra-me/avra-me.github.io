@@ -69,6 +69,7 @@ function WaveBorder(props) {
   // eslint-disable-next-line react/prop-types
   const addWave = ({y, delay, duration, opacity = 1, x = 48, pause = false}) => {
     return <use
+      key={y}
       href={`#${id}`}
       x={x}
       y={y}

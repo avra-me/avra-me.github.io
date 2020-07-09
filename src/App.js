@@ -10,7 +10,7 @@ import {RootThemeProvider} from "./components/common/sourced/SourcedThemeProvide
 import SourcedNavigation from "./components/navigation/SourcedNavigation";
 
 const App = (props) => {
-  const {children} = props;
+  const {children, showContactForm} = props;
 
   useEffect(() => {
     AOS.init({
@@ -26,13 +26,14 @@ const App = (props) => {
       <GlobalStyles/>
       <SourcedNavigation aosAnchor={"#wave-box"}/>
       {children}
-      <SourcedFooter/>
+      <SourcedFooter showContactForm={showContactForm}/>
     </RootThemeProvider>
   );
 };
 
 App.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  showContactForm: PropTypes.bool,
 };
 
 if (typeof window !== "undefined") {

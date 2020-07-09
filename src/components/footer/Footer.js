@@ -9,6 +9,10 @@ import {ThemeProvider} from "@material-ui/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import Paper from "@material-ui/core/Paper";
 import useTheme from "@material-ui/core/styles/useTheme";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import EmailIcon from "@material-ui/icons/AlternateEmail";
+import FormControl from "@material-ui/core/FormControl";
+import ContactForm from "../../shared/components/ContactForm";
 
 const styles = (theme) => ({
   footerInner: {
@@ -81,11 +85,16 @@ const styles = (theme) => ({
 });
 
 function Footer(props) {
-  const {classes, disabled, title, subTitle, attributionIcons, socialIcons} = props;
+  const {classes, disabled, title, subTitle, attributionIcons, socialIcons, contactForm} = props;
   if (disabled) {
     return null;
   }
   const theme = useTheme();
+
+  const gridSizing = {xs: 12, md: 6};
+  if (contactForm) {
+    gridSizing.lg = 4;
+  }
   return (
     <ThemeProvider theme={createMuiTheme({palette: {type: "dark"}})}>
       <footer className="lg-p-top">
@@ -95,34 +104,11 @@ function Footer(props) {
         />
         <Paper className={classes.footerInner}>
           <Grid container spacing={5}>
-            <Grid item xs={12} md={6} lg={4}>
-              <form data-netlify="true" name={"contact-form"} method="post"
-                    netlify-honeypot="totally-a-field" action={"/?sent_message=1"}>
-                <input type="hidden" name="totally-a-field"/>
-                <Box display="flex" flexDirection="column">
-                  <Box mb={1}>
-                    <TextField
-                      name="message"
-                      multiline
-                      placeholder="Get in touch"
-                      inputProps={{"aria-label": "Get in Touch"}}
-                      variant="filled"
-                      rows={4}
-                      fullWidth
-                      required
-                    />
-                  </Box>
-                  <Button
-                    variant="outlined"
-                    type="submit"
-                  >
-                    Send Message
-                  </Button>
-                </Box>
-              </form>
-            </Grid>
-            <Hidden mdDown>
-              <Grid item xs={12} md={6} lg={4}>
+            {contactForm && <Grid item {...gridSizing}>
+              <ContactForm/>
+            </Grid>}
+            <Hidden smDown={!contactForm} mdDown={contactForm}>
+              <Grid item {...gridSizing}>
                 <Box display="flex" justifyContent="center">
                   <div>
                     {socialIcons.map((info, index) => (
@@ -152,7 +138,7 @@ function Footer(props) {
                 </Box>
               </Grid>
             </Hidden>
-            <Grid item xs={12} md={6} lg={4}>
+            <Grid item {...gridSizing}>
               <Typography variant="h6" paragraph color={"textPrimary"}>
                 {title}
               </Typography>
@@ -184,6 +170,7 @@ Footer.propTypes = {
   title: PropTypes.string,
   subTitle: PropTypes.string,
   disabled: PropTypes.bool,
+  contactForm: PropTypes.bool,
   socialIcons: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string,
     link: PropTypes.string,
