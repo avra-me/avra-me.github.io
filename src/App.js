@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import {CssBaseline} from "@material-ui/core";
 import GlobalStyles from "./GlobalStyles";
 import * as serviceWorker from "./serviceWorker";
-import "aos/dist/aos.css";
 import SourcedFooter from "./components/footer/SourcedFooter";
 import {RootThemeProvider} from "./components/common/sourced/SourcedThemeProvider";
 import SourcedNavigation from "./components/navigation/SourcedNavigation";

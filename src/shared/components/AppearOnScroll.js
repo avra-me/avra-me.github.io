@@ -7,7 +7,8 @@ const AppearOnScroll = (props) => {
   const {children, ref, offScreenProperties, onScreenProperties, animationDisabled, delay, duration, repeat, ...rest} = props;
   const [newRef, inView] = useInView({
     rootMargin: "-100px 0px",
-    root: ref
+    root: ref,
+    triggerOnce: repeat
   });
 
   const [visible, setIsVisible] = useState(inView);

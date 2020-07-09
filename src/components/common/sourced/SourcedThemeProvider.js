@@ -1,6 +1,6 @@
 import {createMuiTheme, MuiThemeProvider, responsiveFontSizes} from "@material-ui/core";
 import _ from "lodash";
-import React, {useEffect, useState} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {graphql, useStaticQuery} from "gatsby";
 import grey from "@material-ui/core/colors/grey";
