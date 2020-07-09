@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import {withStyles} from "@material-ui/core";
 import SectionHeading from "../common/SectionHeading";
+import Container from "@material-ui/core/Container";
 
 const styles = (theme) => ({
   heading: {
@@ -21,7 +22,7 @@ const ListEducationView = ({featuredOnly, classes}) => {
 
   const {files} = result;
 
-  return <div className="container-fluid section">
+  return <Container>
     <SectionHeading title={"Education"} subTitle={"I'm always learning, but here is my formal education."} id={"education"}/>
     <Grid container spacing={4} alignItems={"stretch"} direction="row" justify={"center"}>
 
@@ -30,10 +31,10 @@ const ListEducationView = ({featuredOnly, classes}) => {
         info.short = info.short || excerpt;
         const data = {...info, excerpt, slug};
         return (featuredOnly ? info.featured : true) &&
-          <EducationCard key={slug} data={data} flip={i % 2 === 0} delay={i * 100}/>;
+          <EducationCard key={slug} data={data} flip={i % 2 === 0} delay={i * .100}/>;
       })}
     </Grid>
-  </div>;
+  </Container>;
 };
 
 const listEducationData = graphql`query ListEducationData {

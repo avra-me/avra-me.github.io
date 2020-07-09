@@ -1,13 +1,20 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 import {fade, withStyles} from "@material-ui/core";
+import clsx from "clsx";
 
 const styles = {
   flip: {
-    transform: "scale(1,-1)"
+    transform: "scale(1,-1)",
+    "& reverse": {
+      transform: "scale(-1,-1)"
+    }
   },
   reverse: {
-    transform: "scale(-1,1)"
+    transform: "scale(-1,1)",
+    "& flip": {
+      transform: "scale(-1,-1)"
+    }
   },
   waves: {
     position: "relative",
@@ -30,28 +37,20 @@ const styles = {
  */
 function WaveBorder(props) {
   const id = String(Math.random());
-  const [waveStates, setWaveStates] = useState({
-    0: {
-      duration: 9,
-      delay: -Math.random() * 2,
-      opacity: 0.7,
-    },
-    3: {
-      duration: 12,
-      delay: -Math.random() * 3,
-      opacity: 0.5
-    },
-    5: {
-      duration: 19,
-      delay: -Math.random() * 4,
-      opacity: 0.5
-    },
-    6: {
-      duration: 25,
-      delay: -Math.random() * 5,
-      opacity: 1,
-      x: 50
-    }
+
+  const wave = (duration, delay, opacity, x = undefined) => ({
+    duration,
+    // delay: -(pause ? Math.random() * duration : delay),
+    delay: -delay,
+    opacity,
+    x
+  });
+
+  const [waveStates,] = useState({
+    0: wave(9, -2, 0.7),
+    3: wave(12, -3, 0.5),
+    5: wave(19, -4, 0.3),
+    6: wave(25, -5, 1, 50),
   });
 
   const [startTime,] = useState((new Date()).valueOf());
@@ -73,6 +72,7 @@ function WaveBorder(props) {
       href={`#${id}`}
       x={x}
       y={y}
+      className={clsx()}
       style={{
         fill: background && fade(background, opacity),
         opacity: !background && opacity,
@@ -93,7 +93,7 @@ function WaveBorder(props) {
 
   return (
     <div {...rest}>
-      <svg className={svgClasses.join(" ")} xmlns="http://www.w3.org/2000/svg"
+      <svg className={clsx(svgClasses)} xmlns="http://www.w3.org/2000/svg"
            viewBox="0 24 150 28" preserveAspectRatio="none" shapeRendering="geometricPrecision">
         <defs>
           <path id={id} d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"

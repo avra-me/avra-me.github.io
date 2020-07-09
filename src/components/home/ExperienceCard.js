@@ -11,12 +11,18 @@ import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Img from "gatsby-image"
+import WavyImage from "../../shared/components/WavyImage";
+import AppearOnScroll from "../../shared/components/AppearOnScroll";
+import Paper from "@material-ui/core/Paper";
 
 const styles = (theme) => ({
   root: {
     height: "100%",
     background: theme.palette.background.default,
-    marginBottom: theme.spacing(10)
+    marginBottom: theme.spacing(2),
+    "& :last-child": {
+      marginBottom: 0
+    }
   },
   dark: {
     background: theme.palette.secondary.dark
@@ -26,7 +32,6 @@ const styles = (theme) => ({
   },
   mediaGrid: {
     position: "relative"
-
   },
   media: {
     width: "100%",
@@ -59,40 +64,19 @@ const styles = (theme) => ({
 const ExperienceCard = ({classes, data, flip, delay}) => {
   const {slug, title, subTitle, image, short, excerpt, link} = data;
   return <Fragment key={slug}>
-    <Grid
-      data-aos={"fade-up"}
-      data-aos-once={true}
-      data-aos-duration={1000}
-      data-aos-delay={delay}
-    >
-      <Card elevation={0} className={classes.root}>
+
+    <Paper elevation={0} className={classes.root}>
+      <AppearOnScroll delay={delay} offScreenProperties={{opacity: 0, x: `${50 * (flip ? -1 : 1)}%`}}
+                      onScreenProperties={{opacity: 1, x: 0}}>
         <Grid container spacing={4} direction={flip ? "row" : "row-reverse"}
               justify={"center"}>
-          <Grid item xs={8} sm={4} md={2} className={classes.mediaGrid}>
-            <Grid item style={{height: "100%"}} container alignItems={"center"}>
+          <Grid item xs={12} sm={4} md={2} className={classes.mediaGrid}>
 
-              <Grid item className={classes.mediaItem}>
-                <Grid item className={classes.dividerTop}>
-                  <WaveBorder className={classes.wavyBorder} pause flip/>
-                </Grid>
-                {
-                  typeof image === "string" ?
-                    <img src={image} className={classes.media} alt={title}/> :
-                    <Img
-                      fluid={image}
-                      className={classes.media}
-                      alt={title}
-                    />
-                }
-                <Grid item className={classes.dividerBottom}>
-                  <WaveBorder className={classes.wavyBorder} pause/>
-                </Grid>
-              </Grid>
-            </Grid>
-
+            <WavyImage src={typeof image === "string" && image} progressiveImage={typeof image === "object" && image}
+                       alt={title}/>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={8}>
+          <Grid item xs={12} sm={8} md={10}>
             <CardContent>
               <Typography gutterBottom={false} variant={"h6"} color={"textPrimary"}>{title}</Typography>
               <Typography gutterBottom={true} variant={"body1"} color={"textSecondary"}>{subTitle}</Typography>
@@ -116,8 +100,9 @@ const ExperienceCard = ({classes, data, flip, delay}) => {
             </CardActions>
           </Grid>
         </Grid>
-      </Card>
-    </Grid>
+      </AppearOnScroll>
+
+    </Paper>
   </Fragment>;
 };
 

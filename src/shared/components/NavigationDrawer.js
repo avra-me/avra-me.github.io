@@ -111,7 +111,7 @@ function NavigationDrawer(props) {
                   </ListItemIcon>
                   <ListItemText
                     primary={
-                      <Typography variant="subtitle1" className="text-white">
+                      <Typography variant="subtitle1" color={"textPrimary"}>
                         {element.name}
                       </Typography>
                     }

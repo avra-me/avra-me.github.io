@@ -1,19 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import {Box, Card, Grid, Typography, withStyles,} from "@material-ui/core";
+import {Box, Card, Grid, Typography, withStyles} from "@material-ui/core";
 import WaveBorder from "../../shared/components/WaveBorder";
 import Hidden from "@material-ui/core/Hidden";
-import useTheme from "@material-ui/core/styles/useTheme";
 import Avatar from "@material-ui/core/Avatar";
 import clsx from "clsx";
 import SourcedNavigation from "../navigation/SourcedNavigation";
-import ChangeThemeButton from "./ChangeTheme";
 import ThemeModifier from "./sourced/SourcedThemeProvider";
+import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
 
 const generateGradientString = (theme) => {
-  const points = ["light", "main", "dark"].map((name, i) => `${theme.palette.secondary[name]} ${theme.palette.wavePoints[i]}%`);
-  return `linear-gradient(${theme.palette.waveAngle}deg, ${points.join(", ")} ) !important`;
+  const points = ["light", "main", "dark"].map(
+    (name, i) =>
+      `${theme.palette.secondary[name]} ${theme.palette.wavePoints[i]}%`
+  );
+  return `linear-gradient(${theme.palette.waveAngle}deg, ${points.join(
+    ", "
+  )} ) !important`;
 };
 
 const styles = (theme) => ({
@@ -101,7 +106,7 @@ const styles = (theme) => ({
     zIndex: 20,
     height: theme.spacing(20),
     minHeight: theme.spacing(20),
-    fill: theme.palette.background.default
+    fill: theme.palette.background.default,
   },
   speech: {
     display: "inline-flex",
@@ -128,90 +133,81 @@ const styles = (theme) => ({
     paddingRight: theme.spacing(2),
   },
   waveArea: {
-    background: generateGradientString(theme)
+    background: generateGradientString(theme),
   },
   captionText: {
-    fontSize: "32px"
+    fontSize: "32px",
   },
   brand: {
     height: "auto",
     width: "75px",
-    overflow: "inherit"
+    overflow: "inherit",
   },
+  title: {
+    marginBottom: theme.spacing(4)
+  }
 });
 
 function WaveJumbotron(props) {
   const {classes, title, subTitle, monogram} = props;
   return (
-    <span className={clsx(classes.waveArea, "section")}>
-          <ThemeModifier isDarkMode>
-            <SourcedNavigation position={"absolute"} useDarkPalette backgroundColor={"inherit"}/>
-            <div className={classNames("lg-p-top", classes.wrapper)}>
-              <Hidden smDown implementation={"css"}>
+    <span className={clsx(classes.waveArea, "section")} id={"wave-box"} >
+      <ThemeModifier isDarkMode>
+        <SourcedNavigation
+          position={"absolute"}
+          useDarkPalette
+          backgroundColor={"inherit"}
+        />
+        <div className={classNames("lg-p-top", classes.wrapper)}>
+          <Grid
+            item
+            xs={12}
+            md={12}
+            style={{margin: "auto", alignItems: "center"}}
+            className={"lg-p-top"}
+          >
+            <Box
+              display="flex"
+              flexDirection="column"
+              style={{margin: "auto", alignItems: "center"}}
+              height="100%"
+            >
+              <Button href={"#"}>
+                {monogram && (
+                  <Avatar
+                    variant={"square"}
+                    className={classes.brand}
+                    src={monogram}
+                    alt={""}
+                  />
+                )}
+              </Button>
+            </Box>
+          </Grid>
+          <Container className={classes.container}>
+              <div className={classNames(classes.containerFix)}>
                 <Grid
-                  item
-                  xs={12}
-                  md={12}
-                  style={{margin: "auto", alignItems: "center"}}
-                  className={"lg-p-top"}
+                  container
+                  className="row"
+                  alignItems={"center"}
+                  justify={"center"}
                 >
-                  <Box
-                    display="flex"
-                    flexDirection="column"
-                    style={{margin: "auto", alignItems: "center"}}
-                    height="100%"
-                  >
-                  {monogram && <Avatar variant={"square"} className={classes.brand} src={monogram} alt={""}/>}
-                  </Box>
+                  <Grid item xs={12} className={classes.title}>
+                    <Typography variant="h2" component={"div"} align={"center"}>
+                      <b>{title}</b>
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={10}>
+                    <Hidden smDown implementation={"css"}>
+                      <Typography className={classes.captionText} align={"center"}>{subTitle}</Typography>
+                    </Hidden>
+                  </Grid>
                 </Grid>
-              </Hidden>
-              <div className={classNames("container-fluid", classes.container)}>
-                <Box display="flex" justifyContent="center" className="row">
-                  <Card
-                    className={classes.card}
-                  >
-                  <div className={classNames(classes.containerFix, "container")}>
-                    <Box justifyContent="space-between" className="row">
-                      <Grid
-                        item
-                        xs={12}
-                        md={12}
-                        style={{margin: "auto", alignItems: "center"}}
-                      >
-                        <Box
-                          display="flex"
-                          flexDirection="column"
-                          style={{margin: "auto", alignItems: "center"}}
-                          height="100%"
-                        >
-                          <Box mb={4}>
-                            <Typography variant="h2">
-                              <b>
-                                {title}
-                              </b>
-                            </Typography>
-                          </Box>
-                          <Box mb={2}>
-                            <Hidden smDown implementation={"css"}>
-                                <div className={classes.captionText}>
-                                    {subTitle}
-                                </div>
-                            </Hidden>
-                          </Box>
-                        </Box>
-                      </Grid>
-                    </Box>
-                  </div>
-                  </Card>
-                </Box>
               </div>
-              <WaveBorder
-                id={"wave-box"}
-                className={classes.waveBorder}
-              />
-
-            </div>
-        </ThemeModifier>
+          </Container>
+          <WaveBorder className={classes.waveBorder}/>
+        </div>
+      </ThemeModifier>
       <div className={"lg-p-top"}/>
     </span>
   );
@@ -222,7 +218,7 @@ WaveJumbotron.propTypes = {
   theme: PropTypes.object,
   title: PropTypes.string.isRequired,
   subTitle: PropTypes.string,
-  monogram: PropTypes.string
+  monogram: PropTypes.string,
 };
 
 export default withStyles(styles, {withTheme: true})(WaveJumbotron);

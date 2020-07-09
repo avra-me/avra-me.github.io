@@ -10,20 +10,23 @@ import Typography from "@material-ui/core/Typography";
 import FilledInput from "@material-ui/core/FilledInput";
 import PropTypes from "prop-types";
 import ContactForm from "./ContactForm";
+import Container from "@material-ui/core/Container";
 
 const ContactFormSection = ({title, subTitle, ...rest}) => {
-  return <Grid container className={"container-fluid section"} alignItems={"center"} justify={"center"}>
-    <Grid item container xs={12} alignItems={"center"} justify={"center"} direction={"column"}>
-      <Grid item xs={12} md={6} lg={4}>
-        <SectionHeading title={title}
-                        subTitle={<Typography align={"center"} variant={"body1"}>{subTitle}</Typography>}/>
+  return <Container>
+    <Grid container alignItems={"center"} justify={"center"}>
+      <Grid item container xs={12} alignItems={"center"} justify={"center"} direction={"column"}>
+        <Grid item xs={12} md={6} lg={4}>
+          <SectionHeading title={title}
+                          subTitle={<Typography align={"center"} variant={"body1"}>{subTitle}</Typography>}/>
 
+        </Grid>
+      </Grid>
+      <Grid item xs={12} md={6} lg={4}>
+        <ContactForm {...rest}/>
       </Grid>
     </Grid>
-    <Grid item xs={12} md={6} lg={4}>
-      <ContactForm {...rest}/>
-    </Grid>
-  </Grid>;
+  </Container>;
 };
 
 ContactFormSection.defaultProps = {

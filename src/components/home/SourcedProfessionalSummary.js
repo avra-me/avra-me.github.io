@@ -49,13 +49,12 @@ const SourcedProfessionalSummary = ({classes}) => {
       ;
   };
 
-  return <span>
-    <IconCardContainer>
+  return <IconCardContainer>
     <Grid xs={12} item>
       <SectionHeading title={tagSectionConfig.title} subTitle={tagSectionConfig.subTitle} id={"professional-summary"}/>
     </Grid>
       {cardData.map((card, i) => {
-        const delay = isMdUp ? Math.min(Math.floor(i) * 100, 300) : Math.min(Math.floor(i) * 100, 600);
+        const delay = isMdUp ? Math.min(Math.floor(i) * .100, .300) : Math.min(Math.floor(i) * .100, .600);
         return <IconCard
           key={card.id}
           headline={card.title}
@@ -73,8 +72,7 @@ const SourcedProfessionalSummary = ({classes}) => {
           </Typography>
         </IconCard>;
       })}
-  </IconCardContainer>
-  </span>;
+  </IconCardContainer>;
 };
 
 const getProfessionalSummaryQuery = graphql`query getProfessionalSummary {

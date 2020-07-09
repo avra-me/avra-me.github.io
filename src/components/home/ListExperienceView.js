@@ -28,7 +28,7 @@ const ListExperienceView = ({featuredOnly, headerComponent: HeaderComponent}) =>
 
         const data = {...info, excerpt, slug};
         return (featuredOnly ? info.featured : true) &&
-          <ExperienceCard key={slug} data={data} flip={i % 2 === 0} delay={i * 100}/>;
+          <ExperienceCard key={slug} data={data} flip={i % 2 === 0} delay={i * .100}/>;
       })}
     </Container>
 

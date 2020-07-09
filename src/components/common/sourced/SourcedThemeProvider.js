@@ -57,7 +57,7 @@ const generateTheme = config => {
   const borderColor = "rgba(0, 0, 0, 0.13)";
 
   // spacing
-  const spacing = 8;
+  const spacing = 16;
 
   const theme = {
     palette: {
@@ -84,6 +84,9 @@ const generateTheme = config => {
         root: {
           transition: `box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color ${fadeTime} ${fadeTimingFunction}, background ${fadeTime} ${fadeTimingFunction} !important`
         }
+      },
+      MuiContainer: {
+        root: {}
       }
     }
   };

@@ -1,4 +1,4 @@
-import React, {memo} from "react";
+import React, {memo, useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import {lighten, withStyles} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
@@ -8,6 +8,9 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import {motion} from "framer-motion";
+import clsx from "clsx";
+import {useInView} from "react-intersection-observer";
+import AppearOnScroll from "../../shared/components/AppearOnScroll";
 
 const styles = (theme) => ({
   iconWrapper: {
@@ -25,7 +28,10 @@ const styles = (theme) => ({
     padding: `${theme.spacing(1)}px ${theme.spacing(2)}px !important`
   },
   content: {
-    flexGrow: 1
+    flexGrow: 1,
+  },
+  card: {
+    padding: theme.spacing(2, 4)
   },
   avatar: {
     flex: "0 0 auto",
@@ -40,27 +46,22 @@ function IconCard(props) {
     backgroundColor: lighten(color, 0.5),
     fill: color,
   };
+
   return (
     <Grid
       item
       xs={12}
       md={6}
-      // data-aos={animate ? "fade-up" : false}
-      // data-aos-delay={animationDelay}
       className={classes.root}
     >
-      <motion.span
-        initial={{opacity: 0, y: -100}}
-        animate={{opacity: 1}}
-        transition={{ duration: 2, delay: animationDelay/100}}
-      >
-        <Card {...waveCardProps}>
+      <AppearOnScroll delay={animationDelay} animationDisabled={!animate} style={{height: "100%"}}>
+        <Card {...waveCardProps} className={clsx(waveCardProps.className, classes.card)}>
           <CardHeader title={headline} titleTypographyProps={{variant: "h6"}}
                       avatar={<Avatar style={iconStyling}>{icon}</Avatar>}/>
           <CardContent className={classes.content}>{children}</CardContent>
           <CardActions>{buttons}</CardActions>
         </Card>
-      </motion.span>
+      </AppearOnScroll>
     </Grid>
   );
 }
