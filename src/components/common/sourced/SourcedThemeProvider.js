@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import {graphql, useStaticQuery} from "gatsby";
 import grey from "@material-ui/core/colors/grey";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import AOS from "aos";
 import useCookie from "../../../shared/functions/useCookie";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
@@ -129,9 +128,6 @@ const RootThemeProvider = ({children}) => {
   }
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const [isDarkMode, updateIsDarkMode] = useCookie("isDarkMode", prefersDarkMode);
-  useEffect(() => {
-    AOS.refresh();
-  }, [isDarkMode]);
   return <ThemeTypeContext.Provider
     value={{
       value: isDarkMode ? "dark" : "light",
