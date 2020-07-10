@@ -20,12 +20,14 @@ const styles = (theme) => ({
     width: "100%",
     position: "absolute",
     top: -1,
+    left: 0,
     zIndex: 10
   },
   dividerBottom: {
     width: "100%",
     position: "absolute",
     bottom: -10,
+    left: 0,
     zIndex: 10
   },
   wavyBorder: {
