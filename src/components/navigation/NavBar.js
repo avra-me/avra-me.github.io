@@ -61,7 +61,7 @@ function NavBar({menuItems, disabled, staticIconEnabled, logo, classes, position
           visible: {opacity: 1, top: 0},
           hidden: {opacity: .5, top: "-200px"}
         }}
-        transition={{duration: .4, delay: 0}}
+        transition={{duration: .15, delay: 0}}
       >
         <AppBar position={"absolute"} className={classes.appBar}
                 style={backgroundColor ? {backgroundColor} : undefined}
