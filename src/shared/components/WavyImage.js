@@ -17,17 +17,17 @@ const styles = (theme) => ({
     margin: "auto"
   },
   dividerTop: {
-    width: "100%",
     position: "absolute",
     top: -1,
-    left: 0,
+    left: -1,
+    right: -1,
     zIndex: 10
   },
   dividerBottom: {
-    width: "100%",
     position: "absolute",
     bottom: -10,
-    left: 0,
+    left: -1,
+    right: -1,
     zIndex: 10
   },
   wavyBorder: {

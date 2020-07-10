@@ -30,24 +30,23 @@ const styles = (theme) => ({
       marginLeft: -theme.spacing(2),
     },
     ".MuiContainer-root": {
-      [theme.breakpoints.up("sm")]: {
-        paddingRight: theme.spacing(8),
-        paddingLeft: theme.spacing(8),
-      }
-    },
-
-    ".section": {
       marginBottom: theme.spacing(12),
+      paddingRight: theme.spacing(8),
+      paddingLeft: theme.spacing(8),
       [theme.breakpoints.down("md")]: {
         marginBottom: theme.spacing(10),
       },
       [theme.breakpoints.down("sm")]: {
         marginBottom: theme.spacing(8),
+
       },
       [theme.breakpoints.down("xs")]: {
         marginBottom: theme.spacing(6),
-      },
+        paddingRight: theme.spacing(4),
+        paddingLeft: theme.spacing(4),
+      }
     },
+
     ".lg-mg-top": {
       marginTop: `${theme.spacing(10)}px !important`,
       [theme.breakpoints.down("md")]: {

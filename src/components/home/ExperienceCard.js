@@ -1,16 +1,12 @@
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import React, {Fragment} from "react";
-import useTheme from "@material-ui/core/styles/useTheme";
 import {withStyles} from "@material-ui/core";
 import PropTypes from "prop-types";
 import CardContent from "@material-ui/core/CardContent";
-import Card from "@material-ui/core/Card";
-import WaveBorder from "../../shared/components/WaveBorder";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import Img from "gatsby-image"
 import WavyImage from "../../shared/components/WavyImage";
 import AppearOnScroll from "../../shared/components/AppearOnScroll";
 import Paper from "@material-ui/core/Paper";

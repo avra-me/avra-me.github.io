@@ -41,7 +41,7 @@ function WaveBorder(props) {
   const wave = (duration, delay, opacity, x = undefined) => ({
     duration,
     // delay: -(pause ? Math.random() * duration : delay),
-    delay: -delay,
+    delay: -1 * delay,
     opacity,
     x
   });
@@ -103,7 +103,7 @@ function WaveBorder(props) {
           {Object.keys(waveStates).map((y) => {
             const {duration, delay, opacity, x} = waveStates[y];
             const now = (new Date()).valueOf();
-            let timeDelay = (delay - (now - startTime) / 1000);
+            let timeDelay = -(delay - ((startTime - now) / 1000));
             if (pause) {
               timeDelay = delay;
             }
