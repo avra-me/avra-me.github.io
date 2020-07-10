@@ -6,18 +6,21 @@ import * as serviceWorker from "./serviceWorker";
 import SourcedFooter from "./components/footer/SourcedFooter";
 import {RootThemeProvider} from "./components/common/sourced/SourcedThemeProvider";
 import SourcedNavigation from "./components/navigation/SourcedNavigation";
+import {NavigationContext} from "./shared/contexts/NavigationAppearContext";
 
 const App = (props) => {
   const {children, showContactForm} = props;
 
   return (
-    <RootThemeProvider>
-      <CssBaseline/>
-      <GlobalStyles/>
-      <SourcedNavigation aosAnchor={"wave-box"}/>
-      {children}
-      <SourcedFooter showContactForm={showContactForm}/>
-    </RootThemeProvider>
+    <NavigationContext visible={true}>
+      <RootThemeProvider>
+        <CssBaseline/>
+        <GlobalStyles/>
+        <SourcedNavigation aosAnchor={"wave-box"}/>
+        {children}
+        <SourcedFooter showContactForm={showContactForm}/>
+      </RootThemeProvider>
+    </NavigationContext>
   );
 };
 

@@ -1,7 +1,7 @@
-import React from "react";
+import React, {useContext, useEffect} from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import {Box, Card, Grid, Typography, withStyles} from "@material-ui/core";
+import {Box, Grid, Typography, withStyles} from "@material-ui/core";
 import WaveBorder from "../../shared/components/WaveBorder";
 import Hidden from "@material-ui/core/Hidden";
 import Avatar from "@material-ui/core/Avatar";
@@ -10,6 +10,8 @@ import SourcedNavigation from "../navigation/SourcedNavigation";
 import ThemeModifier from "./sourced/SourcedThemeProvider";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
+import {NavigationAppearContext} from "../../shared/contexts/NavigationAppearContext";
+import {useInView} from "react-intersection-observer";
 
 const generateGradientString = (theme) => {
   const points = ["light", "main", "dark"].map(
@@ -150,8 +152,14 @@ const styles = (theme) => ({
 
 function WaveJumbotron(props) {
   const {classes, title, subTitle, monogram} = props;
+  const [ref, inView] = useInView({rootMargin: "-100px 0px"});
+  const {setIsVisible} = useContext(NavigationAppearContext);
+  useEffect(() => {
+    setIsVisible(!inView);
+  }, [inView]);
+
   return (
-    <span className={clsx(classes.waveArea, "section")} id={"wave-box"} >
+    <span className={clsx(classes.waveArea, "section")} id={"wave-box"}>
       <ThemeModifier isDarkMode>
         <SourcedNavigation
           position={"absolute"}
@@ -208,7 +216,7 @@ function WaveJumbotron(props) {
           <WaveBorder className={classes.waveBorder}/>
         </div>
       </ThemeModifier>
-      <div className={"lg-p-top"}/>
+      <div ref={ref} className={"lg-p-top"}/>
     </span>
   );
 }

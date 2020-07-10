@@ -4,12 +4,19 @@ import React, {useEffect, useState} from "react";
 import {motion} from "framer-motion";
 
 const AppearOnScroll = (props) => {
-  const {children, ref, offScreenProperties, onScreenProperties, animationDisabled, delay, duration, repeat, ...rest} = props;
-  const [newRef, inView] = useInView({
+  const {children, viewportRef, offScreenProperties, onScreenProperties, animationDisabled, animationDisabledState, delay, duration, repeat, ...rest} = props;
+
+  const viewListenerOptions = {
     rootMargin: "-100px 0px",
-    root: ref,
     triggerOnce: repeat
-  });
+  };
+
+
+  if (viewportRef) {
+    viewListenerOptions.root = viewportRef;
+  }
+
+  const [ref, inView] = useInView(viewListenerOptions);
 
   const [visible, setIsVisible] = useState(inView);
 
@@ -28,10 +35,12 @@ const AppearOnScroll = (props) => {
     popIn: onScreenProperties,
   };
 
+  const animationState = (animationDisabled && animationDisabledState) || (visible ? "popIn" : "hidden");
+
   return <motion.div
-    ref={newRef}
+    ref={ref}
     initial={false}
-    animate={visible || animationDisabled ? "popIn" : "hidden"}
+    animate={animationState}
     variants={animations}
     transition={{duration: duration, delay: delay}}
     {...rest}
@@ -54,8 +63,9 @@ AppearOnScroll.propTypes = {
   duration: PropTypes.number,
   delay: PropTypes.number,
   animationDisabled: PropTypes.bool,
+  animationDisabledState: PropTypes.oneOf(["popIn", "hidden"]),
   repeat: PropTypes.bool,
-  ref: PropTypes.element
+  viewportRef: PropTypes.any
 };
 
 export default AppearOnScroll;

@@ -1,4 +1,4 @@
-import React, {Fragment, useCallback, useEffect, useState} from "react";
+import React, {Fragment, useCallback, useContext, useState} from "react";
 import PropTypes from "prop-types";
 import NavigationDrawer from "../../shared/components/NavigationDrawer";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
@@ -10,12 +10,14 @@ import AppBar from "@material-ui/core/AppBar";
 import withStyles from "@material-ui/core/styles/withStyles";
 import RightHandNavigation from "./RightHandNavigation";
 import smoothScrollTop from "../../shared/functions/smoothScrollTop";
-import AppearOnScroll from "../../shared/components/AppearOnScroll";
+import {motion} from "framer-motion";
+import {NavigationAppearContext} from "../../shared/contexts/NavigationAppearContext";
 
 const styles = (theme) => ({
   appBar: {
     boxShadow: "none",
-    backgroundColor: theme.palette.secondary.main
+    backgroundColor: theme.palette.secondary.main,
+    zIndex: 100
   },
   toolbar: {
     display: "flex",
@@ -29,7 +31,7 @@ const styles = (theme) => ({
   }
 });
 
-function NavBar({menuItems, disabled, staticIconEnabled, logo, classes, aosAnchor, position, useDarkPalette, backgroundColor}) {
+function NavBar({menuItems, disabled, staticIconEnabled, logo, classes, position, useDarkPalette, backgroundColor}) {
 
 
   if (disabled) {
@@ -47,53 +49,52 @@ function NavBar({menuItems, disabled, staticIconEnabled, logo, classes, aosAncho
   }, [setIsMobileDrawerOpen]);
 
   // eslint-disable-next-line no-undef
-  const [ref, setRef] = useState(undefined);
-
-  useEffect(() => {
-    setRef(this.refs[aosAnchor]);
-  });
+  const {isVisible} = useContext(NavigationAppearContext);
 
 
-  let Appbar = (
-    <AppBar position={position} className={classes.appBar}
-            style={backgroundColor ? {backgroundColor} : undefined}
-    >
-      <ThemeProvider theme={createMuiTheme({palette: {type: useDarkPalette ? "dark" : false}})}>
-        <Toolbar className={classes.toolbar}>
-          <Box height={1}>
-            {logo &&
-            <Button color="default" onClick={smoothScrollTop}
-                    style={(!staticIconEnabled && position === "absolute") ? {
-                      display: "none"
-                    } : {}}>
-              <img className={classes.brandIcon} src={logo} alt={"icon"}/>
-            </Button>}
-          </Box>
-          <RightHandNavigation menuLinks={menuItems} onDrawerOpen={handleMobileDrawerOpen}
-                               onDrawerClose={handleMobileDrawerClose}/>
-        </Toolbar>
-      </ThemeProvider>
-    </AppBar>
-  );
+  return (<>
+      <motion.div
+        style={{position, width: "100vw", zIndex: 99}}
+        initial={"hidden"}
+        animate={isVisible || position === "absolute" ? "visible" : "hidden"}
+        variants={{
+          visible: {opacity: 1, top: 0},
+          hidden: {opacity: .5, top: "-200px"}
+        }}
+        transition={{duration: .4, delay: 0}}
+      >
+        <AppBar position={"absolute"} className={classes.appBar}
+                style={backgroundColor ? {backgroundColor} : undefined}
+        >
+          <ThemeProvider theme={createMuiTheme({palette: {type: useDarkPalette ? "dark" : false}})}>
+            <Toolbar className={classes.toolbar}>
+              <Box height={1}>
+                {logo &&
+                <Button color="default" onClick={smoothScrollTop}
+                        style={(!staticIconEnabled && position === "absolute") ? {
+                          display: "none"
+                        } : {}}>
+                  <img className={classes.brandIcon} src={logo} alt={"icon"}/>
+                </Button>}
+              </Box>
+              <RightHandNavigation menuLinks={menuItems} onDrawerOpen={handleMobileDrawerOpen}
+                                   onDrawerClose={handleMobileDrawerClose}/>
+            </Toolbar>
+          </ThemeProvider>
 
-  if (ref) {
-    Appbar = <AppearOnScroll ref={ref} onScreenProperties={{opacity: 0, y: "-100%"}}
-                             offScreenProperties={{opacity: 1, y: 0}} duration={.5} delay={0} repeat>
-      {Appbar}
-    </AppearOnScroll>;
-  }
+        </AppBar>
+      </motion.div>
 
-
-  return <>
-    {Appbar}
-    <NavigationDrawer
-      menuItems={menuItems}
-      anchor="right"
-      open={isMobileDrawerOpen}
-      selectedItem={selectedTab}
-      onClose={handleMobileDrawerClose}
-    />
-  </>;
+      <NavigationDrawer
+        menuItems={menuItems}
+        anchor="right"
+        open={isMobileDrawerOpen}
+        selectedItem={selectedTab}
+        onClose={handleMobileDrawerClose}
+      />
+    </>
+  )
+    ;
 }
 
 
