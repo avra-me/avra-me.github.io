@@ -48,8 +48,10 @@ const MenuButton = ({element, classes, onDrawerClose}) => {
   const [isCurrentLink, setIsCurrentLink] = useState(false);
 
   const onClick = () => {
-    smoothScrollTop();
-    onDrawerClose();
+    if (isCurrentLink) {
+      smoothScrollTop();
+      onDrawerClose();
+    }
   };
 
 

@@ -42,7 +42,7 @@ const AppearOnScroll = (props) => {
     initial={false}
     animate={animationState}
     variants={animations}
-    transition={{duration: duration, delay: delay}}
+    transition={{duration, delay}}
     {...rest}
   >
     {children}

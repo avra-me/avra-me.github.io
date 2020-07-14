@@ -1,19 +1,15 @@
-import {Grid, TextField} from "@material-ui/core";
-import FormControl from "@material-ui/core/FormControl";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import EmailIcon from "@material-ui/icons/AlternateEmail";
-import Button from "@material-ui/core/Button";
+import {Grid} from "@material-ui/core";
 import React from "react";
-import InputLabel from "@material-ui/core/InputLabel";
 import SectionHeading from "../../components/common/SectionHeading";
 import Typography from "@material-ui/core/Typography";
-import FilledInput from "@material-ui/core/FilledInput";
 import PropTypes from "prop-types";
 import ContactForm from "./ContactForm";
 import Container from "@material-ui/core/Container";
+import AppearOnScroll from "./AppearOnScroll";
 
 const ContactFormSection = ({title, subTitle, ...rest}) => {
   return <Container>
+
     <Grid container alignItems={"center"} justify={"center"}>
       <Grid item container xs={12} alignItems={"center"} justify={"center"} direction={"column"}>
         <Grid item xs={12} md={6} lg={4}>
@@ -23,7 +19,9 @@ const ContactFormSection = ({title, subTitle, ...rest}) => {
         </Grid>
       </Grid>
       <Grid item xs={12} md={6} lg={4}>
-        <ContactForm {...rest}/>
+        <AppearOnScroll duration={2}>
+          <ContactForm {...rest}/>
+        </AppearOnScroll>
       </Grid>
     </Grid>
   </Container>;
