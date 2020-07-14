@@ -55,11 +55,11 @@ function NavBar({menuItems, disabled, staticIconEnabled, logo, classes, position
   return (<>
       <motion.div
         style={{position, width: "100vw", zIndex: 99}}
-        initial={"hidden"}
+        initial={false}
         animate={isVisible || position === "absolute" ? "visible" : "hidden"}
         variants={{
           visible: {opacity: 1, top: 0},
-          hidden: {opacity: .5, top: "-200px"}
+          hidden: {opacity: 0, top: "-200px"}
         }}
         transition={{duration: .15, delay: 0}}
       >
@@ -77,6 +77,7 @@ function NavBar({menuItems, disabled, staticIconEnabled, logo, classes, position
                   <img className={classes.brandIcon} src={logo} alt={"icon"}/>
                 </Button>}
               </Box>
+
               <RightHandNavigation menuLinks={menuItems} onDrawerOpen={handleMobileDrawerOpen}
                                    onDrawerClose={handleMobileDrawerClose}/>
             </Toolbar>

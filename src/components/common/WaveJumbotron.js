@@ -152,9 +152,10 @@ const styles = (theme) => ({
 
 function WaveJumbotron(props) {
   const {classes, title, subTitle, monogram} = props;
-  const [ref, inView] = useInView({rootMargin: "-100px 0px"});
+  const [ref, inView] = useInView({rootMargin: "100px 0px"});
   const {setIsVisible} = useContext(NavigationAppearContext);
   useEffect(() => {
+    // SSR can result in some unexpected behaviour
     setIsVisible(!inView);
   }, [inView]);
 
@@ -166,7 +167,7 @@ function WaveJumbotron(props) {
           useDarkPalette
           backgroundColor={"inherit"}
         />
-        <div className={classNames("lg-p-top", classes.wrapper)}>
+        <div ref={ref} className={classNames("lg-p-top", classes.wrapper)}>
           <Grid
             item
             xs={12}
@@ -216,7 +217,7 @@ function WaveJumbotron(props) {
           <WaveBorder className={classes.waveBorder}/>
         </div>
       </ThemeModifier>
-      <div ref={ref} className={"lg-p-top"}/>
+      <div className={"lg-p-top"}/>
     </span>
   );
 }

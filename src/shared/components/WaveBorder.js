@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
-import {fade, withStyles} from "@material-ui/core";
+import {withStyles} from "@material-ui/core";
 import clsx from "clsx";
 
 const styles = {
@@ -74,8 +74,7 @@ function WaveBorder(props) {
       y={y}
       className={clsx()}
       style={{
-        fill: background && fade(background, opacity),
-        opacity: !background && opacity,
+        opacity: opacity,
         animationPlayState: pause ? "paused" : "running",
         animationDelay: `${delay}s`,
         animationDuration: `${duration * 2}s`
@@ -93,7 +92,7 @@ function WaveBorder(props) {
 
   return (
     <div {...rest}>
-      <svg className={clsx(svgClasses)} xmlns="http://www.w3.org/2000/svg"
+      <svg className={clsx(svgClasses)} style={{fill: background}} xmlns="http://www.w3.org/2000/svg"
            viewBox="0 24 150 28" preserveAspectRatio="none" shapeRendering="geometricPrecision">
         <defs>
           <path id={id} d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"

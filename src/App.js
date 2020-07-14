@@ -12,7 +12,7 @@ const App = (props) => {
   const {children, showContactForm} = props;
 
   return (
-    <NavigationContext visible={true}>
+    <NavigationContext visible={false}>
       <RootThemeProvider>
         <CssBaseline/>
         <GlobalStyles/>
