@@ -1,7 +1,9 @@
-import { createMuiTheme, responsiveFontSizes } from "@material-ui/core";
+import {createMuiTheme, lighten, responsiveFontSizes, getContrastRatio} from "@material-ui/core";
 
-export default (cmsConfig) => {
-  const { primary: primaryCMS, secondary: secondaryCMS } = cmsConfig;
+export default (opts) => {
+
+  const {primary, secondary, ...palette} = opts.palette;
+  opts.palette = palette;
   // colors
   const black = "#343a40";
   const darkBlack = "rgb(36, 40, 44)";
@@ -25,10 +27,14 @@ export default (cmsConfig) => {
   // spacing
   const spacing = 8;
 
+  if (opts.palette.type)
+
+
+
   const theme = createMuiTheme({
     palette: {
-      primary: primaryCMS,
-      secondary: secondaryCMS,
+      primary,
+      secondary,
       wavePoints: [0, 47, 93],
       waveAngle: "45",
       type: "light",

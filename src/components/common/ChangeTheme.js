@@ -7,25 +7,48 @@ import {AnimatePresence, motion} from "framer-motion";
 import Tooltip from "@material-ui/core/Tooltip";
 import CircleMenuButton from "../../shared/components/CircleMenuButton";
 
+const animations = {
+  start: {
+    x: 40,
+    y: 15,
+    opacity: 0,
+    position: "absolute",
+    lineHeight: 0,
+
+  },
+  visible: {
+    x: 0,
+    y: 0,
+    opacity: 1,
+    position: "unset",
+    lineHeight: 0,
+    transition: {
+      type: "spring",
+      damping: 20,
+      stiffness: 100
+    }
+  },
+  hide: {x: "-40px", y: "10px", opacity: 0, position: "absolute"}
+};
+
 const LightMode = () => <motion.animate
-  initial={{opacity: 0, duration: 1000}}
-  animate={{opacity: 1}}
-  exit={{opacity: 0, duration: 1000}}
-  transition={{duration: 1}}
+  initial={"start"}
+  animate={"visible"}
+  variants={animations}
+  exit={"hide"}
 >
   <WbSunnyIcon/>
 </motion.animate>;
 
 const DarkMode = () => {
-  return <motion.span
-    initial={{opacity: 0}}
-    animate={{opacity: 1}}
-    exit={{opacity: 0, duration: 1000}}
-    transition={{duration: 1}}
-
+  return <motion.animate
+    initial={"start"}
+    animate={"visible"}
+    variants={animations}
+    exit={"hide"}
   >
     <NightsStayIcon/>
-  </motion.span>;
+  </motion.animate>;
 };
 
 
@@ -36,11 +59,12 @@ function ChangeThemeButton() {
 
 
   return <Tooltip title={buttonContext}>
-    <span>
+
     <CircleMenuButton aria-label={buttonContext} onClick={onToggle}>
-      {themeType === "light" ? <LightMode/> : <DarkMode/>}
+      <AnimatePresence>
+        {themeType === "light" ? <LightMode key={"light"}/> : <DarkMode key={"dark"}/>}
+      </AnimatePresence>
     </CircleMenuButton>
-    </span>
   </Tooltip>;
 }
 

@@ -12,6 +12,7 @@ import RightHandNavigation from "./RightHandNavigation";
 import smoothScrollTop from "../../shared/functions/smoothScrollTop";
 import {motion} from "framer-motion";
 import {NavigationAppearContext} from "../../shared/contexts/NavigationAppearContext";
+import Monogram from "../../shared/components/Monogram";
 
 const styles = (theme) => ({
   appBar: {
@@ -54,7 +55,7 @@ function NavBar({menuItems, disabled, staticIconEnabled, logo, classes, position
 
   return (<>
       <motion.div
-        style={{position, width: "100vw", zIndex: 99}}
+        style={{position, width: "100%", zIndex: 99}}
         initial={false}
         animate={isVisible || position === "absolute" ? "visible" : "hidden"}
         variants={{
@@ -68,15 +69,7 @@ function NavBar({menuItems, disabled, staticIconEnabled, logo, classes, position
         >
           <ThemeProvider theme={createMuiTheme({palette: {type: useDarkPalette ? "dark" : false}})}>
             <Toolbar className={classes.toolbar}>
-              <Box height={1}>
-                {logo &&
-                <Button color="default" onClick={smoothScrollTop}
-                        style={(!staticIconEnabled && position === "absolute") ? {
-                          display: "none"
-                        } : {}}>
-                  <img className={classes.brandIcon} src={logo} alt={"icon"}/>
-                </Button>}
-              </Box>
+              <Monogram logo={logo} visible={!staticIconEnabled && position === "absolute"} />
 
               <RightHandNavigation menuLinks={menuItems} onDrawerOpen={handleMobileDrawerOpen}
                                    onDrawerClose={handleMobileDrawerClose}/>

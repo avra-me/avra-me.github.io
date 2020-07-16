@@ -1,9 +1,11 @@
 colorWidget: &color
   widget: string
   pattern: ['#[0-9]{6}', 'Must be a Hex Colour Value']
+
+
 backend:
-  name: github
-  repo: avra-me/avra-me.github.io
+  name: git-gateway
+#  repo: avra-me/avra-me.github.io
   commit_messages:
     create: 'Create {{collection}} “{{slug}}”'
     update: 'Update {{collection}} “{{slug}}”'

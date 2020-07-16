@@ -1,4 +1,11 @@
-import {createMuiTheme, MuiThemeProvider, responsiveFontSizes} from "@material-ui/core";
+import {
+  createMuiTheme,
+  emphasize,
+  MuiThemeProvider,
+  responsiveFontSizes,
+  recomposeColor,
+  lighten, darken
+} from "@material-ui/core";
 import _ from "lodash";
 import React from "react";
 import PropTypes from "prop-types";
@@ -47,10 +54,14 @@ const fadeThemeChange = makeStyles({
 });
 
 const generateTheme = config => {
-  const {palette} = config;
+  config = _.cloneDeep(config);
+  let {type, primary, secondary, ...palette} = config.palette;
+  config.palette = palette;
   // colors
-  const background = palette.type === "dark" ? grey["A400"] : grey["100"];
+  const background = type === "dark" ? grey["A400"] : grey["100"];
 
+  if (type === "dark") {
+  }
   // border
   const borderWidth = 2;
   const borderColor = "rgba(0, 0, 0, 0.13)";
@@ -62,6 +73,9 @@ const generateTheme = config => {
     palette: {
       wavePoints: [0, 47, 93],
       waveAngle: "45",
+      type,
+      primary,
+      secondary,
       // Used to shift a color's luminance by approximately
       // two indexes within its tonal palette.
       // E.g., shift from Red 500 to Red 300 or Red 700.
@@ -128,6 +142,8 @@ const RootThemeProvider = ({children}) => {
   }
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const [isDarkMode, updateIsDarkMode] = useCookie("isDarkMode", prefersDarkMode);
+  configOverride.palette.type = isDarkMode ? "dark" : "light";
+  const theme = generateTheme(configOverride);
   return <ThemeTypeContext.Provider
     value={{
       value: isDarkMode ? "dark" : "light",
@@ -135,15 +151,7 @@ const RootThemeProvider = ({children}) => {
         updateIsDarkMode(!isDarkMode);
       }
     }}>
-    <ThemeTypeContext.Consumer>
-      {({value: themeType}) => {
-
-        configOverride.palette.type = themeType;
-        const theme = generateTheme(configOverride);
-        return <BaseThemeProvider theme={theme}>{children}</BaseThemeProvider>;
-
-      }}
-    </ThemeTypeContext.Consumer>
+    <BaseThemeProvider theme={theme}>{children}</BaseThemeProvider>;
   </ThemeTypeContext.Provider>;
 };
 
