@@ -1,11 +1,4 @@
-import {
-  createMuiTheme,
-  emphasize,
-  MuiThemeProvider,
-  responsiveFontSizes,
-  recomposeColor,
-  lighten, darken
-} from "@material-ui/core";
+import {createMuiTheme, MuiThemeProvider, responsiveFontSizes} from "@material-ui/core";
 import _ from "lodash";
 import React from "react";
 import PropTypes from "prop-types";
@@ -17,16 +10,29 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const getThemeDataQuery = graphql`
 query getThemeDataQuery {
-  palette: contentYaml {
-    primary {
-      dark
-      light
-      main
+  themeOverride: contentYaml {
+    palette {
+      waveAngle
+      type
+      tonalOffset
+      spacing
+      primary {
+        light
+        main
+        dark
+      }
+      secondary {
+        light
+        main
+        dark
+      }
     }
-    secondary {
-      dark
-      light
-      main
+    border {
+      borderColor
+      borderWidth
+    }
+    typography {
+      useNextVariants
     }
   }
 }`;
@@ -60,15 +66,6 @@ const generateTheme = config => {
   // colors
   const background = type === "dark" ? grey["A400"] : grey["100"];
 
-  if (type === "dark") {
-  }
-  // border
-  const borderWidth = 2;
-  const borderColor = "rgba(0, 0, 0, 0.13)";
-
-  // spacing
-  const spacing = 16;
-
   const theme = {
     palette: {
       wavePoints: [0, 47, 93],
@@ -83,14 +80,6 @@ const generateTheme = config => {
       background: {
         default: background,
       },
-      spacing,
-    },
-    border: {
-      borderColor: borderColor,
-      borderWidth: borderWidth,
-    },
-    typography: {
-      useNextVariants: true,
     },
     overrides: {
       MuiPaper: {
@@ -134,16 +123,14 @@ const ThemeTypeContext = React.createContext(() => {
 });
 
 const RootThemeProvider = ({children}) => {
-  const configOverride = {
-    ...useStaticQuery(getThemeDataQuery)
-  };
+  const {themeOverride} = useStaticQuery(getThemeDataQuery);
   if (typeof window !== "undefined") {
     fadeThemeChange();
   }
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const [isDarkMode, updateIsDarkMode] = useCookie("isDarkMode", prefersDarkMode);
-  configOverride.palette.type = isDarkMode ? "dark" : "light";
-  const theme = generateTheme(configOverride);
+  themeOverride.palette.type = isDarkMode ? "dark" : "light";
+  const theme = generateTheme(themeOverride);
   return <ThemeTypeContext.Provider
     value={{
       value: isDarkMode ? "dark" : "light",

@@ -1,11 +1,8 @@
-colorWidget: &color
-  widget: string
-  pattern: ['#[0-9]{6}', 'Must be a Hex Colour Value']
-
+publish_mode: editorial_workflow
 
 backend:
   name: git-gateway
-#  repo: avra-me/avra-me.github.io
+  #  repo: avra-me/avra-me.github.io
   commit_messages:
     create: 'Create {{collection}} “{{slug}}”'
     update: 'Update {{collection}} “{{slug}}”'
@@ -16,6 +13,11 @@ backend:
 media_folder: static/assets
 public_folder: /assets
 format: yaml
+
+
+colorWidget: &color
+  widget: string
+  pattern: ['#[0-9]{6}', 'Must be a Hex Colour Value']
 
 collections:
   - name: config
@@ -34,19 +36,38 @@ collections:
             name: author
             widget: object
             fields: [{label: "Name", name: name, widget: string, comment: "For SEO"},{label: "Summary", name: summary, widget: string, comment: "For SEO"}]
-      - label: Search Engine Optimisation
+      - label: Site Theme
         name: theme
         file: 'content/theme.yaml'
         description: Configure your site
         fields:
-          - label: Primary Color
-            name: primary
+          - label: "Colour Palette"
+            name: palette
             widget: object
-            fields: [{*color, name: light, required: false},{*color, name: main},{*color, name: dark, required: false}]
-          - label: Secondary Color
-            name: secondary
-            widget: object
-            fields: [{*color, name: light, required: false},{*color, name: main},{*color, name: dark, required: false}]
+            fields:
+              - label: Primary Color
+                name: primary
+                widget: object
+                fields: [{*color, name: light, required: false},{*color, name: main},{*color, name: dark, required: false}]
+              - label: Secondary Color
+                name: secondary
+                widget: object
+                fields: [{*color, name: light, required: false},{*color, name: main},{*color, name: dark, required: false}]
+              - label: Tonal Offset
+                name: tonalOffset
+                widget: number
+                min: 0
+                max: 1
+                step: 0.01
+                valueType: float
+              - label: Spacing
+                name: spacing
+                widget: number
+                step: 4
+              - label: "Default Mode"
+                name: "type"
+                widget: select
+                options: ["light", "dark"]
       - label: "Navigation Options"
         description: "Customize the navigation bar"
         name: navigation
