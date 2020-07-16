@@ -127,8 +127,12 @@ const RootThemeProvider = ({children}) => {
   if (typeof window !== "undefined") {
     fadeThemeChange();
   }
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  const [isDarkMode, updateIsDarkMode] = useCookie("isDarkMode", prefersDarkMode);
+
+  let initialDarkModeState = useMediaQuery("(prefers-color-scheme: dark)");
+  if (themeOverride.palette.type && !initialDarkModeState) {
+    initialDarkModeState = themeOverride.palette.type === "dark";
+  }
+  const [isDarkMode, updateIsDarkMode] = useCookie("isDarkMode", initialDarkModeState);
   themeOverride.palette.type = isDarkMode ? "dark" : "light";
   const theme = generateTheme(themeOverride);
   return <ThemeTypeContext.Provider
