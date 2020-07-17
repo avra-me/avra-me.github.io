@@ -7,11 +7,13 @@ import SourcedFooter from "./components/footer/SourcedFooter";
 import {RootThemeProvider} from "./components/common/sourced/SourcedThemeProvider";
 import SourcedNavigation from "./components/navigation/SourcedNavigation";
 import {NavigationContext} from "./shared/contexts/NavigationAppearContext";
-import Snackbar from "@material-ui/core/Snackbar";
-import Alert from "@material-ui/lab/Alert";
+import NoSsr from "@material-ui/core/NoSsr";
+import AlertManager from "./components/common/AlertManager";
+
 
 const App = (props) => {
   const {children, showContactForm, underConstruction} = props;
+
 
   return (
     <NavigationContext visible={false}>
@@ -21,11 +23,10 @@ const App = (props) => {
         <SourcedNavigation aosAnchor={"wave-box"}/>
         {children}
         <SourcedFooter showContactForm={showContactForm}/>
-        {underConstruction && <Snackbar open={true} anchorOrigin={{vertical: "bottom", horizontal: "left"}}>
-          <Alert severity="warning">
-            The content for this page is still being built out, feel free to provide feedback using the contact form!
-          </Alert>
-        </Snackbar>}
+        <NoSsr>
+          <AlertManager underConstruction={underConstruction}/>
+        </NoSsr>
+
       </RootThemeProvider>
     </NavigationContext>
   );

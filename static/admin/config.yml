@@ -38,7 +38,7 @@ collections:
             fields: [{label: "Name", name: name, widget: string, comment: "For SEO"},{label: "Summary", name: summary, widget: string, comment: "For SEO"}]
       - label: Site Theme
         name: theme
-        file: 'content/theme.yaml'
+        file: 'content/theme/theme.yaml'
         description: Configure your site
         fields:
           - label: "Colour Palette"

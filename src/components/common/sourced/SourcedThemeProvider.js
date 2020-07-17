@@ -1,4 +1,4 @@
-import {createMuiTheme, MuiThemeProvider, responsiveFontSizes} from "@material-ui/core";
+import {createMuiTheme, responsiveFontSizes} from "@material-ui/core";
 import _ from "lodash";
 import React from "react";
 import PropTypes from "prop-types";
@@ -11,7 +11,7 @@ import ThemeProvider from "@material-ui/styles/ThemeProvider";
 
 const getThemeDataQuery = graphql`
 query getThemeDataQuery {
-  themeOverride: contentYaml {
+  themeOverride: themeYaml {
     palette {
       waveAngle
       type
@@ -116,6 +116,9 @@ const RootThemeProvider = ({children}) => {
     fadeThemeChange();
   }
 
+  if (!themeOverride.palette) {
+    themeOverride.palette = {};
+  }
   let initialDarkModeState = useMediaQuery("(prefers-color-scheme: dark)");
   if (themeOverride.palette.type && !initialDarkModeState) {
     initialDarkModeState = themeOverride.palette.type === "dark";
@@ -130,7 +133,7 @@ const RootThemeProvider = ({children}) => {
         updateIsDarkMode(!isDarkMode);
       }
     }}>
-    <MuiThemeProvider theme={createMuiTheme(responsiveFontSizes(theme))}>{children}</MuiThemeProvider>
+    <ThemeProvider theme={createMuiTheme(theme)}>{children}</ThemeProvider>
   </ThemeTypeContext.Provider>;
 };
 

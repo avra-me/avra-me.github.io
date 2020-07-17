@@ -99,7 +99,6 @@ export default withStyles(styles)(ExperienceTemplate);
 export const pageQuery = graphql`
 query ExperiencePostBySlug($slug: String!, $image: String) {
   file(name: {eq: $slug}) {
-    type: sourceInstanceName
     slug: name
     markdown: childMarkdownRemark {
       id

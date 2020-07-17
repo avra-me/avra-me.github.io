@@ -94,7 +94,6 @@ export default withStyles(styles)(EducationTemplate);
 export const pageQuery = graphql`
 query EducationPostBySlug($slug: String!, $image: String) {
   file(name: {eq: $slug}) {
-    type: sourceInstanceName
     slug: name
     markdown: childMarkdownRemark {
       id
@@ -103,7 +102,6 @@ query EducationPostBySlug($slug: String!, $image: String) {
       info: frontmatter {
         title
         subTitle
-        image
         date(formatString: "MMMM DD, YYYY")
         short
         featured
