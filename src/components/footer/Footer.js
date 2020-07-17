@@ -102,7 +102,7 @@ function Footer(props) {
           background={theme.palette.grey["900"]}
           className={classes.border}
         />
-        <Paper className={classes.footerInner}>
+        <Paper square className={classes.footerInner}>
           <Grid container spacing={5}>
             {contactForm && <Grid item {...gridSizing}>
               <ContactForm/>

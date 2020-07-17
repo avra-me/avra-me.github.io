@@ -142,7 +142,7 @@ const RootThemeProvider = ({children}) => {
         updateIsDarkMode(!isDarkMode);
       }
     }}>
-    <BaseThemeProvider theme={theme}>{children}</BaseThemeProvider>;
+    <BaseThemeProvider theme={theme}>{children}</BaseThemeProvider>
   </ThemeTypeContext.Provider>;
 };
 

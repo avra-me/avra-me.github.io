@@ -13,15 +13,12 @@ const animations = {
     y: 15,
     opacity: 0,
     position: "absolute",
-    lineHeight: 0,
-
   },
   visible: {
     x: 0,
     y: 0,
     opacity: 1,
     position: "unset",
-    lineHeight: 0,
     transition: {
       type: "spring",
       damping: 20,
@@ -36,6 +33,7 @@ const LightMode = () => <motion.animate
   animate={"visible"}
   variants={animations}
   exit={"hide"}
+  style={{lineHeight: 0}}
 >
   <WbSunnyIcon/>
 </motion.animate>;
@@ -46,6 +44,7 @@ const DarkMode = () => {
     animate={"visible"}
     variants={animations}
     exit={"hide"}
+    style={{lineHeight: 0}}
   >
     <NightsStayIcon/>
   </motion.animate>;

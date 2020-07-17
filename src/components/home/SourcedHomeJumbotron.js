@@ -1,6 +1,6 @@
 import {graphql, useStaticQuery} from "gatsby";
 import React, {Fragment} from "react";
-import WaveJumbotron from "../common/WaveJumbotron";
+import WaveJumbotron from "../common/WaveJumbotronHeader";
 import PropTypes from "prop-types";
 
 const SourcedHomeJumbotron = (props) => {

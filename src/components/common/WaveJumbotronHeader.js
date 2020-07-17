@@ -12,6 +12,7 @@ import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import {NavigationAppearContext} from "../../shared/contexts/NavigationAppearContext";
 import {useInView} from "react-intersection-observer";
+import WaveJumbotron from "./WaveJumbotron";
 
 const generateGradientString = (theme) => {
   const points = ["light", "main", "dark"].map(
@@ -55,35 +56,56 @@ const styles = (theme) => ({
     minHeight: theme.spacing(20),
     fill: theme.palette.background.default,
   },
+  speech: {
+    display: "inline-flex",
+    position: "relative",
+    borderRadius: theme.spacing(1),
+    background: theme.palette.secondary.light,
+    "&:after": {
+      content: "''",
+      position: "absolute",
+      bottom: "0",
+      left: "50%",
+      width: 0,
+      height: 0,
+      border: `${theme.spacing(1)}px solid transparent`,
+      borderTopColor: theme.palette.secondary.light,
+      borderBottom: 0,
+      borderLeft: 0,
+      marginLeft: `-${theme.spacing(0.5)}px`,
+      marginBottom: `-${theme.spacing(1)}px`,
+    },
+  },
+  speechText: {
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+  },
   waveArea: {
     background: generateGradientString(theme),
   },
+  captionText: {
+    fontSize: "32px",
+  },
+  brand: {
+    height: "auto",
+    width: "75px",
+    overflow: "inherit",
+  },
+  title: {
+    marginBottom: theme.spacing(4)
+  }
 });
 
 function WaveJumbotronHeader(props) {
-  const {classes, children} = props;
-  const [ref, inView] = useInView({rootMargin: "100px 0px"});
-  const {setIsVisible} = useContext(NavigationAppearContext);
-  useEffect(() => {
-    // SSR can result in some unexpected behaviour
-    setIsVisible(!inView);
-  }, [inView]);
+  const {classes, title, subTitle, monogram} = props;
 
   return (
     <span className={clsx(classes.waveArea, "section")} id={"wave-box"}>
-      <ThemeModifier isDarkMode>
-        <SourcedNavigation
-          position={"absolute"}
-          useDarkPalette
-          backgroundColor={"inherit"}
-        />
-        <div ref={ref} className={classNames(classes.wrapper)}>
+     <WaveJumbotron>
           <Grid
             item
             xs={12}
-            md={12}
             style={{margin: "auto", alignItems: "center"}}
-            className={"lg-p-top"}
           >
             <Box
               display="flex"
@@ -91,26 +113,39 @@ function WaveJumbotronHeader(props) {
               style={{margin: "auto", alignItems: "center"}}
               height="100%"
             >
+              <Button href={"#"}>
+                {monogram && (
+                  <Avatar
+                    variant={"square"}
+                    className={classes.brand}
+                    src={monogram}
+                    alt={""}
+                  />
+                )}
+              </Button>
             </Box>
           </Grid>
-          <Container className={classes.container}>
-              <div className={classNames(classes.containerFix)}>
-                <Grid
-                  container
-                  className="row"
-                  alignItems={"center"}
-                  justify={"center"}
-                >
-                  <Grid item xs={12} className={classes.title}>
-                    {children}
-                  </Grid>
-                </Grid>
-              </div>
-          </Container>
-          <WaveBorder className={classes.waveBorder}/>
-        </div>
-      </ThemeModifier>
-      <div className={"lg-p-top"}/>
+          <Grid
+            item
+            xs={12}
+            container
+            className="row"
+            alignItems={"center"}
+            justify={"center"}
+            classes={{root: "lg-p-top"}}
+          >
+            <Grid item xs={12} className={classes.title}>
+              <Typography variant="h2" component={"div"} align={"center"}>
+                <b>{title}</b>
+              </Typography>
+            </Grid>
+            <Grid item xs={10}>
+              <Hidden smDown implementation={"css"}>
+                <Typography className={classes.captionText} align={"center"}>{subTitle}</Typography>
+              </Hidden>
+            </Grid>
+          </Grid>
+       </WaveJumbotron>
     </span>
   );
 }
@@ -118,7 +153,9 @@ function WaveJumbotronHeader(props) {
 WaveJumbotronHeader.propTypes = {
   classes: PropTypes.object,
   theme: PropTypes.object,
-  children: PropTypes.node,
+  title: PropTypes.string.isRequired,
+  subTitle: PropTypes.string,
+  monogram: PropTypes.string,
 };
 
 export default withStyles(styles, {withTheme: true})(WaveJumbotronHeader);

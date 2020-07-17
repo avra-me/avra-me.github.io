@@ -9,11 +9,12 @@ import Chip from "@material-ui/core/Chip";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
 import CalendarIcon from "@material-ui/icons/CalendarToday";
-import SourcedNavigation from "../components/navigation/SourcedNavigation";
-import WaveCard from "../components/common/WaveCard";
 import Container from "@material-ui/core/Container";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Typography from "@material-ui/core/Typography";
+import WaveJumbotron from "../components/common/WaveJumbotron";
+import Paper from "@material-ui/core/Paper";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const styles = theme => ({
   header: {
@@ -41,50 +42,55 @@ const ExperienceTemplate = ({data, classes}) => {
   let {startDate, endDate, link} = markdown.info;
   endDate = endDate === "Invalid date" ? "Current" : endDate;
 
-  const header = <Container>
-    <Grid container alignItems={"stretch"} className={"lg-p-top"}>
-      <Grid item sm={2} xs={12} container alignItems={"center"} justify={"center"}>
-        <DynamicImage/>
-      </Grid>
-      <Grid item sm={8} xs={12}>
-        <Grid container className={classes.header}>
-
-          <Grid item xs={12} sm={11}>
-            <Typography variant={"h5"}>{markdown.info.title}</Typography>
-          </Grid>
-          <Grid item xs={12} sm={1} container alignItems={"flex-end"}>
-            <Chip color={"primary"} icon={<CalendarIcon/>}
-                  label={`${startDate}-${endDate}`}/>
-          </Grid>
-          <Grid item xs={12} sm={10}>
-            <Typography variant={"body1"} color={"textSecondary"} gutterBottom>{markdown.info.subTitle}</Typography>
-          </Grid>
-
-          <Grid item xs={12} sm={12}>
-            <Typography variant={"body1"} color={"textPrimary"} paragraph>{markdown.info.short}</Typography>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Grid>
-  </Container>;
 
   return (
     <App>
-      <SourcedNavigation/>
-      <div className={"container-fluid lg-mg-top"}>
-        <WaveCard before={header}>
-          <CardContent>
-            <Typography>
-              <div dangerouslySetInnerHTML={{__html: markdown.html}}/>
-            </Typography>
-          </CardContent>
-          {link &&
-          <CardActions>
-            <Button color={"primary"} variant={"contained"} href={link}>View Demo</Button>
-          </CardActions>
-          }
-        </WaveCard>
-      </div>
+      <WaveJumbotron>
+        <Grid container alignItems={"stretch"} className={"lg-p-top"}>
+          <Grid item sm={2} xs={12} container alignItems={"center"} justify={"center"}>
+            <DynamicImage/>
+          </Grid>
+          <Grid item sm={8} xs={12}>
+            <Grid container className={classes.header}>
+
+              <Grid item xs={12} sm={11}>
+                <Typography variant={"h5"}>{markdown.info.title}</Typography>
+              </Grid>
+              <Grid item xs={12} sm={1} container alignItems={"flex-end"}>
+                <Tooltip
+                  title={`I started work ${startDate} and ${endDate === "Current" ? "currently work here" : `finished ${endDate}`}`}>
+                  <Chip clickable color={"primary"} icon={<CalendarIcon/>}
+                        label={`${startDate}-${endDate}`}/>
+                </Tooltip>
+              </Grid>
+              <Grid item xs={12} sm={10}>
+                <Typography variant={"body1"} color={"textSecondary"}
+                            gutterBottom>{markdown.info.subTitle}</Typography>
+              </Grid>
+
+              <Grid item xs={12} sm={12}>
+                <Typography variant={"body1"} color={"textPrimary"} paragraph>{markdown.info.short}</Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </WaveJumbotron>
+      <Container>
+        <div className={"container-fluid lg-mg-top"}>
+          <Paper elevation={0}>
+            <CardContent>
+              <Typography>
+                <div dangerouslySetInnerHTML={{__html: markdown.html}}/>
+              </Typography>
+            </CardContent>
+            {link &&
+            <CardActions>
+              <Button color={"primary"} variant={"contained"} href={link}>View Demo</Button>
+            </CardActions>
+            }
+          </Paper>
+        </div>
+      </Container>
     </App>
   );
 };

@@ -2,14 +2,11 @@ import React, {Fragment, useCallback, useContext, useState} from "react";
 import PropTypes from "prop-types";
 import NavigationDrawer from "../../shared/components/NavigationDrawer";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
-import Button from "@material-ui/core/Button";
 import ThemeProvider from "@material-ui/styles/ThemeProvider";
 import Toolbar from "@material-ui/core/Toolbar";
-import Box from "@material-ui/core/Box";
 import AppBar from "@material-ui/core/AppBar";
 import withStyles from "@material-ui/core/styles/withStyles";
 import RightHandNavigation from "./RightHandNavigation";
-import smoothScrollTop from "../../shared/functions/smoothScrollTop";
 import {motion} from "framer-motion";
 import {NavigationAppearContext} from "../../shared/contexts/NavigationAppearContext";
 import Monogram from "../../shared/components/Monogram";
@@ -59,17 +56,16 @@ function NavBar({menuItems, disabled, staticIconEnabled, logo, classes, position
         initial={false}
         animate={isVisible || position === "absolute" ? "visible" : "hidden"}
         variants={{
-          visible: {opacity: 1, top: 0},
-          hidden: {opacity: 0, top: "-200px"}
+          visible: {opacity: 1, top: 0, transition: {duration: .3, delay: .3}},
+          hidden: {opacity: 0, top: "-200px", transition: {duration: .1, delay: 0}}
         }}
-        transition={{duration: .15, delay: 0}}
       >
         <AppBar position={"absolute"} className={classes.appBar}
                 style={backgroundColor ? {backgroundColor} : undefined}
         >
           <ThemeProvider theme={createMuiTheme({palette: {type: useDarkPalette ? "dark" : false}})}>
             <Toolbar className={classes.toolbar}>
-              <Monogram logo={logo} visible={!staticIconEnabled && position === "absolute"} />
+              <Monogram logo={logo} visible={!staticIconEnabled && position === "absolute"}/>
 
               <RightHandNavigation menuLinks={menuItems} onDrawerOpen={handleMobileDrawerOpen}
                                    onDrawerClose={handleMobileDrawerClose}/>

@@ -50,16 +50,16 @@ const styles = theme => ({
   }
 );
 
-function CircleMenuButton({classes, children, ...props}) {
-  const className = clsx(props.className, classes.button);
-  return <IconButton disableRipple className={className} {...props}>
+function CircleMenuButton({classes, children, className, ...props}) {
+  return <IconButton disableRipple className={clsx(className, classes.button)} {...props}>
     {children}
   </IconButton>;
 }
 
 CircleMenuButton.propTypes = {
   classes: PropTypes.object.isRequired,
-  children: PropTypes.node
+  children: PropTypes.node,
+  className: PropTypes.string
 };
 
 export default withStyles(styles)(CircleMenuButton);
