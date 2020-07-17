@@ -14,7 +14,7 @@ import Paper from "@material-ui/core/Paper";
 const styles = (theme) => ({
   root: {
     height: "100%",
-    background: theme.palette.background.default,
+    background: "inherit",
     marginBottom: theme.spacing(2),
     "& :last-child": {
       marginBottom: 0

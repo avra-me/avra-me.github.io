@@ -7,6 +7,7 @@ import grey from "@material-ui/core/colors/grey";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import useCookie from "../../../shared/functions/useCookie";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import ThemeProvider from "@material-ui/styles/ThemeProvider";
 
 const getThemeDataQuery = graphql`
 query getThemeDataQuery {
@@ -96,19 +97,6 @@ const generateTheme = config => {
   return responsiveFontSizes(createMuiTheme(resultingTheme));
 };
 
-
-const BaseThemeProvider = ({theme, children}) => {
-  return <MuiThemeProvider theme={createMuiTheme(theme)}>
-    {children}
-  </MuiThemeProvider>;
-};
-
-BaseThemeProvider.propTypes = {
-  theme: PropTypes.object,
-  children: PropTypes.node.isRequired
-};
-
-
 // ============================
 // Root Theme Provider
 // ============================
@@ -142,7 +130,7 @@ const RootThemeProvider = ({children}) => {
         updateIsDarkMode(!isDarkMode);
       }
     }}>
-    <BaseThemeProvider theme={theme}>{children}</BaseThemeProvider>
+    <MuiThemeProvider theme={createMuiTheme(responsiveFontSizes(theme))}>{children}</MuiThemeProvider>
   </ThemeTypeContext.Provider>;
 };
 
@@ -157,7 +145,7 @@ const ThemeModifier = ({isDarkMode, isLightMode, children, theme}) => (<ThemeTyp
       ...theme
     };
     configOverride.palette.type = isDarkMode ? "dark" : isLightMode ? "light" : rootThemeType;
-    return <BaseThemeProvider theme={configOverride}>{children}</BaseThemeProvider>;
+    return <ThemeProvider theme={createMuiTheme(configOverride)}>{children}</ThemeProvider>;
   }}
 </ThemeTypeContext.Consumer>);
 
