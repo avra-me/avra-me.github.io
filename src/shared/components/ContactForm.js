@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 const ContactForm = ({emailField, messageField, submitButton}) => {
 
   return <form data-netlify="true" name={"contact-form"} method="post"
-               netlify-honeypot="totally-a-field" action={"/?sent_message=1"}>
+               netlify-honeypot="totally-a-field" action={"/?sent_message"}>
     <TextField type="hidden" name="totally-a-field"/>
     <FormControl fullWidth variant={"filled"} color={"secondary"}>
       <InputLabel htmlFor="email-contact-form-field">{emailField.title}</InputLabel>
