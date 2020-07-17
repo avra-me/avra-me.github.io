@@ -30,9 +30,10 @@ exports.createPages = async ({graphql, actions}) => {
   }
 
   result.data.files.values.forEach((page) => {
+
     const template = templates[page.type];
     if (template) {
-      if(page.type === "experience"){
+      if (page.markdown && page.markdown.info.image) {
         createPage({
           path: `/${page.type}/${page.slug}`,
           component: template,
@@ -41,7 +42,7 @@ exports.createPages = async ({graphql, actions}) => {
             image: page.markdown.info.image.replace("/assets/", "")
           },
         });
-      }else{
+      } else {
         createPage({
           path: `/${page.type}/${page.slug}`,
           component: template,

@@ -1,4 +1,4 @@
-import React, {memo, useEffect, useState} from "react";
+import React, {memo} from "react";
 import PropTypes from "prop-types";
 import {lighten, withStyles} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
@@ -7,9 +7,7 @@ import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
-import {motion} from "framer-motion";
 import clsx from "clsx";
-import {useInView} from "react-intersection-observer";
 import AppearOnScroll from "../../shared/components/AppearOnScroll";
 
 const styles = (theme) => ({
