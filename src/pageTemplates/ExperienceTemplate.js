@@ -3,8 +3,6 @@ import {graphql} from "gatsby";
 import App from "../App";
 import PropTypes from "prop-types";
 import CardContent from "@material-ui/core/CardContent";
-import ProgressiveImage from "gatsby-image";
-import Grid from "@material-ui/core/Grid";
 import Chip from "@material-ui/core/Chip";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
@@ -15,29 +13,16 @@ import Typography from "@material-ui/core/Typography";
 import WaveJumbotron from "../components/common/WaveJumbotron";
 import Paper from "@material-ui/core/Paper";
 import Tooltip from "@material-ui/core/Tooltip";
+import DynamicPageHeader from "../shared/components/DynamicPageHeader";
 
-const styles = theme => ({
-  header: {
-    padding: theme.spacing(4)
-  },
-  wave: {
-    height: "20%"
-  },
-  image: {
-    maxWidth: "325px",
-    flexGrow: 1
+const styles = () => ({
+  alignRight: {
+    marginLeft: "auto !important"
   }
 });
 
 
 const ExperienceTemplate = ({data, classes}) => {
-  const DynamicImage = () => {
-    if (data.image !== null) {
-      return <ProgressiveImage className={classes.image} fluid={data.image.progressive.fluid}/>;
-    } else {
-      return <img className={classes.image} src={markdown.info.image} alt={"Image could not be loaded"}/>;
-    }
-  };
   const {markdown} = data.file;
   let {startDate, endDate, link} = markdown.info;
   endDate = endDate === "Invalid date" ? "Current" : endDate;
@@ -46,48 +31,31 @@ const ExperienceTemplate = ({data, classes}) => {
   return (
     <App showContactForm>
       <WaveJumbotron>
-        <Grid container alignItems={"stretch"} className={"lg-p-top"}>
-          <Grid item sm={2} xs={12} container alignItems={"center"} justify={"center"}>
-            <DynamicImage/>
-          </Grid>
-          <Grid item sm={8} xs={12}>
-            <Grid container className={classes.header}>
-
-              <Grid item xs={12} sm={11}>
-                <Typography variant={"h5"}>{markdown.info.title}</Typography>
-              </Grid>
-              <Grid item xs={12} sm={1} container alignItems={"flex-end"}>
-                <Tooltip
-                  title={`I started work ${startDate} and ${endDate === "Current" ? "currently work here" : `finished ${endDate}`}`}>
-                  <Chip clickable color={"primary"} icon={<CalendarIcon/>}
-                        label={`${startDate}-${endDate}`}/>
-                </Tooltip>
-              </Grid>
-              <Grid item xs={12} sm={10}>
-                <Typography variant={"body1"} color={"textSecondary"}
-                            gutterBottom>{markdown.info.subTitle}</Typography>
-              </Grid>
-
-              <Grid item xs={12} sm={12}>
-                <Typography variant={"body1"} color={"textPrimary"} paragraph>{markdown.info.short}</Typography>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
+        <DynamicPageHeader
+          title={markdown.info.title}
+          subTitle={markdown.info.subTitle}
+          text={markdown.info.short}
+          image={data.image !== null ? data.image.progressive.fluid : markdown.info.image}
+        />
       </WaveJumbotron>
       <Container>
         <div className={"container-fluid lg-mg-top"}>
           <Paper elevation={0}>
+            <CardActions>
+              {link &&
+              <Button color={"primary"} variant={"contained"} href={link}>View Demo</Button>
+              }
+              <Tooltip
+                title={`I started work ${startDate} and ${endDate === "Current" ? "currently work here" : `finished ${endDate}`}`}>
+                <Chip className={classes.alignRight} clickable color={"secondary"} icon={<CalendarIcon/>}
+                      label={`${startDate}-${endDate}`}/>
+              </Tooltip>
+            </CardActions>
             <CardContent>
               <Typography>
                 <div dangerouslySetInnerHTML={{__html: markdown.html}}/>
               </Typography>
             </CardContent>
-            {link &&
-            <CardActions>
-              <Button color={"primary"} variant={"contained"} href={link}>View Demo</Button>
-            </CardActions>
-            }
           </Paper>
         </div>
       </Container>

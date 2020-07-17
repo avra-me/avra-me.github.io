@@ -3,18 +3,23 @@ import {graphql} from "gatsby";
 import App from "../App";
 import PropTypes from "prop-types";
 import CardContent from "@material-ui/core/CardContent";
-import Grid from "@material-ui/core/Grid";
 import Chip from "@material-ui/core/Chip";
-import SourcedNavigation from "../components/navigation/SourcedNavigation";
-import WaveCard from "../components/common/WaveCard";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import CalendarIcon from "@material-ui/icons/CalendarToday";
 import withStyles from "@material-ui/core/styles/withStyles";
+import WaveJumbotron from "../components/common/WaveJumbotron";
+import DynamicPageHeader from "../shared/components/DynamicPageHeader";
+import Tooltip from "@material-ui/core/Tooltip";
+import Paper from "@material-ui/core/Paper";
+import CardActions from "@material-ui/core/CardActions";
 
 const styles = theme => ({
   header: {
     padding: theme.spacing(4)
+  },
+  alignRight: {
+    marginLeft: "auto !important"
   }
 });
 
@@ -23,36 +28,34 @@ const EducationTemplate = ({data, classes}) => {
   let {startDate, endDate} = markdown.info;
   endDate = endDate === "Invalid date" ? "Current" : endDate;
 
-  const header = <Container>
-    <Grid container className={classes.header} direction={"row"}>
-      <Grid item xs={12} sm={10}>
-        <Typography variant={"h5"}>{markdown.info.title}</Typography>
-      </Grid>
-      <Grid item xs={12} sm={2} container alignItems={"flex-end"}>
-        <Chip color={"primary"} icon={<CalendarIcon/>}
-              label={`${startDate}-${endDate}`}/>
-      </Grid>
-      <Grid item xs={12} sm={10}>
-        <Typography variant={"body1"} color={"textSecondary"} gutterBottom>{markdown.info.subTitle}</Typography>
-      </Grid>
-
-      <Grid item xs={12} sm={12}>
-        <Typography variant={"body1"} color={"textPrimary"} paragraph>{markdown.info.short}</Typography>
-      </Grid>
-    </Grid>
-  </Container>;
   return (
-    <App>
-      <SourcedNavigation/>
-      <div className={"container-fluid lg-mg-top"}>
-        <WaveCard before={header}>
-          <CardContent>
-            <Typography>
-              <div dangerouslySetInnerHTML={{__html: markdown.html}}/>
-            </Typography>
-          </CardContent>
-        </WaveCard>
-      </div>
+    <App showContactForm underConstruction>
+      <WaveJumbotron>
+        <DynamicPageHeader
+          title={markdown.info.title}
+          subTitle={markdown.info.subTitle}
+          text={markdown.info.short}
+        />
+      </WaveJumbotron>
+      <Container>
+        <div className={"container-fluid lg-mg-top"}>
+          <Paper elevation={0}>
+            <CardActions>
+              <Tooltip
+                title={`I started my education ${startDate} and ${endDate === "Current" ? "currently study here" : `completed it ${endDate}`}`}>
+                <Chip className={classes.alignRight} clickable color={"secondary"} icon={<CalendarIcon/>}
+                      label={`${startDate}-${endDate}`}/>
+              </Tooltip>
+            </CardActions>
+            <CardContent>
+
+              <Typography>
+                <div dangerouslySetInnerHTML={{__html: markdown.html}}/>
+              </Typography>
+            </CardContent>
+          </Paper>
+        </div>
+      </Container>
     </App>
   );
 };
@@ -100,6 +103,7 @@ query EducationPostBySlug($slug: String!, $image: String) {
       info: frontmatter {
         title
         subTitle
+        image
         date(formatString: "MMMM DD, YYYY")
         short
         featured

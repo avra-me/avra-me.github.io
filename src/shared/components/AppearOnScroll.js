@@ -7,7 +7,7 @@ const AppearOnScroll = (props) => {
   const {children, viewportRef, offScreenProperties, onScreenProperties, animationDisabled, animationDisabledState, delay, duration, repeat, ...rest} = props;
 
   const viewListenerOptions = {
-    rootMargin: "0px 0px",
+    rootMargin: "-10px 0px",
     triggerOnce: repeat
   };
 
@@ -51,8 +51,8 @@ const AppearOnScroll = (props) => {
 
 AppearOnScroll.defaultProps = {
   delay: 0,
-  duration: 1,
-  offScreenProperties: {opacity: 0, y: "40%"},
+  duration: .5,
+  offScreenProperties: {opacity: 0, y: "30%"},
   onScreenProperties: {opacity: 1, y: 0}
 };
 
