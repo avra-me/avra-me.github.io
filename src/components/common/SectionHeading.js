@@ -7,24 +7,27 @@ import PropTypes from "prop-types";
 const styles = (theme) => ({
   heading: {
     paddingTop: theme.spacing(10),
+    marginBottom: theme.spacing(6)
+  },
+  title: {
     marginBottom: theme.spacing(3)
   }
 });
 
 const SectionHeading = ({title, subTitle, classes, ...props}) => {
   return <Box className={classes.heading} {...props}>
-    <Typography gutterBottom={false} variant={"h4"} color={"textPrimary"} align={"center"}>
+    <Typography component={"div"} gutterBottom={false} variant={"h4"} color={"textPrimary"} align={"center"} className={classes.title}>
       {title}
     </Typography>
-    <Typography gutterBottom={true} variant={"h5"} color={"textSecondary"} align={"center"}>
+    {subTitle && <Typography component={"div"} gutterBottom={true} variant={"h5"} color={"textSecondary"} align={"center"}>
       {subTitle}
-    </Typography>
+    </Typography>}
   </Box>;
 };
 
 SectionHeading.propTypes = {
-  title: PropTypes.string.isRequired,
-  subTitle: PropTypes.string,
+  title: PropTypes.node.isRequired,
+  subTitle: PropTypes.node,
   classes: PropTypes.object.isRequired
 };
 

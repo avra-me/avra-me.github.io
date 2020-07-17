@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import IconButton from "@material-ui/core/IconButton";
+import clsx from "clsx";
 
 const styles = theme => ({
     "button": {
@@ -49,15 +50,16 @@ const styles = theme => ({
   }
 );
 
-function CircleMenuButton({classes, children, ...props}) {
-  return <IconButton disableRipple disableTouchRipple disableFocusRipple classes={{root: classes.button}} {...props}>
+function CircleMenuButton({classes, children, className, ...props}) {
+  return <IconButton disableRipple className={clsx(className, classes.button)} {...props}>
     {children}
   </IconButton>;
 }
 
 CircleMenuButton.propTypes = {
   classes: PropTypes.object.isRequired,
-  children: PropTypes.node
+  children: PropTypes.node,
+  className: PropTypes.string
 };
 
 export default withStyles(styles)(CircleMenuButton);

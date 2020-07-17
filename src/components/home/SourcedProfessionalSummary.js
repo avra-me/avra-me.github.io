@@ -12,11 +12,16 @@ import SectionHeading from "../common/SectionHeading";
 import Tooltip from "@material-ui/core/Tooltip";
 import Button from "@material-ui/core/Button";
 
-const styles = () => ({
+import LinkIcon from "@material-ui/icons/Link";
+
+const styles = theme => ({
   iconRoot: {
     height: "100%",
     display: "flex",
     flexDirection: "column"
+  },
+  linkIcon: {
+    marginRight: theme.spacing(1)
   }
 });
 
@@ -38,18 +43,18 @@ const SourcedProfessionalSummary = ({classes}) => {
   // eslint-disable-next-line react/prop-types
   const makeTags = ({link, title, subTitle}) => {
     return <Tooltip key={link} title={title}>
-      <Button href={link} size={"small"} variant={"outlined"}>{subTitle}</Button>
+      <Button href={link} size={"small"} variant={"outlined"}><LinkIcon className={classes.linkIcon}/>{subTitle}
+      </Button>
     </Tooltip>
       ;
   };
 
-  return <span>
-    <IconCardContainer>
+  return <IconCardContainer>
     <Grid xs={12} item>
       <SectionHeading title={tagSectionConfig.title} subTitle={tagSectionConfig.subTitle} id={"professional-summary"}/>
     </Grid>
       {cardData.map((card, i) => {
-        const delay = isMdUp ? Math.min(Math.floor(i) * 100, 300) : Math.min(Math.floor(i) * 100, 600);
+        const delay = isMdUp ? Math.min(Math.floor(i) * .100, .300) : Math.min(Math.floor(i) * .100, .600);
         return <IconCard
           key={card.id}
           headline={card.title}
@@ -67,8 +72,7 @@ const SourcedProfessionalSummary = ({classes}) => {
           </Typography>
         </IconCard>;
       })}
-  </IconCardContainer>
-  </span>;
+  </IconCardContainer>;
 };
 
 const getProfessionalSummaryQuery = graphql`query getProfessionalSummary {

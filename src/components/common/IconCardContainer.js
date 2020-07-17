@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {Grid} from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import withStyles from "@material-ui/core/styles/withStyles";
+import Container from "@material-ui/core/Container";
 
 
 const styles = (theme) => ({
@@ -26,13 +27,11 @@ function IconCardContainer(props) {
   const isMdUp = useMediaQuery(theme => theme.breakpoints.up("md"));
   const isSmUp = useMediaQuery(theme => theme.breakpoints.up("sm"));
   return (
-    <div>
-      <div className="container-fluid section">
-        <Grid container spacing={isLgUp ? 5 : isMdUp ? 4 : isSmUp ? 3 : 2} justify={"center"} alignItems={"stretch"}>
-          {children}
-        </Grid>
-      </div>
-    </div>
+    <Container>
+      <Grid container spacing={isLgUp ? 5 : isMdUp ? 4 : isSmUp ? 3 : 2} justify={"center"} alignItems={"stretch"}>
+        {children}
+      </Grid>
+    </Container>
   );
 }
 

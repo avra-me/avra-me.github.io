@@ -42,7 +42,7 @@ const styles = (theme) => ({
 });
 const WaveCard = ({classes, inverse, className, children, before, ...props}) => {
   return <SourcedThemeProvider isDarkMode={inverse}>
-    <Card {...props} className={clsx(className, inverse ? classes.dark : "")}>
+    <Card {...props} className={clsx(className, "MuiPaper-root" ,inverse ? classes.dark : "")}>
       {before && <SourcedThemeProvider isDarkMode={!inverse}>
         <Paper elevation={0} square className={clsx(className, classes.before, inverse ? "" : classes.dark)}>
           <span className={classes.wrapBeforeContent}>

@@ -47,7 +47,7 @@ const RightHandNavigation = ({menuLinks, onDrawerOpen, onDrawerClose}) => {
         onClick={onDrawerOpen}
         aria-label="Open Navigation"
       >
-        <MenuIcon color="primary"/>
+        <MenuIcon color="default"/>
       </IconButton>
     </Hidden>
     <Hidden smDown implementation={"css"}>
