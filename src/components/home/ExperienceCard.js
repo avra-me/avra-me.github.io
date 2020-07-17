@@ -62,7 +62,7 @@ const ExperienceCard = ({classes, data, flip, delay}) => {
   return <Fragment key={slug}>
 
     <Paper elevation={0} className={classes.root}>
-      <AppearOnScroll delay={delay} offScreenProperties={{opacity: 0, x: `${50 * (flip ? -1 : 1)}%`}}
+      <AppearOnScroll delay={delay} offScreenProperties={{opacity: 0, x: `${30 * (flip ? -1 : 1)}%`}}
                       onScreenProperties={{opacity: 1, x: 0}}>
         <Grid container spacing={4} direction={flip ? "row" : "row-reverse"}
               justify={"center"}>
