@@ -58,7 +58,6 @@ collections:
                 widget: number
                 min: 0
                 max: 1
-                step: 0.01
                 valueType: float
               - label: Spacing
                 name: spacing
