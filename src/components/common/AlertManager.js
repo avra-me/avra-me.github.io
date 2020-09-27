@@ -1,12 +1,6 @@
-import Card from "@material-ui/core/Card";
-import clsx from "clsx";
-import CardMedia from "@material-ui/core/CardMedia";
-import WaveBorder from "../../shared/components/WaveBorder";
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 import {withStyles} from "@material-ui/core";
-import Paper from "@material-ui/core/Paper";
-import SourcedThemeProvider, {RootThemeProvider} from "./sourced/SourcedThemeProvider";
 import {useLocation} from "@reach/router";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
@@ -43,7 +37,7 @@ const styles = (theme) => ({
     }
   }
 });
-const AlertManager = ({classes, underConstruction}) => {
+const AlertManager = ({underConstruction}) => {
   const location = useLocation();
   const locationUrl = new URL(location.href);
 

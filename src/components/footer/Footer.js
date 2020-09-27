@@ -1,17 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Box, Grid, Hidden, IconButton, TextField, Typography, withStyles,} from "@material-ui/core";
+import {Box, Grid, Hidden, IconButton, Typography, withStyles,} from "@material-ui/core";
 import WaveBorder from "../../shared/components/WaveBorder";
 import transitions from "@material-ui/core/styles/transitions";
 import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
 import {ThemeProvider} from "@material-ui/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import Paper from "@material-ui/core/Paper";
 import useTheme from "@material-ui/core/styles/useTheme";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import EmailIcon from "@material-ui/icons/AlternateEmail";
-import FormControl from "@material-ui/core/FormControl";
 import ContactForm from "../../shared/components/ContactForm";
 
 const styles = (theme) => ({

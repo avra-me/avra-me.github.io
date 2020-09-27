@@ -1,11 +1,8 @@
 import {graphql, useStaticQuery} from "gatsby";
 import React from "react";
 import PropTypes from "prop-types";
-import ExperienceCard from "./ExperienceCard";
 import EducationCard from "./EducationCard";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
 import {withStyles} from "@material-ui/core";
 import SectionHeading from "../common/SectionHeading";
 import Container from "@material-ui/core/Container";
@@ -17,13 +14,14 @@ const styles = (theme) => ({
   }
 });
 
-const ListEducationView = ({featuredOnly, classes}) => {
+const ListEducationView = ({featuredOnly}) => {
   const result = useStaticQuery(listEducationData);
 
   const {files} = result;
 
   return <Container>
-    <SectionHeading title={"Education"} subTitle={"I'm always learning, but here is my formal education."} id={"education"}/>
+    <SectionHeading title={"Education"} subTitle={"I'm always learning, but here is my formal education."}
+                    id={"education"}/>
     <Grid container spacing={4} alignItems={"stretch"} direction="row" justify={"center"}>
 
       {files.values.map(({slug, markdown}, i) => {

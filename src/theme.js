@@ -1,4 +1,4 @@
-import {createMuiTheme, lighten, responsiveFontSizes, getContrastRatio} from "@material-ui/core";
+import {createMuiTheme, responsiveFontSizes} from "@material-ui/core";
 
 export default (opts) => {
 
@@ -15,6 +15,7 @@ export default (opts) => {
 
   // border
   const borderWidth = 2;
+  const height = 2;
   const borderColor = "rgba(0, 0, 0, 0.13)";
 
   // breakpoints
@@ -26,9 +27,6 @@ export default (opts) => {
 
   // spacing
   const spacing = 8;
-
-  if (opts.palette.type)
-
 
 
   const theme = createMuiTheme({
@@ -94,7 +92,7 @@ export default (opts) => {
       MuiDivider: {
         root: {
           backgroundColor: borderColor,
-          height: borderWidth,
+          height: height,
         },
       },
       MuiPrivateNotchedOutline: {
