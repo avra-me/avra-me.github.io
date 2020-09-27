@@ -16,7 +16,6 @@ import {
 import CloseIcon from "@material-ui/icons/Close";
 import Icon from "@material-ui/core/Icon";
 import CircleMenuButton from "./CircleMenuButton";
-import {motion} from "framer-motion";
 
 const styles = (theme) => ({
   closeIcon: {
@@ -56,7 +55,8 @@ function NavigationDrawer(props) {
   }, [width, open, onClose]);
 
   return (
-    <Drawer variant="temporary" open={open} onClose={onClose} anchor={anchor} classes={{paper: classes.drawer}} transitionDuration={500}>
+    <Drawer variant="temporary" open={open} onClose={onClose} anchor={anchor} classes={{paper: classes.drawer}}
+            transitionDuration={500}>
       <Toolbar className={classes.headSection}>
         <ListItem
           style={{

@@ -47,10 +47,10 @@ function WaveBorder(props) {
   });
 
   const [waveStates,] = useState({
-    0: wave(9, -2, 0.7),
-    3: wave(12, -3, 0.5),
-    5: wave(19, -4, 0.3),
-    6: wave(25, -5, 1, 50),
+    0: wave(3, -2, 0.7),
+    3: wave(4, -3, 0.5),
+    5: wave(6, -4, 0.3),
+    6: wave(8, -5, 1, 50),
   });
 
   const [startTime,] = useState((new Date()).valueOf());

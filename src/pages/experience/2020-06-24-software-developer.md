@@ -26,10 +26,10 @@ tags:
 
 #### Superannuation Industry Project
 * Built a stubbing automation suite which reduced expected performance testing effort by 75%, freeing up time for testers to work on reports and stakeholder management. 
-* Implemented a critical solution outside of my scope of work that allowed our performance testing team to complete their work on schedule with multi-factor authentication in place. This solution used a Python web server and software as a service provider Plivo to intercept SMS authentication tokens. 
+* Implemented a critical solution outside of my scope of work, allowed our performance testing team to complete their work on schedule with multi-factor authentication in place. This solution used a Python web server and software as a service provider Plivo to intercept SMS authentication tokens. 
 
 #### **Retail Industry Microservice Based Project** 
-* Worked with NodeJS and CloudFormation to build a revamped experience for a company in the retail sector. Took ownership of building and maintaining several microservices in the commercial printing 
+* Worked with NodeJS and CloudFormation to build a revamped experience for a company in the retail sector. Took ownership of building and maintaining several microservices in the commercial printing ecosystem. 
 * Worked with client developers to ensure microservices used standardized design patterns and libraries.
 
 ### Achievements

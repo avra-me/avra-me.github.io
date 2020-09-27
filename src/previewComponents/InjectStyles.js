@@ -2,8 +2,9 @@ import React, {useEffect, useState} from "react";
 import {create} from "jss";
 import {StylesProvider} from "@material-ui/styles";
 import {jssPreset} from "@material-ui/core/styles";
+import PropTypes from "prop-types";
 
-export default function InjectStyles({children}) {
+function InjectStyles({children}) {
   const [iframeRef, setIframeRef] = useState(undefined);
   useEffect(() => {
     const iframe = document.querySelector("#nc-root iframe");
@@ -24,3 +25,8 @@ export default function InjectStyles({children}) {
   return <StylesProvider jss={jss}>{children}</StylesProvider>;
 }
 
+InjectStyles.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default InjectStyles;
