@@ -2,4 +2,4 @@ disabled: false
 prefix: "Hi, I'm"
 name: "Avrami"
 caption: "I'm a software engineer with a talent for designing scalable systems"
-monogram: "/assets/avrami-logo2.svg"
+monogram: "/assets/monogram.svg"

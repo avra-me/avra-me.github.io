@@ -17,7 +17,7 @@
     "gatsby-plugin-material-ui": "2.1.0",
     "gatsby-plugin-netlify-cms": "^4.3.2",
     "gatsby-plugin-react-helmet": "^3.3.6",
-    "gatsby-plugin-sharp": "^2.6.14",
+    "gatsby-plugin-sharp": "^2.6.36",
     "gatsby-remark-copy-linked-files": "^2.3.7",
     "gatsby-remark-images": "^3.3.13",
     "gatsby-remark-prismjs": "^3.5.6",
@@ -27,14 +27,14 @@
     "gatsby-transformer-remark": "^2.8.19",
     "gatsby-transformer-sharp": "^2.5.7",
     "gatsby-transformer-yaml": "^2.4.6",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.20",
     "netlify-cms-app": "^2.12.12",
     "prismjs": "^1.20.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-helmet": "^6.1.0",
-    "react-scripts": "^3.4.1",
-    "react-intersection-observer": "^8.26.2"
+    "react-intersection-observer": "^8.26.2",
+    "react-scripts": "^3.4.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.5.0",
@@ -46,6 +46,7 @@
   },
   "scripts": {
     "build": "gatsby build",
+    "generate-assets": "node ./plugins/generate-assets/index.js",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
@@ -71,7 +72,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dunky11/react-saas-template.git"
+    "url": "git+https://github.com/avra-me/avra-me.github.io"
   },
   "author": "Hammer-Inc",
   "license": "MIT"
