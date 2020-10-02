@@ -31,8 +31,7 @@ const App = (props) => {
         <meta property="profile:last_name" content={site.author.last_name}/>
         <meta property="profile:username" content={site.siteUrl}/>
         {site.icons.map(({size, path}) => <link key={size} rel="icon" sizes={size} href={path + "?v=1"}/>)}
-
-        <meta property="og:image" content={site.sitePreview} />
+        <meta property="og:image" content={site.sitePreview}/>
       </Helmet>
       <RootThemeProvider>
         <CssBaseline/>

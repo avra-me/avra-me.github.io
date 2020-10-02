@@ -110,7 +110,7 @@ query EducationPostBySlug($slug: String!, $image: String) {
       }
     }
   }
-  image: file(relativePath: {eq: $image}, sourceInstanceName: {eq: "assets"}, ext: {ne: ".svg"}) {
+  image: file(relativePath: {eq: $image}, sourceInstanceName: {eq: "assets"}, ext: {nin: [".svg", ".ico"]}) {
     progressive: childImageSharp {
       fluid {
         ...GatsbyImageSharpFluid

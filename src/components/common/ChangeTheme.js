@@ -7,6 +7,8 @@ import {AnimatePresence, motion} from "framer-motion";
 import Tooltip from "@material-ui/core/Tooltip";
 import CircleMenuButton from "../../shared/components/CircleMenuButton";
 
+const isSSR = typeof window === "undefined";
+
 const animations = {
   start: {
     x: 40,
@@ -22,14 +24,14 @@ const animations = {
     transition: {
       type: "spring",
       damping: 20,
-      stiffness: 100
+      stiffness: 50
     }
   },
   hide: {x: "-40px", y: "10px", opacity: 0, position: "absolute"}
 };
 
 const LightMode = () => <motion.animate
-  initial={"start"}
+  initial={isSSR ? "visible" : "start"}
   animate={"visible"}
   variants={animations}
   exit={"hide"}
@@ -40,7 +42,7 @@ const LightMode = () => <motion.animate
 
 const DarkMode = () => {
   return <motion.animate
-    initial={"start"}
+    initial={isSSR ? "visible" : "start"}
     animate={"visible"}
     variants={animations}
     exit={"hide"}

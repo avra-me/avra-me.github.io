@@ -14,27 +14,27 @@ const styles = (theme) => ({
   },
   media: {
     width: "100%",
-    margin: "auto"
+    margin: "auto",
+    zIndex: -2
   },
   dividerTop: {
     position: "absolute",
     top: -1,
     left: -1,
     right: -1,
-    zIndex: 10
+    zIndex: -1
   },
   dividerBottom: {
     position: "absolute",
     bottom: -10,
     left: -1,
     right: -1,
-    zIndex: 10
+    zIndex: -1
   },
   wavyBorder: {
     height: "30%",
     minHeight: "30%",
-    fill: theme.palette.background.default
-
+    fill: theme.palette.background.default,
   },
   mediaItem: {
     position: "relative",
@@ -44,8 +44,8 @@ const styles = (theme) => ({
 
 const WavyImage = ({src, progressiveImage, alt, classes}) => {
   return <Grid item className={classes.root} container alignItems={"center"}>
-
-    <Grid item className={classes.mediaItem}>
+    <Grid item/>
+    <Grid item container className={classes.mediaItem}>
       <div className={classes.dividerTop}>
         <WaveBorder className={classes.wavyBorder} pause flip/>
       </div>
@@ -62,6 +62,7 @@ const WavyImage = ({src, progressiveImage, alt, classes}) => {
         <WaveBorder className={classes.wavyBorder} pause/>
       </div>
     </Grid>
+    <Grid item/>
   </Grid>;
 };
 
