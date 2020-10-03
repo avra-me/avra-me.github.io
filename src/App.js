@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import {CssBaseline} from "@material-ui/core";
 import GlobalStyles from "./GlobalStyles";
-import * as serviceWorker from "./serviceWorker";
 import SourcedFooter from "./components/footer/SourcedFooter";
 import {RootThemeProvider} from "./components/common/sourced/SourcedThemeProvider";
 import SourcedNavigation from "./components/navigation/SourcedNavigation";
@@ -74,9 +73,5 @@ query getSiteMetadata {
   }
 }
 `;
-
-if (typeof window !== "undefined") {
-  serviceWorker.register();
-}
 
 export default App;
