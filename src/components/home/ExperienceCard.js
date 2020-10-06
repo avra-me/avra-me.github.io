@@ -54,6 +54,11 @@ const styles = (theme) => ({
   mediaItem: {
     position: "relative",
     flexGrow: 1
+  },
+  mediaButton: {
+    textAlign: "left",
+    width: "100%",
+    height: "100%"
   }
 });
 
@@ -64,38 +69,41 @@ const ExperienceCard = ({classes, data, flip, delay}) => {
     <Paper elevation={0} className={classes.root}>
       <AppearOnScroll delay={delay} offScreenProperties={{opacity: 0, x: `${30 * (flip ? -1 : 1)}%`}}
                       onScreenProperties={{opacity: 1, x: 0}}>
-        <Grid container spacing={4} direction={flip ? "row" : "row-reverse"}
-              justify={"center"}>
-          <Grid item xs={12} sm={4} md={2} className={classes.mediaGrid}>
+        <Button className={classes.mediaButton} href={`/experience/${slug}`}>
+          <Grid container spacing={4} direction={flip ? "row" : "row-reverse"}
+                justify={"center"}>
+            <Grid item xs={12} sm={4} md={2} className={classes.mediaGrid}>
 
-            <WavyImage src={typeof image === "string" && image} progressiveImage={typeof image === "object" && image}
-                       alt={title}/>
-          </Grid>
+              <WavyImage src={typeof image === "string" && image} progressiveImage={typeof image === "object" && image}
+                         alt={title}/>
 
-          <Grid item xs={12} sm={8} md={10}>
-            <CardContent>
-              <Typography gutterBottom={false} variant={"h6"} color={"textPrimary"}>{title}</Typography>
-              <Typography gutterBottom={true} variant={"body1"} color={"textSecondary"}>{subTitle}</Typography>
-              <Typography variant={"body1"}>
-                {short || excerpt}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <ButtonGroup variant="text">
-                <Button href={`/experience/${slug}`}>
-                  <Typography>
-                    Read More
-                  </Typography>
-                </Button>
-                {link && <Button href={link}>
-                  <Typography>
-                    View Demo
-                  </Typography>
-                </Button>}
-              </ButtonGroup>
-            </CardActions>
+            </Grid>
+
+            <Grid item xs={12} sm={8} md={10}>
+              <CardContent>
+                <Typography gutterBottom={false} variant={"h6"} color={"textPrimary"}>{title}</Typography>
+                <Typography gutterBottom={true} variant={"body1"} color={"textSecondary"}>{subTitle}</Typography>
+                <Typography variant={"body1"}>
+                  {short || excerpt}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <ButtonGroup variant="text">
+                  <Button href={`/experience/${slug}`}>
+                    <Typography>
+                      Read More
+                    </Typography>
+                  </Button>
+                  {link && <Button href={link}>
+                    <Typography>
+                      View Demo
+                    </Typography>
+                  </Button>}
+                </ButtonGroup>
+              </CardActions>
+            </Grid>
           </Grid>
-        </Grid>
+        </Button>
       </AppearOnScroll>
 
     </Paper>

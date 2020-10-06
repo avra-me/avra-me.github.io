@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import {CssBaseline} from "@material-ui/core";
 import GlobalStyles from "./GlobalStyles";
-import * as serviceWorker from "./serviceWorker";
 import SourcedFooter from "./components/footer/SourcedFooter";
 import {RootThemeProvider} from "./components/common/sourced/SourcedThemeProvider";
 import SourcedNavigation from "./components/navigation/SourcedNavigation";
@@ -31,8 +30,7 @@ const App = (props) => {
         <meta property="profile:last_name" content={site.author.last_name}/>
         <meta property="profile:username" content={site.siteUrl}/>
         {site.icons.map(({size, path}) => <link key={size} rel="icon" sizes={size} href={path + "?v=1"}/>)}
-
-        <meta property="og:image" content={site.sitePreview} />
+        <meta property="og:image" content={site.sitePreview}/>
       </Helmet>
       <RootThemeProvider>
         <CssBaseline/>
@@ -75,9 +73,5 @@ query getSiteMetadata {
   }
 }
 `;
-
-if (typeof window !== "undefined") {
-  serviceWorker.register();
-}
 
 export default App;
