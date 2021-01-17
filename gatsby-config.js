@@ -67,12 +67,10 @@ module.exports = {
           "gatsby-remark-prismjs",
           "gatsby-remark-copy-linked-files",
           "gatsby-remark-smartypants",
-          "gatsby-plugin-preact",
         ],
       },
     },
     "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp",
     "gatsby-plugin-react-helmet",
     "gatsby-transformer-yaml",
     {
@@ -81,5 +79,7 @@ module.exports = {
         trackingId: "UA-131741134-2",
       },
     },
+    "gatsby-plugin-sharp",
+    "gatsby-plugin-preact",
   ],
 };
