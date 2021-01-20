@@ -9,7 +9,6 @@ alias:
 icon: build
 color: "#C51162"
 ---
-☑ Experience designing scalable solutions to organisation and industry
-  specific best practices while keeping in mind implementation constraints.
+☑ Skilled at producing high quality, well thought out software and architecture to meet project requirements in a wide range of industries and sectors.
   
-☑ Expert at working collaboratively with stakeholders and subject matter experts to ensure solutions align with stakeholder expectations and overarching strategy.
+☑ Expert at collaborating with stakeholders and subject matter experts to ensure solutions align with stakeholder expectations and overarching strategy.
