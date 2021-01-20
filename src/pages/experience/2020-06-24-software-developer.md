@@ -16,6 +16,7 @@ tags:
   - Artificial Intelligence
   - Software Development
   - Communication
+  - Leadership
 ---
 ### Projects Undertaken
 
