@@ -1,5 +1,6 @@
 disabled: false
-prefix: "Hi, I'm"
-name: "Avrami"
-caption: "I'm a software engineer with a talent for designing scalable systems"
-monogram: "/assets/monogram.svg"
+prefix: " "
+name: Avrami
+caption: Designing scalable systems across the full software stack for a wide
+  range of industries
+monogram: /assets/monogram.svg
