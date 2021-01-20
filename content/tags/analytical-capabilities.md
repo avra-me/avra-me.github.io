@@ -3,7 +3,7 @@ title: Leadership
 type: tag
 alias:
   - communication
-icon: analytics
+icon: people
 color: "#6200EA"
 ---
 ☑ Distil complex ideas into simple, clear, and user-friendly visualizations, ability to explain sophisticated concepts in an understandable manner.
