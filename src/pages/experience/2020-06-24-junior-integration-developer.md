@@ -9,7 +9,7 @@ short: Working in project environments supporting the delivery of
   staff.
 featured: true
 showYearOnly: true
-image: /assets/rmit.png
+image: /assets/rmit-logo.png
 tags:
   - RMIT
   - Databases

@@ -8,8 +8,8 @@ date: 2021-01-20T22:53:14.902Z
 short: Independently tutored a class of 20 students including providing
   assignment support, weekly knowledge tests, and  going through weekly content.
 featured: false
-image: /assets/rmit.png
 showYearOnly: true
+image: /assets/rmit-logo.png
 tags:
   - Leadership
   - Teaching
