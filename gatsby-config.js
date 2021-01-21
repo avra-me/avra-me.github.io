@@ -16,9 +16,6 @@ module.exports = {
     },
     {
       resolve: "gatsby-plugin-material-ui",
-      options: {
-        injectFirst: true,
-      },
     },
     {
       resolve: "gatsby-source-filesystem",
@@ -73,6 +70,14 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-react-helmet",
     "gatsby-transformer-yaml",
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        google: {
+          families: ["Material Icons"]
+        }
+      }
+    },
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
