@@ -35,7 +35,7 @@ const ContactForm = ({emailField, messageField, submitButton}) => {
     </FormControl>
     <FormControl fullWidth variant={"filled"} color={"secondary"}>
       <InputLabel htmlFor="message-contact-form-field">{messageField.title}</InputLabel>
-      <TextField
+      <FilledInput
         id={"message-contact-form-field"}
         name="message"
         multiline
