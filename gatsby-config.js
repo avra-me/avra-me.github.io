@@ -4,7 +4,6 @@
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
 
-
 module.exports = {
   /* Your site config here */
   plugins: [
@@ -12,14 +11,14 @@ module.exports = {
       resolve: "gatsby-plugin-netlify-cms",
       options: {
         modulePath: "./src/cms.js",
-        enableIdentityWidget: false
-      }
+        enableIdentityWidget: false,
+      },
     },
     {
       resolve: "gatsby-plugin-material-ui",
       options: {
-        injectFirst: true
-      }
+        injectFirst: true,
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
@@ -72,14 +71,15 @@ module.exports = {
       },
     },
     "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp",
     "gatsby-plugin-react-helmet",
     "gatsby-transformer-yaml",
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: "UA-131741134-2"
+        trackingId: "UA-131741134-2",
       },
-    }
+    },
+    "gatsby-plugin-sharp",
+    "gatsby-plugin-preact",
   ],
 };

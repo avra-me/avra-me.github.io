@@ -33,7 +33,7 @@ const EducationCard = ({classes, flip, data, delay}) => {
       >
         <CardHeader title={title} subheader={subTitle} titleTypographyProps={{color: "textPrimary"}}/>
         <CardContent className={classes.content}>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography color="textSecondary" component="p">
             {short}
           </Typography>
         </CardContent>
