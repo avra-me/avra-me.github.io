@@ -7,8 +7,12 @@ import React from "react";
 import InputLabel from "@material-ui/core/InputLabel";
 import FilledInput from "@material-ui/core/FilledInput";
 import PropTypes from "prop-types";
+import {useState} from "preact/hooks";
 
 const ContactForm = ({emailField, messageField, submitButton}) => {
+  // hack to get around broke placeholder layout
+  const [showEmailPlaceholder, setShowEmailPlaceholder] = useState(false);
+  const [showMessagePlaceholder, setShowMessagePlaceholder] = useState(false);
 
   return <form data-netlify="true" name={"contact-form"} method="post"
                netlify-honeypot="totally-a-field" action={"/?sent_message"}>
@@ -18,7 +22,9 @@ const ContactForm = ({emailField, messageField, submitButton}) => {
       <FilledInput
         id={"email-contact-form-field"}
         name="email"
-        placeholder={emailField.placeholder}
+        onFocus={() => setShowEmailPlaceholder(true)}
+        onBlur={() => setShowEmailPlaceholder(false)}
+        placeholder={showEmailPlaceholder ? emailField.placeholder : ""}
         type={"email"}
         required
         endAdornment={
@@ -34,8 +40,10 @@ const ContactForm = ({emailField, messageField, submitButton}) => {
         id={"message-contact-form-field"}
         name="message"
         multiline
-        placeholder={messageField.placeholder}
-        inputProps={{"aria-label": "Have something you want to discuss? I'm always interested in taking my next career step!"}}
+        onFocus={() => setShowMessagePlaceholder(true)}
+        onBlur={() => setShowMessagePlaceholder(false)}
+        placeholder={showMessagePlaceholder ? messageField.placeholder : ""}
+        inputProps={{"aria-label": messageField.placeholder}}
         rows={4}
         fullWidth
         required
