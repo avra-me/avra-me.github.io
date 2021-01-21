@@ -119,7 +119,7 @@ collections:
       - {label: "Link", name: "link", widget: "string", required: false}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Description", name: "short", widget: "text"}
-      - {label: "Featured", name: "featured", widget: "boolean", default: false
+      - {label: "Featured", name: "featured", widget: "boolean", default: false}
       - {label: "Featured Image", name: "image", widget: image}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
