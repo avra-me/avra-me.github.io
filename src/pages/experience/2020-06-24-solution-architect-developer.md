@@ -1,5 +1,5 @@
 ---
-title: Solution Architect / Developer
+title: Solution Architect and Engineer
 startDate: 2019-06-01T00:00:01.000Z
 endDate: 2019-11-01T00:00:01.000Z
 subTitle: RMIT Library (Capstone)
@@ -15,6 +15,9 @@ tags:
   - Web Development
   - Cloud
   - React
-  - communication
+  - Leadership
+  - Full Stack
 ---
-This project is currently awaiting full implementation by the RMIT library.
+- Designed solution (back-end, front-end, and data sources)
+- Managed team to ensure prompt and timely delivery.
+- Built pieces of the system across the full software stack (database, backend, frontend).

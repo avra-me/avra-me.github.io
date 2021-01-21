@@ -1,15 +1,11 @@
 ---
-title: Analytical Capabilities
+title: Leadership
 type: tag
 alias:
-  - analysis
-  - learning
   - communication
-  - computer science
-icon: analytics
+icon: people
 color: "#6200EA"
 ---
-☑ Can distill complex concepts into simple, clear and user-friendly
-  visualizations and is able to explain sophisticated concepts clearly and concisely. 
+☑ Distil complex ideas into simple, clear, and user-friendly visualizations, ability to explain sophisticated concepts in an understandable manner.
 
-☑ Degree qualified with a Bachelor of Computer Science.
+☑ Experience working and leading across small- and large-scale teams/projects in a variety of settings. 
