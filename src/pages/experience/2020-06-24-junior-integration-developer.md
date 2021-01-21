@@ -8,7 +8,7 @@ short: Working in project environments supporting the delivery of
   university-wide software system upgrades to over 80,000 students and 10,000
   staff.
 featured: true
-image: /assets/rmit.png
+image: /assets/rmit-logo.png
 tags:
   - RMIT
   - Databases
