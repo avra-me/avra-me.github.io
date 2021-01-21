@@ -1,5 +1,5 @@
 import React from "react";
-import {graphql} from "gatsby";
+import { graphql } from "gatsby";
 import App from "../App";
 import PropTypes from "prop-types";
 import CardContent from "@material-ui/core/CardContent";
@@ -17,16 +17,15 @@ import DynamicPageHeader from "../shared/components/DynamicPageHeader";
 
 const styles = () => ({
   alignRight: {
-    marginLeft: "auto !important"
-  }
+    marginLeft: "auto !important",
+  },
 });
 
+const ExperienceTemplate = ({ data, classes }) => {
+  const { markdown } = data.value || data.valueYearOnly;
 
-const ExperienceTemplate = ({data, classes}) => {
-  const {markdown} = data.file;
-  let {startDate, endDate, link} = markdown.info;
+  let { startDate, endDate, link } = markdown.info;
   endDate = endDate === "Invalid date" ? "Current" : endDate;
-
 
   return (
     <App showContactForm>
@@ -35,25 +34,41 @@ const ExperienceTemplate = ({data, classes}) => {
           title={markdown.info.title}
           subTitle={markdown.info.subTitle}
           text={markdown.info.short}
-          image={data.image !== null ? data.image.progressive.fluid : markdown.info.image}
+          image={
+            data.image !== null
+              ? data.image.progressive.fluid
+              : markdown.info.image
+          }
         />
       </WaveJumbotron>
       <Container>
         <div className={"container-fluid lg-mg-top"}>
           <Paper elevation={0}>
             <CardActions>
-              {link &&
-              <Button color={"primary"} variant={"contained"} href={link}>View Demo</Button>
-              }
+              {link && (
+                <Button color={"primary"} variant={"contained"} href={link}>
+                  View Demo
+                </Button>
+              )}
               <Tooltip
-                title={`I started work ${startDate} and ${endDate === "Current" ? "currently work here" : `finished ${endDate}`}`}>
-                <Chip className={classes.alignRight} clickable color={"secondary"} icon={<CalendarIcon/>}
-                      label={`${startDate}-${endDate}`}/>
+                title={`I started work ${startDate} and ${
+                  endDate === "Current"
+                    ? "currently work here"
+                    : `finished ${endDate}`
+                }`}
+              >
+                <Chip
+                  className={classes.alignRight}
+                  clickable
+                  color={"secondary"}
+                  icon={<CalendarIcon />}
+                  label={startDate !== endDate ? `${startDate}-${endDate}`: endDate}
+                />
               </Tooltip>
             </CardActions>
             <CardContent>
               <Typography>
-                <div dangerouslySetInnerHTML={{__html: markdown.html}}/>
+                <div dangerouslySetInnerHTML={{ __html: markdown.html }} />
               </Typography>
             </CardContent>
           </Paper>
@@ -63,66 +78,100 @@ const ExperienceTemplate = ({data, classes}) => {
   );
 };
 
+const experienceShape = PropTypes.shape({
+  markdown: PropTypes.shape({
+    id: PropTypes.string,
+    excerpt: PropTypes.string,
+    html: PropTypes.string,
+    info: PropTypes.shape({
+      title: PropTypes.string,
+      startDate: PropTypes.string,
+      endDate: PropTypes.string,
+      image: PropTypes.string,
+      subTitle: PropTypes.string,
+      date: PropTypes.string,
+      short: PropTypes.string,
+      featured: PropTypes.string,
+      link: PropTypes.string,
+    }),
+  }),
+});
+
 ExperienceTemplate.propTypes = {
   classes: PropTypes.object,
   data: PropTypes.shape({
     image: PropTypes.shape({
       progressive: PropTypes.shape({
-        fluid: PropTypes.object
-      })
+        fluid: PropTypes.object,
+      }),
     }),
-    file: PropTypes.shape({
-      markdown: PropTypes.shape({
-        id: PropTypes.string,
-        excerpt: PropTypes.string,
-        html: PropTypes.string,
-        info: PropTypes.shape({
-          title: PropTypes.string,
-          startDate: PropTypes.string,
-          endDate: PropTypes.string,
-          image: PropTypes.string,
-          subTitle: PropTypes.string,
-          date: PropTypes.string,
-          short: PropTypes.string,
-          featured: PropTypes.string,
-          link: PropTypes.string
-        })
-      })
-    }),
+    value: experienceShape,
+    valueYearOnly: experienceShape,
     slug: PropTypes.string,
     type: PropTypes.string,
-  })
+  }),
 };
 
 export default withStyles(styles)(ExperienceTemplate);
 
 export const pageQuery = graphql`
-query ExperiencePostBySlug($slug: String!, $image: String) {
-  file(name: {eq: $slug}) {
-    slug: name
-    markdown: childMarkdownRemark {
-      id
-      excerpt(pruneLength: 160)
-      html
-      info: frontmatter {
-        title
-        image
-        subTitle
-        date(formatString: "MMMM DD, YYYY")
-        short
-        featured
-        startDate(formatString: "MMMM YYYY")
-        endDate(formatString: "MMMM YYYY")
-        link
+  query ExperiencePostBySlug($slug: String!, $image: String) {
+    value: file(
+      name: { eq: $slug }
+      childMarkdownRemark: { frontmatter: { showYearOnly: { ne: true } } }
+    ) {
+      slug: name
+      markdown: childMarkdownRemark {
+        id
+        excerpt(pruneLength: 160)
+        html
+        info: frontmatter {
+          title
+          image
+          subTitle
+          date(formatString: "MMMM DD, YYYY")
+          short
+          featured
+          startDate(formatString: "MMMM YYYY")
+          endDate(formatString: "MMMM YYYY")
+          showYearOnly
+          link
+        }
+      }
+    }
+    valueYearOnly: file(
+      name: { eq: $slug }
+      childMarkdownRemark: { frontmatter: { showYearOnly: { eq: true } } }
+    ) {
+      slug: name
+      markdown: childMarkdownRemark {
+        id
+        excerpt(pruneLength: 160)
+        html
+        info: frontmatter {
+          title
+          image
+          subTitle
+          date(formatString: "MMMM DD, YYYY")
+          short
+          featured
+          startDate(formatString: "YYYY")
+          endDate(formatString: "YYYY")
+          showYearOnly
+          link
+        }
+      }
+    }
+    image: file(
+      relativePath: { eq: $image }
+      sourceInstanceName: { eq: "assets" }
+      ext: { nin: [".svg", "svg"] }
+    ) {
+      progressive: childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
       }
     }
   }
-  image: file(relativePath: {eq: $image}, sourceInstanceName: {eq: "assets"}, ext: {nin: [".svg", "svg"]}) {
-    progressive: childImageSharp {
-      fluid {
-        ...GatsbyImageSharpFluid
-      }
-    }
-  }
-}
 `;

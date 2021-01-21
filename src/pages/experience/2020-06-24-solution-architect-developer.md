@@ -9,6 +9,7 @@ short: Designing and developing a resilient, performant solution for visualizing
   thousands of record access per day from the RMIT library.
 featured: true
 image: /assets/project nebula.png
+showYearOnly: false
 tags:
   - Data Visualization
   - RMIT

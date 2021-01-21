@@ -9,6 +9,7 @@ short: Independently tutored a class of 20 students including providing
   assignment support, weekly knowledge tests, and  going through weekly content.
 featured: false
 image: /assets/rmit.png
+showYearOnly: true
 tags:
   - Leadership
   - Teaching
@@ -16,5 +17,6 @@ tags:
   - Cloud Development
   - Networking
 ---
+# Achievements
 - Worked independently managing a weekly class of up to 20 undergraduate students.
 - Delivered small amounts of lesson content for use across the course.

@@ -78,7 +78,8 @@ EducationTemplate.propTypes = {
           subTitle: PropTypes.string,
           date: PropTypes.string,
           short: PropTypes.string,
-          featured: PropTypes.string,
+          featured: PropTypes.bool,
+          showYearOnly: PropTypes.bool,
           startDate: PropTypes.string,
           endDate: PropTypes.string
         })

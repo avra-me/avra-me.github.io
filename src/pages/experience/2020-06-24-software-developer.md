@@ -7,6 +7,7 @@ date: 2020-06-22T05:04:32.814Z
 short: Consulting and developing software solutions for a wide range of
   industries and wide variety of roles.
 featured: true
+showYearOnly: false
 image: /assets/tech-differentiates.svg
 tags:
   - Deloitte

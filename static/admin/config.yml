@@ -4,9 +4,9 @@ backend:
   name: git-gateway
   #  repo: avra-me/avra-me.github.io
   commit_messages:
-    create: 'Create {{collection}} “{{slug}}”'
-    update: 'Update {{collection}} “{{slug}}”'
-    delete: 'Delete {{collection}} “{{slug}}”'
+    create: '[skip ci] Create {{collection}} “{{slug}}”'
+    update: '[skip ci] Update {{collection}} “{{slug}}”'
+    delete: '[skip ci] Delete {{collection}} “{{slug}}”'
     uploadMedia: '[skip ci] Upload “{{path}}”'
     deleteMedia: '[skip ci] Delete “{{path}}”'
 
@@ -114,11 +114,12 @@ collections:
       - {name: "type", widget: hidden, default: "experience"}
       - {label: "Start Date", name: "startDate", widget: "datetime"}
       - {label: "End Date", name: "endDate", widget: "datetime", required: false}
+      - {label: "Display Start/End Year only", name: "showYearOnly", widget: "boolean", default: false}
       - {label: "Where", name: "subTitle", widget: "string"}
       - {label: "Link", name: "link", widget: "string", required: false}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Description", name: "short", widget: "text"}
-      - {label: "Featured", name: "featured", widget: "boolean"}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false
       - {label: "Featured Image", name: "image", widget: image}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
