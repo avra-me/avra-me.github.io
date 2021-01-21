@@ -3,11 +3,10 @@ import FormControl from "@material-ui/core/FormControl";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import EmailIcon from "@material-ui/icons/AlternateEmail";
 import Button from "@material-ui/core/Button";
-import React from "react";
+import React, {useState} from "react";
 import InputLabel from "@material-ui/core/InputLabel";
 import FilledInput from "@material-ui/core/FilledInput";
 import PropTypes from "prop-types";
-import {useState} from "preact/hooks";
 
 const ContactForm = ({emailField, messageField, submitButton}) => {
   // hack to get around broke placeholder layout
@@ -24,7 +23,7 @@ const ContactForm = ({emailField, messageField, submitButton}) => {
         name="email"
         onFocus={() => setShowEmailPlaceholder(true)}
         onBlur={() => setShowEmailPlaceholder(false)}
-        placeholder={showEmailPlaceholder ? emailField.placeholder : ""}
+        placeholder={showEmailPlaceholder ? messageField.placeholder : ""}
         type={"email"}
         required
         endAdornment={
@@ -36,7 +35,7 @@ const ContactForm = ({emailField, messageField, submitButton}) => {
     </FormControl>
     <FormControl fullWidth variant={"filled"} color={"secondary"}>
       <InputLabel htmlFor="message-contact-form-field">{messageField.title}</InputLabel>
-      <FilledInput
+      <TextField
         id={"message-contact-form-field"}
         name="message"
         multiline
