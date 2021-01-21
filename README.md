@@ -1,13 +1,13 @@
-# Material-Gatsby-Resume
-
-This is a resume bootstrap using react-gatsby-netlify
+# Avra.Me Portfolio Showcase
+This is a custom resume using React, Gatsby and Netlify CMS
 
 Goals:
 
-- [ ] I want to be able to customize my online portfolio without touching my code.
-- [ ] I want my portfolio to look modern and be responsive.
-- [ ] I want my portfolio to be customizable at a technical level should I feel like it.
+- [x] I want to be able to customize my online portfolio without touching my code.
+- [x] I want my portfolio to look modern and be responsive.
+- [x] I want my portfolio to be customizable at a technical level should I feel like it.
 - [ ] As a stretch goal, I would like to be able to print out my portfolio as a resume
+- [ ] Todo: Properly release this thing (requires a code cleanup)
 
 #### Node.js 12+ (versions below could work, but are not tested)
 
@@ -26,13 +26,13 @@ Goals:
 1. Clone the repository
 
    ```
-   git clone https://github.com/dunky11/react-saas-template
+   git clone https://github.com/avra-me/avra-me.github.io
    ```
 
 2. Install dependencies, this can take a minute
 
    ```
-   cd react-saas-template
+   cd <name of dir>
    npm install
    ```
 
@@ -62,16 +62,14 @@ npm run build
 
 It will create a folder named build with your compiled project inside. After that copy its content into your webroot and you are ready to go.
 
-## Build With
+## Built on top of
 
+- [Gatsby](gatsbyjs.org/) - Generating a static site from dynamic content
+- [Netlify CMS](netlifycms.org/) - A Version controlled content management system, enables content changes without touching the code
 - [Material-UI](https://github.com/mui-org/material-ui) - Material Design components
-- [Reach-Router](https://github.com/reach/router) - Routing of the app
-- [Pace](https://github.com/HubSpot/pace) - Loading bar at the top
-- [Emoji-Mart](https://github.com/missive/emoji-mart) - Picker for the emojis
-- [Recharts](https://github.com/recharts/recharts) - Charting library I used for the statistics
-- [Aos](https://github.com/michalsnik/aos) - Animations based on viewport
-- [React-Cropper](https://github.com/roadmanfong/react-cropper) - Cropper for the image uploads
+- [Reach-Router](https://github.com/reach/router) - Client side routing
+- [Framer-Motion](https://www.framer.com/api/motion/) - Animations based on viewport
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/dunky11/react-saas-template/blob/master/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/avra-me/avra-me.github.io/blob/master/LICENSE) file for details.
