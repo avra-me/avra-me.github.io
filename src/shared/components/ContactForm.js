@@ -13,7 +13,7 @@ const ContactForm = ({emailField, messageField, submitButton}) => {
   const [showEmailPlaceholder, setShowEmailPlaceholder] = useState(false);
   const [showMessagePlaceholder, setShowMessagePlaceholder] = useState(false);
 
-  return <form data-netlify="true" name={"contact-form"} method="post"
+  return <form data-netlify="true" name={"Contact Me"} method="post"
                netlify-honeypot="totally-a-field" action={"/?sent_message"}>
     <TextField type="hidden" name="totally-a-field"/>
     <FormControl fullWidth variant={"filled"} color={"secondary"}>
